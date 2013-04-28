@@ -6,10 +6,7 @@
   <title>客製化hexo light theme | kpman | code</title>
   <meta name="author" content="kpman | code">
   
-  <meta name="description" content="增加Disqus留言板
-
-到Disqus申請帳號
-*">
+  <meta name="description" content="分享一些目前知道的客製化theme技巧。其實非常簡單，但是這些技巧如果沒有問過或是自己看過文件，一時間也無法摸透，所以覺得應該值得把它記錄下來。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -77,11 +74,47 @@
     </header>
     <div class="entry">
       
-        <h2>增加Disqus留言板</h2>
+        <p>分享一些目前知道的客製化theme技巧。<br>其實非常簡單，但是這些技巧如果沒有問過或是自己看過文件，<br>一時間也無法摸透，所以覺得應該值得把它記錄下來。</p>
+<a name="more"></a>
+
+<h3>一、增加Disqus留言板</h3>
 <ul>
-<li>到<a href="http://disqus.com/">Disqus</a>申請帳號
-*</li>
+<li>到<a href="http://disqus.com/">Disqus</a>申請帳號</li>
+<li>由上角的Dashboard <code>+Add</code> 申請一個新的帳號</li>
+<li>將網址、name、shortname打好後，要把 <code>shortname</code> 記住！<ul>
+<li>修改本機目錄下的 <code>_confid.yml</code></li>
+<li>在 <code>disqus_shortname</code> 貼上自己的shortname</li>
 </ul>
+</li>
+</ul>
+<p>完成～</p>
+<p>※ 後記：<br>若你在申請完disqus貼到自己的blog上面，發現出現很多不必要的連結，請到disqus的dashboard去修改。<br>右上方 <code>Setting</code> -&gt; <code>Discovery</code> -&gt; 將Discovery level拉到最右邊，如下圖<br><img src="http://i.imgur.com/eeEjwka.png" alt="Discovery level"></p>
+<h3>二、增加右方側欄widget</h3>
+<p>在標題就已經破梗囉XD<br>右方出現那些『Tag』『Tag Cloud』等欄位，其實就是修改widget過後得到的結果。<br>方法如下：</p>
+<ul>
+<li>找到 <code>theme/light/layout/_widget</code> ，可以發現很多 <strong>ejs</strong> 檔</li>
+<li>有些是已經自訂好了，例如 <code>category</code> <code>recent_posts</code> 等</li>
+<li>在 <code>theme/light/_config.yml</code> 內，修改<strong>widgets</strong>，在底下新增你要的ejs檔名即可～</li>
+</ul>
+<p>同樣方法可以自己寫ejs檔，一樣在<code>theme/light/_config.yml</code>加上檔名就可以自訂。</p>
+<h3>三、增加上方自訂全域導覽列</h3>
+<p>預設為Home、Archives這兩個<br>當然得要自訂才爽XD</p>
+<p>方法一樣很簡單如下：</p>
+<ul>
+<li>找到<code>theme/light/_config.yml</code>裡面的第一行</li>
+<li>預設狀況應該只有Home&amp;Archives<br> <img src="http://i.imgur.com/reKRQw4.png" alt="menu"></li>
+<li>自訂自己的menu，項目後面即為<strong>連結</strong>，可以直接使用<code>http://google.com</code>之類的連結。</li>
+</ul>
+<h3>四、自訂favicon</h3>
+<ul>
+<li>首先你要有一個favicon.ico檔或是.png檔(這邊預設檔名為<code>favicon.png</code>)</li>
+<li>將檔案放在 <code>主目錄/source</code> 底下<br> <img src="http://i.imgur.com/Aar4ap9.png" alt="favicon path"></li>
+<li>找到 <code>theme/light/layout/_partial/head.ejs</code>做修改</li>
+<li>在裡面加上head.ejs檔內確認有以下這行code即可擁有自己的favicon  <pre><code><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"&lt;%- config.root %&gt;favicon.png"</span> <span class="attribute">rel</span>=<span class="value">"icon"</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+<p>以上介紹一些目前知道的自訂方法，<br>希望還有人可以跟我多介紹一些技巧，一起分享吧！</p>
 
       
     </div>
