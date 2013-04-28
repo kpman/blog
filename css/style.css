@@ -118,11 +118,18 @@ a:hover {
   font-size: 2.5em;
   line-height: 1;
 }
+#header h1 a {
+  font-weight: 900;
+}
 #header h2 {
   font-weight: normal;
   font-size: 0.9em;
   line-height: 1;
   margin-top: 10px;
+}
+#header .alignleft:hover {
+  -webkit-transform: rotate(-5deg);
+  -webkit-transition: -webkit-transform 0.15s ease-in;
 }
 #header #main-nav {
   font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
