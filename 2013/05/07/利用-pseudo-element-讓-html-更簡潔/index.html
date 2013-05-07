@@ -3,16 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hexo架blog初體驗 | kpman | code</title>
+  <title>利用pseudo element 讓html更簡潔 | kpman | code</title>
   <meta name="author" content="kpman | code">
   
-  <meta name="description" content="是這樣的，一直想要找一個空間，可以清爽的放code，可以跟其他人交流有鑑於系上好朋友們紛紛都建立起自己的部落格，因此我也加入了這個行列。
-報著取之於人，回饋之於人的心情，我想要把自己從無到有架設這一個blog的過程記錄下來謝謝那些願意指導我的朋友們！">
+  <meta name="description" content="趁著記憶猶新的狀況，記錄自己使用偽元素 (pseudo-element)讓原本的html架構更加簡潔的方法。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="hexo架blog初體驗"/>
+  <meta property="og:title" content="利用pseudo element 讓html更簡潔"/>
   <meta property="og:site_name" content="kpman | code"/>
 
   
@@ -65,85 +64,115 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-04-26T14:21:55.000Z"><a href="/2013/04/26/hexo架blog初體驗/">Apr 26 2013</a></time>
+        <time datetime="2013-05-07T03:28:16.000Z"><a href="/2013/05/07/利用-pseudo-element-讓-html-更簡潔/">May 7 2013</a></time>
       
       
   
-    <h1 class="title">hexo架blog初體驗</h1>
+    <h1 class="title">利用pseudo element 讓html更簡潔</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>是這樣的，一直想要找一個空間，可以清爽的放code，可以跟其他人交流<br>有鑑於系上好朋友們紛紛都建立起自己的部落格，因此我也加入了這個行列。</p>
-<p>報著取之於人，回饋之於人的心情，我想要把自己從無到有架設這一個blog的過程記錄下來<br>謝謝那些願意指導我的朋友們！</p>
-<a name="more"></a>
+        <p>趁著記憶猶新的狀況，記錄自己使用偽元素 (pseudo-element)讓原本的html架構更加簡潔的方法。</p>
+<a name="more"></a> 
 
-<h2>一、本機環境設定</h2>
+<h2>何謂pseudo-element?</h2>
+<p>不會出現在html的文件裡面，而是利用css讓瀏覽器去實作。以下列出的都是可以使用的pseudo-element。</p>
 <ol>
-<li><p>首先你要有node.js，這是一套快速、簡單且功能強大的 Node.js 網誌框架。</p>
-</li>
-<li><p>接著你要用 <code>npm install -g hexo</code> 來安裝</p>
-</li>
+<li>::first-line：若是p元素，則可以用來操作第一行。</li>
+<li>::first-letter：用來操作第一個字。</li>
+<li>::before：可以在所選元素之前插入樣式/內容。</li>
+<li>::after：同<code>before</code>但是是在之後插入。</li>
+<li>::selection：用來自定反白後的效果。</li>
 </ol>
-<p>理論上這樣就完成了，我個人在裝的時候npm不給裝，發現前面加上 <code>sudo</code> 就可以解決。</p>
-<h2>二、github帳號設定</h2>
-<ol>
-<li><p>你要申請一個自己的github帳號</p>
-</li>
-<li><p>在主頁右上方創建一個新的repo</p>
-<p><img src="http://i.imgur.com/6mFqQlc.png" alt="create new repo" title="new repo"></p>
-</li>
-<li><p>Repository name填入 <code>github帳號.github.com</code> 用來創建github page</p>
-</li>
-</ol>
-<h2>三、開始使用hexo</h2>
-<p>建立hexo</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> init
-</pre></td></tr></table></figure>
-
-<p>建立一篇文章，將會是<a href="http://markdown.tw">Markdown</a>形式，可以到source/_post/title.md去修改</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> new <span class="string">"title"</span>
-</pre></td></tr></table></figure>
-
-<p>生成public檔</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> generate
-</pre></td></tr></table></figure>
-
-<p>開啟server觀看（預設在localhost:4000）</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> server
-</pre></td></tr></table></figure>
-
-<h2>四、發佈到github上面</h2>
-<p>修改 <code>_config.yml</code> 檔案，最下面加上</p>
+<blockquote>
+<p>為了區分偽元素和偽類，CSS3 的 guildline 將偽元素的寫法修正，以往只要加一個冒號「:」，現在則是加兩個冒號「::」，部分可支援的瀏覽器包含 webkit, firefox, opera。) 
+-- by <a href="http://www.mukispace.com/pseudo-elements-10-examples/">MUKI</a></p>
+</blockquote>
+<h2>修改過程</h2>
+<h3>原本的html code</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
-</pre></td><td class="code"><pre><span class="method">deploy:</span>
-  <span class="method">type:</span> github
-  <span class="method">repository:</span> git@github.<span class="method">com:</span>github帳號/github帳號.github.com.git
-  <span class="method">branch:</span> master
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"icon"</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/icon01.png"</span> <span class="attribute">alt</span>=<span class="value">"正確觀念"</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">span</span>&gt;</span>正確觀念<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</pre></td></tr></table></figure>
+<figure class="highlight"><figcaption><span>scss</span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre><span class="preprocessor">.icon</span>{
+	display: inline-block<span class="comment">;</span>
+	position: relative<span class="comment">;</span>
+	padding: <span class="number">1</span>em<span class="comment">;</span>
+	padding-top: <span class="number">5</span>px<span class="comment">;</span>
+	span{
+		position: absolute<span class="comment">;</span>
+		bottom: -<span class="number">7</span>px<span class="comment">;</span>
+		left: <span class="number">12</span>px<span class="comment">;</span>
+	}
+}
 </pre></td></tr></table></figure>
 
-<p>我那時候用git的時候，沒有ssh認證，如果遇到相同問題可以看<a href="https://help.github.com/articles/generating-ssh-keys">這篇</a>。<br>照著上面的指令走就可以完成，唯獨mac裡面似乎內建 <code>id_rsa</code> 這把key，這邊我不清楚XD</p>
-<p>接著只要輸入</p>
+<p>原本利用div &gt; span 的效果去把中文字顯現出來，所以在html的架構下，需要多一個<code>span</code>的tag。<br>且利用<code>img</code>去把圖片給show出來。</p>
+<h3>更改過後的html code</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> deploy
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-text</span>=<span class="value">"正確觀念"</span> <span class="attribute">class</span>=<span class="value">"concept_label icon"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span> <span class="comment">&lt;!-- html只剩一行！--&gt;</span>
+</pre></td></tr></table></figure>
+<figure class="highlight"><figcaption><span>scss</span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre><span class="preprocessor">.icon</span>{
+	display: inline-block<span class="comment">;</span>
+	position: relative<span class="comment">;</span>
+	padding: <span class="number">1</span>em<span class="comment">;</span>
+	padding-top: <span class="number">5</span>px<span class="comment">;</span>
+
+	&amp;:before{
+		position: absolute<span class="comment">;</span>
+		bottom: -<span class="number">7</span>px<span class="comment">;</span>
+		left: <span class="number">12</span>px<span class="comment">;</span>
+		content: attr(data-text)<span class="comment">; &lt;!-- 關鍵作法 --&gt;</span>
+	}
+}
+<span class="preprocessor">.concept</span>_label{
+	background-image: url(../img/icon01_c<span class="preprocessor">.png</span>)<span class="comment">;</span>
+}
 </pre></td></tr></table></figure>
 
-<p>等待10分鐘，你的網誌理論上就架好了！網址為 <code>http://github帳號.github.io</code></p>
-<h3><em>reference</em></h3>
+<h3>觀念整理</h3>
 <ol>
-<li><p><a href="http://zespia.tw/hexo/zh-TW/">官方文件</a>非常詳盡，重點是<em>中文</em>！  </p>
-</li>
-<li><p>強者小熊<a href="http://eva0919.github.io/2013/04/21/%E4%BD%BF%E7%94%A8hexo%E4%BB%A5%E5%8F%8Agithub-page%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E9%83%A8%E8%90%BD%E6%A0%BC/">教學文</a></p>
-</li>
+<li>將中文字放入自訂的<code>data-*</code>屬性</li>
+<li>CSS中利用<code>::before</code>取代原本的<code>span</code></li>
+<li>利用<code>content: attr(data-text);</code>將date-text文字取出來</li>
+<li>將背景圖片利用另外一個class取代，以後維護性提高。</li>
 </ol>
+<h3><em>reference</em></h3>
+<p><a href="http://www.mukispace.com/pseudo-elements-10-examples/">那些 CSS 偽元素可以幫你做的 10 個效果</a></p>
 
       
     </div>
@@ -153,7 +182,7 @@
         
   
   <div class="tags">
-    <a href="/tags/code/">code</a>, <a href="/tags/hexo/">hexo</a>, <a href="/tags/github/">github</a>
+    <a href="/tags/code/">code</a>, <a href="/tags/css/">css</a>, <a href="/tags/html/">html</a>
   </div>
 
         
