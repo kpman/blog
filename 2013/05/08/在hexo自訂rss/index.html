@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hexo | kpman | code</title>
+  <title>在hexo自訂rss | kpman | code</title>
   <meta name="author" content="kpman | code">
+  
+  <meta name="description" content="趁著好朋友在旁邊的情況下，請教他學會了在hexo自訂rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="在hexo自訂rss"/>
   <meta property="og:site_name" content="kpman | code"/>
 
   
@@ -56,12 +58,7 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">hexo</h2>
-
-
-  
-    <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
@@ -71,24 +68,70 @@
       
       
   
-    <h1 class="title"><a href="/2013/05/08/在hexo自訂rss/">在hexo自訂rss</a></h1>
+    <h1 class="title">在hexo自訂rss</h1>
   
 
     </header>
     <div class="entry">
       
         <p>趁著好朋友在旁邊的情況下，請教他學會了在hexo自訂rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。</p>
+<a name="more"></a>
+
+<h3>本機環境</h3>
+<p>在終端機下輸入以下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">npm</span> <span class="comment">install</span> <span class="comment">hexo</span>-<span class="comment">generator</span>-<span class="comment">feed</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">save
+</pre></td></tr></table></figure>
+
+<p>權限沒有取得的記得前面加上<code>sudo</code>。</p>
+<h3>修改_config.yml</h3>
+<p>在主目錄底下的<code>_config.yml</code>檔加上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="comment">plugins:</span>
+<span class="literal">-</span> <span class="comment">hexo</span>-<span class="comment">generator</span>-<span class="comment">feed
+</pre></td></tr></table></figure>
+
+<p><img src="http://i.imgur.com/w39zkK6.png" alt="modify _config.yml" title="modify _config.yml"></p>
+<p>如此一來便完成了環境設置。</p>
+<h3>要怎樣找到？</h3>
+<p>在hexo generate之後，會發現public資料夾底下多了atom.xml<br>在<a href="http://www.feedly.com/">feedly</a>這類的閱讀收集器<br>只要輸入<code>domain/atom</code>就可以找到<br>例如要訂閱我的blog只要輸入<code>code.kpman.cc/atom</code>就可以搜尋到囉！</p>
+<p><img src="http://i.imgur.com/Hk12y1N.png" alt="rss" title="feedly rss search"></p>
+<p>突然發現我的blog只有一個人訂閱，那個人就是我自己...  </p>
+<h3><em>reference</em></h3>
+<p><a href="https://github.com/tommy351/hexo/wiki/Plugins">hexo plugins</a>
+<a href="http://michaelhsu.tw/2013/05/05/rssatom-sitemap-for-seo/">RSS/Atom、Sitemap for SEO</a></p>
+<p>感謝強者阿志耐心面授機宜:)</p>
 
       
     </div>
     <footer>
       
         
-          <div class="alignleft">
-            <a href="/2013/05/08/在hexo自訂rss/#more" class="more-link">Read More</a>
-          </div>
         
+  
+  <div class="tags">
+    <a href="/tags/rss/">rss</a>, <a href="/tags/hexo/">hexo</a>
+  </div>
+
         
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
       
       <div class="clearfix"></div>
     </footer>
@@ -96,122 +139,12 @@
 </article>
 
 
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-04-28T13:09:37.000Z"><a href="/2013/04/28/客製化hexo-light-theme/">Apr 28 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/04/28/客製化hexo-light-theme/">客製化hexo light theme</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>分享一些目前知道的客製化theme技巧。<br>其實非常簡單，但是這些技巧如果沒有問過或是自己看過文件，<br>一時間也無法摸透，所以覺得應該值得把它記錄下來。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/04/28/客製化hexo-light-theme/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
+<section id="comment">
+  <h1 class="title">Comments</h1>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-04-26T16:24:36.000Z"><a href="/2013/04/27/建立自己blog的subdomain/">Apr 27 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/04/27/建立自己blog的subdomain/">建立自己blog的subdomain</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>有鑑於 <code>kpman.github.io</code> 這一個網址實在太難記了，所以就決定將自己有的domain利用subdomain的方式指過來。<br>以下的介紹是我的個案，我利用subdomain而非TLD去做。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/04/27/建立自己blog的subdomain/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-04-26T14:21:55.000Z"><a href="/2013/04/26/hexo架blog初體驗/">Apr 26 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/04/26/hexo架blog初體驗/">hexo架blog初體驗</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>是這樣的，一直想要找一個空間，可以清爽的放code，可以跟其他人交流<br>有鑑於系上好朋友們紛紛都建立起自己的部落格，因此我也加入了這個行列。</p>
-<p>報著取之於人，回饋之於人的心情，我想要把自己從無到有架設這一個blog的過程記錄下來<br>謝謝那些願意指導我的朋友們！</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/04/26/hexo架blog初體驗/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -289,7 +222,7 @@ var disqus_shortname = 'kpmancode';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>

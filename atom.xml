@@ -4,12 +4,50 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2013-05-08T07:20:55.261Z</updated>
+  <updated>2013-05-08T08:12:42.128Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[在hexo自訂rss]]></title>
+    <link href="http://code.kpman.cc/2013/05/08/在hexo自訂rss/"/>
+    <id>http://code.kpman.cc/2013/05/08/在hexo自訂rss/</id>
+    <published>2013-05-08T07:50:06.000Z</published>
+    <updated>2013-05-08T08:12:21.000Z</updated>
+    <content type="html"><![CDATA[<p>趁著好朋友在旁邊的情況下，請教他學會了在hexo自訂rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。</p>
+<a name="more"></a>
+
+<h3>本機環境</h3>
+<p>在終端機下輸入以下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">npm</span> <span class="comment">install</span> <span class="comment">hexo</span>-<span class="comment">generator</span>-<span class="comment">feed</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">save
+</pre></td></tr></table></figure>
+
+<p>權限沒有取得的記得前面加上<code>sudo</code>。</p>
+<h3>修改_config.yml</h3>
+<p>在主目錄底下的<code>_config.yml</code>檔加上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="comment">plugins:</span>
+<span class="literal">-</span> <span class="comment">hexo</span>-<span class="comment">generator</span>-<span class="comment">feed
+</pre></td></tr></table></figure>
+
+<p><img src="http://i.imgur.com/w39zkK6.png" alt="modify _config.yml" title="modify _config.yml"></p>
+<p>如此一來便完成了環境設置。</p>
+<h3>要怎樣找到？</h3>
+<p>在hexo generate之後，會發現public資料夾底下多了atom.xml<br>在<a href="http://www.feedly.com/">feedly</a>這類的閱讀收集器<br>只要輸入<code>domain/atom</code>就可以找到<br>例如要訂閱我的blog只要輸入<code>code.kpman.cc/atom</code>就可以搜尋到囉！</p>
+<p><img src="http://i.imgur.com/Hk12y1N.png" alt="rss" title="feedly rss search"></p>
+<p>突然發現我的blog只有一個人訂閱，那個人就是我自己...  </p>
+<h3><em>reference</em></h3>
+<p><a href="https://github.com/tommy351/hexo/wiki/Plugins">hexo plugins</a>
+<a href="http://michaelhsu.tw/2013/05/05/rssatom-sitemap-for-seo/">RSS/Atom、Sitemap for SEO</a></p>
+<p>感謝強者阿志耐心面授機宜:)</p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/rss/" term="rss"/>
+    <category scheme="http://code.kpman.cc/tags/hexo/" term="hexo"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[利用pseudo element 讓html更簡潔]]></title>
     <link href="http://code.kpman.cc/2013/05/07/利用-pseudo-element-讓-html-更簡潔/"/>
