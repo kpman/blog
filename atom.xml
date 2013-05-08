@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[kpman | code]]></title>
+  <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
+  <link href="http://code.kpman.cc/atom.xml" rel="self"/>
+  <link href="http://code.kpman.cc"/>
+  <updated>2013-05-08T07:20:55.261Z</updated>
+  <id>http://code.kpman.cc/</id>
+  <author>
+    <name><![CDATA[kpman | code]]></name>
+  </author>
+  <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[利用pseudo element 讓html更簡潔]]></title>
+    <link href="http://code.kpman.cc/2013/05/07/利用-pseudo-element-讓-html-更簡潔/"/>
+    <id>http://code.kpman.cc/2013/05/07/利用-pseudo-element-讓-html-更簡潔/</id>
+    <published>2013-05-07T03:28:16.000Z</published>
+    <updated>2013-05-07T05:46:25.000Z</updated>
+    <content type="html"><![CDATA[<p>趁著記憶猶新的狀況，記錄自己使用偽元素 (pseudo-element)讓原本的html架構更加簡潔的方法。</p>
+<a name="more"></a> 
+
+<h2>何謂pseudo-element?</h2>
+<p>不會出現在html的文件裡面，而是利用css讓瀏覽器去實作。以下列出的都是可以使用的pseudo-element。</p>
+<ol>
+<li>::first-line：若是p元素，則可以用來操作第一行。</li>
+<li>::first-letter：用來操作第一個字。</li>
+<li>::before：可以在所選元素之前插入樣式/內容。</li>
+<li>::after：同<code>before</code>但是是在之後插入。</li>
+<li>::selection：用來自定反白後的效果。</li>
+</ol>
+<blockquote>
+<p>為了區分偽元素和偽類，CSS3 的 guildline 將偽元素的寫法修正，以往只要加一個冒號「:」，現在則是加兩個冒號「::」，部分可支援的瀏覽器包含 webkit, firefox, opera。) 
+-- by <a href="http://www.mukispace.com/pseudo-elements-10-examples/">MUKI</a></p>
+</blockquote>
+<h2>修改過程</h2>
+<h3>原本的html code</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"icon"</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/icon01.png"</span> <span class="attribute">alt</span>=<span class="value">"正確觀念"</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">span</span>&gt;</span>正確觀念<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</pre></td></tr></table></figure>
+<figure class="highlight"><figcaption><span>scss</span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre><span class="preprocessor">.icon</span>{
+	display: inline-block<span class="comment">;</span>
+	position: relative<span class="comment">;</span>
+	padding: <span class="number">1</span>em<span class="comment">;</span>
+	padding-top: <span class="number">5</span>px<span class="comment">;</span>
+	span{
+		position: absolute<span class="comment">;</span>
+		bottom: -<span class="number">7</span>px<span class="comment">;</span>
+		left: <span class="number">12</span>px<span class="comment">;</span>
+	}
+}
+</pre></td></tr></table></figure>
+
+<p>原本利用div &gt; span 的效果去把中文字顯現出來，所以在html的架構下，需要多一個<code>span</code>的tag。<br>且利用<code>img</code>去把圖片給show出來。</p>
+<h3>更改過後的html code</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-text</span>=<span class="value">"正確觀念"</span> <span class="attribute">class</span>=<span class="value">"concept_label icon"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span> <span class="comment">&lt;!-- html只剩一行！--&gt;</span>
+</pre></td></tr></table></figure>
+<figure class="highlight"><figcaption><span>scss</span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre><span class="preprocessor">.icon</span>{
+	display: inline-block<span class="comment">;</span>
+	position: relative<span class="comment">;</span>
+	padding: <span class="number">1</span>em<span class="comment">;</span>
+	padding-top: <span class="number">5</span>px<span class="comment">;</span>
+
+	&amp;:before{
+		position: absolute<span class="comment">;</span>
+		bottom: -<span class="number">7</span>px<span class="comment">;</span>
+		left: <span class="number">12</span>px<span class="comment">;</span>
+		content: attr(data-text)<span class="comment">; &lt;!-- 關鍵作法 --&gt;</span>
+	}
+}
+<span class="preprocessor">.concept</span>_label{
+	background-image: url(../img/icon01_c<span class="preprocessor">.png</span>)<span class="comment">;</span>
+}
+</pre></td></tr></table></figure>
+
+<h3>觀念整理</h3>
+<ol>
+<li>將中文字放入自訂的<code>data-*</code>屬性</li>
+<li>CSS中利用<code>::before</code>取代原本的<code>span</code></li>
+<li>利用<code>content: attr(data-text);</code>將date-text文字取出來</li>
+<li>將背景圖片利用另外一個class取代，以後維護性提高。</li>
+</ol>
+<h3><em>reference</em></h3>
+<p><a href="http://www.mukispace.com/pseudo-elements-10-examples/">那些 CSS 偽元素可以幫你做的 10 個效果</a></p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/code/" term="code"/>
+    <category scheme="http://code.kpman.cc/tags/css/" term="css"/>
+    <category scheme="http://code.kpman.cc/tags/html/" term="html"/>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[客製化hexo light theme]]></title>
+    <link href="http://code.kpman.cc/2013/04/28/客製化hexo-light-theme/"/>
+    <id>http://code.kpman.cc/2013/04/28/客製化hexo-light-theme/</id>
+    <published>2013-04-28T13:09:37.000Z</published>
+    <updated>2013-04-28T14:01:32.000Z</updated>
+    <content type="html"><![CDATA[<p>分享一些目前知道的客製化theme技巧。<br>其實非常簡單，但是這些技巧如果沒有問過或是自己看過文件，<br>一時間也無法摸透，所以覺得應該值得把它記錄下來。</p>
+<a name="more"></a>
+
+<h3>一、增加Disqus留言板</h3>
+<ul>
+<li>到<a href="http://disqus.com/">Disqus</a>申請帳號</li>
+<li>右上角的Dashboard <code>+Add</code> 申請一個新的帳號</li>
+<li>將網址、name、shortname打好後，要把 <code>shortname</code> 記住！<ul>
+<li>修改本機目錄下的 <code>_confid.yml</code></li>
+<li>在 <code>disqus_shortname</code> 貼上自己的shortname</li>
+</ul>
+</li>
+</ul>
+<p>完成～</p>
+<p>※ 後記：<br>若你在申請完disqus貼到自己的blog上面，發現出現很多不必要的連結，請到disqus的dashboard去修改。<br>右上方 <code>Setting</code> -&gt; <code>Discovery</code> -&gt; 將Discovery level拉到最右邊，如下圖<br><img src="http://i.imgur.com/eeEjwka.png" alt="Discovery level"></p>
+<h3>二、增加右方側欄widget</h3>
+<p>在標題就已經破梗囉XD<br>右方出現那些『Tag』『Tag Cloud』等欄位，其實就是修改widget過後得到的結果。<br>方法如下：</p>
+<ul>
+<li>找到 <code>theme/light/layout/_widget</code> ，可以發現很多 <strong>ejs</strong> 檔</li>
+<li>有些是已經自訂好了，例如 <code>category</code> <code>recent_posts</code> 等</li>
+<li>在 <code>theme/light/_config.yml</code> 內，修改<strong>widgets</strong>，在底下新增你要的ejs檔名即可～</li>
+</ul>
+<p>同樣方法可以自己寫ejs檔，一樣在<code>theme/light/_config.yml</code>加上檔名就可以自訂。</p>
+<h3>三、增加上方自訂全域導覽列</h3>
+<p>預設為Home、Archives這兩個<br>當然得要自訂才爽XD</p>
+<p>方法一樣很簡單如下：</p>
+<ul>
+<li>找到<code>theme/light/_config.yml</code>裡面的第一行</li>
+<li>預設狀況應該只有Home&amp;Archives<br> <img src="http://i.imgur.com/reKRQw4.png" alt="menu"></li>
+<li>自訂自己的menu，項目後面即為<strong>連結</strong>，可以直接使用<code>http://google.com</code>之類的連結。</li>
+</ul>
+<h3>四、自訂favicon</h3>
+<ul>
+<li>首先你要有一個favicon.ico檔或是.png檔(這邊預設檔名為<code>favicon.png</code>)</li>
+<li>將檔案放在 <code>主目錄/source</code> 底下<br> <img src="http://i.imgur.com/Aar4ap9.png" alt="favicon path"></li>
+<li>找到 <code>theme/light/layout/_partial/head.ejs</code>做修改</li>
+<li>在裡面加上head.ejs檔內確認有以下這行code即可擁有自己的favicon  <pre><code><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"&lt;%- config.root %&gt;favicon.png"</span> <span class="attribute">rel</span>=<span class="value">"icon"</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+<p>以上介紹一些目前知道的自訂方法，<br>希望還有人可以跟我多介紹一些技巧，一起分享吧！</p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/hexo/" term="hexo"/>
+    <category scheme="http://code.kpman.cc/tags/theme/" term="theme"/>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[建立自己blog的subdomain]]></title>
+    <link href="http://code.kpman.cc/2013/04/27/建立自己blog的subdomain/"/>
+    <id>http://code.kpman.cc/2013/04/27/建立自己blog的subdomain/</id>
+    <published>2013-04-26T16:24:36.000Z</published>
+    <updated>2013-04-26T16:28:34.000Z</updated>
+    <content type="html"><![CDATA[<p>有鑑於 <code>kpman.github.io</code> 這一個網址實在太難記了，所以就決定將自己有的domain利用subdomain的方式指過來。<br>以下的介紹是我的個案，我利用subdomain而非TLD去做。</p>
+<a name="more"></a>
+
+<h2>一、擁有自己的domain</h2>
+<p>雖然像是廢話XD
+但這邊推薦去<a href="www.godaddy.com/">GoDaddy</a>買domain.<br>方便又快，在更新domain的時間非常快速，理論上一個小時內就可以指到你要的ip位置。</p>
+<h2>二、到GoDaddy設定subdomain</h2>
+<ol>
+<li>進到DNS manager</li>
+<li><p>新增一筆CNAME</p>
+<p><img src="http://i.imgur.com/esdG2wP.png" alt="CNAME"></p>
+</li>
+<li><p>GoDaddy部分完成</p>
+</li>
+</ol>
+<h2>三、在本機端設置CNAME檔</h2>
+<p>這邊要在 <code>主目錄-source</code> 底下放一個檔名為 <code>CNAME</code> 的檔案<br>裡面為你要指向的路徑，這邊我是指向 <code>http://code.kpman.cc</code></p>
+<p><img src="http://i.imgur.com/gyMS7U6.png" alt="path"></p>
+<p>至於如何設置CNAME檔案，我是利用在github repo上面的create new file</p>
+<p><img src="http://i.imgur.com/AHcVLBW.png" alt="create new file"></p>
+<p>設置完之後clone下來，然後複製進去<code>主目錄-source</code> 底下XD<br>（有人知道怎樣做比較好嗎？）</p>
+<p>理論上這樣子就完成囉！<br>如果有漏掉的麻煩留言給我一起討論:)</p>
+<h3><em>reference</em></h3>
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">官方文件</a></p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/domain/" term="domain"/>
+    <category scheme="http://code.kpman.cc/tags/hexo/" term="hexo"/>
+    <category scheme="http://code.kpman.cc/tags/subdomain/" term="subdomain"/>
+    <category scheme="http://code.kpman.cc/tags/url/" term="url"/>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[hexo架blog初體驗]]></title>
+    <link href="http://code.kpman.cc/2013/04/26/hexo架blog初體驗/"/>
+    <id>http://code.kpman.cc/2013/04/26/hexo架blog初體驗/</id>
+    <published>2013-04-26T14:21:55.000Z</published>
+    <updated>2013-04-26T16:29:28.000Z</updated>
+    <content type="html"><![CDATA[<p>是這樣的，一直想要找一個空間，可以清爽的放code，可以跟其他人交流<br>有鑑於系上好朋友們紛紛都建立起自己的部落格，因此我也加入了這個行列。</p>
+<p>報著取之於人，回饋之於人的心情，我想要把自己從無到有架設這一個blog的過程記錄下來<br>謝謝那些願意指導我的朋友們！</p>
+<a name="more"></a>
+
+<h2>一、本機環境設定</h2>
+<ol>
+<li><p>首先你要有node.js，這是一套快速、簡單且功能強大的 Node.js 網誌框架。</p>
+</li>
+<li><p>接著你要用 <code>npm install -g hexo</code> 來安裝</p>
+</li>
+</ol>
+<p>理論上這樣就完成了，我個人在裝的時候npm不給裝，發現前面加上 <code>sudo</code> 就可以解決。</p>
+<h2>二、github帳號設定</h2>
+<ol>
+<li><p>你要申請一個自己的github帳號</p>
+</li>
+<li><p>在主頁右上方創建一個新的repo</p>
+<p><img src="http://i.imgur.com/6mFqQlc.png" alt="create new repo" title="new repo"></p>
+</li>
+<li><p>Repository name填入 <code>github帳號.github.com</code> 用來創建github page</p>
+</li>
+</ol>
+<h2>三、開始使用hexo</h2>
+<p>建立hexo</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">hexo</span> init
+</pre></td></tr></table></figure>
+
+<p>建立一篇文章，將會是<a href="http://markdown.tw">Markdown</a>形式，可以到source/_post/title.md去修改</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">hexo</span> new <span class="string">"title"</span>
+</pre></td></tr></table></figure>
+
+<p>生成public檔</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">hexo</span> generate
+</pre></td></tr></table></figure>
+
+<p>開啟server觀看（預設在localhost:4000）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">hexo</span> server
+</pre></td></tr></table></figure>
+
+<h2>四、發佈到github上面</h2>
+<p>修改 <code>_config.yml</code> 檔案，最下面加上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="method">deploy:</span>
+  <span class="method">type:</span> github
+  <span class="method">repository:</span> git@github.<span class="method">com:</span>github帳號/github帳號.github.com.git
+  <span class="method">branch:</span> master
+</pre></td></tr></table></figure>
+
+<p>我那時候用git的時候，沒有ssh認證，如果遇到相同問題可以看<a href="https://help.github.com/articles/generating-ssh-keys">這篇</a>。<br>照著上面的指令走就可以完成，唯獨mac裡面似乎內建 <code>id_rsa</code> 這把key，這邊我不清楚XD</p>
+<p>接著只要輸入</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">hexo</span> deploy
+</pre></td></tr></table></figure>
+
+<p>等待10分鐘，你的網誌理論上就架好了！網址為 <code>http://github帳號.github.io</code></p>
+<h3><em>reference</em></h3>
+<ol>
+<li><p><a href="http://zespia.tw/hexo/zh-TW/">官方文件</a>非常詳盡，重點是<em>中文</em>！  </p>
+</li>
+<li><p>強者小熊<a href="http://eva0919.github.io/2013/04/21/%E4%BD%BF%E7%94%A8hexo%E4%BB%A5%E5%8F%8Agithub-page%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E9%83%A8%E8%90%BD%E6%A0%BC/">教學文</a></p>
+</li>
+</ol>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/code/" term="code"/>
+    <category scheme="http://code.kpman.cc/tags/hexo/" term="hexo"/>
+    <category scheme="http://code.kpman.cc/tags/github/" term="github"/>
+  </entry>
+</feed>
