@@ -4,12 +4,77 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2013-05-08T08:18:26.135Z</updated>
+  <updated>2013-05-17T16:57:56.773Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[建立自己的github project page]]></title>
+    <link href="http://code.kpman.cc/2013/05/18/建立自己的github-project-page/"/>
+    <id>http://code.kpman.cc/2013/05/18/建立自己的github-project-page/</id>
+    <published>2013-05-17T16:04:03.000Z</published>
+    <updated>2013-05-17T16:57:29.000Z</updated>
+    <content type="html"><![CDATA[<p>在github使用上，我算是初新者，有疑問才有進步。每當看到有人把好玩的東西放到github上面變成靜態頁面，都會很想知道他是怎樣辦到的。結果不難，就是利用github project page來做到。</p>
+<a name="more"></a>
+
+<h2>GitHub Pages 介紹</h2>
+<p>當你要有一個自己的GitHub Pages，其實分成兩項。   </p>
+<ol>
+<li>repo的名字為<code>yourname.github.com</code>，則會產生的page路徑為 <code>yourname.github.io</code>。<a href="http://kpman.github.io">本部落格</a>是建立在github上面，就是利用這一個GitHub Pages模式去建立，可以參考<a href="http://code.kpman.cc/2013/04/26/hexo%E6%9E%B6blog%E5%88%9D%E9%AB%94%E9%A9%97/">hexo架blog初體驗</a>、<a href="http://code.kpman.cc/2013/04/27/%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1blog%E7%9A%84subdomain/">建立自己blog的subdomain</a>這兩篇文章。</li>
+<li>repo的名字為<code>repo-name</code>，則會產生的page路徑為 <code>yourname.github.io/repo-name</code>，這邊的repo name就不像第一種模式，沒有固定名稱。</li>
+</ol>
+<h2>Github Pages 建立</h2>
+<p>在每一個新的repo下面，正常的情況都是在mater這一個branch。分享一下我自己的作法。</p>
+<ol>
+<li><p>github頁面上建立一個新的repo，這邊我取名為first-repo。</p>
+<p><img src="http://i.imgur.com/6mFqQlc.png" alt="create new repo" title="new repo"></p>
+</li>
+<li><p>從本機端clone下來，參照自己的路徑，我的repo則是在command line底下打   </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">git</span> clone git<span class="variable">@github</span>.com:kpman/first-repo.git
+</pre></td></tr></table></figure>
+</li>
+<li><p>移到該資料夾</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">cd</span> first-repo
+</pre></td></tr></table></figure>
+</li>
+<li><p>將branch移到<code>gh-pages</code>，這步驟很重要，Github Pages就是看這一個branch去決定頁面的。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">git</span> branch gh-pages
+<span class="title">git</span> checkout gh-pages
+</pre></td></tr></table></figure>
+或者<br><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">git</span> <span class="comment">checkout</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">orphan</span> <span class="comment">gh</span>-<span class="comment">pages</span> <span class="comment">//建立一個沒有parent的branch，並移到該branch上
+</pre></td></tr></table></figure>
+</li>
+<li><p>將編輯好的檔案push上去。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="title">git</span> add .
+<span class="title">git</span> commit
+<span class="title">git</span> push origin gh-pages
+</pre></td></tr></table></figure>
+</li>
+<li><p>完成！</p>
+</li>
+</ol>
+<h2>路徑差異</h2>
+<p><a href="http://github.com/kpman/liteAccordion"><a href="http://github.com/kpman/liteAccordion">http://github.com/kpman/liteAccordion</a></a>這樣代表連回github的code頁面<br><a href="http://kpman.github.io/liteAccordion"><a href="http://kpman.github.io/liteAccordion">http://kpman.github.io/liteAccordion</a></a>因為新增到<code>gh-pages</code>這一個branch，所以可以看到靜態的html展示頁面。</p>
+<p>其他範例<br><a href="http://jonobr1.github.io/two.js/">two.js</a><br><a href="http://jschr.github.io/textillate/">textillate</a></p>
+<h3><em>reference</em></h3>
+<ol>
+<li><a href="https://help.github.com/articles/creating-project-pages-manually">官方文件</a></li>
+<li><a href="http://xlson.com/2010/11/09/getting-started-with-github-pages.html">Getting started with GitHub Pages</a></li>
+<li><a href="https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches">Create a new branch with git and manage branches</a></li>
+</ol>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/github/" term="github"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[在hexo自訂rss]]></title>
     <link href="http://code.kpman.cc/2013/05/08/在hexo自訂rss/"/>
