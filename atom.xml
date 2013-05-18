@@ -4,19 +4,19 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2013-05-18T12:03:37.615Z</updated>
+  <updated>2013-05-18T12:10:47.212Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
   <entry>
-    <title type="html"><![CDATA[建立自己的github project page]]></title>
+    <title type="html"><![CDATA[建立自己的GitHub Project Pages]]></title>
     <link href="http://code.kpman.cc/2013/05/18/建立自己的github-project-page/"/>
     <id>http://code.kpman.cc/2013/05/18/建立自己的github-project-page/</id>
     <published>2013-05-17T16:04:03.000Z</published>
-    <updated>2013-05-18T12:03:15.000Z</updated>
-    <content type="html"><![CDATA[<p>在GitHub使用上，我算是初新者，有疑問才有進步。每當看到有人把好玩的東西放到github上面變成靜態頁面，都會很想知道他是怎樣辦到的。結果不難，就是利用GitHub project page來做到。</p>
+    <updated>2013-05-18T12:10:36.000Z</updated>
+    <content type="html"><![CDATA[<p>在GitHub使用上，我算是初新者，有疑問才有進步。每當看到有人把好玩的東西放到GitHub上面變成靜態頁面，都會很想知道他是怎樣辦到的。結果不難，就是利用GitHub Pages來做到。</p>
 <a name="more"></a>
 
 <h2>GitHub Pages 介紹</h2>
@@ -25,7 +25,7 @@
 <li>repo的名字為<code>yourname.github.com</code>，則會產生的page路徑為 <code>yourname.github.io</code>。<a href="http://kpman.github.io">本部落格</a>是建立在github上面，就是利用這一個GitHub Pages模式去建立，可以參考<a href="http://code.kpman.cc/2013/04/26/hexo%E6%9E%B6blog%E5%88%9D%E9%AB%94%E9%A9%97/">hexo架blog初體驗</a>、<a href="http://code.kpman.cc/2013/04/27/%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1blog%E7%9A%84subdomain/">建立自己blog的subdomain</a>這兩篇文章。</li>
 <li>repo的名字為<code>repo-name</code>，則會產生的page路徑為 <code>yourname.github.io/repo-name</code>，這邊的repo name就不像第一種模式，沒有固定名稱。</li>
 </ol>
-<h2>Github Pages 建立</h2>
+<h2>GitHub Pages 建立</h2>
 <p>在每一個新的repo下面，正常的情況都是在mater這一個branch。分享一下我自己的作法。</p>
 <ol>
 <li><p>GitHub頁面上建立一個新的repo，這邊我取名為first-repo。</p>
@@ -64,7 +64,7 @@
 </li>
 </ol>
 <h2>路徑差異</h2>
-<p><a href="http://github.com/kpman/liteAccordion"><a href="http://github.com/kpman/liteAccordion">http://github.com/kpman/liteAccordion</a></a>這樣代表連回github的code頁面<br><a href="http://kpman.github.io/liteAccordion"><a href="http://kpman.github.io/liteAccordion">http://kpman.github.io/liteAccordion</a></a>因為新增到<code>gh-pages</code>這一個branch，所以可以看到靜態的html展示頁面。</p>
+<p><a href="http://github.com/kpman/liteAccordion"><a href="http://github.com/kpman/liteAccordion">http://github.com/kpman/liteAccordion</a></a>這樣代表連回GitHub的code頁面<br><a href="http://kpman.github.io/liteAccordion"><a href="http://kpman.github.io/liteAccordion">http://kpman.github.io/liteAccordion</a></a>因為新增到<code>gh-pages</code>這一個branch，所以可以看到靜態的html展示頁面。</p>
 <p>其他範例<br><a href="http://jonobr1.github.io/two.js/">two.js</a><br><a href="http://jschr.github.io/textillate/">textillate</a></p>
 <h3><em>reference</em></h3>
 <ol>
