@@ -4,7 +4,7 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2013-05-17T16:57:56.773Z</updated>
+  <updated>2013-05-18T12:03:37.615Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
@@ -15,8 +15,8 @@
     <link href="http://code.kpman.cc/2013/05/18/建立自己的github-project-page/"/>
     <id>http://code.kpman.cc/2013/05/18/建立自己的github-project-page/</id>
     <published>2013-05-17T16:04:03.000Z</published>
-    <updated>2013-05-17T16:57:29.000Z</updated>
-    <content type="html"><![CDATA[<p>在github使用上，我算是初新者，有疑問才有進步。每當看到有人把好玩的東西放到github上面變成靜態頁面，都會很想知道他是怎樣辦到的。結果不難，就是利用github project page來做到。</p>
+    <updated>2013-05-18T12:03:15.000Z</updated>
+    <content type="html"><![CDATA[<p>在GitHub使用上，我算是初新者，有疑問才有進步。每當看到有人把好玩的東西放到github上面變成靜態頁面，都會很想知道他是怎樣辦到的。結果不難，就是利用GitHub project page來做到。</p>
 <a name="more"></a>
 
 <h2>GitHub Pages 介紹</h2>
@@ -28,7 +28,7 @@
 <h2>Github Pages 建立</h2>
 <p>在每一個新的repo下面，正常的情況都是在mater這一個branch。分享一下我自己的作法。</p>
 <ol>
-<li><p>github頁面上建立一個新的repo，這邊我取名為first-repo。</p>
+<li><p>GitHub頁面上建立一個新的repo，這邊我取名為first-repo。</p>
 <p><img src="http://i.imgur.com/6mFqQlc.png" alt="create new repo" title="new repo"></p>
 </li>
 <li><p>從本機端clone下來，參照自己的路徑，我的repo則是在command line底下打   </p>
