@@ -4,7 +4,7 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2013-05-18T12:10:47.212Z</updated>
+  <updated>2013-05-18T12:11:29.815Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
@@ -12,8 +12,8 @@
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
   <entry>
     <title type="html"><![CDATA[建立自己的GitHub Project Pages]]></title>
-    <link href="http://code.kpman.cc/2013/05/18/建立自己的github-project-page/"/>
-    <id>http://code.kpman.cc/2013/05/18/建立自己的github-project-page/</id>
+    <link href="http://code.kpman.cc/2013/05/18/建立自己的github-project-pages/"/>
+    <id>http://code.kpman.cc/2013/05/18/建立自己的github-project-pages/</id>
     <published>2013-05-17T16:04:03.000Z</published>
     <updated>2013-05-18T12:10:36.000Z</updated>
     <content type="html"><![CDATA[<p>在GitHub使用上，我算是初新者，有疑問才有進步。每當看到有人把好玩的東西放到GitHub上面變成靜態頁面，都會很想知道他是怎樣辦到的。結果不難，就是利用GitHub Pages來做到。</p>
