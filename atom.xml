@@ -4,12 +4,102 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2013-05-18T12:11:29.815Z</updated>
+  <updated>2013-05-20T08:32:55.912Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[2013 JSDC所見聞]]></title>
+    <link href="http://code.kpman.cc/2013/05/20/2013-jsdc所見聞/"/>
+    <id>http://code.kpman.cc/2013/05/20/2013-jsdc所見聞/</id>
+    <published>2013-05-20T02:57:19.000Z</published>
+    <updated>2013-05-20T08:32:40.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://i.imgur.com/02RzVQA.png" alt="JSDC"></p>
+<p>這是第二屆的JSDC，由TonyQ及三大社群舉辦的聚會，非常幸運的我能順利的利用社群票的機制搶到票，在眾多非常有經驗的強者面前，聽完他們的分享，越感覺自己對於網頁開發充滿了熱情！</p>
+<a name="more"></a>
+
+<blockquote>
+<p>『我們不叫前端工程師，以後請叫我們<em>前端設計師</em>！』</p>
+</blockquote>
+<p>這是聽完今年的JSDC感覺最有趣的一句話了。這句話帶出了他們的幽默風趣，在Web Develope這一個圈子，能結合設計還有程式的，就是前端工程師，也就是所謂的F2E。</p>
+<p>雖然對於網頁開發我自己算是沒有什麼經驗，要談設計我也沒有什麼基礎知識，但我知道這條路是我喜歡的，我會繼續走下去。給自己的目標是十年，我希望十年後我能跟現在我敬佩的前輩們一起討論，一起努力。</p>
+<h2>議程記錄＆見聞</h2>
+<h3>Day1</h3>
+<ul>
+<li><p>【AWS】介紹了他們的服務現在已經針對node.js有放出SDK - 有用過的人歡迎一起分享討論。</p>
+</li>
+<li><p>【<a href="http://www.slideshare.net/WillHuangTW/java-script-jsdc2013">保哥</a>】介紹了他的開發經驗，針對code要怎樣去調教，他說了一句話讓我印象深刻：</p>
+</li>
+</ul>
+<blockquote>
+<p>通常你的網站會慢，第一個要查的就是你自己所寫的code，不是你套用的那些framework。</p>
+</blockquote>
+<p>保哥也推薦利用<a href="jsperf.com">jsperf.com</a>去測試自己的code，雖然執行上面的效果一模一樣，有可能只差一個<code>new</code>效率就差了200倍之多。</p>
+<ul>
+<li>【<a href="https://speakerdeck.com/linyiru/ai-liao-li-wang-zhan-qian-duan-kai-fa-jing-yan-tan">Lawrence</a>】同樣待過資種的Lawrence學長介紹了愛料理的開發，主要是一些用過的套件還有經驗談，舉凡Bootstrap、Font Awesome、template利用Handlebars去完成等。利用Crazyegg、GA去分析，也談到了RWD的問題。最後三句話，始終在腦海中揮之不去。</li>
+</ul>
+<blockquote>
+<p>在技術上有卓越表現，是工程師的浪漫。<br>在設計上有卓越表現，是設計師的浪漫。<br>在產品上有卓越表現，是企劃與PM的浪漫。</p>
+</blockquote>
+<ul>
+<li><p>【<a href="https://speakerdeck.com/evenwu/ru-he-jiao-she-ji-shi-qian-duan-ji-shu">Even Wu</a>】Even介紹到了如何教前端技術，投影片的風格太有趣XD聊到了教設計師寫code其實要讓他們自動自發的學習，也是一個最重要的觀念：激勵。這個議程談的不是技術，而是一種經驗和體悟。<br>最後剩下的時間，大家交流的問題也很有趣。就有某設計師提到：他原本是設計師，但他每次提出的效果，前端工程師都跟他說這做不出來，他為了證明做的到，便開始自動自發的學習寫code，來向前端工程師證明。   </p>
+</li>
+<li><p>【<a href="https://speakerdeck.com/wallat/gong-cheng-shi-tao-sheng-huo-gong-ju-jie-shao-zuo-geng-kuai-dian">up chen</a>】介紹了很多實用的工具，但可能我自己本身就是一個很偷懶的人，（偷懶的人都會想要去找一些好用的工具讓自己做事更快）所以覺得這一個議程沒有得到很多新知。<br>但像是sublime text 的column selection便是之前沒有在使用，但是覺得對自己很方便的技巧:)</p>
+</li>
+<li><p>【Rex Huang】這個主題很酷，在瀏覽器上面建立一個os，而且執行起來很順，重點是利用js去打造的，同時也是大會的贊助商，未來應該很有發展，但是對於現階段的我來說比較艱深，所以就沒有很仔細的記錄筆記。</p>
+</li>
+<li><p>【KKBOX】kkbox來談談利用node.js開發的心得。介紹了一些node的用法還有經驗，但這種議程最難過的就是自己對於node.js接觸還沒有很深，所以聽起來會有點懵懵懂懂，印象最深刻的就是這句話：</p>
+</li>
+</ul>
+<blockquote>
+<p>利用JavaScript去寫後台聽起來很酷，但做起來會想要哭。</p>
+</blockquote>
+<ul>
+<li>【Ruben Tan】是一個聲音很好聽的英文場議程。講者提到了flow control問題，要避免寫太多call back才是，single thread一直是node.js開發的問題。</li>
+</ul>
+<h3>Day 2</h3>
+<p><img src="http://i.imgur.com/8N7fGlU.png" alt="picture from Josephj" title="F2E is Keystone"></p>
+<ul>
+<li>【<a href="https://speakerdeck.com/josephj/f2e-the-keystone">Josephj(啊嗚)</a>】早在JSDC開始前，就在網路上得知該前輩維護的<a href="http://f2eclass.com">資源</a>，對於網頁開發，他待過yahoo!，從IE4開始就寫前台了！投影片上面也列出好幾位很值得學習的前輩，真是看的我心花怒放XD<br>前端魂，是身為前端工程師（設計師？）應該有的精神！</li>
+</ul>
+<blockquote>
+<p>前端，你的名字叫熱血</p>
+</blockquote>
+<p>前輩也提到，技術不是重點，態度才是，避免盲目的追求技術，好的前端不等於知道很多技術。積極分享、多回饋，這點我真的在Josephj身上看到，從他架設的f2eclass就可以知道他願意分享的態度。</p>
+<ul>
+<li><p>【<a href="http://jsdc.york.tw:3939/">york</a>】這是一場非常酷的live demo，台上講者的投影片，透過連線到jsdc.york.tw可以即時的在自己電腦切換，且下方就demo了socket.io的實作。雖然自己還沒有接觸到這一塊，但知道socket.io是利用websocket去做，在沒有實作websocket的瀏覽器，會切換別的通道，讓他們也可以work，所以支援的瀏覽器很廣。</p>
+</li>
+<li><p>【<a href="https://speakerdeck.com/jaceju/understanding-the-mvc-mvp-mvvm-in-javascript">大澤木小鐵</a>】小鐵與我們分享了在JavaScript上面實作MVC、MVP、MVVM（簡稱MV*）的心法，這場我聽的津津有味！利用圖解的方式搭配很多時事梗XD重點是讓沒什麼經驗的我也可以略懂，相信未來在開發JS的時候，會再想到這一份投影片。</p>
+</li>
+<li><p>【<a href="https://speakerdeck.com/othree/this">othree</a>】othree和我們分享了this的用法。在不同情況呼叫this的時候，他針對的function以及目標會不同。然而我覺得這對我來說也還是太深了XD 開發的經驗還是不太足夠，但這一個主題應該是很多有經驗的前輩們都想要討論的問題，期待自己能好好的加強自己，等到我也遇到this的問題，我相信我又更加進步了。</p>
+</li>
+<li><p>【<a href="http://www.slideshare.net/lis186/20130519-sketching-with-codejsdc2013">阿修(Justin Lee)</a>】阿修介紹到了在與設計溝通的時候，其實為了記錄當下討論的結果，利用inline把效果寫進html最快，等到往後要維護的時候，工程師在自己去maintain，著實讓我上了一課。阿修也示範了一套很酷的Titanium，可以即時的在web編輯app程式，然後利用手機即時連線，為了加速效果，也利用了<a href="https://github.com/dbankier/TiShadow">Tishaow</a>去built，存檔的同時就可以即時看到，效率非常高。</p>
+</li>
+<li><p>【Mozilla】介紹了利用Emscripten去把不同的語言編譯成JavaScript，可以在瀏覽器上面運行這樣。</p>
+</li>
+<li><p>【<a href="http://www.slideshare.net/nowill/rwd-21436569">Nowill</a>】Nowill介紹了RWD的一些想法，她是一個非常有經驗的前輩，參與很多專案，與很多公司有很多合作經驗。她說了，RWD不是口頭上說說就是用media query就可以解決的，還有很多技巧是要自己真的去做過才會知道的。提到了五大秘訣：掌握解析度、流動式布局、使用者經驗、體驗操作、推敲思考。且她也提到，不是每一個網站都適合作RWD，因為在需要圖片解析度，文字閱讀的網站，應該針對不同的case去做因應。</p>
+</li>
+</ul>
+<h2>心得</h2>
+<p>參與了本次的JSDC，我體會到了那些專注於在一件事情上面的美好，那種熱忱，都是在這些前輩們上面可以看到。前端工程師要做的事情，會一點設計，會知道要怎樣寫程式，其實就是將這世界上美的事物，利用web的方式讓大家看的見。<br>我相信分享是這世界上最美好的事情，聽到許多前輩的分享，我自己會有一種想要讓自己變很強的衝動，但有時候會忘記那些最單純的人際關係。在周遭一些朋友身上，我看見了他們很強，很厲害，讓我打從心底佩服；但不知道為什麼，對於他們我會有一種不太想向他們請教的感覺，或許是他們平時透露出來的訊息吧，讓我感覺不是那麼好。<br>我認為交流是一件很愉悅的事情，可以讓彼此在短時間就可以學習到很多，因此我很樂意分享，把自己知道不多但覺得實用的東西給記錄下來，期許大家可以開心的交流，開心的分享，而並非是那種『我知道這個很好用，但你沒有問，你沒有一起來討論，所以我不想告訴你。』提醒自己，要當一個樂意分享的人，在前端開發這一塊，我又重新充滿電了！</p>
+<blockquote>
+<p>在變強之前，我想要先變好:)</p>
+</blockquote>
+<h3><em>reference</em></h3>
+<ul>
+<li><a href="http://hackfoldr.org/#/jsdctw2013/1xcPi6UutDHCKjgoYH4yUJxQ_728E2VO3og1e3Eq0OtE">JSDC懶人包</a></li>
+<li><a href="https://docs.google.com/spreadsheet/ccc?key=0AqMUl4JFkRfldEVuNDBkNUNsSlZEbDBFXzYzdTloUkE#gid=0">JSDC議程 slide整理</a> - 這份很完整</li>
+<li><a href="http://f2eclass.com">f2eclass</a></li>
+<li><a href="http://blog.darkthread.net/">黑暗執行緒</a></li>
+<li><a href="http://blog.wu-boy.com/">小惡魔 apple boy</a></li>
+</ul>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/JSDC/" term="JSDC"/>
+    <category scheme="http://code.kpman.cc/tags/code/" term="code"/>
+    <category scheme="http://code.kpman.cc/tags/F2E/" term="F2E"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[建立自己的GitHub Project Pages]]></title>
     <link href="http://code.kpman.cc/2013/05/18/建立自己的github-project-pages/"/>
@@ -317,7 +407,7 @@
     <link href="http://code.kpman.cc/2013/04/26/hexo架blog初體驗/"/>
     <id>http://code.kpman.cc/2013/04/26/hexo架blog初體驗/</id>
     <published>2013-04-26T14:21:55.000Z</published>
-    <updated>2013-04-26T16:29:28.000Z</updated>
+    <updated>2013-05-20T03:41:25.000Z</updated>
     <content type="html"><![CDATA[<p>是這樣的，一直想要找一個空間，可以清爽的放code，可以跟其他人交流<br>有鑑於系上好朋友們紛紛都建立起自己的部落格，因此我也加入了這個行列。</p>
 <p>報著取之於人，回饋之於人的心情，我想要把自己從無到有架設這一個blog的過程記錄下來<br>謝謝那些願意指導我的朋友們！</p>
 <a name="more"></a>
