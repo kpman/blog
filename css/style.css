@@ -46,7 +46,7 @@ h3 {
 }
 a {
   text-decoration: none;
-  color: #258fb8;
+  color: #459bd4;
 }
 a:hover {
   text-decoration: underline;
@@ -110,7 +110,7 @@ a:hover {
   color: #999;
 }
 #header a:hover {
-  color: #258fb8;
+  color: #459bd4;
   text-decoration: none;
 }
 #header h1 {
@@ -249,7 +249,7 @@ article header .icon {
   position: absolute;
   top: 20px;
   left: 20px;
-  color: #258fb8;
+  color: #459bd4;
 }
 @media screen and (max-width: 600px) {
   article header .icon {
@@ -278,7 +278,7 @@ article header .title a {
   color: #444;
 }
 article header .title a:hover {
-  color: #258fb8;
+  color: #459bd4;
   text-decoration: none;
 }
 article .entry {
@@ -300,13 +300,16 @@ article .entry .video-container {
   margin-top: 15px;
 }
 article .entry blockquote {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  font-style: italic;
-  font-family: "Georgia", serif;
+  font-weight: bold;
   font-size: 1.2em;
-  padding: 0 30px 15px;
+  padding: 1px 30px 15px;
+  background: #fdf3d4;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
   text-align: center;
+}
+article .entry blockquote em {
+  color: #459bd4;
 }
 article .entry blockquote footer {
   border-top: none;
@@ -445,7 +448,7 @@ article footer a {
   color: #999;
 }
 article footer a:hover {
-  color: #258fb8;
+  color: #459bd4;
   text-decoration: none;
 }
 article footer a:before {
@@ -507,7 +510,7 @@ article footer .addthis iframe {
   margin-bottom: 50px;
 }
 #pagination a:hover {
-  background: #258fb8;
+  background: #459bd4;
   color: #fff;
   text-decoration: none;
   text-shadow: none;
@@ -687,10 +690,10 @@ article footer .addthis iframe {
   font-size: 100%;
 }
 .entry .gist .gist-file .gist-meta a {
-  color: #258fb8;
+  color: #459bd4;
 }
 .entry .gist .gist-file .gist-meta a:visited {
-  color: #258fb8;
+  color: #459bd4;
 }
 figure.highlight {
   background: #eee;
