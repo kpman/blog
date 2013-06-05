@@ -4,12 +4,78 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2013-05-20T14:22:26.647Z</updated>
+  <updated>2013-06-05T16:42:09.490Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 2 實用技巧]]></title>
+    <link href="http://code.kpman.cc/2013/06/05/sublime-text-2-實用技巧/"/>
+    <id>http://code.kpman.cc/2013/06/05/sublime-text-2-實用技巧/</id>
+    <published>2013-06-05T04:53:10.000Z</published>
+    <updated>2013-06-05T16:41:38.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png" alt="Sublime Text 2" title="Sublime Text 2"></p>
+<p>Sublime Text 2 是一套越來越火紅的編輯器，如果你是接觸網頁開發，想必對於這套軟體不陌生，以下分享幾個好用的技巧，都是我自己平常比較常使用的技巧，因為我本身是一個懶得看文件的人，所以就整理這篇與大家分享。</p>
+<a name="more"></a>
+
+<h2>編輯環境</h2>
+<ol>
+<li>Mac 10.7.5</li>
+<li>Sublime Text 2</li>
+</ol>
+<p>我是使用mac，所以快捷鍵就會是command的配置。</p>
+<h2>技巧介紹</h2>
+<h3>一、Set Syntax</h3>
+<p>有發現你的Sublime Text 2右下角有你正在編輯的環境語言嗎？舉凡JAVA、CSS、HTML5等<br>比如說我現在要從HTML5切到CSS介面，除了由上方的View-&gt;Sytax切換外，可以利用快捷鍵   </p>
+<p>切換到CSS範例：   </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">shift</span>+command+p
+鍵入sscss
+</pre></td></tr></table></figure>   
+
+<p><img src="http://i.imgur.com/51PUAhD.png" alt="Set Syntax" title="Set Syntax"></p>
+<p>每一個Color Scheme都會針對不同的語言去做優化，因此值得學習。</p>
+<h3>二、HTML5 snippet</h3>
+<p>貼心的Sublime Text 2有內建HTML5的snippet，方法如下：   </p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">!</span> <span class="literal">+</span> <span class="comment">tab
+</pre></td></tr></table></figure></p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">html:5</span> <span class="literal">+</span> <span class="comment">tab
+</pre></td></tr></table></figure>
+都可以達成HTML5快速生成已經預定的snippet.   </p>
+<p><img src="http://i.imgur.com/grLplgD.png" alt=""></p>
+<h3>三、Multiple Selection 同時多個游標</h3>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>按住command+點選你要的位置
+</pre></td></tr></table></figure><br>推薦用在處理Array等結構重複性高的資料型態。</p>
+<h3>四、Column Selection 同時直行游標</h3>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>按住<span class="built_in">option</span>+按著滑鼠左鍵直行往下拖曳選取
+</pre></td></tr></table></figure><br>推薦用在處理html等修改固定class或其他部分。</p>
+<p><img src="http://i.imgur.com/1kLSh2P.png" alt=""></p>
+<h3>五、選取引號內字串</h3>
+<p>通常你都怎樣選取雙引號內的字串呢？<code>&quot;string&quot;</code>利用滑鼠從第一個引號拉到後面那個。</p>
+<p>輸入：<code>command + d</code> 即可完成</p>
+<h3>六、分割畫面</h3>
+<p>有時候我時常左邊放HTML檔，右邊放SCSS檔，一邊看一邊編輯，這時候就要分割畫面。</p>
+<p>輸入：<code>command+option+數量</code></p>
+<p>就可以把視窗分割成你要的數量。</p>
+<h3>七、貼上符合縮排</h3>
+<p>有時候從網站上複製一段code，常常貼上的部份本身就有縮排，貼完卻只有第一行有縮排，其他跑到前面。</p>
+<p>複製完後，輸入：<code>shift+command+v</code></p>
+<p>也就是在原本的貼上加上shift就可以解決！</p>
+<h3><em>reference</em></h3>
+<ol>
+<li><a href="http://www.youtube.com/watch?v=41nY3RLBy3w&amp;list=PL8dIIwCMF-SOaSb3_VYUlyULpPyk7iwlh&amp;index=1">up chen in 2013 JSDC</a></li>
+<li><a href="https://gist.github.com/twosixcode/1988097">Paste and Indent</a></li>
+</ol>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/sublime-text-2/" term="sublime text 2"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[2013 JSDC所見聞]]></title>
     <link href="http://code.kpman.cc/2013/05/20/2013-jsdc所見聞/"/>
