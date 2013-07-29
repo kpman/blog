@@ -102,6 +102,10 @@ a:hover {
     margin-right: 0;
   }
 }
+.dsq-widget-list {
+  margin: 20px;
+  padding-bottom: 10px;
+}
 #header {
   text-shadow: 0 0 1px #fff;
   margin: 50px auto;
