@@ -4,12 +4,54 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2013-08-21T06:49:22.456Z</updated>
+  <updated>2013-08-22T05:00:34.057Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[wordpress解決permalink固定網址問題]]></title>
+    <link href="http://code.kpman.cc/2013/08/22/wordpress解決permalink固定網址問題/"/>
+    <id>http://code.kpman.cc/2013/08/22/wordpress解決permalink固定網址問題/</id>
+    <published>2013-08-22T04:54:15.000Z</published>
+    <updated>2013-08-22T05:00:24.000Z</updated>
+    <content type="html"><![CDATA[<p>本case為希望主目錄可以直接連到wordpress，但是wordpress是另外放在一個資料夾。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>主目錄：/<span class="keyword">var</span>/www
+wordpress資料夾：/<span class="keyword">var</span>/www/blog
+</pre></td></tr></table></figure>
+
+<a name="more"></a>
+
+<h2>一、.htaccess</h2>
+<p>wordpress會利用.htaccess去更改固定連結，是位在根目錄，也就是<code>/var/www</code>底下，wordpress會根據你的<code>網站位置URL</code>去設定.htaccess</p>
+<p>利用終端機產生.htaccess</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="comment">vi</span> <span class="string">.</span><span class="comment">htaccess</span>
+<span class="comment">chmod</span> <span class="comment">777</span> <span class="string">.</span><span class="comment">htaccess
+</pre></td></tr></table></figure></p>
+<h2>二、進入後台設定固定網址permalink</h2>
+<p>這邊我選擇文章名稱的格式</p>
+<p><img src="http://i.imgur.com/XlEgUdT.png" alt="固定網址"></p>
+<p>因為剛剛上面有設定.htaccess權限打開到最大，因此進後台設定完，記得把chmod改為644，要注意安全性。</p>
+<h2>三、設定mod_write</h2>
+<p>我的wordpress是架在Amazon EC2上的ubuntu，server是apache2，因此上網搜尋相關資料，解決辦法如下：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">sudo</span> a2enmod rewrite
+<span class="title">sudo</span> /etc/init.d/apache2 restart
+</pre></td></tr></table></figure>
+只要兩行就可以解決!</p>
+<h3><strong><em>後記</em></strong></h3>
+<p>在解決這個問題的時候，找了很多資料，一來是不明白.htacces真正的目錄，二來是不知道ubuntu的rewrite要打開，因此在這邊記錄下來，讓有相同困擾的人可以了解。</p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/wordpress/" term="wordpress"/>
+    <category scheme="http://code.kpman.cc/tags/apache2/" term="apache2"/>
+    <category scheme="http://code.kpman.cc/tags/htaccess/" term="htaccess"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[EC2利用tasksel架wordpress經驗分享]]></title>
     <link href="http://code.kpman.cc/2013/08/21/ec2利用tasksel架wordpress經驗分享/"/>

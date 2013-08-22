@@ -3,13 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>rss | kpman | code</title>
+  <title>wordpress解決permalink固定網址問題 | kpman | code</title>
   <meta name="author" content="kpman | code">
+  
+  <meta name="description" content="本case為希望主目錄可以直接連到wordpress，但是wordpress是另外放在一個資料夾。
+1
+2
+主目錄：/var/www
+wordpress資料夾：/var/www/blog">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="wordpress解決permalink固定網址問題"/>
   <meta property="og:site_name" content="kpman | code"/>
 
   
@@ -56,39 +62,83 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">rss</h2>
-
-
-  
-    <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-05-08T07:50:06.000Z"><a href="/2013/05/08/在hexo自訂rss/">May 8 2013</a></time>
+        <time datetime="2013-08-22T04:54:15.000Z"><a href="/2013/08/22/wordpress解決permalink固定網址問題/">Aug 22 2013</a></time>
       
       
   
-    <h1 class="title"><a href="/2013/05/08/在hexo自訂rss/">在hexo自訂rss</a></h1>
+    <h1 class="title">wordpress解決permalink固定網址問題</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>趁著好朋友在旁邊的情況下，請教他學會了在hexo自訂rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。</p>
+        <p>本case為希望主目錄可以直接連到wordpress，但是wordpress是另外放在一個資料夾。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>主目錄：/<span class="keyword">var</span>/www
+wordpress資料夾：/<span class="keyword">var</span>/www/blog
+</pre></td></tr></table></figure>
+
+<a name="more"></a>
+
+<h2>一、.htaccess</h2>
+<p>wordpress會利用.htaccess去更改固定連結，是位在根目錄，也就是<code>/var/www</code>底下，wordpress會根據你的<code>網站位置URL</code>去設定.htaccess</p>
+<p>利用終端機產生.htaccess</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="comment">vi</span> <span class="string">.</span><span class="comment">htaccess</span>
+<span class="comment">chmod</span> <span class="comment">777</span> <span class="string">.</span><span class="comment">htaccess
+</pre></td></tr></table></figure></p>
+<h2>二、進入後台設定固定網址permalink</h2>
+<p>這邊我選擇文章名稱的格式</p>
+<p><img src="http://i.imgur.com/XlEgUdT.png" alt="固定網址"></p>
+<p>因為剛剛上面有設定.htaccess權限打開到最大，因此進後台設定完，記得把chmod改為644，要注意安全性。</p>
+<h2>三、設定mod_write</h2>
+<p>我的wordpress是架在Amazon EC2上的ubuntu，server是apache2，因此上網搜尋相關資料，解決辦法如下：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">sudo</span> a2enmod rewrite
+<span class="title">sudo</span> /etc/init.d/apache2 restart
+</pre></td></tr></table></figure>
+只要兩行就可以解決!</p>
+<h3><strong><em>後記</em></strong></h3>
+<p>在解決這個問題的時候，找了很多資料，一來是不明白.htacces真正的目錄，二來是不知道ubuntu的rewrite要打開，因此在這邊記錄下來，讓有相同困擾的人可以了解。</p>
 
       
     </div>
     <footer>
       
         
-          <div class="alignleft">
-            <a href="/2013/05/08/在hexo自訂rss/#more" class="more-link">Read More</a>
-          </div>
         
+  
+  <div class="tags">
+    <a href="/tags/wordpress/">wordpress</a>, <a href="/tags/apache2/">apache2</a>, <a href="/tags/htaccess/">htaccess</a>
+  </div>
+
         
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
       
       <div class="clearfix"></div>
     </footer>
@@ -96,13 +146,12 @@
 </article>
 
 
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
+<section id="comment">
+  <h1 class="title">Comments</h1>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -190,7 +239,7 @@ var disqus_shortname = 'kpmancode';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>
