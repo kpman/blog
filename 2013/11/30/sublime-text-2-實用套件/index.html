@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>客製化hexo light theme | kpman | code</title>
+  <title>Sublime Text 2 實用套件 | kpman | code</title>
   <meta name="author" content="kpman | code">
   
-  <meta name="description" content="分享一些目前知道的客製化theme技巧。其實非常簡單，但是這些技巧如果沒有問過或是自己看過文件，一時間也無法摸透，所以覺得應該值得把它記錄下來。">
+  <meta name="description" content="Sublime Text 2 是網頁開發者都不陌生的一套編輯器，除了單純的文字編輯外，它還有很多實用的套件，這篇來介紹我平常常用的Sublime Text 2 套件。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="客製化hexo light theme"/>
+  <meta property="og:title" content="Sublime Text 2 實用套件"/>
   <meta property="og:site_name" content="kpman | code"/>
 
   
@@ -64,57 +64,86 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-04-28T13:09:37.000Z"><a href="/2013/04/28/客製化hexo-light-theme/">Apr 28 2013</a></time>
+        <time datetime="2013-11-29T16:02:48.000Z"><a href="/2013/11/30/sublime-text-2-實用套件/">Nov 30 2013</a></time>
       
       
   
-    <h1 class="title">客製化hexo light theme</h1>
+    <h1 class="title">Sublime Text 2 實用套件</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>分享一些目前知道的客製化theme技巧。<br>其實非常簡單，但是這些技巧如果沒有問過或是自己看過文件，<br>一時間也無法摸透，所以覺得應該值得把它記錄下來。</p>
+        <p><img src="http://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png" alt="Sublime Text 2" title="Sublime Text 2"></p>
+<p>Sublime Text 2 是網頁開發者都不陌生的一套編輯器，除了單純的文字編輯外，它還有很多實用的套件，這篇來介紹我平常常用的Sublime Text 2 套件。</p>
 <a name="more"></a>
 
-<h3>一、增加Disqus留言板</h3>
-<ul>
-<li>到<a href="http://disqus.com/">Disqus</a>申請帳號</li>
-<li>右上角的Dashboard <code>+Add</code> 申請一個新的帳號</li>
-<li>將網址、name、shortname打好後，要把 <code>shortname</code> 記住！<ul>
-<li>修改本機目錄下的 <code>_confid.yml</code></li>
-<li>在 <code>disqus_shortname</code> 貼上自己的shortname</li>
-</ul>
-</li>
-</ul>
-<p>完成～</p>
-<p>※ 後記：<br>若你在申請完disqus貼到自己的blog上面，發現出現很多不必要的連結，請到disqus的dashboard去修改。<br>右上方 <code>Setting</code> -&gt; <code>Discovery</code> -&gt; 將Discovery level拉到最右邊，如下圖<br><img src="http://i.imgur.com/eeEjwka.png" alt="Discovery level"></p>
-<h3>二、增加右方側欄widget</h3>
-<p>在標題就已經破梗囉XD<br>右方出現那些『Tag』『Tag Cloud』等欄位，其實就是修改widget過後得到的結果。<br>方法如下：</p>
-<ul>
-<li>找到 <code>theme/light/layout/_widget</code> ，可以發現很多 <strong>ejs</strong> 檔</li>
-<li>有些是已經自訂好了，例如 <code>category</code> <code>recent_posts</code> 等</li>
-<li>在 <code>theme/light/_config.yml</code> 內，修改<strong>widgets</strong>，在底下新增你要的ejs檔名即可～</li>
-</ul>
-<p>同樣方法可以自己寫ejs檔，一樣在<code>theme/light/_config.yml</code>加上檔名就可以自訂。</p>
-<h3>三、增加上方自訂全域導覽列</h3>
-<p>預設為Home、Archives這兩個<br>當然得要自訂才爽XD</p>
-<p>方法一樣很簡單如下：</p>
-<ul>
-<li>找到<code>theme/light/_config.yml</code>裡面的第一行</li>
-<li>預設狀況應該只有Home&amp;Archives<br> <img src="http://i.imgur.com/reKRQw4.png" alt="menu"></li>
-<li>自訂自己的menu，項目後面即為<strong>連結</strong>，可以直接使用<code>http://google.com</code>之類的連結。</li>
-</ul>
-<h3>四、自訂favicon</h3>
-<ul>
-<li>首先你要有一個favicon.ico檔或是.png檔(這邊預設檔名為<code>favicon.png</code>)</li>
-<li>將檔案放在 <code>主目錄/source</code> 底下<br> <img src="http://i.imgur.com/Aar4ap9.png" alt="favicon path"></li>
-<li>找到 <code>theme/light/layout/_partial/head.ejs</code>做修改</li>
-<li>在裡面加上head.ejs檔內確認有以下這行code即可擁有自己的favicon  <pre><code><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"&lt;%- config.root %&gt;favicon.png"</span> <span class="attribute">rel</span>=<span class="value">"icon"</span>&gt;</span>
-</code></pre>
-</li>
-</ul>
-<p>以上介紹一些目前知道的自訂方法，<br>希望還有人可以跟我多介紹一些技巧，一起分享吧！</p>
+<h2>編輯環境</h2>
+<ol>
+<li>Mac 10.9</li>
+<li>Sublime Text 2</li>
+</ol>
+<p>Mac環境，所以快捷鍵會介紹command的配置，若windows版本請自行查閱。</p>
+<h3>安裝Package Control</h3>
+<p>所謂Package Control就是Sublime Text 2 用來裝套件的，因此在裝其他的套件之前，我們必須先來安裝Package Control。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="number">1.</span> 開啟Sublime Text <span class="number">2</span>
+<span class="number">2.</span> 開啟console，快捷鍵ctrl+`
+<span class="number">3.</span> 貼上以下程式碼
+
+import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</span>; ipp = <span class="transposed_variable">sublime.</span>installed_packages_path(); <span class="transposed_variable">os.</span>makedirs( ipp ) <span class="keyword">if</span> not <span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>exists(ipp) <span class="keyword">else</span> None; <span class="transposed_variable">urllib2.</span>install_opener( <span class="transposed_variable">urllib2.</span>build_opener( <span class="transposed_variable">urllib2.</span>ProxyHandler( ))); open( <span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>join( ipp, pf), <span class="string">'wb'</span> ).write( <span class="transposed_variable">urllib2.</span>urlopen( <span class="string">'http://sublime.wbond.net/'</span> +<span class="transposed_variable">pf.</span>replace( <span class="string">' '</span>,<span class="string">'%20'</span> )).read()); print( <span class="string">'Please restart Sublime Text to finish installation'</span>)
+</pre></td></tr></table></figure>
+
+<p>程式碼可以參照<a href="https://sublime.wbond.net/installation#st2">官網</a></p>
+<p>安裝完後，未來我們就可以使用<code>cmd+shift+p</code>，打入<code>install package</code>，即可啟用Package Control，如下圖</p>
+<p><img src="http://i.imgur.com/5n76S9Q.png" alt="install package"></p>
+<h3>安裝套件步驟</h3>
+<ol>
+<li>首先<code>cmd+shift+p</code></li>
+<li>鍵入<code>install package</code></li>
+<li>跳出新的輸入欄位後，在輸入你要的<code>package名稱</code></li>
+<li>看著左下角，等它跑完</li>
+<li>重新啟動Sublime Text 2 即安裝完成。</li>
+</ol>
+<h2>必裝套件</h2>
+<h3>一、<a href="https://sublime.wbond.net/packages/BracketHighlighter">BracketHighlighter</a></h3>
+<p><img src="http://i.imgur.com/2ovEcG8.png" alt=""></p>
+<p>這是一套超過196K人裝的套件，如圖所示，寫html常常遇到不知道close tag在哪邊，裡用它可以清楚的將close tag標示出來。<br>另外它有一個很好的地方，就是會在每一行的前面列出來目前的tag，不同的語言還有不同的icon，因此可以更快的知道自己的位置。</p>
+<h3>二、<a href="https://sublime.wbond.net/packages/Emmet">Emmet</a></h3>
+<p>以前它叫做Zen coding，現在則改為Emmet。</p>
+<p>可以將需要重複的html用很簡短的方式寫出來，例如：</p>
+<ol>
+<li><code>.container&gt;.col-lg-4*3</code></li>
+<li>按下tab後便會出現</li>
+<li><img src="http://i.imgur.com/PP9vdmr.png" alt="Emmet"></li>
+</ol>
+<p>若你發現按下tab後竟然沒有用，記得確定自己是不是在html文件內。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">view</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">&gt;</span> <span class="comment">syntax</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">&gt;</span> <span class="comment">HTML(5)
+</pre></td></tr></table></figure>
+
+<p>在HTML5的文件下，<code>!+tab</code> 會有出現HTML5的snippet出現，非常好用！</p>
+<h3>三、<a href="https://sublime.wbond.net/packages/Pretty%20JSON">Pretty Json</a></h3>
+<p>有利用到JSON的人，想必一定會為了格式上面的問題而煩惱，只要裝上這個，JSON立刻變得很好看。</p>
+<p>裝完之後，把你要修改的JSON選取起來，按下快捷鍵</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="attribute">cmd+ctrl+j
+</pre></td></tr></table></figure>
+立刻就可以把JSON變得很漂亮，也可以自行進去定義縮排大小。</p>
+<h3>四、<a href="https://github.com/thinkpixellab/flatland">flat theme</a></h3>
+<p><img src="http://i.imgur.com/pvxRMlX.png" alt="flatland"></p>
+<p>其實這個套件全名是flatland才對，可以把Sublime Text 2的整體環境變得扁平化。</p>
+<p>安裝方法：</p>
+<ol>
+<li>打開Package Control</li>
+<li>輸入Theme - Flatland即可</li>
+</ol>
+<hr>
+<p>以上介紹了一些我常用的Sublime Text 2 套件，但一直沒有找到好看的主題，如果你有推薦的主題，非常歡迎XD</p>
 
       
     </div>
@@ -124,7 +153,7 @@
         
   
   <div class="tags">
-    <a href="/tags/hexo/">hexo</a>, <a href="/tags/theme/">theme</a>
+    <a href="/tags/sublime-text-2/">sublime text 2</a>
   </div>
 
         
