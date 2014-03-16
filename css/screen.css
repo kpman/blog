@@ -455,6 +455,10 @@ margin on the iframe, cause it breaks stuff. */
     line-height: 1.6em;
 }
 
+.post-excerpt p img {
+    width: 100%;
+}
+
 .post-meta {
     display: inline-block;
     margin: 0 0 5px 0;
