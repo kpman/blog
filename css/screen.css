@@ -456,7 +456,7 @@ margin on the iframe, cause it breaks stuff. */
 }
 
 .post-excerpt p img {
-    width: 100%;
+    max-width: 100%;
 }
 
 .post-meta {
