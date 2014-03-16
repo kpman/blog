@@ -4,7 +4,7 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2013-11-29T17:45:21.510Z</updated>
+  <updated>2014-03-16T17:32:52.417Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
@@ -18,15 +18,15 @@
     <updated>2013-11-29T17:45:05.000Z</updated>
     <content type="html"><![CDATA[<p><img src="http://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png" alt="Sublime Text 2" title="Sublime Text 2"></p>
 <p>Sublime Text 2 是網頁開發者都不陌生的一套編輯器，除了單純的文字編輯外，它還有很多實用的套件，這篇來介紹我平常常用的Sublime Text 2 套件。</p>
-<a name="more"></a>
+<a id="more"></a>
 
-<h2>編輯環境</h2>
+<h2 id="編輯環境">編輯環境</h2>
 <ol>
 <li>Mac 10.9</li>
 <li>Sublime Text 2</li>
 </ol>
 <p>Mac環境，所以快捷鍵會介紹command的配置，若windows版本請自行查閱。</p>
-<h3>安裝Package Control</h3>
+<h3 id="安裝Package_Control">安裝Package Control</h3>
 <p>所謂Package Control就是Sublime Text 2 用來裝套件的，因此在裝其他的套件之前，我們必須先來安裝Package Control。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
@@ -37,13 +37,13 @@
 <span class="number">2.</span> 開啟console，快捷鍵ctrl+`
 <span class="number">3.</span> 貼上以下程式碼
 
-import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</span>; ipp = <span class="transposed_variable">sublime.</span>installed_packages_path(); <span class="transposed_variable">os.</span>makedirs( ipp ) <span class="keyword">if</span> not <span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>exists(ipp) <span class="keyword">else</span> None; <span class="transposed_variable">urllib2.</span>install_opener( <span class="transposed_variable">urllib2.</span>build_opener( <span class="transposed_variable">urllib2.</span>ProxyHandler( ))); open( <span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>join( ipp, pf), <span class="string">'wb'</span> ).write( <span class="transposed_variable">urllib2.</span>urlopen( <span class="string">'http://sublime.wbond.net/'</span> +<span class="transposed_variable">pf.</span>replace( <span class="string">' '</span>,<span class="string">'%20'</span> )).read()); print( <span class="string">'Please restart Sublime Text to finish installation'</span>)
+import urllib2,<span class="built_in">os</span>; pf=<span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); <span class="built_in">os</span>.makedirs( ipp ) <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">os</span>.path.exists(ipp) <span class="keyword">else</span> None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( <span class="built_in">os</span>.path.join( ipp, pf), <span class="string">'wb'</span> ).write( urllib2.urlopen( <span class="string">'http://sublime.wbond.net/'</span> +pf.replace( <span class="string">' '</span>,<span class="string">'%20'</span> )).read()); <span class="built_in">print</span>( <span class="string">'Please restart Sublime Text to finish installation'</span>)
 </pre></td></tr></table></figure>
 
-<p>程式碼可以參照<a href="https://sublime.wbond.net/installation#st2">官網</a></p>
+<p>程式碼可以參照<a href="https://sublime.wbond.net/installation#st2" target="_blank">官網</a></p>
 <p>安裝完後，未來我們就可以使用<code>cmd+shift+p</code>，打入<code>install package</code>，即可啟用Package Control，如下圖</p>
 <p><img src="http://i.imgur.com/5n76S9Q.png" alt="install package"></p>
-<h3>安裝套件步驟</h3>
+<h3 id="安裝套件步驟">安裝套件步驟</h3>
 <ol>
 <li>首先<code>cmd+shift+p</code></li>
 <li>鍵入<code>install package</code></li>
@@ -51,11 +51,11 @@ import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</sp
 <li>看著左下角，等它跑完</li>
 <li>重新啟動Sublime Text 2 即安裝完成。</li>
 </ol>
-<h2>必裝套件</h2>
-<h3>一、<a href="https://sublime.wbond.net/packages/BracketHighlighter">BracketHighlighter</a></h3>
+<h2 id="必裝套件">必裝套件</h2>
+<h3 id="一、<a_href="https://sublime-wbond-net/packages/BracketHighlighter" target="_blank">BracketHighlighter</a>">一、<a href="https://sublime.wbond.net/packages/BracketHighlighter" target="_blank">BracketHighlighter</a></h3>
 <p><img src="http://i.imgur.com/2ovEcG8.png" alt=""></p>
 <p>這是一套超過196K人裝的套件，如圖所示，寫html常常遇到不知道close tag在哪邊，裡用它可以清楚的將close tag標示出來。<br>另外它有一個很好的地方，就是會在每一行的前面列出來目前的tag，不同的語言還有不同的icon，因此可以更快的知道自己的位置。</p>
-<h3>二、<a href="https://sublime.wbond.net/packages/Emmet">Emmet</a></h3>
+<h3 id="二、<a_href="https://sublime-wbond-net/packages/Emmet" target="_blank">Emmet</a>">二、<a href="https://sublime.wbond.net/packages/Emmet" target="_blank">Emmet</a></h3>
 <p>以前它叫做Zen coding，現在則改為Emmet。</p>
 <p>可以將需要重複的html用很簡短的方式寫出來，例如：</p>
 <ol>
@@ -65,18 +65,19 @@ import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</sp
 </ol>
 <p>若你發現按下tab後竟然沒有用，記得確定自己是不是在html文件內。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">view</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">&gt;</span> <span class="comment">syntax</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">&gt;</span> <span class="comment">HTML(5)
+</pre></td><td class="code"><pre><span class="comment">view</span> <span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">syntax</span> <span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">HTML(5)</span>
 </pre></td></tr></table></figure>
 
 <p>在HTML5的文件下，<code>!+tab</code> 會有出現HTML5的snippet出現，非常好用！</p>
-<h3>三、<a href="https://sublime.wbond.net/packages/Pretty%20JSON">Pretty Json</a></h3>
+<h3 id="三、<a_href="https://sublime-wbond-net/packages/Pretty%20JSON" target="_blank">Pretty_Json</a>">三、<a href="https://sublime.wbond.net/packages/Pretty%20JSON" target="_blank">Pretty Json</a></h3>
 <p>有利用到JSON的人，想必一定會為了格式上面的問題而煩惱，只要裝上這個，JSON立刻變得很好看。</p>
 <p>裝完之後，把你要修改的JSON選取起來，按下快捷鍵</p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="attribute">cmd+ctrl+j
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>cmd+ctrl+<span class="built_in">j</span>
 </pre></td></tr></table></figure>
-立刻就可以把JSON變得很漂亮，也可以自行進去定義縮排大小。</p>
-<h3>四、<a href="https://github.com/thinkpixellab/flatland">flat theme</a></h3>
+
+<p>立刻就可以把JSON變得很漂亮，也可以自行進去定義縮排大小。</p>
+<h3 id="四、<a_href="https://github-com/thinkpixellab/flatland" target="_blank">flat_theme</a>">四、<a href="https://github.com/thinkpixellab/flatland" target="_blank">flat theme</a></h3>
 <p><img src="http://i.imgur.com/pvxRMlX.png" alt="flatland"></p>
 <p>其實這個套件全名是flatland才對，可以把Sublime Text 2的整體環境變得扁平化。</p>
 <p>安裝方法：</p>
@@ -87,7 +88,7 @@ import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</sp
 <hr>
 <p>以上介紹了一些我常用的Sublime Text 2 套件，但一直沒有找到好看的主題，如果你有推薦的主題，非常歡迎XD</p>
 ]]></content>
-    <category scheme="http://code.kpman.cc/tags/sublime-text-2/" term="sublime text 2"/>
+    <category scheme="http://code.kpman.cc/tags/sublime text 2/" term="sublime text 2"/>
   </entry>
   <entry>
     <title type="html"><![CDATA[wordpress解決permalink固定網址問題]]></title>
@@ -102,29 +103,31 @@ import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</sp
 wordpress資料夾：/<span class="keyword">var</span>/www/blog
 </pre></td></tr></table></figure>
 
-<a name="more"></a>
+<a id="more"></a>
 
-<h2>一、.htaccess</h2>
+<h2 id="一、-htaccess">一、.htaccess</h2>
 <p>wordpress會利用.htaccess去更改固定連結，是位在根目錄，也就是<code>/var/www</code>底下，wordpress會根據你的<code>網站位置URL</code>去設定.htaccess</p>
 <p>利用終端機產生.htaccess</p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="comment">vi</span> <span class="string">.</span><span class="comment">htaccess</span>
-<span class="comment">chmod</span> <span class="comment">777</span> <span class="string">.</span><span class="comment">htaccess
-</pre></td></tr></table></figure></p>
-<h2>二、進入後台設定固定網址permalink</h2>
+</pre></td><td class="code"><pre>vi <span class="preprocessor">.htaccess</span>
+chmod <span class="number">777</span> <span class="preprocessor">.htaccess</span>
+</pre></td></tr></table></figure>
+
+<h2 id="二、進入後台設定固定網址permalink">二、進入後台設定固定網址permalink</h2>
 <p>這邊我選擇文章名稱的格式</p>
 <p><img src="http://i.imgur.com/XlEgUdT.png" alt="固定網址"></p>
 <p>因為剛剛上面有設定.htaccess權限打開到最大，因此進後台設定完，記得把chmod改為644，要注意安全性。</p>
-<h2>三、設定mod_write</h2>
+<h2 id="三、設定mod_write">三、設定mod_write</h2>
 <p>我的wordpress是架在Amazon EC2上的ubuntu，server是apache2，因此上網搜尋相關資料，解決辦法如下：</p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="title">sudo</span> a2enmod rewrite
-<span class="title">sudo</span> /etc/init.d/apache2 restart
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> a2enmod rewrite
+<span class="built_in">sudo</span> /etc/init.d/apache2 restart
 </pre></td></tr></table></figure>
-只要兩行就可以解決!</p>
-<h3><strong><em>後記</em></strong></h3>
+
+<p>只要兩行就可以解決!</p>
+<h3 id="<strong><em>後記</em></strong>"><strong><em>後記</em></strong></h3>
 <p>在解決這個問題的時候，找了很多資料，一來是不明白.htacces真正的目錄，二來是不知道ubuntu的rewrite要打開，因此在這邊記錄下來，讓有相同困擾的人可以了解。</p>
 ]]></content>
     <category scheme="http://code.kpman.cc/tags/wordpress/" term="wordpress"/>
@@ -139,12 +142,12 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
     <updated>2013-08-21T06:49:17.000Z</updated>
     <content type="html"><![CDATA[<p>看了這麼久的雲端資源，總算開了算是自己真正學到東西的第一台Amazon EC2 server，目的是想要練習把wordpress架到EC2上，在此分享我的架設經驗。</p>
 <p><img src="http://blog.programmableweb.com/wp-content/amazon-web-services1.png" alt="Amazon web service"></p>
-<a name="more"></a>
+<a id="more"></a>
 
-<h2>一、擁有AWS帳號</h2>
-<p>關於開啟AWS的過程，實際走過一遍之後，阿正老師的<a href="http://blog.soft.idv.tw/?p=823&amp;page=2">這篇</a>，其內寫的不錯，推薦跟著走一遍，就會了解很多。</p>
-<h2>二、開啟自己的instance</h2>
-<p>在實際走過後，會發現阿正老師<a href="http://blog.soft.idv.tw/?p=824">這篇</a>真的超用心，因此接下來主要會利用這篇，再加上些我的補充。</p>
+<h2 id="一、擁有AWS帳號">一、擁有AWS帳號</h2>
+<p>關於開啟AWS的過程，實際走過一遍之後，阿正老師的<a href="http://blog.soft.idv.tw/?p=823&amp;page=2" target="_blank">這篇</a>，其內寫的不錯，推薦跟著走一遍，就會了解很多。</p>
+<h2 id="二、開啟自己的instance">二、開啟自己的instance</h2>
+<p>在實際走過後，會發現阿正老師<a href="http://blog.soft.idv.tw/?p=824" target="_blank">這篇</a>真的超用心，因此接下來主要會利用這篇，再加上些我的補充。</p>
 <ul>
 <li>instance地理位置</li>
 </ul>
@@ -164,7 +167,7 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 <blockquote>
 <p>.pem檔需要存好，一台主機配對一個key pair，且不能做更改，</p>
 </blockquote>
-<h2>三、設定Security Group</h2>
+<h2 id="三、設定Security_Group">三、設定Security Group</h2>
 <p>在沒有設定security group的時候，新開的instance可能是鎖起來的，會有SSH連線上的問題。</p>
 <ol>
 <li>進入console.aws.amazon.com</li>
@@ -175,7 +178,7 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 <blockquote>
 <p>記得開啟SSH(20)、HTTP(80)</p>
 </blockquote>
-<h2>四、申請Elastic IP</h2>
+<h2 id="四、申請Elastic_IP">四、申請Elastic IP</h2>
 <p>每一個instance都應該要綁定一個elastice ip，未來可以作為連線使用。</p>
 <ol>
 <li>同上，進入console.aws.amazon.com</li>
@@ -187,7 +190,7 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 <p>申請完elastic ip後，原本的Public domain前半部分會改變為新的ip</p>
 </blockquote>
 <p><strong><em>* 其實我在實作時，是先做了SSH連線，後來在去申請elastic ip，結果associate完後，我又要ssh連線，發現沒有辦法登入，之後才瞭解是做了elastic ip後，連線的ip也需要一並跟著改變。</em></strong></p>
-<h2>五、SSH連線進入自己的instance</h2>
+<h2 id="五、SSH連線進入自己的instance">五、SSH連線進入自己的instance</h2>
 <ol>
 <li>打開終端機（推薦iterm）</li>
 <li><code>chmod 600 ~/.pem</code><br>要記得把.pem檔改權限，不然會登不進去</li>
@@ -202,36 +205,38 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 <blockquote>
 <p>pem檔的權限要更改為600</p>
 </blockquote>
-<h2>六、環境設定</h2>
+<h2 id="六、環境設定">六、環境設定</h2>
 <p>剛進到instance，記得將環境設定一下</p>
 <ol>
 <li><code>sudo apt-get update</code> + <code>sudo apt-get upgrade</code></li>
 <li>如果覺得一直sudo很麻煩，可以利用<code>sudo su</code>取得root權限</li>
 </ol>
 <hr>
-<h3># 安裝tasksel</h3>
+<h3 id="#_安裝tasksel"># 安裝tasksel</h3>
 <ol>
 <li>是ubuntu底下的lamp懶人包</li>
-<li>推薦<a href="http://howtounix.info/howto/LAMP-on-Ubuntu-with-tasksel-tool">教學文</a></li>
+<li>推薦<a href="http://howtounix.info/howto/LAMP-on-Ubuntu-with-tasksel-tool" target="_blank">教學文</a></li>
 <li>開始安裝taskel   <code>sudo apt-get install tasksel</code></li>
 <li>安裝lamp-server   <code>sudo tasksel install lamp-server</code></li>
 </ol>
-<h3># 安裝phpmyadmin</h3>
+<h3 id="#_安裝phpmyadmin"># 安裝phpmyadmin</h3>
 <ol>
 <li><code>sudo apt-get install phpmyadmin</code></li>
-<li><a href="http://linadonis.pixnet.net/blog/post/27585552-ubuntu-server-%E5%AE%89%E8%A3%9D-phpmyadmin">reference</a></li>
+<li><a href="http://linadonis.pixnet.net/blog/post/27585552-ubuntu-server-%E5%AE%89%E8%A3%9D-phpmyadmin" target="_blank">reference</a></li>
 </ol>
-<h3># 安裝wordpress</h3>
+<h3 id="#_安裝wordpress"># 安裝wordpress</h3>
 <p><img src="http://wow-wp.org/wp-content/uploads/2011/10/wordpress.png" alt="wordpress"></p>
 <ol>
-<li><a href="https://www.digitalocean.com/community/articles/how-to-install-wordpress-on-ubuntu-12-04">超棒教學文</a> 我是跟著文章走，裡面紅色的字記得改成自己的</li>
+<li><a href="https://www.digitalocean.com/community/articles/how-to-install-wordpress-on-ubuntu-12-04" target="_blank">超棒教學文</a> 我是跟著文章走，裡面紅色的字記得改成自己的</li>
+</ol>
+<ul>
 <li>cd /var/www</li>
 <li>下載wordpress包<br><code>wget http://wordpress.org/latest.tar.gz</code>   </li>
 <li>解壓縮<br><code>tar -xzvf latest.tar.gz</code></li>
 <li>進到mysql mode<br><code>mysql -u root -p</code></li>
 <li>剩下有紅字，推薦看連結XD</li>
-</ol>
-<h2>七、測試連線</h2>
+</ul>
+<h2 id="七、測試連線">七、測試連線</h2>
 <p>當你安裝完後，事實上可以利用public domain來連線看看<br>直接在console裡面找到instance的public domian，連線看看是否成功</p>
 <ol>
 <li><code>cd /var/www</code> </li>
@@ -242,21 +247,23 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 <li>利用public domain/test.php連線測試，看到php的資訊就成功了！</li>
 <li>public domain/wordpress 也可以看見你的wordpress有沒有架成功！</li>
 </ol>
-<h2>IP連接instance</h2>
+<h2 id="IP連接instance">IP連接instance</h2>
 <p>如果你有自己的ip，想要指到EC2的話，按照下面作法。</p>
 <ol>
 <li>到godday的DNS manager</li>
+</ol>
+<ul>
 <li>設定你的IP的<code>A record</code></li>
 <li>指向instance的<code>Elastic IP</code>即可</li>
-</ol>
+</ul>
 <p><strong><em>reference</em></strong></p>
 <ul>
-<li><a href="http://blog.soft.idv.tw/?p=823&amp;page=2">阿正老師上篇</a> 阿正老師這兩篇必讀</li>
-<li><a href="http://blog.soft.idv.tw/?p=824">阿正老師下篇</a> 主機實戰篇</li>
-<li><a href="http://blog.rx836.tw/blog/first-amazon-web-services/">免費玩Amazon Web Service(AWS) EC2</a> 開機器寫的很詳細，圖文並茂</li>
-<li><a href="http://coenraets.org/blog/2012/01/setting-up-wordpress-on-amazon-ec2-in-5-minutes/">Setting Up WordPress on Amazon EC2 in 5 minutes</a> 根本神教學，我是受這篇感動才想要把自己的過程給記錄下來。</li>
-<li><a href="http://linadonis.pixnet.net/blog/post/27585552-ubuntu-server-%E5%AE%89%E8%A3%9D-phpmyadmin">Ubuntu Server 安裝 Phpmyadmin</a> phpmyadmin圖文教學</li>
-<li><a href="http://codex.wordpress.org/Giving_WordPress_Its_Own_Directory">Giving WordPress Its Own Directory</a> 更換wordpress的路徑位置指向</li>
+<li><a href="http://blog.soft.idv.tw/?p=823&amp;page=2" target="_blank">阿正老師上篇</a> 阿正老師這兩篇必讀</li>
+<li><a href="http://blog.soft.idv.tw/?p=824" target="_blank">阿正老師下篇</a> 主機實戰篇</li>
+<li><a href="http://blog.rx836.tw/blog/first-amazon-web-services/" target="_blank">免費玩Amazon Web Service(AWS) EC2</a> 開機器寫的很詳細，圖文並茂</li>
+<li><a href="http://coenraets.org/blog/2012/01/setting-up-wordpress-on-amazon-ec2-in-5-minutes/" target="_blank">Setting Up WordPress on Amazon EC2 in 5 minutes</a> 根本神教學，我是受這篇感動才想要把自己的過程給記錄下來。</li>
+<li><a href="http://linadonis.pixnet.net/blog/post/27585552-ubuntu-server-%E5%AE%89%E8%A3%9D-phpmyadmin" target="_blank">Ubuntu Server 安裝 Phpmyadmin</a> phpmyadmin圖文教學</li>
+<li><a href="http://codex.wordpress.org/Giving_WordPress_Its_Own_Directory" target="_blank">Giving WordPress Its Own Directory</a> 更換wordpress的路徑位置指向</li>
 </ul>
 <blockquote>
 <p>如果有問題，或者我有寫錯的地方，歡迎留言讓我知道！</p>
@@ -277,63 +284,69 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
     <updated>2013-06-05T16:41:38.000Z</updated>
     <content type="html"><![CDATA[<p><img src="http://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png" alt="Sublime Text 2" title="Sublime Text 2"></p>
 <p>Sublime Text 2 是一套越來越火紅的編輯器，如果你是接觸網頁開發，想必對於這套軟體不陌生，以下分享幾個好用的技巧，都是我自己平常比較常使用的技巧，因為我本身是一個懶得看文件的人，所以就整理這篇與大家分享。</p>
-<a name="more"></a>
+<a id="more"></a>
 
-<h2>編輯環境</h2>
+<h2 id="編輯環境">編輯環境</h2>
 <ol>
 <li>Mac 10.7.5</li>
 <li>Sublime Text 2</li>
 </ol>
 <p>我是使用mac，所以快捷鍵就會是command的配置。</p>
-<h2>技巧介紹</h2>
-<h3>一、Set Syntax</h3>
+<h2 id="技巧介紹">技巧介紹</h2>
+<h3 id="一、Set_Syntax">一、Set Syntax</h3>
 <p>有發現你的Sublime Text 2右下角有你正在編輯的環境語言嗎？舉凡JAVA、CSS、HTML5等<br>比如說我現在要從HTML5切到CSS介面，除了由上方的View-&gt;Sytax切換外，可以利用快捷鍵   </p>
 <p>切換到CSS範例：   </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="title">shift</span>+command+p
+</pre></td><td class="code"><pre>shift+<span class="command"><span class="keyword">command</span>+<span class="title">p</span></span>
 鍵入sscss
-</pre></td></tr></table></figure>   
+</pre></td></tr></table></figure>
 
 <p><img src="http://i.imgur.com/51PUAhD.png" alt="Set Syntax" title="Set Syntax"></p>
 <p>每一個Color Scheme都會針對不同的語言去做優化，因此值得學習。</p>
-<h3>二、HTML5 snippet</h3>
+<h3 id="二、HTML5_snippet">二、HTML5 snippet</h3>
 <p>貼心的Sublime Text 2有內建HTML5的snippet，方法如下：   </p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">!</span> <span class="literal">+</span> <span class="comment">tab
-</pre></td></tr></table></figure></p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">html:5</span> <span class="literal">+</span> <span class="comment">tab
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="change">! + tab</span>
 </pre></td></tr></table></figure>
-都可以達成HTML5快速生成已經預定的snippet.   </p>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">html</span><span class="pseudo">:5</span> + <span class="tag">tab</span>
+</pre></td></tr></table></figure>
+
+<p>都可以達成HTML5快速生成已經預定的snippet.   </p>
 <p><img src="http://i.imgur.com/grLplgD.png" alt=""></p>
-<h3>三、Multiple Selection 同時多個游標</h3>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>按住command+點選你要的位置
-</pre></td></tr></table></figure><br>推薦用在處理Array等結構重複性高的資料型態。</p>
-<h3>四、Column Selection 同時直行游標</h3>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+<h3 id="三、Multiple_Selection_同時多個游標">三、Multiple Selection 同時多個游標</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>按住<span class="command"><span class="keyword">command</span>+點選你要的位置</span>
+</pre></td></tr></table></figure>
+
+<p>推薦用在處理Array等結構重複性高的資料型態。</p>
+<h3 id="四、Column_Selection_同時直行游標">四、Column Selection 同時直行游標</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>按住<span class="built_in">option</span>+按著滑鼠左鍵直行往下拖曳選取
-</pre></td></tr></table></figure><br>推薦用在處理html等修改固定class或其他部分。</p>
+</pre></td></tr></table></figure>
+
+<p>推薦用在處理html等修改固定class或其他部分。</p>
 <p><img src="http://i.imgur.com/1kLSh2P.png" alt=""></p>
-<h3>五、選取引號內字串</h3>
+<h3 id="五、選取引號內字串">五、選取引號內字串</h3>
 <p>通常你都怎樣選取雙引號內的字串呢？<code>&quot;string&quot;</code>利用滑鼠從第一個引號拉到後面那個。</p>
 <p>輸入：<code>command + d</code> 即可完成</p>
-<h3>六、分割畫面</h3>
+<h3 id="六、分割畫面">六、分割畫面</h3>
 <p>有時候我時常左邊放HTML檔，右邊放SCSS檔，一邊看一邊編輯，這時候就要分割畫面。</p>
 <p>輸入：<code>command+option+數量</code></p>
 <p>就可以把視窗分割成你要的數量。</p>
-<h3>七、貼上符合縮排</h3>
+<h3 id="七、貼上符合縮排">七、貼上符合縮排</h3>
 <p>有時候從網站上複製一段code，常常貼上的部份本身就有縮排，貼完卻只有第一行有縮排，其他跑到前面。</p>
 <p>複製完後，輸入：<code>shift+command+v</code></p>
 <p>也就是在原本的貼上加上shift就可以解決！</p>
-<h3><em>reference</em></h3>
+<h3 id="<em>reference</em>"><em>reference</em></h3>
 <ol>
-<li><a href="http://www.youtube.com/watch?v=41nY3RLBy3w&amp;list=PL8dIIwCMF-SOaSb3_VYUlyULpPyk7iwlh&amp;index=1">up chen in 2013 JSDC</a></li>
-<li><a href="https://gist.github.com/twosixcode/1988097">Paste and Indent</a></li>
+<li><a href="http://www.youtube.com/watch?v=41nY3RLBy3w&amp;list=PL8dIIwCMF-SOaSb3_VYUlyULpPyk7iwlh&amp;index=1" target="_blank">up chen in 2013 JSDC</a></li>
+<li><a href="https://gist.github.com/twosixcode/1988097" target="_blank">Paste and Indent</a></li>
 </ol>
 ]]></content>
-    <category scheme="http://code.kpman.cc/tags/sublime-text-2/" term="sublime text 2"/>
+    <category scheme="http://code.kpman.cc/tags/sublime text 2/" term="sublime text 2"/>
   </entry>
   <entry>
     <title type="html"><![CDATA[2013 JSDC所見聞]]></title>
@@ -343,19 +356,19 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
     <updated>2013-05-20T08:32:40.000Z</updated>
     <content type="html"><![CDATA[<p><img src="http://i.imgur.com/02RzVQA.png" alt="JSDC"></p>
 <p>這是第二屆的JSDC，由TonyQ及三大社群舉辦的聚會，非常幸運的我能順利的利用社群票的機制搶到票，在眾多非常有經驗的強者面前，聽完他們的分享，越感覺自己對於網頁開發充滿了熱情！</p>
-<a name="more"></a>
+<a id="more"></a>
 
 <blockquote>
 <p>『我們不叫前端工程師，以後請叫我們<em>前端設計師</em>！』</p>
 </blockquote>
 <p>這是聽完今年的JSDC感覺最有趣的一句話了。這句話帶出了他們的幽默風趣，在Web Develope這一個圈子，能結合設計還有程式的，就是前端工程師，也就是所謂的F2E。</p>
 <p>雖然對於網頁開發我自己算是沒有什麼經驗，要談設計我也沒有什麼基礎知識，但我知道這條路是我喜歡的，我會繼續走下去。給自己的目標是十年，我希望十年後我能跟現在我敬佩的前輩們一起討論，一起努力。</p>
-<h2>議程記錄＆見聞</h2>
-<h3>Day1</h3>
+<h2 id="議程記錄＆見聞">議程記錄＆見聞</h2>
+<h3 id="Day1">Day1</h3>
 <ul>
 <li><p>【AWS】介紹了他們的服務現在已經針對node.js有放出SDK - 有用過的人歡迎一起分享討論。</p>
 </li>
-<li><p>【<a href="http://www.slideshare.net/WillHuangTW/java-script-jsdc2013">保哥</a>】介紹了他的開發經驗，針對code要怎樣去調教，他說了一句話讓我印象深刻：</p>
+<li><p>【<a href="http://www.slideshare.net/WillHuangTW/java-script-jsdc2013" target="_blank">保哥</a>】介紹了他的開發經驗，針對code要怎樣去調教，他說了一句話讓我印象深刻：</p>
 </li>
 </ul>
 <blockquote>
@@ -363,15 +376,15 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 </blockquote>
 <p>保哥也推薦利用<a href="jsperf.com">jsperf.com</a>去測試自己的code，雖然執行上面的效果一模一樣，有可能只差一個<code>new</code>效率就差了200倍之多。</p>
 <ul>
-<li>【<a href="https://speakerdeck.com/linyiru/ai-liao-li-wang-zhan-qian-duan-kai-fa-jing-yan-tan">Lawrence</a>】同樣待過資種的Lawrence學長介紹了愛料理的開發，主要是一些用過的套件還有經驗談，舉凡Bootstrap、Font Awesome、template利用Handlebars去完成等。利用Crazyegg、GA去分析，也談到了RWD的問題。最後三句話，始終在腦海中揮之不去。</li>
+<li>【<a href="https://speakerdeck.com/linyiru/ai-liao-li-wang-zhan-qian-duan-kai-fa-jing-yan-tan" target="_blank">Lawrence</a>】同樣待過資種的Lawrence學長介紹了愛料理的開發，主要是一些用過的套件還有經驗談，舉凡Bootstrap、Font Awesome、template利用Handlebars去完成等。利用Crazyegg、GA去分析，也談到了RWD的問題。最後三句話，始終在腦海中揮之不去。</li>
 </ul>
 <blockquote>
 <p>在技術上有卓越表現，是工程師的浪漫。<br>在設計上有卓越表現，是設計師的浪漫。<br>在產品上有卓越表現，是企劃與PM的浪漫。</p>
 </blockquote>
 <ul>
-<li><p>【<a href="https://speakerdeck.com/evenwu/ru-he-jiao-she-ji-shi-qian-duan-ji-shu">Even Wu</a>】Even介紹到了如何教前端技術，投影片的風格太有趣XD聊到了教設計師寫code其實要讓他們自動自發的學習，也是一個最重要的觀念：激勵。這個議程談的不是技術，而是一種經驗和體悟。<br>最後剩下的時間，大家交流的問題也很有趣。就有某設計師提到：他原本是設計師，但他每次提出的效果，前端工程師都跟他說這做不出來，他為了證明做的到，便開始自動自發的學習寫code，來向前端工程師證明。   </p>
+<li><p>【<a href="https://speakerdeck.com/evenwu/ru-he-jiao-she-ji-shi-qian-duan-ji-shu" target="_blank">Even Wu</a>】Even介紹到了如何教前端技術，投影片的風格太有趣XD聊到了教設計師寫code其實要讓他們自動自發的學習，也是一個最重要的觀念：激勵。這個議程談的不是技術，而是一種經驗和體悟。<br>最後剩下的時間，大家交流的問題也很有趣。就有某設計師提到：他原本是設計師，但他每次提出的效果，前端工程師都跟他說這做不出來，他為了證明做的到，便開始自動自發的學習寫code，來向前端工程師證明。   </p>
 </li>
-<li><p>【<a href="https://speakerdeck.com/wallat/gong-cheng-shi-tao-sheng-huo-gong-ju-jie-shao-zuo-geng-kuai-dian">up chen</a>】介紹了很多實用的工具，但可能我自己本身就是一個很偷懶的人，（偷懶的人都會想要去找一些好用的工具讓自己做事更快）所以覺得這一個議程沒有得到很多新知。<br>但像是sublime text 的column selection便是之前沒有在使用，但是覺得對自己很方便的技巧:)</p>
+<li><p>【<a href="https://speakerdeck.com/wallat/gong-cheng-shi-tao-sheng-huo-gong-ju-jie-shao-zuo-geng-kuai-dian" target="_blank">up chen</a>】介紹了很多實用的工具，但可能我自己本身就是一個很偷懶的人，（偷懶的人都會想要去找一些好用的工具讓自己做事更快）所以覺得這一個議程沒有得到很多新知。<br>但像是sublime text 的column selection便是之前沒有在使用，但是覺得對自己很方便的技巧:)</p>
 </li>
 <li><p>【Rex Huang】這個主題很酷，在瀏覽器上面建立一個os，而且執行起來很順，重點是利用js去打造的，同時也是大會的贊助商，未來應該很有發展，但是對於現階段的我來說比較艱深，所以就沒有很仔細的記錄筆記。</p>
 </li>
@@ -384,41 +397,41 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 <ul>
 <li>【Ruben Tan】是一個聲音很好聽的英文場議程。講者提到了flow control問題，要避免寫太多call back才是，single thread一直是node.js開發的問題。</li>
 </ul>
-<h3>Day 2</h3>
+<h3 id="Day_2">Day 2</h3>
 <p><img src="http://i.imgur.com/8N7fGlU.png" alt="picture from Josephj" title="F2E is Keystone"></p>
 <ul>
-<li>【<a href="https://speakerdeck.com/josephj/f2e-the-keystone">Josephj(啊嗚)</a>】早在JSDC開始前，就在網路上得知該前輩維護的<a href="http://f2eclass.com">資源</a>，對於網頁開發，他待過yahoo!，從IE4開始就寫前台了！投影片上面也列出好幾位很值得學習的前輩，真是看的我心花怒放XD<br>前端魂，是身為前端工程師（設計師？）應該有的精神！</li>
+<li>【<a href="https://speakerdeck.com/josephj/f2e-the-keystone" target="_blank">Josephj(啊嗚)</a>】早在JSDC開始前，就在網路上得知該前輩維護的<a href="http://f2eclass.com" target="_blank">資源</a>，對於網頁開發，他待過yahoo!，從IE4開始就寫前台了！投影片上面也列出好幾位很值得學習的前輩，真是看的我心花怒放XD<br>前端魂，是身為前端工程師（設計師？）應該有的精神！</li>
 </ul>
 <blockquote>
 <p>前端，你的名字叫熱血</p>
 </blockquote>
 <p>前輩也提到，技術不是重點，態度才是，避免盲目的追求技術，好的前端不等於知道很多技術。積極分享、多回饋，這點我真的在Josephj身上看到，從他架設的f2eclass就可以知道他願意分享的態度。</p>
 <ul>
-<li><p>【<a href="http://jsdc.york.tw:3939/">york</a>】這是一場非常酷的live demo，台上講者的投影片，透過連線到jsdc.york.tw可以即時的在自己電腦切換，且下方就demo了socket.io的實作。雖然自己還沒有接觸到這一塊，但知道socket.io是利用websocket去做，在沒有實作websocket的瀏覽器，會切換別的通道，讓他們也可以work，所以支援的瀏覽器很廣。</p>
+<li><p>【<a href="http://jsdc.york.tw:3939/" target="_blank">york</a>】這是一場非常酷的live demo，台上講者的投影片，透過連線到jsdc.york.tw可以即時的在自己電腦切換，且下方就demo了socket.io的實作。雖然自己還沒有接觸到這一塊，但知道socket.io是利用websocket去做，在沒有實作websocket的瀏覽器，會切換別的通道，讓他們也可以work，所以支援的瀏覽器很廣。</p>
 </li>
-<li><p>【<a href="https://speakerdeck.com/jaceju/understanding-the-mvc-mvp-mvvm-in-javascript">大澤木小鐵</a>】小鐵與我們分享了在JavaScript上面實作MVC、MVP、MVVM（簡稱MV*）的心法，這場我聽的津津有味！利用圖解的方式搭配很多時事梗XD重點是讓沒什麼經驗的我也可以略懂，相信未來在開發JS的時候，會再想到這一份投影片。</p>
+<li><p>【<a href="https://speakerdeck.com/jaceju/understanding-the-mvc-mvp-mvvm-in-javascript" target="_blank">大澤木小鐵</a>】小鐵與我們分享了在JavaScript上面實作MVC、MVP、MVVM（簡稱MV*）的心法，這場我聽的津津有味！利用圖解的方式搭配很多時事梗XD重點是讓沒什麼經驗的我也可以略懂，相信未來在開發JS的時候，會再想到這一份投影片。</p>
 </li>
-<li><p>【<a href="https://speakerdeck.com/othree/this">othree</a>】othree和我們分享了this的用法。在不同情況呼叫this的時候，他針對的function以及目標會不同。然而我覺得這對我來說也還是太深了XD 開發的經驗還是不太足夠，但這一個主題應該是很多有經驗的前輩們都想要討論的問題，期待自己能好好的加強自己，等到我也遇到this的問題，我相信我又更加進步了。</p>
+<li><p>【<a href="https://speakerdeck.com/othree/this" target="_blank">othree</a>】othree和我們分享了this的用法。在不同情況呼叫this的時候，他針對的function以及目標會不同。然而我覺得這對我來說也還是太深了XD 開發的經驗還是不太足夠，但這一個主題應該是很多有經驗的前輩們都想要討論的問題，期待自己能好好的加強自己，等到我也遇到this的問題，我相信我又更加進步了。</p>
 </li>
-<li><p>【<a href="http://www.slideshare.net/lis186/20130519-sketching-with-codejsdc2013">阿修(Justin Lee)</a>】阿修介紹到了在與設計溝通的時候，其實為了記錄當下討論的結果，利用inline把效果寫進html最快，等到往後要維護的時候，工程師在自己去maintain，著實讓我上了一課。阿修也示範了一套很酷的Titanium，可以即時的在web編輯app程式，然後利用手機即時連線，為了加速效果，也利用了<a href="https://github.com/dbankier/TiShadow">Tishaow</a>去built，存檔的同時就可以即時看到，效率非常高。</p>
+<li><p>【<a href="http://www.slideshare.net/lis186/20130519-sketching-with-codejsdc2013" target="_blank">阿修(Justin Lee)</a>】阿修介紹到了在與設計溝通的時候，其實為了記錄當下討論的結果，利用inline把效果寫進html最快，等到往後要維護的時候，工程師在自己去maintain，著實讓我上了一課。阿修也示範了一套很酷的Titanium，可以即時的在web編輯app程式，然後利用手機即時連線，為了加速效果，也利用了<a href="https://github.com/dbankier/TiShadow" target="_blank">Tishaow</a>去built，存檔的同時就可以即時看到，效率非常高。</p>
 </li>
 <li><p>【Mozilla】介紹了利用Emscripten去把不同的語言編譯成JavaScript，可以在瀏覽器上面運行這樣。</p>
 </li>
-<li><p>【<a href="http://www.slideshare.net/nowill/rwd-21436569">Nowill</a>】Nowill介紹了RWD的一些想法，她是一個非常有經驗的前輩，參與很多專案，與很多公司有很多合作經驗。她說了，RWD不是口頭上說說就是用media query就可以解決的，還有很多技巧是要自己真的去做過才會知道的。提到了五大秘訣：掌握解析度、流動式布局、使用者經驗、體驗操作、推敲思考。且她也提到，不是每一個網站都適合作RWD，因為在需要圖片解析度，文字閱讀的網站，應該針對不同的case去做因應。</p>
+<li><p>【<a href="http://www.slideshare.net/nowill/rwd-21436569" target="_blank">Nowill</a>】Nowill介紹了RWD的一些想法，她是一個非常有經驗的前輩，參與很多專案，與很多公司有很多合作經驗。她說了，RWD不是口頭上說說就是用media query就可以解決的，還有很多技巧是要自己真的去做過才會知道的。提到了五大秘訣：掌握解析度、流動式布局、使用者經驗、體驗操作、推敲思考。且她也提到，不是每一個網站都適合作RWD，因為在需要圖片解析度，文字閱讀的網站，應該針對不同的case去做因應。</p>
 </li>
 </ul>
-<h2>心得</h2>
+<h2 id="心得">心得</h2>
 <p>參與了本次的JSDC，我體會到了那些專注於在一件事情上面的美好，那種熱忱，都是在這些前輩們上面可以看到。前端工程師要做的事情，會一點設計，會知道要怎樣寫程式，其實就是將這世界上美的事物，利用web的方式讓大家看的見。<br>我相信分享是這世界上最美好的事情，聽到許多前輩的分享，我自己會有一種想要讓自己變很強的衝動，但有時候會忘記那些最單純的人際關係。在周遭一些朋友身上，我看見了他們很強，很厲害，讓我打從心底佩服；但不知道為什麼，對於他們我會有一種不太想向他們請教的感覺，或許是他們平時透露出來的訊息吧，讓我感覺不是那麼好。<br>我認為交流是一件很愉悅的事情，可以讓彼此在短時間就可以學習到很多，因此我很樂意分享，把自己知道不多但覺得實用的東西給記錄下來，期許大家可以開心的交流，開心的分享，而並非是那種『我知道這個很好用，但你沒有問，你沒有一起來討論，所以我不想告訴你。』提醒自己，要當一個樂意分享的人，在前端開發這一塊，我又重新充滿電了！</p>
 <blockquote>
 <p>在變強之前，我想要先變好:)</p>
 </blockquote>
-<h3><em>reference</em></h3>
+<h3 id="<em>reference</em>"><em>reference</em></h3>
 <ul>
-<li><a href="http://hackfoldr.org/#/jsdctw2013/1xcPi6UutDHCKjgoYH4yUJxQ_728E2VO3og1e3Eq0OtE">JSDC懶人包</a></li>
-<li><a href="https://docs.google.com/spreadsheet/ccc?key=0AqMUl4JFkRfldEVuNDBkNUNsSlZEbDBFXzYzdTloUkE#gid=0">JSDC議程 slide整理</a> - 這份很完整</li>
-<li><a href="http://f2eclass.com">f2eclass</a></li>
-<li><a href="http://blog.darkthread.net/">黑暗執行緒</a></li>
-<li><a href="http://blog.wu-boy.com/">小惡魔 apple boy</a></li>
+<li><a href="http://hackfoldr.org/#/jsdctw2013/1xcPi6UutDHCKjgoYH4yUJxQ_728E2VO3og1e3Eq0OtE" target="_blank">JSDC懶人包</a></li>
+<li><a href="https://docs.google.com/spreadsheet/ccc?key=0AqMUl4JFkRfldEVuNDBkNUNsSlZEbDBFXzYzdTloUkE#gid=0" target="_blank">JSDC議程 slide整理</a> - 這份很完整</li>
+<li><a href="http://f2eclass.com" target="_blank">f2eclass</a></li>
+<li><a href="http://blog.darkthread.net/" target="_blank">黑暗執行緒</a></li>
+<li><a href="http://blog.wu-boy.com/" target="_blank">小惡魔 apple boy</a></li>
 </ul>
 ]]></content>
     <category scheme="http://code.kpman.cc/tags/JSDC/" term="JSDC"/>
@@ -432,15 +445,15 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
     <published>2013-05-17T16:04:03.000Z</published>
     <updated>2013-05-18T12:10:36.000Z</updated>
     <content type="html"><![CDATA[<p>在GitHub使用上，我算是初新者，有疑問才有進步。每當看到有人把好玩的東西放到GitHub上面變成靜態頁面，都會很想知道他是怎樣辦到的。結果不難，就是利用GitHub Pages來做到。</p>
-<a name="more"></a>
+<a id="more"></a>
 
-<h2>GitHub Pages 介紹</h2>
+<h2 id="GitHub_Pages_介紹">GitHub Pages 介紹</h2>
 <p>當你要有一個自己的GitHub Pages，其實分成兩項。   </p>
 <ol>
-<li>repo的名字為<code>yourname.github.com</code>，則會產生的page路徑為 <code>yourname.github.io</code>。<a href="http://kpman.github.io">本部落格</a>是建立在github上面，就是利用這一個GitHub Pages模式去建立，可以參考<a href="http://code.kpman.cc/2013/04/26/hexo%E6%9E%B6blog%E5%88%9D%E9%AB%94%E9%A9%97/">hexo架blog初體驗</a>、<a href="http://code.kpman.cc/2013/04/27/%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1blog%E7%9A%84subdomain/">建立自己blog的subdomain</a>這兩篇文章。</li>
+<li>repo的名字為<code>yourname.github.com</code>，則會產生的page路徑為 <code>yourname.github.io</code>。<a href="http://kpman.github.io" target="_blank">本部落格</a>是建立在github上面，就是利用這一個GitHub Pages模式去建立，可以參考<a href="http://code.kpman.cc/2013/04/26/hexo%E6%9E%B6blog%E5%88%9D%E9%AB%94%E9%A9%97/">hexo架blog初體驗</a>、<a href="http://code.kpman.cc/2013/04/27/%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1blog%E7%9A%84subdomain/">建立自己blog的subdomain</a>這兩篇文章。</li>
 <li>repo的名字為<code>repo-name</code>，則會產生的page路徑為 <code>yourname.github.io/repo-name</code>，這邊的repo name就不像第一種模式，沒有固定名稱。</li>
 </ol>
-<h2>GitHub Pages 建立</h2>
+<h2 id="GitHub_Pages_建立">GitHub Pages 建立</h2>
 <p>在每一個新的repo下面，正常的情況都是在mater這一個branch。分享一下我自己的作法。</p>
 <ol>
 <li><p>GitHub頁面上建立一個新的repo，這邊我取名為first-repo。</p>
@@ -448,44 +461,49 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 </li>
 <li><p>從本機端clone下來，參照自己的路徑，我的repo則是在command line底下打   </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">git</span> clone git<span class="variable">@github</span>.com:kpman/first-repo.git
+</pre></td><td class="code"><pre>git clone git@github<span class="preprocessor">.com</span>:kpman/first-repo<span class="preprocessor">.git</span>
 </pre></td></tr></table></figure>
 </li>
 <li><p>移到該資料夾</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">cd</span> first-repo
+</pre></td><td class="code"><pre><span class="built_in">cd</span> first-repo
 </pre></td></tr></table></figure>
 </li>
 <li><p>將branch移到<code>gh-pages</code>，這步驟很重要，Github Pages就是看這一個branch去決定頁面的。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="title">git</span> branch gh-pages
-<span class="title">git</span> checkout gh-pages
+</pre></td><td class="code"><pre>git branch gh<span class="attribute">-pages</span>
+git checkout gh<span class="attribute">-pages</span>
 </pre></td></tr></table></figure>
-或者<br><figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">git</span> <span class="comment">checkout</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">orphan</span> <span class="comment">gh</span>-<span class="comment">pages</span> <span class="comment">//建立一個沒有parent的branch，並移到該branch上
-</pre></td></tr></table></figure>
+
 </li>
+</ol>
+<p>或者   </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>git checkout <span class="subst">--</span>orphan gh<span class="attribute">-pages</span> <span class="comment">//建立一個沒有parent的branch，並移到該branch上</span>
+</pre></td></tr></table></figure>
+
+<ol>
 <li><p>將編輯好的檔案push上去。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre><span class="title">git</span> add .
-<span class="title">git</span> commit
-<span class="title">git</span> push origin gh-pages
+</pre></td><td class="code"><pre>git <span class="keyword">add</span> .
+git commit
+git <span class="keyword">push</span> origin gh-pages
 </pre></td></tr></table></figure>
 </li>
 <li><p>完成！</p>
 </li>
 </ol>
-<h2>路徑差異</h2>
-<p><a href="http://github.com/kpman/liteAccordion"><a href="http://github.com/kpman/liteAccordion">http://github.com/kpman/liteAccordion</a></a>這樣代表連回GitHub的code頁面<br><a href="http://kpman.github.io/liteAccordion"><a href="http://kpman.github.io/liteAccordion">http://kpman.github.io/liteAccordion</a></a>因為新增到<code>gh-pages</code>這一個branch，所以可以看到靜態的html展示頁面。</p>
-<p>其他範例<br><a href="http://jonobr1.github.io/two.js/">two.js</a><br><a href="http://jschr.github.io/textillate/">textillate</a></p>
-<h3><em>reference</em></h3>
+<h2 id="路徑差異">路徑差異</h2>
+<p><a href="http://github.com/kpman/liteAccordion" target="_blank">http://github.com/kpman/liteAccordion</a>這樣代表連回GitHub的code頁面<br><a href="http://kpman.github.io/liteAccordion" target="_blank">http://kpman.github.io/liteAccordion</a>因為新增到<code>gh-pages</code>這一個branch，所以可以看到靜態的html展示頁面。</p>
+<p>其他範例<br><a href="http://jonobr1.github.io/two.js/" target="_blank">two.js</a><br><a href="http://jschr.github.io/textillate/" target="_blank">textillate</a></p>
+<h3 id="<em>reference</em>"><em>reference</em></h3>
 <ol>
-<li><a href="https://help.github.com/articles/creating-project-pages-manually">官方文件</a></li>
-<li><a href="http://xlson.com/2010/11/09/getting-started-with-github-pages.html">Getting started with GitHub Pages</a></li>
-<li><a href="https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches">Create a new branch with git and manage branches</a></li>
+<li><a href="https://help.github.com/articles/creating-project-pages-manually" target="_blank">官方文件</a></li>
+<li><a href="http://xlson.com/2010/11/09/getting-started-with-github-pages.html" target="_blank">Getting started with GitHub Pages</a></li>
+<li><a href="https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches" target="_blank">Create a new branch with git and manage branches</a></li>
 </ol>
 ]]></content>
     <category scheme="http://code.kpman.cc/tags/github/" term="github"/>
@@ -497,33 +515,35 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
     <published>2013-05-08T07:50:06.000Z</published>
     <updated>2013-05-08T08:13:40.000Z</updated>
     <content type="html"><![CDATA[<p>趁著好朋友在旁邊的情況下，請教他學會了在hexo自訂rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。</p>
-<a name="more"></a>
+<a id="more"></a>
 
-<h3>一、本機環境</h3>
+<h3 id="一、本機環境">一、本機環境</h3>
 <p>在終端機下輸入以下</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">npm</span> <span class="comment">install</span> <span class="comment">hexo</span>-<span class="comment">generator</span>-<span class="comment">feed</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">save
+</pre></td><td class="code"><pre>npm install hexo<span class="attribute">-generator</span><span class="attribute">-feed</span> <span class="subst">--</span>save
 </pre></td></tr></table></figure>
 
+
 <p>權限沒有取得的記得前面加上<code>sudo</code>。</p>
-<h3>二、修改_config.yml</h3>
+<h3 id="二、修改_config-yml">二、修改_config.yml</h3>
 <p>在主目錄底下的<code>_config.yml</code>檔加上</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="comment">plugins:</span>
-<span class="literal">-</span> <span class="comment">hexo</span>-<span class="comment">generator</span>-<span class="comment">feed
+</pre></td><td class="code"><pre>plugins:
+<span class="subst">-</span> hexo<span class="attribute">-generator</span><span class="attribute">-feed</span>
 </pre></td></tr></table></figure>
+
 
 <p><img src="http://i.imgur.com/w39zkK6.png" alt="modify _config.yml" title="modify _config.yml"></p>
 <p>如此一來便完成了環境設置。</p>
-<h3>三、要怎樣找到？</h3>
-<p>在hexo generate之後，會發現public資料夾底下多了atom.xml<br>在<a href="http://www.feedly.com/">feedly</a>這類的閱讀收集器<br>只要輸入<code>domain/atom</code>就可以找到<br>例如要訂閱我的blog只要輸入<code>code.kpman.cc/atom</code>就可以搜尋到囉！</p>
+<h3 id="三、要怎樣找到？">三、要怎樣找到？</h3>
+<p>在hexo generate之後，會發現public資料夾底下多了atom.xml<br>在<a href="http://www.feedly.com/" target="_blank">feedly</a>這類的閱讀收集器<br>只要輸入<code>domain/atom</code>就可以找到<br>例如要訂閱我的blog只要輸入<code>code.kpman.cc/atom</code>就可以搜尋到囉！</p>
 <p><img src="http://i.imgur.com/Hk12y1N.png" alt="rss" title="feedly rss search"></p>
-<p>突然發現我的blog只有一個人訂閱，那個人就是我自己...  </p>
-<h3><em>reference</em></h3>
+<p>突然發現我的blog只有一個人訂閱，那個人就是我自己…  </p>
+<h3 id="<em>reference</em>"><em>reference</em></h3>
 <ol>
-<li><a href="https://github.com/tommy351/hexo/wiki/Plugins">hexo plugins</a></li>
-<li><a href="http://michaelhsu.tw/2013/05/05/rssatom-sitemap-for-seo/">RSS/Atom、Sitemap for SEO</a></li>
+<li><a href="https://github.com/tommy351/hexo/wiki/Plugins" target="_blank">hexo plugins</a></li>
+<li><a href="http://michaelhsu.tw/2013/05/05/rssatom-sitemap-for-seo/" target="_blank">RSS/Atom、Sitemap for SEO</a></li>
 </ol>
 <p>感謝強者阿志耐心面授機宜:)</p>
 ]]></content>
@@ -537,9 +557,9 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
     <published>2013-05-07T03:28:16.000Z</published>
     <updated>2013-05-07T05:46:25.000Z</updated>
     <content type="html"><![CDATA[<p>趁著記憶猶新的狀況，記錄自己使用偽元素 (pseudo-element)讓原本的html架構更加簡潔的方法。</p>
-<a name="more"></a> 
+<a id="more"></a> 
 
-<h2>何謂pseudo-element?</h2>
+<h2 id="何謂pseudo-element?">何謂pseudo-element?</h2>
 <p>不會出現在html的文件裡面，而是利用css讓瀏覽器去實作。以下列出的都是可以使用的pseudo-element。</p>
 <ol>
 <li>::first-line：若是p元素，則可以用來操作第一行。</li>
@@ -549,11 +569,10 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 <li>::selection：用來自定反白後的效果。</li>
 </ol>
 <blockquote>
-<p>為了區分偽元素和偽類，CSS3 的 guildline 將偽元素的寫法修正，以往只要加一個冒號「:」，現在則是加兩個冒號「::」，部分可支援的瀏覽器包含 webkit, firefox, opera。) 
--- by <a href="http://www.mukispace.com/pseudo-elements-10-examples/">MUKI</a></p>
+<p>為了區分偽元素和偽類，CSS3 的 guildline 將偽元素的寫法修正，以往只要加一個冒號「:」，現在則是加兩個冒號「::」，部分可支援的瀏覽器包含 webkit, firefox, opera。)<br>— by <a href="http://www.mukispace.com/pseudo-elements-10-examples/" target="_blank">MUKI</a></p>
 </blockquote>
-<h2>修改過程</h2>
-<h3>原本的html code</h3>
+<h2 id="修改過程">修改過程</h2>
+<h3 id="原本的html_code">原本的html code</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -563,6 +582,8 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 	<span class="tag">&lt;<span class="title">span</span>&gt;</span>正確觀念<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
 </pre></td></tr></table></figure>
+
+
 <figure class="highlight"><figcaption><span>scss</span></figcaption><table><tr><td class="gutter"><pre>1
 2
 3
@@ -574,24 +595,28 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 9
 10
 11
-</pre></td><td class="code"><pre><span class="preprocessor">.icon</span>{
-	display: inline-block<span class="comment">;</span>
-	position: relative<span class="comment">;</span>
-	padding: <span class="number">1</span>em<span class="comment">;</span>
-	padding-top: <span class="number">5</span>px<span class="comment">;</span>
-	span{
-		position: absolute<span class="comment">;</span>
-		bottom: -<span class="number">7</span>px<span class="comment">;</span>
-		left: <span class="number">12</span>px<span class="comment">;</span>
+</pre></td><td class="code"><pre><span class="class">.icon</span>{
+	<span class="attribute">display</span><span class="value">: inline-block;</span>
+	<span class="attribute">position</span><span class="value">: relative;</span>
+	<span class="attribute">padding</span><span class="value">: <span class="number">1</span>em;</span>
+	<span class="attribute">padding-top</span><span class="value">: <span class="number">5</span>px;</span>
+	<span class="tag">span</span>{
+		<span class="attribute">position</span><span class="value">: absolute;</span>
+		<span class="attribute">bottom</span><span class="value">: -<span class="number">7</span>px;</span>
+		<span class="attribute">left</span><span class="value">: <span class="number">12</span>px;</span>
 	}
 }
 </pre></td></tr></table></figure>
 
+
 <p>原本利用div &gt; span 的效果去把中文字顯現出來，所以在html的架構下，需要多一個<code>span</code>的tag。<br>且利用<code>img</code>去把圖片給show出來。</p>
-<h3>更改過後的html code</h3>
+<h3 id="更改過後的html_code">更改過後的html code</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-text</span>=<span class="value">"正確觀念"</span> <span class="attribute">class</span>=<span class="value">"concept_label icon"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span> <span class="comment">&lt;!-- html只剩一行！--&gt;</span>
 </pre></td></tr></table></figure>
+
+
+
 <figure class="highlight"><figcaption><span>scss</span></figcaption><table><tr><td class="gutter"><pre>1
 2
 3
@@ -608,33 +633,34 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 14
 15
 16
-</pre></td><td class="code"><pre><span class="preprocessor">.icon</span>{
-	display: inline-block<span class="comment">;</span>
-	position: relative<span class="comment">;</span>
-	padding: <span class="number">1</span>em<span class="comment">;</span>
-	padding-top: <span class="number">5</span>px<span class="comment">;</span>
+</pre></td><td class="code"><pre><span class="class">.icon</span>{
+	<span class="attribute">display</span><span class="value">: inline-block;</span>
+	<span class="attribute">position</span><span class="value">: relative;</span>
+	<span class="attribute">padding</span><span class="value">: <span class="number">1</span>em;</span>
+	<span class="attribute">padding-top</span><span class="value">: <span class="number">5</span>px;</span>
 
-	&amp;:before{
-		position: absolute<span class="comment">;</span>
-		bottom: -<span class="number">7</span>px<span class="comment">;</span>
-		left: <span class="number">12</span>px<span class="comment">;</span>
-		content: attr(data-text)<span class="comment">; &lt;!-- 關鍵作法 --&gt;</span>
+	&amp;<span class="pseudo">:before</span>{
+		<span class="attribute">position</span><span class="value">: absolute;</span>
+		<span class="attribute">bottom</span><span class="value">: -<span class="number">7</span>px;</span>
+		<span class="attribute">left</span><span class="value">: <span class="number">12</span>px;</span>
+		<span class="attribute">content</span><span class="value">: attr(data-text);</span> &lt;!-- 關鍵作法 --&gt;
 	}
 }
-<span class="preprocessor">.concept</span>_label{
-	background-image: url(../img/icon01_c<span class="preprocessor">.png</span>)<span class="comment">;</span>
+<span class="class">.concept_label</span>{
+	<span class="attribute">background-image</span><span class="value">: url(../img/icon01_c.png);</span>
 }
 </pre></td></tr></table></figure>
 
-<h3>觀念整理</h3>
+
+<h3 id="觀念整理">觀念整理</h3>
 <ol>
 <li>將中文字放入自訂的<code>data-*</code>屬性</li>
 <li>CSS中利用<code>::before</code>取代原本的<code>span</code></li>
 <li>利用<code>content: attr(data-text);</code>將date-text文字取出來</li>
 <li>將背景圖片利用另外一個class取代，以後維護性提高。</li>
 </ol>
-<h3><em>reference</em></h3>
-<p><a href="http://www.mukispace.com/pseudo-elements-10-examples/">那些 CSS 偽元素可以幫你做的 10 個效果</a></p>
+<h3 id="<em>reference</em>"><em>reference</em></h3>
+<p><a href="http://www.mukispace.com/pseudo-elements-10-examples/" target="_blank">那些 CSS 偽元素可以幫你做的 10 個效果</a></p>
 ]]></content>
     <category scheme="http://code.kpman.cc/tags/code/" term="code"/>
     <category scheme="http://code.kpman.cc/tags/css/" term="css"/>
@@ -647,11 +673,11 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
     <published>2013-04-28T13:09:37.000Z</published>
     <updated>2013-04-28T14:01:32.000Z</updated>
     <content type="html"><![CDATA[<p>分享一些目前知道的客製化theme技巧。<br>其實非常簡單，但是這些技巧如果沒有問過或是自己看過文件，<br>一時間也無法摸透，所以覺得應該值得把它記錄下來。</p>
-<a name="more"></a>
+<a id="more"></a>
 
-<h3>一、增加Disqus留言板</h3>
+<h3 id="一、增加Disqus留言板">一、增加Disqus留言板</h3>
 <ul>
-<li>到<a href="http://disqus.com/">Disqus</a>申請帳號</li>
+<li>到<a href="http://disqus.com/" target="_blank">Disqus</a>申請帳號</li>
 <li>右上角的Dashboard <code>+Add</code> 申請一個新的帳號</li>
 <li>將網址、name、shortname打好後，要把 <code>shortname</code> 記住！<ul>
 <li>修改本機目錄下的 <code>_confid.yml</code></li>
@@ -661,7 +687,7 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 </ul>
 <p>完成～</p>
 <p>※ 後記：<br>若你在申請完disqus貼到自己的blog上面，發現出現很多不必要的連結，請到disqus的dashboard去修改。<br>右上方 <code>Setting</code> -&gt; <code>Discovery</code> -&gt; 將Discovery level拉到最右邊，如下圖<br><img src="http://i.imgur.com/eeEjwka.png" alt="Discovery level"></p>
-<h3>二、增加右方側欄widget</h3>
+<h3 id="二、增加右方側欄widget">二、增加右方側欄widget</h3>
 <p>在標題就已經破梗囉XD<br>右方出現那些『Tag』『Tag Cloud』等欄位，其實就是修改widget過後得到的結果。<br>方法如下：</p>
 <ul>
 <li>找到 <code>theme/light/layout/_widget</code> ，可以發現很多 <strong>ejs</strong> 檔</li>
@@ -669,7 +695,7 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 <li>在 <code>theme/light/_config.yml</code> 內，修改<strong>widgets</strong>，在底下新增你要的ejs檔名即可～</li>
 </ul>
 <p>同樣方法可以自己寫ejs檔，一樣在<code>theme/light/_config.yml</code>加上檔名就可以自訂。</p>
-<h3>三、增加上方自訂全域導覽列</h3>
+<h3 id="三、增加上方自訂全域導覽列">三、增加上方自訂全域導覽列</h3>
 <p>預設為Home、Archives這兩個<br>當然得要自訂才爽XD</p>
 <p>方法一樣很簡單如下：</p>
 <ul>
@@ -677,13 +703,15 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 <li>預設狀況應該只有Home&amp;Archives<br> <img src="http://i.imgur.com/reKRQw4.png" alt="menu"></li>
 <li>自訂自己的menu，項目後面即為<strong>連結</strong>，可以直接使用<code>http://google.com</code>之類的連結。</li>
 </ul>
-<h3>四、自訂favicon</h3>
+<h3 id="四、自訂favicon">四、自訂favicon</h3>
 <ul>
 <li>首先你要有一個favicon.ico檔或是.png檔(這邊預設檔名為<code>favicon.png</code>)</li>
 <li>將檔案放在 <code>主目錄/source</code> 底下<br> <img src="http://i.imgur.com/Aar4ap9.png" alt="favicon path"></li>
 <li>找到 <code>theme/light/layout/_partial/head.ejs</code>做修改</li>
-<li>在裡面加上head.ejs檔內確認有以下這行code即可擁有自己的favicon  <pre><code><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"&lt;%- config.root %&gt;favicon.png"</span> <span class="attribute">rel</span>=<span class="value">"icon"</span>&gt;</span>
-</code></pre>
+<li>在裡面加上head.ejs檔內確認有以下這行code即可擁有自己的favicon  <figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre> <span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"&lt;%- config.root %&gt;favicon.png"</span> <span class="attribute">rel</span>=<span class="value">"icon"</span>&gt;</span>
+</pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p>以上介紹一些目前知道的自訂方法，<br>希望還有人可以跟我多介紹一些技巧，一起分享吧！</p>
@@ -698,12 +726,11 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
     <published>2013-04-26T16:24:36.000Z</published>
     <updated>2013-04-26T16:28:34.000Z</updated>
     <content type="html"><![CDATA[<p>有鑑於 <code>kpman.github.io</code> 這一個網址實在太難記了，所以就決定將自己有的domain利用subdomain的方式指過來。<br>以下的介紹是我的個案，我利用subdomain而非TLD去做。</p>
-<a name="more"></a>
+<a id="more"></a>
 
-<h2>一、擁有自己的domain</h2>
-<p>雖然像是廢話XD
-但這邊推薦去<a href="www.godaddy.com/">GoDaddy</a>買domain.<br>方便又快，在更新domain的時間非常快速，理論上一個小時內就可以指到你要的ip位置。</p>
-<h2>二、到GoDaddy設定subdomain</h2>
+<h2 id="一、擁有自己的domain">一、擁有自己的domain</h2>
+<p>雖然像是廢話XD<br>但這邊推薦去<a href="www.godaddy.com/">GoDaddy</a>買domain.<br>方便又快，在更新domain的時間非常快速，理論上一個小時內就可以指到你要的ip位置。</p>
+<h2 id="二、到GoDaddy設定subdomain">二、到GoDaddy設定subdomain</h2>
 <ol>
 <li>進到DNS manager</li>
 <li><p>新增一筆CNAME</p>
@@ -712,15 +739,15 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 <li><p>GoDaddy部分完成</p>
 </li>
 </ol>
-<h2>三、在本機端設置CNAME檔</h2>
+<h2 id="三、在本機端設置CNAME檔">三、在本機端設置CNAME檔</h2>
 <p>這邊要在 <code>主目錄-source</code> 底下放一個檔名為 <code>CNAME</code> 的檔案<br>裡面為你要指向的路徑，這邊我是指向 <code>http://code.kpman.cc</code></p>
 <p><img src="http://i.imgur.com/gyMS7U6.png" alt="path"></p>
 <p>至於如何設置CNAME檔案，我是利用在github repo上面的create new file</p>
 <p><img src="http://i.imgur.com/AHcVLBW.png" alt="create new file"></p>
 <p>設置完之後clone下來，然後複製進去<code>主目錄-source</code> 底下XD<br>（有人知道怎樣做比較好嗎？）</p>
 <p>理論上這樣子就完成囉！<br>如果有漏掉的麻煩留言給我一起討論:)</p>
-<h3><em>reference</em></h3>
-<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">官方文件</a></p>
+<h3 id="<em>reference</em>"><em>reference</em></h3>
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">官方文件</a></p>
 ]]></content>
     <category scheme="http://code.kpman.cc/tags/domain/" term="domain"/>
     <category scheme="http://code.kpman.cc/tags/hexo/" term="hexo"/>
@@ -735,9 +762,9 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
     <updated>2013-05-20T03:41:25.000Z</updated>
     <content type="html"><![CDATA[<p>是這樣的，一直想要找一個空間，可以清爽的放code，可以跟其他人交流<br>有鑑於系上好朋友們紛紛都建立起自己的部落格，因此我也加入了這個行列。</p>
 <p>報著取之於人，回饋之於人的心情，我想要把自己從無到有架設這一個blog的過程記錄下來<br>謝謝那些願意指導我的朋友們！</p>
-<a name="more"></a>
+<a id="more"></a>
 
-<h2>一、本機環境設定</h2>
+<h2 id="一、本機環境設定">一、本機環境設定</h2>
 <ol>
 <li><p>首先你要有node.js，這是一套快速、簡單且功能強大的 Node.js 網誌框架。</p>
 </li>
@@ -745,7 +772,7 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 </li>
 </ol>
 <p>理論上這樣就完成了，我個人在裝的時候npm不給裝，發現前面加上 <code>sudo</code> 就可以解決。</p>
-<h2>二、github帳號設定</h2>
+<h2 id="二、github帳號設定">二、github帳號設定</h2>
 <ol>
 <li><p>你要申請一個自己的github帳號</p>
 </li>
@@ -755,51 +782,56 @@ wordpress資料夾：/<span class="keyword">var</span>/www/blog
 <li><p>Repository name填入 <code>github帳號.github.com</code> 用來創建github page</p>
 </li>
 </ol>
-<h2>三、開始使用hexo</h2>
+<h2 id="三、開始使用hexo">三、開始使用hexo</h2>
 <p>建立hexo</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> init
+</pre></td><td class="code"><pre>hexo init
 </pre></td></tr></table></figure>
 
-<p>建立一篇文章，將會是<a href="http://markdown.tw">Markdown</a>形式，可以到source/_post/title.md去修改</p>
+
+<p>建立一篇文章，將會是<a href="http://markdown.tw" target="_blank">Markdown</a>形式，可以到source/_post/title.md去修改</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> new <span class="string">"title"</span>
+</pre></td><td class="code"><pre>hexo <span class="keyword">new</span> <span class="string">"title"</span>
 </pre></td></tr></table></figure>
+
 
 <p>生成public檔</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> generate
+</pre></td><td class="code"><pre>hexo <span class="keyword">generate</span>
 </pre></td></tr></table></figure>
+
 
 <p>開啟server觀看（預設在localhost:4000）</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> server
+</pre></td><td class="code"><pre>hexo <span class="keyword">server</span>
 </pre></td></tr></table></figure>
 
-<h2>四、發佈到github上面</h2>
+
+<h2 id="四、發佈到github上面">四、發佈到github上面</h2>
 <p>修改 <code>_config.yml</code> 檔案，最下面加上</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
-</pre></td><td class="code"><pre><span class="method">deploy:</span>
-  <span class="method">type:</span> github
-  <span class="method">repository:</span> git@github.<span class="method">com:</span>github帳號/github帳號.github.com.git
-  <span class="method">branch:</span> master
+</pre></td><td class="code"><pre><span class="label">deploy:</span>
+  type: github
+  repository: git@github<span class="preprocessor">.com</span>:github帳號/github帳號<span class="preprocessor">.github</span><span class="preprocessor">.com</span><span class="preprocessor">.git</span>
+  branch: master
 </pre></td></tr></table></figure>
 
-<p>我那時候用git的時候，沒有ssh認證，如果遇到相同問題可以看<a href="https://help.github.com/articles/generating-ssh-keys">這篇</a>。<br>照著上面的指令走就可以完成，唯獨mac裡面似乎內建 <code>id_rsa</code> 這把key，這邊我不清楚XD</p>
+
+<p>我那時候用git的時候，沒有ssh認證，如果遇到相同問題可以看<a href="https://help.github.com/articles/generating-ssh-keys" target="_blank">這篇</a>。<br>照著上面的指令走就可以完成，唯獨mac裡面似乎內建 <code>id_rsa</code> 這把key，這邊我不清楚XD</p>
 <p>接著只要輸入</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> deploy
+</pre></td><td class="code"><pre>hexo deploy
 </pre></td></tr></table></figure>
 
 <p>等待10分鐘，你的網誌理論上就架好了！網址為 <code>http://github帳號.github.io</code></p>
-<h3><em>reference</em></h3>
+<h3 id="<em>reference</em>"><em>reference</em></h3>
 <ol>
-<li><p><a href="http://zespia.tw/hexo/zh-TW/">官方文件</a>非常詳盡，重點是<em>中文</em>！  </p>
+<li><p><a href="http://zespia.tw/hexo/zh-TW/" target="_blank">官方文件</a>非常詳盡，重點是<em>中文</em>！  </p>
 </li>
-<li><p>強者小熊<a href="http://eva0919.github.io/2013/04/21/%E4%BD%BF%E7%94%A8hexo%E4%BB%A5%E5%8F%8Agithub-page%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E9%83%A8%E8%90%BD%E6%A0%BC/">教學文</a></p>
+<li><p>強者小熊<a href="http://eva0919.github.io/2013/04/21/%E4%BD%BF%E7%94%A8hexo%E4%BB%A5%E5%8F%8Agithub-page%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E9%83%A8%E8%90%BD%E6%A0%BC/" target="_blank">教學文</a></p>
 </li>
 </ol>
 ]]></content>

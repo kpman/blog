@@ -1,87 +1,55 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  
-  <title>EC2利用tasksel架wordpress經驗分享 | kpman | code</title>
-  <meta name="author" content="kpman | code">
-  
-  <meta name="description" content="看了這麼久的雲端資源，總算開了算是自己真正學到東西的第一台Amazon EC2 server，目的是想要練習把wordpress架到EC2上，在此分享我的架設經驗。">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>EC2利用tasksel架wordpress經驗分享</title>
+  <meta name="description" content="記錄開發過程大小事" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta property="og:title" content="EC2利用tasksel架wordpress經驗分享"/>
-  <meta property="og:site_name" content="kpman | code"/>
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="kpman | code">
 
   
-    <meta property="og:image" content="undefined"/>
+  
   
 
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="kpman | code" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
   
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-40497628-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
 </head>
 
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">kpman | code</a></h1>
-  <h2><a href="/">記錄開發過程大小事</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-      <li><a href="https://www.facebook.com/chienhsun.tseng.9">Facebook</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-08-20T18:17:04.000Z"><a href="/2013/08/21/ec2利用tasksel架wordpress經驗分享/">Aug 21 2013</a></time>
-      
-      
-  
-    <h1 class="title">EC2利用tasksel架wordpress經驗分享</h1>
+<body class="post-template">
+
   
 
+<main class="content" role="main">
+  <article class="post">
+    <header class="post-header">
+      <a class="blog-logo" href="/">
+        
+        <img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a>
+        
+      </a>
     </header>
-    <div class="entry">
-      
-        <p>看了這麼久的雲端資源，總算開了算是自己真正學到東西的第一台Amazon EC2 server，目的是想要練習把wordpress架到EC2上，在此分享我的架設經驗。</p>
+    <span class="post-meta">
+      <time datetime="2013-08-20T18:17:04.000Z" itemprop="datePublished">Aug 21 2013</time>
+       on <a href='/tags/wordpress/' style='margin:0 5px;'>wordpress</a><a href='/tags/Amazon/' style='margin:0 5px;'>Amazon</a><a href='/tags/EC2/' style='margin:0 5px;'>EC2</a><a href='/tags/tasksel/' style='margin:0 5px;'>tasksel</a><a href='/tags/ubuntu/' style='margin:0 5px;'>ubuntu</a><a href='/tags/AWS/' style='margin:0 5px;'>AWS</a>
+    </span>
+    <h1 class="post-title">EC2利用tasksel架wordpress經驗分享</h1>
+    <section class="post-content">
+      <p>看了這麼久的雲端資源，總算開了算是自己真正學到東西的第一台Amazon EC2 server，目的是想要練習把wordpress架到EC2上，在此分享我的架設經驗。</p>
 <p><img src="http://blog.programmableweb.com/wp-content/amazon-web-services1.png" alt="Amazon web service"></p>
-<a name="more"></a>
+<a id="more"></a>
 
-<h2>一、擁有AWS帳號</h2>
-<p>關於開啟AWS的過程，實際走過一遍之後，阿正老師的<a href="http://blog.soft.idv.tw/?p=823&amp;page=2">這篇</a>，其內寫的不錯，推薦跟著走一遍，就會了解很多。</p>
-<h2>二、開啟自己的instance</h2>
-<p>在實際走過後，會發現阿正老師<a href="http://blog.soft.idv.tw/?p=824">這篇</a>真的超用心，因此接下來主要會利用這篇，再加上些我的補充。</p>
+<h2 id="一、擁有AWS帳號">一、擁有AWS帳號</h2>
+<p>關於開啟AWS的過程，實際走過一遍之後，阿正老師的<a href="http://blog.soft.idv.tw/?p=823&amp;page=2" target="_blank">這篇</a>，其內寫的不錯，推薦跟著走一遍，就會了解很多。</p>
+<h2 id="二、開啟自己的instance">二、開啟自己的instance</h2>
+<p>在實際走過後，會發現阿正老師<a href="http://blog.soft.idv.tw/?p=824" target="_blank">這篇</a>真的超用心，因此接下來主要會利用這篇，再加上些我的補充。</p>
 <ul>
 <li>instance地理位置</li>
 </ul>
@@ -101,7 +69,7 @@
 <blockquote>
 <p>.pem檔需要存好，一台主機配對一個key pair，且不能做更改，</p>
 </blockquote>
-<h2>三、設定Security Group</h2>
+<h2 id="三、設定Security_Group">三、設定Security Group</h2>
 <p>在沒有設定security group的時候，新開的instance可能是鎖起來的，會有SSH連線上的問題。</p>
 <ol>
 <li>進入console.aws.amazon.com</li>
@@ -112,7 +80,7 @@
 <blockquote>
 <p>記得開啟SSH(20)、HTTP(80)</p>
 </blockquote>
-<h2>四、申請Elastic IP</h2>
+<h2 id="四、申請Elastic_IP">四、申請Elastic IP</h2>
 <p>每一個instance都應該要綁定一個elastice ip，未來可以作為連線使用。</p>
 <ol>
 <li>同上，進入console.aws.amazon.com</li>
@@ -124,7 +92,7 @@
 <p>申請完elastic ip後，原本的Public domain前半部分會改變為新的ip</p>
 </blockquote>
 <p><strong><em>* 其實我在實作時，是先做了SSH連線，後來在去申請elastic ip，結果associate完後，我又要ssh連線，發現沒有辦法登入，之後才瞭解是做了elastic ip後，連線的ip也需要一並跟著改變。</em></strong></p>
-<h2>五、SSH連線進入自己的instance</h2>
+<h2 id="五、SSH連線進入自己的instance">五、SSH連線進入自己的instance</h2>
 <ol>
 <li>打開終端機（推薦iterm）</li>
 <li><code>chmod 600 ~/.pem</code><br>要記得把.pem檔改權限，不然會登不進去</li>
@@ -139,36 +107,38 @@
 <blockquote>
 <p>pem檔的權限要更改為600</p>
 </blockquote>
-<h2>六、環境設定</h2>
+<h2 id="六、環境設定">六、環境設定</h2>
 <p>剛進到instance，記得將環境設定一下</p>
 <ol>
 <li><code>sudo apt-get update</code> + <code>sudo apt-get upgrade</code></li>
 <li>如果覺得一直sudo很麻煩，可以利用<code>sudo su</code>取得root權限</li>
 </ol>
 <hr>
-<h3># 安裝tasksel</h3>
+<h3 id="#_安裝tasksel"># 安裝tasksel</h3>
 <ol>
 <li>是ubuntu底下的lamp懶人包</li>
-<li>推薦<a href="http://howtounix.info/howto/LAMP-on-Ubuntu-with-tasksel-tool">教學文</a></li>
+<li>推薦<a href="http://howtounix.info/howto/LAMP-on-Ubuntu-with-tasksel-tool" target="_blank">教學文</a></li>
 <li>開始安裝taskel   <code>sudo apt-get install tasksel</code></li>
 <li>安裝lamp-server   <code>sudo tasksel install lamp-server</code></li>
 </ol>
-<h3># 安裝phpmyadmin</h3>
+<h3 id="#_安裝phpmyadmin"># 安裝phpmyadmin</h3>
 <ol>
 <li><code>sudo apt-get install phpmyadmin</code></li>
-<li><a href="http://linadonis.pixnet.net/blog/post/27585552-ubuntu-server-%E5%AE%89%E8%A3%9D-phpmyadmin">reference</a></li>
+<li><a href="http://linadonis.pixnet.net/blog/post/27585552-ubuntu-server-%E5%AE%89%E8%A3%9D-phpmyadmin" target="_blank">reference</a></li>
 </ol>
-<h3># 安裝wordpress</h3>
+<h3 id="#_安裝wordpress"># 安裝wordpress</h3>
 <p><img src="http://wow-wp.org/wp-content/uploads/2011/10/wordpress.png" alt="wordpress"></p>
 <ol>
-<li><a href="https://www.digitalocean.com/community/articles/how-to-install-wordpress-on-ubuntu-12-04">超棒教學文</a> 我是跟著文章走，裡面紅色的字記得改成自己的</li>
+<li><a href="https://www.digitalocean.com/community/articles/how-to-install-wordpress-on-ubuntu-12-04" target="_blank">超棒教學文</a> 我是跟著文章走，裡面紅色的字記得改成自己的</li>
+</ol>
+<ul>
 <li>cd /var/www</li>
 <li>下載wordpress包<br><code>wget http://wordpress.org/latest.tar.gz</code>   </li>
 <li>解壓縮<br><code>tar -xzvf latest.tar.gz</code></li>
 <li>進到mysql mode<br><code>mysql -u root -p</code></li>
 <li>剩下有紅字，推薦看連結XD</li>
-</ol>
-<h2>七、測試連線</h2>
+</ul>
+<h2 id="七、測試連線">七、測試連線</h2>
 <p>當你安裝完後，事實上可以利用public domain來連線看看<br>直接在console裡面找到instance的public domian，連線看看是否成功</p>
 <ol>
 <li><code>cd /var/www</code> </li>
@@ -179,170 +149,94 @@
 <li>利用public domain/test.php連線測試，看到php的資訊就成功了！</li>
 <li>public domain/wordpress 也可以看見你的wordpress有沒有架成功！</li>
 </ol>
-<h2>IP連接instance</h2>
+<h2 id="IP連接instance">IP連接instance</h2>
 <p>如果你有自己的ip，想要指到EC2的話，按照下面作法。</p>
 <ol>
 <li>到godday的DNS manager</li>
+</ol>
+<ul>
 <li>設定你的IP的<code>A record</code></li>
 <li>指向instance的<code>Elastic IP</code>即可</li>
-</ol>
+</ul>
 <p><strong><em>reference</em></strong></p>
 <ul>
-<li><a href="http://blog.soft.idv.tw/?p=823&amp;page=2">阿正老師上篇</a> 阿正老師這兩篇必讀</li>
-<li><a href="http://blog.soft.idv.tw/?p=824">阿正老師下篇</a> 主機實戰篇</li>
-<li><a href="http://blog.rx836.tw/blog/first-amazon-web-services/">免費玩Amazon Web Service(AWS) EC2</a> 開機器寫的很詳細，圖文並茂</li>
-<li><a href="http://coenraets.org/blog/2012/01/setting-up-wordpress-on-amazon-ec2-in-5-minutes/">Setting Up WordPress on Amazon EC2 in 5 minutes</a> 根本神教學，我是受這篇感動才想要把自己的過程給記錄下來。</li>
-<li><a href="http://linadonis.pixnet.net/blog/post/27585552-ubuntu-server-%E5%AE%89%E8%A3%9D-phpmyadmin">Ubuntu Server 安裝 Phpmyadmin</a> phpmyadmin圖文教學</li>
-<li><a href="http://codex.wordpress.org/Giving_WordPress_Its_Own_Directory">Giving WordPress Its Own Directory</a> 更換wordpress的路徑位置指向</li>
+<li><a href="http://blog.soft.idv.tw/?p=823&amp;page=2" target="_blank">阿正老師上篇</a> 阿正老師這兩篇必讀</li>
+<li><a href="http://blog.soft.idv.tw/?p=824" target="_blank">阿正老師下篇</a> 主機實戰篇</li>
+<li><a href="http://blog.rx836.tw/blog/first-amazon-web-services/" target="_blank">免費玩Amazon Web Service(AWS) EC2</a> 開機器寫的很詳細，圖文並茂</li>
+<li><a href="http://coenraets.org/blog/2012/01/setting-up-wordpress-on-amazon-ec2-in-5-minutes/" target="_blank">Setting Up WordPress on Amazon EC2 in 5 minutes</a> 根本神教學，我是受這篇感動才想要把自己的過程給記錄下來。</li>
+<li><a href="http://linadonis.pixnet.net/blog/post/27585552-ubuntu-server-%E5%AE%89%E8%A3%9D-phpmyadmin" target="_blank">Ubuntu Server 安裝 Phpmyadmin</a> phpmyadmin圖文教學</li>
+<li><a href="http://codex.wordpress.org/Giving_WordPress_Its_Own_Directory" target="_blank">Giving WordPress Its Own Directory</a> 更換wordpress的路徑位置指向</li>
 </ul>
 <blockquote>
 <p>如果有問題，或者我有寫錯的地方，歡迎留言讓我知道！</p>
 </blockquote>
 
-      
-    </div>
-    <footer>
-      
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/wordpress/">wordpress</a>, <a href="/tags/Amazon/">Amazon</a>, <a href="/tags/EC2/">EC2</a>, <a href="/tags/tasksel/">tasksel</a>, <a href="/tags/ubuntu/">ubuntu</a>, <a href="/tags/AWS/">AWS</a>
-  </div>
+    </section>
+      <section id="comment">
+          <h1 class="title">Comments</h1>
 
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+          
+          <div id="disqus_thread">
+              <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+          
+      </section>
+    <footer class="post-footer">
+      <section class="author">
+        <h4>kpman | code</h4>
+        <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+      </section>
 
-      
-      <div class="clearfix"></div>
+      <section class="share">
+        <h4>Share this post</h4>
+        <a class="icon-twitter" href="http://twitter.com/share?url=http://code.kpman.cc/2013/08/21/ec2利用tasksel架wordpress經驗分享/"
+          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <span class="hidden">Twitter</span>
+        </a>
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://code.kpman.cc/2013/08/21/ec2利用tasksel架wordpress經驗分享/"
+          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <span class="hidden">Facebook</span>
+        </a>
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://code.kpman.cc/2013/08/21/ec2利用tasksel架wordpress經驗分享/"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <span class="hidden">Google+</span>
+        </a>
+      </section>
     </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">Comments</h1>
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
-    <input type="hidden" name="q" value="site:code.kpman.cc">
-  </form>
-</div>
-
-  
-<div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2013/11/30/sublime-text-2-實用套件/">Sublime Text 2 實用套件</a>
-      </li>
-    
-      <li>
-        <a href="/2013/08/22/wordpress解決permalink固定網址問題/">wordpress解決permalink固定網址問題</a>
-      </li>
-    
-      <li>
-        <a href="/2013/08/21/ec2利用tasksel架wordpress經驗分享/">EC2利用tasksel架wordpress經驗分享</a>
-      </li>
-    
-      <li>
-        <a href="/2013/06/05/sublime-text-2-實用技巧/">Sublime Text 2 實用技巧</a>
-      </li>
-    
-      <li>
-        <a href="/2013/05/20/2013-jsdc所見聞/">2013 JSDC所見聞</a>
-      </li>
-    
-  </ul>
-</div>
+  </article>
+</main>
 
 
   
-<div class="widget tagcloud">
-  <h3 class="title">Tag Cloud</h3>
-  <div class="entry">
-    <a href="/tags/AWS/" style="font-size: 11.90px;">AWS</a><a href="/tags/Amazon/" style="font-size: 16.67px;">Amazon</a><a href="/tags/EC2/" style="font-size: 16.19px;">EC2</a><a href="/tags/F2E/" style="font-size: 10.95px;">F2E</a><a href="/tags/JSDC/" style="font-size: 10.48px;">JSDC</a><a href="/tags/apache2/" style="font-size: 11.43px;">apache2</a><a href="/tags/code/" style="font-size: 19.05px;">code</a><a href="/tags/css/" style="font-size: 12.86px;">css</a><a href="/tags/domain/" style="font-size: 10.00px;">domain</a><a href="/tags/github/" style="font-size: 18.57px;">github</a><a href="/tags/hexo/" style="font-size: 19.52px;">hexo</a><a href="/tags/htaccess/" style="font-size: 17.14px;">htaccess</a><a href="/tags/html/" style="font-size: 13.33px;">html</a><a href="/tags/rss/" style="font-size: 13.81px;">rss</a><a href="/tags/subdomain/" style="font-size: 15.24px;">subdomain</a><a href="/tags/sublime-text-2/" style="font-size: 18.10px;">sublime text 2</a><a href="/tags/tasksel/" style="font-size: 14.76px;">tasksel</a><a href="/tags/theme/" style="font-size: 14.29px;">theme</a><a href="/tags/ubuntu/" style="font-size: 12.38px;">ubuntu</a><a href="/tags/url/" style="font-size: 15.71px;">url</a><a href="/tags/wordpress/" style="font-size: 17.62px;">wordpress</a>
-  </div>
-</div>
-
-
-  <div class="widget link">
-  <h3 class="title">Link</h3>
-  <ul class="entry">
-  	<li><a href="http://lovemew67.github.io/" target="_blank">FireCat</a></li>
-  	<li><a href="http://eva0919.github.io/" target="_blank">Mikeva</a></li>
-  	<li><a href="http://michaelhsu.tw/" target="_blank">Michael Hsu.tw</a></li>
-  	<li><a href="http://andikan.github.io/" target="_blank">Andikan Blog</a></li>
-
-  </ul>
-</div>
-
-  <div class="widget recent_comment">
-  <h3 class="title">Recent comment</h3>
-  <script type="text/javascript" src="http://kpmancode.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200&hide_mods=0"></script>
-</div>
-</aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
+<footer class="site-footer">
   
-  &copy; 2013 
-<a href="http://code.kpman.cc">
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">kpman | code</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
 
-  kpman | code
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
- </a>
-  
-</div>
-<div class="clearfix"></div></footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
 
 
 <script type="text/javascript">
-var disqus_shortname = 'kpmancode';
+    var disqus_shortname = 'kpmancode';
 
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
 </script>
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script src="/js/custom.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
 
 </body>
 </html>
