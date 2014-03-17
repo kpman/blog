@@ -4,7 +4,7 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2014-03-16T18:52:42.779Z</updated>
+  <updated>2014-03-17T01:43:39.357Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
@@ -16,7 +16,7 @@
     <link href="http://code.kpman.cc/2013/11/30/sublime-text-2-實用套件/"/>
     <id>http://code.kpman.cc/2013/11/30/sublime-text-2-實用套件/</id>
     <published>2013-11-29T16:02:48.000Z</published>
-    <updated>2013-11-29T17:45:05.000Z</updated>
+    <updated>2014-03-17T01:43:18.000Z</updated>
     <content type="html"><![CDATA[<p><img src="http://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png" alt="Sublime Text 2" title="Sublime Text 2"></p>
 <p>Sublime Text 2 是網頁開發者都不陌生的一套編輯器，除了單純的文字編輯外，它還有很多實用的套件，這篇來介紹我平常常用的Sublime Text 2 套件。</p>
 <a id="more"></a>
@@ -34,9 +34,9 @@
 3
 4
 5
-</pre></td><td class="code"><pre><span class="number">1.</span> 開啟Sublime Text <span class="number">2</span>
-<span class="number">2.</span> 開啟console，快捷鍵ctrl+`
-<span class="number">3.</span> 貼上以下程式碼
+</pre></td><td class="code"><pre>開啟Sublime Text <span class="number">2</span>
+開啟console，快捷鍵ctrl+`
+貼上以下程式碼
 
 import urllib2,<span class="built_in">os</span>; pf=<span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); <span class="built_in">os</span>.makedirs( ipp ) <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">os</span>.path.exists(ipp) <span class="keyword">else</span> None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( <span class="built_in">os</span>.path.join( ipp, pf), <span class="string">'wb'</span> ).write( urllib2.urlopen( <span class="string">'http://sublime.wbond.net/'</span> +pf.replace( <span class="string">' '</span>,<span class="string">'%20'</span> )).read()); <span class="built_in">print</span>( <span class="string">'Please restart Sublime Text to finish installation'</span>)
 </pre></td></tr></table></figure>
@@ -53,10 +53,10 @@ import urllib2,<span class="built_in">os</span>; pf=<span class="string">'Packag
 <li>重新啟動Sublime Text 2 即安裝完成。</li>
 </ol>
 <h2 id="必裝套件">必裝套件</h2>
-<h3 id="一、<a_href="https://sublime-wbond-net/packages/BracketHighlighter" target="_blank">BracketHighlighter</a>">一、<a href="https://sublime.wbond.net/packages/BracketHighlighter" target="_blank">BracketHighlighter</a></h3>
+<h4 id="一、BracketHighlighter">一、BracketHighlighter</h4>
 <p><img src="http://i.imgur.com/2ovEcG8.png" alt=""></p>
 <p>這是一套超過196K人裝的套件，如圖所示，寫html常常遇到不知道close tag在哪邊，裡用它可以清楚的將close tag標示出來。<br>另外它有一個很好的地方，就是會在每一行的前面列出來目前的tag，不同的語言還有不同的icon，因此可以更快的知道自己的位置。</p>
-<h3 id="二、<a_href="https://sublime-wbond-net/packages/Emmet" target="_blank">Emmet</a>">二、<a href="https://sublime.wbond.net/packages/Emmet" target="_blank">Emmet</a></h3>
+<h4 id="二、Emmet">二、Emmet</h4>
 <p>以前它叫做Zen coding，現在則改為Emmet。</p>
 <p>可以將需要重複的html用很簡短的方式寫出來，例如：</p>
 <ol>
@@ -70,7 +70,7 @@ import urllib2,<span class="built_in">os</span>; pf=<span class="string">'Packag
 </pre></td></tr></table></figure>
 
 <p>在HTML5的文件下，<code>!+tab</code> 會有出現HTML5的snippet出現，非常好用！</p>
-<h3 id="三、<a_href="https://sublime-wbond-net/packages/Pretty%20JSON" target="_blank">Pretty_Json</a>">三、<a href="https://sublime.wbond.net/packages/Pretty%20JSON" target="_blank">Pretty Json</a></h3>
+<h4 id="三、Pretty_Json">三、Pretty Json</h4>
 <p>有利用到JSON的人，想必一定會為了格式上面的問題而煩惱，只要裝上這個，JSON立刻變得很好看。</p>
 <p>裝完之後，把你要修改的JSON選取起來，按下快捷鍵</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -78,7 +78,7 @@ import urllib2,<span class="built_in">os</span>; pf=<span class="string">'Packag
 </pre></td></tr></table></figure>
 
 <p>立刻就可以把JSON變得很漂亮，也可以自行進去定義縮排大小。</p>
-<h3 id="四、<a_href="https://github-com/thinkpixellab/flatland" target="_blank">flat_theme</a>">四、<a href="https://github.com/thinkpixellab/flatland" target="_blank">flat theme</a></h3>
+<h4 id="四、flat_theme">四、flat theme</h4>
 <p><img src="http://i.imgur.com/pvxRMlX.png" alt="flatland"></p>
 <p>其實這個套件全名是flatland才對，可以把Sublime Text 2的整體環境變得扁平化。</p>
 <p>安裝方法：</p>
@@ -87,7 +87,7 @@ import urllib2,<span class="built_in">os</span>; pf=<span class="string">'Packag
 <li>輸入Theme - Flatland即可</li>
 </ol>
 <hr>
-<p>以上介紹了一些我常用的Sublime Text 2 套件，但一直沒有找到好看的主題，如果你有推薦的主題，非常歡迎XD</p>
+<p>以上介紹了一些我常用的Sublime Text 2 套件，但一直沒有找到好看的主題，如果你有推薦的主題，非常歡迎交流！</p>
 ]]></content>
     <category scheme="http://code.kpman.cc/tags/sublime text 2/" term="sublime text 2"/>
   </entry>
