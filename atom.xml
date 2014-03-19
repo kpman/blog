@@ -4,13 +4,40 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2014-03-17T01:50:20.593Z</updated>
+  <updated>2014-03-19T10:11:05.126Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
     <email><![CDATA[s92f002@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[Web好UI設計法則 1]]></title>
+    <link href="http://code.kpman.cc/2014/03/19/web好ui設計法則-1/"/>
+    <id>http://code.kpman.cc/2014/03/19/web好ui設計法則-1/</id>
+    <published>2014-03-19T09:11:15.000Z</published>
+    <updated>2014-03-19T10:09:25.000Z</updated>
+    <content type="html"><![CDATA[<p>本文譯自<a href="http://goodui.org" target="_blank">goodui</a>，會寫這系列並非逐字翻譯，而是在研讀過後利用自己的方式表達並記錄分享之，全文圖片版權皆為goodui.org所有。</p>
+<p><img src="http://i.imgur.com/ve2iCpO.png" alt="goodui"></p>
+<h2 id="1、頁面單欄式而非多欄式">1、頁面單欄式而非多欄式</h2>
+<p>採用單欄式的好處是可以讓讀者自然而然的了解閱讀方向為由上而下，採用多欄式的頁面設計，會有額外增加的risk，會讓讀者容易分心。在文章（頁面）的最後採用call to action，引導讀者點進你想要的導向頁面。</p>
+<p><img src="http://goodui.org/images/idea001.png" alt="idea001"></p>
+<h2 id="2、試著給些小禮物">2、試著給些小禮物</h2>
+<p>好朋友間互相送禮，是很正常不過的對吧？在面對你的使用者也是一樣的，根據互惠原則，給禮物是一個激勵使用者的手法，讓使用者會更願意回來你的網站。</p>
+<p><img src="http://goodui.org/images/idea002.png" alt="idea002"></p>
+<h2 id="3、把相似功能的介面合併在一起">3、把相似功能的介面合併在一起</h2>
+<p>在過去，我們很容易將功能差不多的介面，在頁面上分成好多部分。當你的UI越分散，那麼該網站的使用者其學習曲線便越高，試著重新設計你的UI吧，把那些功能相近的按鈕、區塊放在一起。</p>
+<p><img src="http://goodui.org/images/idea003.png" alt="idea003"></p>
+<h2 id="4、讓別人來說，而非自己說">4、讓別人來說，而非自己說</h2>
+<p>列出那些曾經在social media討論本身產品的人，利用他們的見證會比自己在網站上面寫還來的有用。「Our customers say」會比「We are awesome」還更具有說服力。</p>
+<p><img src="http://goodui.org/images/idea004.png" alt="idea004"></p>
+<h2 id="5、重複你的主要訴求">5、重複你的主要訴求</h2>
+<p>你的call to action是網頁中重要的項目，尤其在很長的頁面時，不要吝嗇讓它出現超過一次。當使用者滑到頁面底端時，是該他們做決定的時候了，離開或是完成你的主要訴求。</p>
+<p><img src="http://goodui.org/images/idea005.png" alt="idea005"></p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/goodui/" term="goodui"/>
+    <category scheme="http://code.kpman.cc/tags/UI/" term="UI"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[Sublime Text 2 實用套件]]></title>
     <link href="http://code.kpman.cc/2013/11/30/sublime-text-2-實用套件/"/>
