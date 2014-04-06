@@ -131,6 +131,36 @@
 </li>
 </ul>
 <p>如此一來便可以在<code>http://localhost/專案資料夾/index.php/page</code> 看到靜態頁面了。</p>
+<h2 id="4、移除CI_URL上的index-php">4、移除CI URL上的index.php</h2>
+<p>因為每次網址上面都需要有index.php，覺得不好看，因此兩個步驟把它改掉。</p>
+<ol>
+<li><p>在root加上<code>.htaccess</code>檔，內容如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="keyword"><span class="common">RewriteEngine</span></span> <span class="literal">on</span>
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="number">$1</span> !^(index\.php)
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{REQUEST_FILENAME}</span> !-f
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{REQUEST_FILENAME}</span> !-d
+<span class="keyword"><span class="common">RewriteRule</span></span> ^(.*)$ index.php/<span class="number">$1</span><span class="sqbracket"> [L,QSA]</span>
+</pre></td></tr></table></figure>
+</li>
+<li><p>修改apache設定，將httpd.conf改掉。<br>原本AllowOverride none改成All即可。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>&lt;<span class="keyword">Directory</span> /Library/WebServer/Documents&gt;
+    <span class="keyword">Options</span> FollowSymLinks
+    AllowOverride <span class="keyword">All</span>
+&lt;/<span class="keyword">Directory</span>&gt;
+</pre></td></tr></table></figure>
+</li>
+<li><p>重新啟動apache <code>sudo apachectl restart</code></p>
+</li>
+</ol>
 <p><em>後記</em></p>
 <p>因尚有其他專案，故本專案檔是全部在一個資料夾內，非直接在web server的root實作。</p>
 
