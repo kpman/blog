@@ -4,13 +4,105 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2014-03-20T05:48:30.059Z</updated>
+  <updated>2014-04-06T14:22:09.100Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
     <email><![CDATA[s92f002@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[CI初體驗for靜態頁面]]></title>
+    <link href="http://code.kpman.cc/2014/04/06/ci初體驗for靜態頁面/"/>
+    <id>http://code.kpman.cc/2014/04/06/ci初體驗for靜態頁面/</id>
+    <published>2014-04-06T13:30:35.000Z</published>
+    <updated>2014-04-06T14:20:52.000Z</updated>
+    <content type="html"><![CDATA[<p>第一次因為專案需要，而跟PHP後端工程師配合，我們選定了<a href="http://www.codeigniter.org.tw/" target="_blank">CI</a>這套framework來使用，對於CI算是第一次接觸，因此想把從無到有的架設過程給記錄下來。</p>
+<p><img src="http://php.quicoto.com/wp-content/uploads/2013/07/codeigniter-logo.png" alt="codeigniter"></p>
+<a id="more"></a>
+
+<h2 id="1、擁有php環境">1、擁有php環境</h2>
+<p>Mac內建Apache，只要打開即可。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> apachectl start
+</pre></td></tr></table></figure>
+
+<h2 id="2、安裝CI">2、安裝CI</h2>
+<ul>
+<li>到<a href="http://www.codeigniter.org.tw/user_guide/installation/downloads.html" target="_blank">官網</a>下載整份文件檔</li>
+<li>放進server的路徑下 <code>/Libary/WebServer/Documents/</code></li>
+<li>安裝完畢！</li>
+</ul>
+<h2 id="3、讀取靜態頁面">3、讀取靜態頁面</h2>
+<h3 id="新增頁面">新增頁面</h3>
+<p>此處新增名為page.php的檔案 <code>application -&gt; view -&gt; cep(optional dir) -&gt; page.php</code></p>
+<ul>
+<li><img src="http://i.imgur.com/gC7kgs2.png" alt="page.php"></li>
+</ul>
+<h3 id="新增static_files">新增static files</h3>
+<p>如CSS、JS檔，習慣性會創建assets資料夾將他們放進去，並且放在跟application同階層的dir內，如圖。<br><img src="http://i.imgur.com/BLh0okD.png" alt="assets"></p>
+<h3 id="新增route">新增route</h3>
+<p><code>application -&gt; config -&gt; routes.php</code> 新增如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="variable">$route</span>[<span class="string">'(:any)'</span>] = <span class="string">'cep/$1'</span>;
+<span class="variable">$route</span>[<span class="string">'default_controller'</span>] = <span class="string">"cep"</span>;
+<span class="variable">$route</span>[<span class="string">'404_override'</span>] = <span class="string">''</span>;
+</pre></td></tr></table></figure>
+
+<h3 id="新增controller">新增controller</h3>
+<p>在controllers資料夾內，新增php檔，內定新的public function，參照welcome.php修改即可。</p>
+<p>新增一個class extends CI_Controller，裡面加上page()這個public function。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="class"><span class="keyword">class</span> <span class="title">Cep</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span> {</span>
+
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span>
+    {</span>
+        <span class="variable">$this</span>-&gt;load-&gt;view(<span class="string">'cep/index'</span>);
+    }
+
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">page</span><span class="params">()</span>
+    {</span>
+        <span class="variable">$this</span>-&gt;load-&gt;view(<span class="string">'cep/page'</span>);
+    }
+
+}
+</pre></td></tr></table></figure>
+
+<h3 id="路徑修改">路徑修改</h3>
+<ul>
+<li>application -&gt; config -&gt; config.php 改一行 <code>$config[&#39;base_url&#39;]  = &#39;/專案資料夾名字/&#39;;</code></li>
+<li>application -&gt; config -&gt; autoload.php 改一行 <code>$autoload[&#39;helper&#39;] = array(&#39;url&#39;);</code> 原本是沒有url，加上url。</li>
+<li>page.php這頁的CSS和JS檔，修改成<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"&lt;?php echo base_url(); ?&gt;assets/css/bootstrap.min.css"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"&lt;?php echo base_url(); ?&gt;assets/css/main.css"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"&lt;?php echo base_url(); ?&gt;assets/js/vendor/modernizr-2.6.2.min.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>如此一來便可以在<code>http://localhost/專案資料夾/index.php/page</code> 看到靜態頁面了。</p>
+<p><em>後記</em></p>
+<p>因尚有其他專案，故本專案檔是全部在一個資料夾內，非直接在web server的root實作。</p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/PHP/" term="PHP"/>
+    <category scheme="http://code.kpman.cc/tags/CI/" term="CI"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[Web好UI設計法則 1]]></title>
     <link href="http://code.kpman.cc/2014/03/19/web好ui設計法則-1/"/>

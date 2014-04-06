@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>kpman | code</title>
+  <meta name="description" content="記錄開發過程大小事" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta property="og:title" content="kpman | code"/>
+  <meta property="og:type" content="blog"/>
+  <meta property="og:url" content="http://code.kpman.cc"/>
+  <meta property="og:image" content="https://dl.dropboxusercontent.com/u/24235947/kpman.png"/>
+  <meta property="og:site_name" content="kpman | code"/>
+  <meta property="fb:admins" content="100001196448561"/>
+  <meta property="og:description"
+        content="A man, A powerful man, kpman."/>
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="kpman | code">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <header class="post-header">
+      <a class="blog-logo" href="/">
+        
+        <img src="//dl.dropboxusercontent.com/u/24235947/kpman.png" alt="Blog Logo"/></a>
+        
+      </a>
+    </header>
+    <span class="post-meta">
+      <time datetime="2014-04-06T13:30:35.000Z" itemprop="datePublished">Apr 6 2014</time>
+       on <a href='/tags/PHP/' style='margin:0 5px;'>PHP</a><a href='/tags/CI/' style='margin:0 5px;'>CI</a>
+    </span>
+    <h1 class="post-title">CI初體驗for靜態頁面</h1>
+    <section class="post-content">
+      <p>第一次因為專案需要，而跟PHP後端工程師配合，我們選定了<a href="http://www.codeigniter.org.tw/" target="_blank">CI</a>這套framework來使用，對於CI算是第一次接觸，因此想把從無到有的架設過程給記錄下來。</p>
+<p><img src="http://php.quicoto.com/wp-content/uploads/2013/07/codeigniter-logo.png" alt="codeigniter"></p>
+<a id="more"></a>
+
+<h2 id="1、擁有php環境">1、擁有php環境</h2>
+<p>Mac內建Apache，只要打開即可。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> apachectl start
+</pre></td></tr></table></figure>
+
+<h2 id="2、安裝CI">2、安裝CI</h2>
+<ul>
+<li>到<a href="http://www.codeigniter.org.tw/user_guide/installation/downloads.html" target="_blank">官網</a>下載整份文件檔</li>
+<li>放進server的路徑下 <code>/Libary/WebServer/Documents/</code></li>
+<li>安裝完畢！</li>
+</ul>
+<h2 id="3、讀取靜態頁面">3、讀取靜態頁面</h2>
+<h3 id="新增頁面">新增頁面</h3>
+<p>此處新增名為page.php的檔案 <code>application -&gt; view -&gt; cep(optional dir) -&gt; page.php</code></p>
+<ul>
+<li><img src="http://i.imgur.com/gC7kgs2.png" alt="page.php"></li>
+</ul>
+<h3 id="新增static_files">新增static files</h3>
+<p>如CSS、JS檔，習慣性會創建assets資料夾將他們放進去，並且放在跟application同階層的dir內，如圖。<br><img src="http://i.imgur.com/BLh0okD.png" alt="assets"></p>
+<h3 id="新增route">新增route</h3>
+<p><code>application -&gt; config -&gt; routes.php</code> 新增如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="variable">$route</span>[<span class="string">'(:any)'</span>] = <span class="string">'cep/$1'</span>;
+<span class="variable">$route</span>[<span class="string">'default_controller'</span>] = <span class="string">"cep"</span>;
+<span class="variable">$route</span>[<span class="string">'404_override'</span>] = <span class="string">''</span>;
+</pre></td></tr></table></figure>
+
+<h3 id="新增controller">新增controller</h3>
+<p>在controllers資料夾內，新增php檔，內定新的public function，參照welcome.php修改即可。</p>
+<p>新增一個class extends CI_Controller，裡面加上page()這個public function。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="class"><span class="keyword">class</span> <span class="title">Cep</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span> {</span>
+
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span>
+    {</span>
+        <span class="variable">$this</span>-&gt;load-&gt;view(<span class="string">'cep/index'</span>);
+    }
+
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">page</span><span class="params">()</span>
+    {</span>
+        <span class="variable">$this</span>-&gt;load-&gt;view(<span class="string">'cep/page'</span>);
+    }
+
+}
+</pre></td></tr></table></figure>
+
+<h3 id="路徑修改">路徑修改</h3>
+<ul>
+<li>application -&gt; config -&gt; config.php 改一行 <code>$config[&#39;base_url&#39;]  = &#39;/專案資料夾名字/&#39;;</code></li>
+<li>application -&gt; config -&gt; autoload.php 改一行 <code>$autoload[&#39;helper&#39;] = array(&#39;url&#39;);</code> 原本是沒有url，加上url。</li>
+<li>page.php這頁的CSS和JS檔，修改成<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"&lt;?php echo base_url(); ?&gt;assets/css/bootstrap.min.css"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"&lt;?php echo base_url(); ?&gt;assets/css/main.css"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"&lt;?php echo base_url(); ?&gt;assets/js/vendor/modernizr-2.6.2.min.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>如此一來便可以在<code>http://localhost/專案資料夾/index.php/page</code> 看到靜態頁面了。</p>
+<p><em>後記</em></p>
+<p>因尚有其他專案，故本專案檔是全部在一個資料夾內，非直接在web server的root實作。</p>
+
+    </section>
+      <section id="comment">
+          <h1 class="title">Comments</h1>
+
+          
+          <div id="disqus_thread">
+              <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+          
+      </section>
+    <footer class="post-footer">
+      <section class="author">
+        <h4>kpman | code</h4>
+        <p>A man, A powerful man, kpman.</p>
+      </section>
+
+      <section class="share">
+        <h4>Share this post</h4>
+        <a class="icon-twitter" href="http://twitter.com/share?url=http://code.kpman.cc/2014/04/06/ci初體驗for靜態頁面/"
+          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <span class="hidden">Twitter</span>
+        </a>
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://code.kpman.cc/2014/04/06/ci初體驗for靜態頁面/"
+          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <span class="hidden">Facebook</span>
+        </a>
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://code.kpman.cc/2014/04/06/ci初體驗for靜態頁面/"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <span class="hidden">Google+</span>
+        </a>
+      </section>
+    </footer>
+  </article>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">kpman | code</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40497628-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'kpmancode';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>
