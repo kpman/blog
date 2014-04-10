@@ -4,13 +4,76 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2014-04-06T16:13:35.757Z</updated>
+  <updated>2014-04-10T16:57:49.820Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
     <email><![CDATA[s92f002@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[Nginx with Node.js in different port]]></title>
+    <link href="http://code.kpman.cc/2014/04/11/nginx-with-nodejs-in-different-port/"/>
+    <id>http://code.kpman.cc/2014/04/11/nginx-with-nodejs-in-different-port/</id>
+    <published>2014-04-10T16:16:33.000Z</published>
+    <updated>2014-04-10T16:57:25.000Z</updated>
+    <content type="html"><![CDATA[<p>Nginx因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器。</p>
+<p>由於近期想要把不同的node.js程式放在同一個server，因此開始研究nginx用法，記錄下來我的實作方式。</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="Nginx"></p>
+<a id="more"></a>
+
+<h3 id="一、Domain指向主機">一、Domain指向主機</h3>
+<p>將不同的domain都指向你的主機ip，此時都會指向HTTP預設的80 port，後面再用nginx設定由不同的port去處理不同的node.js程式。</p>
+<h3 id="二、安裝Nginx_in_Ubuntu">二、安裝Nginx in Ubuntu</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get update
+<span class="built_in">sudo</span> apt-get upgrade // 確定抓到套件
+<span class="built_in">sudo</span> apt-get install nginx
+<span class="built_in">sudo</span> service nginx start
+</pre></td></tr></table></figure>
+
+<p>在安裝的時候，記得你如果有其他server在run必須要停掉，不然佔住80 port是沒有辦法裝成功nginx的。</p>
+<h3 id="三、將Node-js設定不同port">三、將Node.js設定不同port</h3>
+<p>會寫node.js應該會將port listen在不同的port，注意不要用常用的那些port即可。例如：80(HTTP)、22(SSH)。</p>
+<h3 id="四、設定Nginx資料夾檔案">四、設定Nginx資料夾檔案</h3>
+<p>進到<code>/etc/nginx/sites-enabled</code>，然後創建跟你domain一樣的檔案，記得權限要用<code>sudo</code>去創</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> vim domain1.com
+</pre></td></tr></table></figure>
+
+<p>檔案內容</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>server {
+    listen <span class="number">80</span>;
+    server_name domain1<span class="built_in">.</span>com;
+    access_log /<span class="built_in">var</span>/<span class="keyword">log</span>/nginx/domain1<span class="built_in">.</span>access<span class="built_in">.</span><span class="keyword">log</span>;
+    location <span class="subst">/</span> {
+        proxy_pass    http:<span class="comment">//127.0.0.1:4000/;</span>
+    }
+}
+</pre></td></tr></table></figure>
+
+<p>同理創建domain2.com，記得4000 port要改成你設定的port。</p>
+<h3 id="五、重啟Nginx">五、重啟Nginx</h3>
+<p><code>/etc/init.d/nginx restart</code></p>
+<p>記得做過更動後，要重新啟動nginx才有用。<br>如此一來，不同的domain就可以連到同一台server的不同支node.js去執行了。</p>
+<p><strong>reference</strong></p>
+<p><a href="http://stackoverflow.com/questions/5009324/node-js-nginx-and-now/5015178#5015178" target="_blank">node.js + nginx - And now?</a><br><a href="http://zh.wikipedia.org/wiki/Nginx" target="_blank">wikipedia nginx</a></p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/nodejs/" term="nodejs"/>
+    <category scheme="http://code.kpman.cc/tags/nginx/" term="nginx"/>
+    <category scheme="http://code.kpman.cc/tags/server/" term="server"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[CI初體驗for靜態頁面]]></title>
     <link href="http://code.kpman.cc/2014/04/06/ci初體驗for靜態頁面/"/>

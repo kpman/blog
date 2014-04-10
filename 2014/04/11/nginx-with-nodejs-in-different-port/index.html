@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>kpman | code</title>
+  <meta name="description" content="記錄開發過程大小事" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta property="og:title" content="kpman | code"/>
+  <meta property="og:type" content="blog"/>
+  <meta property="og:url" content="http://code.kpman.cc"/>
+  <meta property="og:image" content="https://dl.dropboxusercontent.com/u/24235947/kpman.png"/>
+  <meta property="og:site_name" content="kpman | code"/>
+  <meta property="fb:admins" content="100001196448561"/>
+  <meta property="og:description"
+        content="A man, A powerful man, kpman."/>
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="kpman | code">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <header class="post-header">
+      <a class="blog-logo" href="/">
+        
+        <img src="//dl.dropboxusercontent.com/u/24235947/kpman.png" alt="Blog Logo"/></a>
+        
+      </a>
+    </header>
+    <span class="post-meta">
+      <time datetime="2014-04-10T16:16:33.000Z" itemprop="datePublished">Apr 11 2014</time>
+       on <a href='/tags/nodejs/' style='margin:0 5px;'>nodejs</a><a href='/tags/nginx/' style='margin:0 5px;'>nginx</a><a href='/tags/server/' style='margin:0 5px;'>server</a>
+    </span>
+    <h1 class="post-title">Nginx with Node.js in different port</h1>
+    <section class="post-content">
+      <p>Nginx因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器。</p>
+<p>由於近期想要把不同的node.js程式放在同一個server，因此開始研究nginx用法，記錄下來我的實作方式。</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="Nginx"></p>
+<a id="more"></a>
+
+<h3 id="一、Domain指向主機">一、Domain指向主機</h3>
+<p>將不同的domain都指向你的主機ip，此時都會指向HTTP預設的80 port，後面再用nginx設定由不同的port去處理不同的node.js程式。</p>
+<h3 id="二、安裝Nginx_in_Ubuntu">二、安裝Nginx in Ubuntu</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get update
+<span class="built_in">sudo</span> apt-get upgrade // 確定抓到套件
+<span class="built_in">sudo</span> apt-get install nginx
+<span class="built_in">sudo</span> service nginx start
+</pre></td></tr></table></figure>
+
+<p>在安裝的時候，記得你如果有其他server在run必須要停掉，不然佔住80 port是沒有辦法裝成功nginx的。</p>
+<h3 id="三、將Node-js設定不同port">三、將Node.js設定不同port</h3>
+<p>會寫node.js應該會將port listen在不同的port，注意不要用常用的那些port即可。例如：80(HTTP)、22(SSH)。</p>
+<h3 id="四、設定Nginx資料夾檔案">四、設定Nginx資料夾檔案</h3>
+<p>進到<code>/etc/nginx/sites-enabled</code>，然後創建跟你domain一樣的檔案，記得權限要用<code>sudo</code>去創</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> vim domain1.com
+</pre></td></tr></table></figure>
+
+<p>檔案內容</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>server {
+    listen <span class="number">80</span>;
+    server_name domain1<span class="built_in">.</span>com;
+    access_log /<span class="built_in">var</span>/<span class="keyword">log</span>/nginx/domain1<span class="built_in">.</span>access<span class="built_in">.</span><span class="keyword">log</span>;
+    location <span class="subst">/</span> {
+        proxy_pass    http:<span class="comment">//127.0.0.1:4000/;</span>
+    }
+}
+</pre></td></tr></table></figure>
+
+<p>同理創建domain2.com，記得4000 port要改成你設定的port。</p>
+<h3 id="五、重啟Nginx">五、重啟Nginx</h3>
+<p><code>/etc/init.d/nginx restart</code></p>
+<p>記得做過更動後，要重新啟動nginx才有用。<br>如此一來，不同的domain就可以連到同一台server的不同支node.js去執行了。</p>
+<p><strong>reference</strong></p>
+<p><a href="http://stackoverflow.com/questions/5009324/node-js-nginx-and-now/5015178#5015178" target="_blank">node.js + nginx - And now?</a><br><a href="http://zh.wikipedia.org/wiki/Nginx" target="_blank">wikipedia nginx</a></p>
+
+    </section>
+      <section id="comment">
+          <h1 class="title">Comments</h1>
+
+          
+          <div id="disqus_thread">
+              <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+          
+      </section>
+    <footer class="post-footer">
+      <section class="author">
+        <h4>kpman | code</h4>
+        <p>A man, A powerful man, kpman.</p>
+      </section>
+
+      <section class="share">
+        <h4>Share this post</h4>
+        <a class="icon-twitter" href="http://twitter.com/share?url=http://code.kpman.cc/2014/04/11/nginx-with-nodejs-in-different-port/"
+          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <span class="hidden">Twitter</span>
+        </a>
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://code.kpman.cc/2014/04/11/nginx-with-nodejs-in-different-port/"
+          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <span class="hidden">Facebook</span>
+        </a>
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://code.kpman.cc/2014/04/11/nginx-with-nodejs-in-different-port/"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <span class="hidden">Google+</span>
+        </a>
+      </section>
+    </footer>
+  </article>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">kpman | code</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40497628-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'kpmancode';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>
