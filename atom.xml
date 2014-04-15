@@ -4,13 +4,56 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2014-04-14T13:14:23.146Z</updated>
+  <updated>2014-04-15T02:06:38.015Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
     <email><![CDATA[s92f002@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[為你的mac終端機加上alias]]></title>
+    <link href="http://code.kpman.cc/2014/04/15/為你的mac終端機加上alias/"/>
+    <id>http://code.kpman.cc/2014/04/15/為你的mac終端機加上alias/</id>
+    <published>2014-04-15T01:35:37.000Z</published>
+    <updated>2014-04-15T02:05:13.000Z</updated>
+    <content type="html"><![CDATA[<p>在使用iTerm（終端機）一段時間後，總覺得每次開啟新分頁，要進入到一個很深的資料夾略顯麻煩，因此上網查了簡易的方法，很快速便可以讓自己少打很多code，把時間花在其他更重要事情上。</p>
+<p><img src="http://i.imgur.com/Cc5u0nY.png" alt="iterm2"></p>
+<a id="more"></a>
+
+<h2 id="alias">alias</h2>
+<p>顧名思義就是別名，其語法如下，舉mac的apache server所在為example:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="keyword">alias</span> goproject=<span class="attribute">'cd</span> /<span class="keyword">Library</span>/WebServer/Documents/yourproject'
+</pre></td></tr></table></figure>
+
+<p>因此在iTerm打上這串後，未來便可以使用<code>goproject</code> 直接執行後面那串，快速又方便。</p>
+<h2 id="永久執行alias">永久執行alias</h2>
+<p>在設定完alias，原本以為就這樣，結果發現如果重開iTerm後，之前設定的alias都不見了，原因是因為沒有真正寫入bash檔，因此在開啟iTerm的時候，並沒有被載入，所以我們要將</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>sudo vim /etc/bashrc<span class="comment">
+// 在bashrc檔裡面加上新的一行</span>
+<span class="built_in">alias</span> goproject=<span class="string">'cd /Library/WebServer/Documents/yourproject'</span>
+</pre></td></tr></table></figure>
+
+<p><em>ps. 因為是root權限，存檔的時候記得要用<code>:wq!</code>強制寫入。</em></p>
+<p>重新開啟iTerm後，便可以使用goproject來快速進到你要的路徑，當然你也可以自行設定你要的指令。</p>
+<h2 id="alias_相關指令">alias 相關指令</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="built_in">alias</span><span class="comment"> // 列出所有的alias檔</span>
+unalias goproject<span class="comment"> // 把goproject這個alias刪掉</span>
+</pre></td></tr></table></figure>
+
+<p><strong><em>reference</em></strong></p>
+<p><a href="http://www.linfo.org/alias.html" target="_blank">How to use the alias command</a></p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/alias/" term="alias"/>
+    <category scheme="http://code.kpman.cc/tags/terminal/" term="terminal"/>
+    <category scheme="http://code.kpman.cc/tags/mac/" term="mac"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[Web好UI設計法則 2]]></title>
     <link href="http://code.kpman.cc/2014/04/14/web好ui設計法則-2/"/>

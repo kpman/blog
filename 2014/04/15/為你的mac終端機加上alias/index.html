@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>kpman | code</title>
+  <meta name="description" content="記錄開發過程大小事" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta property="og:title" content="kpman | code"/>
+  <meta property="og:type" content="blog"/>
+  <meta property="og:url" content="http://code.kpman.cc"/>
+  <meta property="og:image" content="https://dl.dropboxusercontent.com/u/24235947/kpman.png"/>
+  <meta property="og:site_name" content="kpman | code"/>
+  <meta property="fb:admins" content="100001196448561"/>
+  <meta property="og:description"
+        content="A man, A powerful man, kpman."/>
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <meta name="generator" content="kpman | code">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <header class="post-header">
+      <a class="blog-logo" href="/">
+        
+        <img src="//dl.dropboxusercontent.com/u/24235947/kpman.png" alt="Blog Logo"/></a>
+        
+      </a>
+    </header>
+    <span class="post-meta">
+      <time datetime="2014-04-15T01:35:37.000Z" itemprop="datePublished">Apr 15 2014</time>
+       on <a href='/tags/alias/' style='margin:0 5px;'>alias</a><a href='/tags/terminal/' style='margin:0 5px;'>terminal</a><a href='/tags/mac/' style='margin:0 5px;'>mac</a>
+    </span>
+    <h1 class="post-title">為你的mac終端機加上alias</h1>
+    <section class="post-content">
+      <p>在使用iTerm（終端機）一段時間後，總覺得每次開啟新分頁，要進入到一個很深的資料夾略顯麻煩，因此上網查了簡易的方法，很快速便可以讓自己少打很多code，把時間花在其他更重要事情上。</p>
+<p><img src="http://i.imgur.com/Cc5u0nY.png" alt="iterm2"></p>
+<a id="more"></a>
+
+<h2 id="alias">alias</h2>
+<p>顧名思義就是別名，其語法如下，舉mac的apache server所在為example:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="keyword">alias</span> goproject=<span class="attribute">'cd</span> /<span class="keyword">Library</span>/WebServer/Documents/yourproject'
+</pre></td></tr></table></figure>
+
+<p>因此在iTerm打上這串後，未來便可以使用<code>goproject</code> 直接執行後面那串，快速又方便。</p>
+<h2 id="永久執行alias">永久執行alias</h2>
+<p>在設定完alias，原本以為就這樣，結果發現如果重開iTerm後，之前設定的alias都不見了，原因是因為沒有真正寫入bash檔，因此在開啟iTerm的時候，並沒有被載入，所以我們要將</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>sudo vim /etc/bashrc<span class="comment">
+// 在bashrc檔裡面加上新的一行</span>
+<span class="built_in">alias</span> goproject=<span class="string">'cd /Library/WebServer/Documents/yourproject'</span>
+</pre></td></tr></table></figure>
+
+<p><em>ps. 因為是root權限，存檔的時候記得要用<code>:wq!</code>強制寫入。</em></p>
+<p>重新開啟iTerm後，便可以使用goproject來快速進到你要的路徑，當然你也可以自行設定你要的指令。</p>
+<h2 id="alias_相關指令">alias 相關指令</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="built_in">alias</span><span class="comment"> // 列出所有的alias檔</span>
+unalias goproject<span class="comment"> // 把goproject這個alias刪掉</span>
+</pre></td></tr></table></figure>
+
+<p><strong><em>reference</em></strong></p>
+<p><a href="http://www.linfo.org/alias.html" target="_blank">How to use the alias command</a></p>
+
+    </section>
+      <section id="comment">
+          <h1 class="title">Comments</h1>
+
+          
+          <div id="disqus_thread">
+              <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+          
+      </section>
+    <footer class="post-footer">
+      <section class="author">
+        <h4>kpman | code</h4>
+        <p>A man, A powerful man, kpman.</p>
+      </section>
+
+      <section class="share">
+        <h4>Share this post</h4>
+        <a class="icon-twitter" href="http://twitter.com/share?url=http://code.kpman.cc/2014/04/15/為你的mac終端機加上alias/"
+          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <span class="hidden">Twitter</span>
+        </a>
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://code.kpman.cc/2014/04/15/為你的mac終端機加上alias/"
+          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <span class="hidden">Facebook</span>
+        </a>
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://code.kpman.cc/2014/04/15/為你的mac終端機加上alias/"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <span class="hidden">Google+</span>
+        </a>
+      </section>
+    </footer>
+  </article>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">kpman | code</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40497628-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'kpmancode';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>
