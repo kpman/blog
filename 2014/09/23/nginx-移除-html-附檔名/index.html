@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>kpman | code</title>
+  <meta name="description" content="記錄開發過程大小事" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta property="og:title" content="kpman | code"/>
+  <meta property="og:type" content="blog"/>
+  <meta property="og:url" content="http://code.kpman.cc"/>
+  <meta property="og:image" content="https://dl.dropboxusercontent.com/u/24235947/kpman.png"/>
+  <meta property="og:site_name" content="kpman | code"/>
+  <meta property="fb:admins" content="100001196448561"/>
+  <meta property="og:description"
+        content="致力於研究網頁前端技術及使用者經驗，認為這世上有許多事情值得被發掘及分享，內心渴望與志同道合的夥伴讓生活更加美好。"/>
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <meta name="generator" content="kpman | code">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <header class="post-header">
+      <a class="blog-logo" href="/">
+        
+        <img src="//dl.dropboxusercontent.com/u/24235947/kpman.png" alt="Blog Logo"/></a>
+        
+      </a>
+    </header>
+    <span class="post-meta">
+      <time datetime="2014-09-23T02:10:56.000Z" itemprop="datePublished">Sep 23 2014</time>
+       on <a href='/tags/nodejs/' style='margin:0 5px;'>nodejs</a><a href='/tags/nginx/' style='margin:0 5px;'>nginx</a><a href='/tags/static file/' style='margin:0 5px;'>static file</a><a href='/tags/server/' style='margin:0 5px;'>server</a>
+    </span>
+    <h1 class="post-title">Nginx remove .html filename</h1>
+    <section class="post-content">
+      <p>Nginx是一套輕量化的web server，因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器，本篇將介紹靜態網頁在nginx上移除.html附檔名的作法。</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="Nginx"></p>
+<a id="more"></a>
+
+<h3 id="一、Start">一、Start</h3>
+<p>本篇要做nginx這套web server的設定檔更改，來達到雖然存取靜態頁面，卻可以利用mydomain.com/user 的URL來拿到所要的靜態頁面。</p>
+<blockquote>
+<p>其實是我單純是因為不想要看到.html這樣的附檔名，這看起來不專業！</p>
+</blockquote>
+<p><em>本篇環境為ubuntu14.04下執行。</em></p>
+<h3 id="二、Static_file_permission">二、Static file permission</h3>
+<p>在nginx下，你要將靜態檔案放在server哪邊都可以，在此我根據之前apache習慣的設定，放在/var/www</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>cd /<span class="built_in">var</span>
+sudo mkdir www
+sudo chown <span class="attribute">-R</span> www<span class="attribute">-data</span>:www<span class="attribute">-data</span> /<span class="built_in">var</span>/www/mydomain<span class="built_in">.</span>com
+sudo chmod <span class="number">755</span> /<span class="built_in">var</span>/www
+</pre></td></tr></table></figure>
+
+<p>如此一來你便可以將整個靜態網站檔案放在/var/www/mydomain.com目錄底下。</p>
+<h3 id="三、Nginx_conf_setting">三、Nginx conf setting</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="built_in">cd</span> /etc/nginx/sites-enabled
+<span class="built_in">sudo</span> vim mydomain.com
+</pre></td></tr></table></figure>
+
+<p>修改底下內容為你要的設定</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>server {
+  <span class="keyword">listen</span>        <span class="number">80</span>;
+  root          /var/www/mydomain;
+  <span class="keyword">index</span>         <span class="keyword">index</span>.html <span class="keyword">index</span>.htm;
+  server_name   mydomain;
+  location / {
+    try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ <span class="variable">$uri</span>.html;
+  }
+}
+</pre></td></tr></table></figure>
+
+<p>此設定將會當抓到$uri時，nginx會自動帶入<code>$uri/</code>或是<code>$uri.html</code><br>因此我們送出<code>mydomain.com/user</code>，nginx會試著搜尋<code>mydomain.com/user/</code>或<code>mydomain.com/user.html</code>。</p>
+<h3 id="四、Remove_default_conf">四、Remove default conf</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">sudo</span> rm /etc/nginx/sites-enabled/<span class="default"><span class="keyword">default</span></span>
+</pre></td></tr></table></figure>
+
+<p>在我設定的時候，需把default刪除後，才可以正常的讀取到新設定的mydomain.com檔，歡迎各位先進補充這點。</p>
+<h3 id="五、Restart_Nginx">五、Restart Nginx</h3>
+<p><code>/etc/init.d/nginx restart</code> || <code>sudo service nginx restart</code></p>
+<p>如此一來你便可以利用<code>mydomain.com/user</code>純取到相關的靜態頁面了！</p>
+<p><strong>reference</strong></p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-virtual-hosts-server-blocks-on-ubuntu-12-04-lts--3" target="_blank">How To Set Up nginx Virtual Hosts (Server Blocks) on Ubuntu 12.04 LTS</a></p>
+
+    </section>
+      <section id="comment">
+          <h1 class="title">Comments</h1>
+
+          
+          <div id="disqus_thread">
+              <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+          
+      </section>
+    <footer class="post-footer">
+      <section class="author">
+        <h4>kpman | code</h4>
+        <p>致力於研究網頁前端技術及使用者經驗，認為這世上有許多事情值得被發掘及分享，內心渴望與志同道合的夥伴讓生活更加美好。</p>
+      </section>
+
+      <section class="share">
+        <h4>Share this post</h4>
+        <a class="icon-twitter" href="http://twitter.com/share?url=http://code.kpman.cc/2014/09/23/nginx-移除-html-附檔名/"
+          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <span class="hidden">Twitter</span>
+        </a>
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://code.kpman.cc/2014/09/23/nginx-移除-html-附檔名/"
+          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <span class="hidden">Facebook</span>
+        </a>
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://code.kpman.cc/2014/09/23/nginx-移除-html-附檔名/"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <span class="hidden">Google+</span>
+        </a>
+      </section>
+    </footer>
+  </article>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">kpman | code</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40497628-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'kpmancode';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>

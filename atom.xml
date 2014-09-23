@@ -4,13 +4,88 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2014-05-09T08:47:35.825Z</updated>
+  <updated>2014-09-23T03:06:19.347Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
     <email><![CDATA[s92f002@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[Nginx remove .html filename]]></title>
+    <link href="http://code.kpman.cc/2014/09/23/nginx-移除-html-附檔名/"/>
+    <id>http://code.kpman.cc/2014/09/23/nginx-移除-html-附檔名/</id>
+    <published>2014-09-23T02:10:56.000Z</published>
+    <updated>2014-09-23T03:06:04.000Z</updated>
+    <content type="html"><![CDATA[<p>Nginx是一套輕量化的web server，因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器，本篇將介紹靜態網頁在nginx上移除.html附檔名的作法。</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="Nginx"></p>
+<a id="more"></a>
+
+<h3 id="一、Start">一、Start</h3>
+<p>本篇要做nginx這套web server的設定檔更改，來達到雖然存取靜態頁面，卻可以利用mydomain.com/user 的URL來拿到所要的靜態頁面。</p>
+<blockquote>
+<p>其實是我單純是因為不想要看到.html這樣的附檔名，這看起來不專業！</p>
+</blockquote>
+<p><em>本篇環境為ubuntu14.04下執行。</em></p>
+<h3 id="二、Static_file_permission">二、Static file permission</h3>
+<p>在nginx下，你要將靜態檔案放在server哪邊都可以，在此我根據之前apache習慣的設定，放在/var/www</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>cd /<span class="built_in">var</span>
+sudo mkdir www
+sudo chown <span class="attribute">-R</span> www<span class="attribute">-data</span>:www<span class="attribute">-data</span> /<span class="built_in">var</span>/www/mydomain<span class="built_in">.</span>com
+sudo chmod <span class="number">755</span> /<span class="built_in">var</span>/www
+</pre></td></tr></table></figure>
+
+<p>如此一來你便可以將整個靜態網站檔案放在/var/www/mydomain.com目錄底下。</p>
+<h3 id="三、Nginx_conf_setting">三、Nginx conf setting</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="built_in">cd</span> /etc/nginx/sites-enabled
+<span class="built_in">sudo</span> vim mydomain.com
+</pre></td></tr></table></figure>
+
+<p>修改底下內容為你要的設定</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>server {
+  <span class="keyword">listen</span>        <span class="number">80</span>;
+  root          /var/www/mydomain;
+  <span class="keyword">index</span>         <span class="keyword">index</span>.html <span class="keyword">index</span>.htm;
+  server_name   mydomain;
+  location / {
+    try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ <span class="variable">$uri</span>.html;
+  }
+}
+</pre></td></tr></table></figure>
+
+<p>此設定將會當抓到$uri時，nginx會自動帶入<code>$uri/</code>或是<code>$uri.html</code><br>因此我們送出<code>mydomain.com/user</code>，nginx會試著搜尋<code>mydomain.com/user/</code>或<code>mydomain.com/user.html</code>。</p>
+<h3 id="四、Remove_default_conf">四、Remove default conf</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">sudo</span> rm /etc/nginx/sites-enabled/<span class="default"><span class="keyword">default</span></span>
+</pre></td></tr></table></figure>
+
+<p>在我設定的時候，需把default刪除後，才可以正常的讀取到新設定的mydomain.com檔，歡迎各位先進補充這點。</p>
+<h3 id="五、Restart_Nginx">五、Restart Nginx</h3>
+<p><code>/etc/init.d/nginx restart</code> || <code>sudo service nginx restart</code></p>
+<p>如此一來你便可以利用<code>mydomain.com/user</code>純取到相關的靜態頁面了！</p>
+<p><strong>reference</strong></p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-virtual-hosts-server-blocks-on-ubuntu-12-04-lts--3" target="_blank">How To Set Up nginx Virtual Hosts (Server Blocks) on Ubuntu 12.04 LTS</a></p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/nodejs/" term="nodejs"/>
+    <category scheme="http://code.kpman.cc/tags/nginx/" term="nginx"/>
+    <category scheme="http://code.kpman.cc/tags/static file/" term="static file"/>
+    <category scheme="http://code.kpman.cc/tags/server/" term="server"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[為你的mac終端機加上alias]]></title>
     <link href="http://code.kpman.cc/2014/04/15/為你的mac終端機加上alias/"/>
