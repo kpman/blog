@@ -4,13 +4,110 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2014-09-23T03:06:19.347Z</updated>
+  <updated>2014-10-14T09:51:30.391Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
     <email><![CDATA[s92f002@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 3 Mac 指南]]></title>
+    <link href="http://code.kpman.cc/2014/10/14/sublime-text-3-mac-指南/"/>
+    <id>http://code.kpman.cc/2014/10/14/sublime-text-3-mac-指南/</id>
+    <published>2014-10-14T07:16:59.000Z</published>
+    <updated>2014-10-14T09:50:29.000Z</updated>
+    <content type="html"><![CDATA[<p>本篇是我根據自己使用習慣所做的快捷鍵整理，使用sublime text這套編輯器已經有2年之餘，本身是個快捷鍵愛好者，對於發掘好用的快捷鍵樂此不疲，因此整理常用的快捷鍵在這篇，針對的是mac使用者所使用者快捷鍵，希望對各位有幫助。</p>
+<a id="more"></a>
+
+<h1 id="快捷鍵">快捷鍵</h1>
+<p>左邊為本篇所採用的縮寫，右邊則為鍵盤上面的標示</p>
+<ul>
+<li>cmd = command</li>
+<li>shift = shift</li>
+<li>option = option (alt)</li>
+<li>control = control</li>
+<li>pkg-ctrl = package control (command + shift + p)</li>
+</ul>
+<h2 id="基礎模式">基礎模式</h2>
+<p>「基礎模式」介紹非sublime專用的快捷鍵，是一般使用者都可以快速上手的部分，想要看進階的可以跳過這部份。</p>
+<h3 id="1-_cmd_+_o_(open)">1. cmd + o (open)</h3>
+<p>快速開啟整個資料夾(專案)</p>
+<h3 id="2-_cmd_+_w">2. cmd + w</h3>
+<p>關閉視窗分頁</p>
+<h3 id="3-_cmd_+_n">3. cmd + n</h3>
+<p>開新分頁</p>
+<h3 id="4-_cmd_+_shift_+_t">4. cmd + shift + t</h3>
+<p>重新開啟剛剛關閉的分頁</p>
+<h3 id="5-_cmd_+_shift_+_v">5. cmd + shift + v</h3>
+<p>貼上時，符合縮排</p>
+<h2 id="畫面配置">畫面配置</h2>
+<p>以下介紹sublime的畫面配置，常常因為編輯情境的所需，利用快捷鍵讓自己的畫面配置更加有彈性。</p>
+<h3 id="1-_cmd_+_option_+_數字">1. cmd + option + 數字</h3>
+<p>分割視窗，讓你的編輯範圍有多個panel。<br>常用為<code>cmd + option + 1</code> 和<code>cmd + option + 2</code> 之間切換。<br>使用情境：左邊.html右邊.css，編輯起來快速又方便。<br>建議：利用空白鍵右邊的兩個連續按鈕搭配數字。</p>
+<p><img src="http://i.imgur.com/wWrUvSA.gif" alt=""></p>
+<h3 id="2-_cmd_+_k_再_cmd_+_b">2. cmd + k 再 cmd + b</h3>
+<p>關閉左側資料夾目錄，讓畫面變得更寬敞。<br>這是我非常使用的一個快捷鍵，可以讓編輯的區域變得更大。</p>
+<p><img src="http://i.imgur.com/IiAhOPx.gif" alt=""></p>
+<h3 id="3-_cmd_+_shift_+_control_+_f">3. cmd + shift + control + f</h3>
+<p>進入zen狀態，單份文件變成全螢幕，且左邊會自動縮排。<br>使用情境：當不常需要切換檔案時，此模式可以專注在單一檔案上，打這篇blog時我便這樣使用。<br>建議：快捷鍵不好記，可以點選<code>View --&gt; Enter Distraction Free Mode</code></p>
+<p><img src="http://i.imgur.com/DdD24a5.png" alt="zen"></p>
+<h2 id="選取">選取</h2>
+<p>底下介紹的部份，回到sublime text編輯器本身，因為重點在編輯部分，因此在此將「選取」特別整理成一區。</p>
+<h3 id="1-_cmd_+_d_(可連按)">1. cmd + d (可連按)</h3>
+<p>快速選取一範圍內的字串，<code>連按d</code>的話會選取整份文件內相同的字串。<br>當選取完後，可以直接打字，因此就可以將整份文件的字串全部改成新字串。</p>
+<p><img src="http://i.imgur.com/tkjccVA.gif" alt=""></p>
+<h3 id="2-_cmd_+_l_(可連按)">2. cmd + l (可連按)</h3>
+<p>選取游標在內的一行，<code>連按l</code>的話會往下選取下面的行數。</p>
+<h3 id="3-_cmd_+_shift_+_l">3. cmd + shift + l</h3>
+<p>此功能常與上述<code>cmd + l</code>配合，當選取多行後，按下<code>cmd + shift + l</code>，則會在多行的情況結尾出現游標，可以做多行編輯。<br><img src="http://i.imgur.com/t6Mvfof.gif" alt=""></p>
+<h3 id="4-_option_+_滑鼠拖拉">4. option + 滑鼠拖拉</h3>
+<p>當按住<code>option</code>後，搭配<code>滑鼠拖拉</code>便可以一次選取多行，並且產生游標。<br><em>注意：拖曳的時候，滑鼠必須是由上到下垂直的選取狀態</em></p>
+<p><img src="http://i.imgur.com/4cyN5eD.gif" alt=""></p>
+<h3 id="5-_cmd_+_滑鼠點選">5. cmd + 滑鼠點選</h3>
+<p>按住<code>cmd</code>後，利用滑鼠在文件內點選，便可以在任何位置新增游標，產生多選狀態做編輯。</p>
+<p><img src="http://i.imgur.com/ltNQcxi.gif" alt=""></p>
+<h3 id="6-_cmd_+_左_或_右">6. cmd + 左 或 右</h3>
+<p>讓你的游標可以快速的回到該行的最前面或是最後面。</p>
+<p><img src="http://i.imgur.com/WXyhkDE.gif" alt=""></p>
+<h3 id="7-_shift_+_左_或_右">7. shift + 左 或 右</h3>
+<p>每按一次會選擇一個字元，可以更加精準的選取自己要的部份。</p>
+<p><img src="http://i.imgur.com/yPeO2UF.gif" alt=""></p>
+<h3 id="8-_cmd_+_shift_+_左_或_右">8. cmd + shift + 左 或 右</h3>
+<p>從游標所在處，往前選取或者往後選取該行到底。</p>
+<p><img src="http://i.imgur.com/RX0XyMh.gif" alt=""></p>
+<h2 id="尋找">尋找</h2>
+<p>在sublime裡面尋找的功能做的非常強大，不論是文件內、或是文件名稱都可以快速找到。<br>底下將會利用GoTo Anything這個強大的內建功能來實作。</p>
+<h3 id="1-_cmd_+_p_+_輸入檔名">1. cmd + p + 輸入檔名</h3>
+<p>利用<code>cmd + p</code>，之後等視窗出現後，即可輸入你要找的檔名，按下enter即可開啟。</p>
+<p><img src="http://i.imgur.com/eH0Lbiu.gif" alt=""></p>
+<h3 id="2-_cmd_+_p_+_“:”_+_行數">2. cmd + p + “:” + 行數</h3>
+<p>此功能相同於<code>control + g</code>，可以快速的跳到你指定的行數。</p>
+<p><img src="http://i.imgur.com/cIp5SYH.gif" alt=""></p>
+<h3 id="3-_cmd_+_p_+_“@”_+_function_name">3. cmd + p + “@” + function name</h3>
+<p>此功能相同於<code>cmd + r</code>，可以快速跳到定義的function<br>建議：若是知道要找function，建議使用這個而非使用<code>cmd + f</code></p>
+<p><img src="http://i.imgur.com/IGdokvK.gif" alt=""></p>
+<h3 id="4-_cmd_+_p_+_“#”_+_keyword">4. cmd + p + “#” + keyword</h3>
+<p>此功能可以快速找到文件內的關鍵字。<br>個人比較少用這個功能，利用<code>cmd + f</code>時，可以持續按enter找到目標。</p>
+<h3 id="5-_cmd_+_shift_+_f">5. cmd + shift + f</h3>
+<p>全文搜尋，可以找出「整個project」內的關鍵字。<br>在Find Result內，點選兩下，便可以跳到該文件，這是我覺得最實用的部份。</p>
+<p><img src="http://i.imgur.com/RYZ0GOQ.gif" alt=""></p>
+<h2 id="快還要更快">快還要更快</h2>
+<h3 id="1-_cmd_+_control_+_上_或_下">1. cmd + control + 上 或 下</h3>
+<p>將選取起來的行，整段往上或往下移動。<br>使用情境：當幾行code需要移動不算太大範圍的時候，可以使用這個快捷鍵，而不用剪下再貼上。</p>
+<p><img src="http://i.imgur.com/R3jxRrV.gif" alt=""></p>
+<h3 id="2-_cmd_+_/">2. cmd + /</h3>
+<p>將該行註解。<br>個人建議：搭配<code>cmd + l(連按)</code>可以選取多行，一次註解起來。</p>
+<p><img src="http://i.imgur.com/B85owMN.gif" alt=""></p>
+<h2 id="reference">reference</h2>
+<ol>
+<li><a href="https://blog.generalassemb.ly/sublime-text-3-tips-tricks-shortcuts/" target="_blank">GETTING STARTED WITH SUBLIME TEXT 3: 25 TIPS, TRICKS, AND SHORTCUTS</a></li>
+<li><a href="http://zh.lucida.me/blog/sublime-text-complete-guide/" target="_blank">Sublime Text 全程指南</a></li>
+</ol>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/sublime text 3/" term="sublime text 3"/>
+    <category scheme="http://code.kpman.cc/tags/sublime text/" term="sublime text"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[Nginx remove .html filename]]></title>
     <link href="http://code.kpman.cc/2014/09/23/nginx-移除-html-附檔名/"/>
