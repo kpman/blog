@@ -1,59 +1,95 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>kpman | code</title>
-  <meta name="description" content="記錄開發過程大小事" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta property="og:title" content="kpman | code"/>
-  <meta property="og:type" content="blog"/>
-  <meta property="og:url" content="http://code.kpman.cc"/>
-  <meta property="og:image" content="https://dl.dropboxusercontent.com/u/24235947/kpman.png"/>
-  <meta property="og:site_name" content="kpman | code"/>
-  <meta property="fb:admins" content="100001196448561"/>
-  <meta property="og:description"
-        content="致力於研究網頁前端技術及使用者經驗，認為這世上有許多事情值得被發掘及分享，內心渴望與志同道合的夥伴讓生活更加美好。"/>
-
-  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
-  <link href="/favicon.ico" rel="icon" type="image/x-ico">
-  <meta name="generator" content="kpman | code">
+  <meta charset="utf-8">
+  
+  <title>建立自己blog的subdomain | kpman | code</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="有鑑於 kpman.github.io 這一個網址實在太難記了，所以就決定將自己有的domain利用subdomain的方式指過來。以下的介紹是我的個案，我利用subdomain而非TLD去做。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="建立自己blog的subdomain">
+<meta property="og:url" content="http://code.kpman.cc/2013/04/27/建立自己blog的subdomain/">
+<meta property="og:site_name" content="kpman | code">
+<meta property="og:description" content="有鑑於 kpman.github.io 這一個網址實在太難記了，所以就決定將自己有的domain利用subdomain的方式指過來。以下的介紹是我的個案，我利用subdomain而非TLD去做。">
+<meta property="og:image" content="http://i.imgur.com/esdG2wP.png">
+<meta property="og:image" content="http://i.imgur.com/gyMS7U6.png">
+<meta property="og:image" content="http://i.imgur.com/AHcVLBW.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="建立自己blog的subdomain">
+<meta name="twitter:description" content="有鑑於 kpman.github.io 這一個網址實在太難記了，所以就決定將自己有的domain利用subdomain的方式指過來。以下的介紹是我的個案，我利用subdomain而非TLD去做。">
 
   
+    <link rel="alternative" href="/atom.xml" title="kpman | code" type="application/atom+xml">
   
   
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
 
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-40497628-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
 </head>
-
-
-<body class="post-template">
-
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">kpman | code</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://code.kpman.cc"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-建立自己blog的subdomain" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2013/04/27/建立自己blog的subdomain/" class="article-date">
+  <time datetime="2013-04-26T16:24:36.000Z" itemprop="datePublished">Apr 27 2013</time>
+</a>
+		</span>
+		<span class="meta-elements author">kpman | code</span>
+		<div class="commentscount">
+			
+				<a href="http://code.kpman.cc/2013/04/27/建立自己blog的subdomain/#disqus_thread" class="article-comment-link">Comments</a>
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      建立自己blog的subdomain
+    </h1>
   
 
-<main class="content" role="main">
-  <article class="post">
-    <header class="post-header">
-      <a class="blog-logo" href="/">
-        
-        <img src="//dl.dropboxusercontent.com/u/24235947/kpman.png" alt="Blog Logo"/></a>
-        
-      </a>
-    </header>
-    <span class="post-meta">
-      <time datetime="2013-04-26T16:24:36.000Z" itemprop="datePublished">Apr 27 2013</time>
-       on <a href='/tags/domain/' style='margin:0 5px;'>domain</a><a href='/tags/hexo/' style='margin:0 5px;'>hexo</a><a href='/tags/subdomain/' style='margin:0 5px;'>subdomain</a><a href='/tags/url/' style='margin:0 5px;'>url</a>
-    </span>
-    <h1 class="post-title">建立自己blog的subdomain</h1>
-    <section class="post-content">
-      <p>有鑑於 <code>kpman.github.io</code> 這一個網址實在太難記了，所以就決定將自己有的domain利用subdomain的方式指過來。<br>以下的介紹是我的個案，我利用subdomain而非TLD去做。</p>
+	</header>
+	<div class="entry-content">
+		
+    	<p>有鑑於 <code>kpman.github.io</code> 這一個網址實在太難記了，所以就決定將自己有的domain利用subdomain的方式指過來。<br>以下的介紹是我的個案，我利用subdomain而非TLD去做。</p>
 <a id="more"></a>
-
 <h2 id="一、擁有自己的domain">一、擁有自己的domain</h2>
 <p>雖然像是廢話XD<br>但這邊推薦去<a href="www.godaddy.com/">GoDaddy</a>買domain.<br>方便又快，在更新domain的時間非常快速，理論上一個小時內就可以指到你要的ip位置。</p>
 <h2 id="二、到GoDaddy設定subdomain">二、到GoDaddy設定subdomain</h2>
@@ -72,87 +108,102 @@
 <p><img src="http://i.imgur.com/AHcVLBW.png" alt="create new file"></p>
 <p>設置完之後clone下來，然後複製進去<code>主目錄-source</code> 底下XD<br>（有人知道怎樣做比較好嗎？）</p>
 <p>理論上這樣子就完成囉！<br>如果有漏掉的麻煩留言給我一起討論:)</p>
-<h3 id="<em>reference</em>"><em>reference</em></h3>
-<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">官方文件</a></p>
+<h3 id="reference"><em>reference</em></h3>
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank" rel="external">官方文件</a></p>
 
-    </section>
-      <section id="comment">
-          <h1 class="title">Comments</h1>
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/domain/">domain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/subdomain/">subdomain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/url/">url</a></li></ul>
 
-          
-          <div id="disqus_thread">
-              <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-          </div>
-          
-      </section>
-    <footer class="post-footer">
-      <section class="author">
-        <h4>kpman | code</h4>
-        <p>致力於研究網頁前端技術及使用者經驗，認為這世上有許多事情值得被發掘及分享，內心渴望與志同道合的夥伴讓生活更加美好。</p>
-      </section>
-
-      <section class="share">
-        <h4>Share this post</h4>
-        <a class="icon-twitter" href="http://twitter.com/share?url=http://code.kpman.cc/2013/04/27/建立自己blog的subdomain/"
-          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-          <span class="hidden">Twitter</span>
-        </a>
-        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://code.kpman.cc/2013/04/27/建立自己blog的subdomain/"
-          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-          <span class="hidden">Facebook</span>
-        </a>
-        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://code.kpman.cc/2013/04/27/建立自己blog的subdomain/"
-           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-          <span class="hidden">Google+</span>
-        </a>
-      </section>
-    </footer>
-  </article>
-</main>
-
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/2013/04/28/客製化hexo-light-theme/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          客製化hexo light theme
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/04/26/hexo架blog初體驗/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          hexo架blog初體驗
+        
+      </div>
+    </a>
+  
+</nav>
 
   
-<footer class="site-footer">
-  
-  <div class="inner">
-     <section class="copyright">All content copyright <a href="/">kpman | code</a> &copy; 2014 &bull; All rights reserved.</section>
-     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+</article>
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
+</section>
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:code.kpman.cc">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">kpman | code</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2015 kpman | code<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
 </footer>
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="/js/index.js"></script>
-
-
-<script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-40497628-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    
+<script>
+  var disqus_shortname = 'kpmancode';
+  
+  var disqus_url = 'http://code.kpman.cc/2013/04/27/建立自己blog的subdomain/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
 
 
-<script type="text/javascript">
-    var disqus_shortname = 'kpmancode';
-
-    (function(){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
 </body>
 </html>

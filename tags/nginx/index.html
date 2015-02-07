@@ -1,151 +1,223 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>kpman | code</title>
-  <meta name="description" content="記錄開發過程大小事" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta property="og:title" content="kpman | code"/>
-  <meta property="og:type" content="blog"/>
-  <meta property="og:url" content="http://code.kpman.cc"/>
-  <meta property="og:image" content="https://dl.dropboxusercontent.com/u/24235947/kpman.png"/>
-  <meta property="og:site_name" content="kpman | code"/>
-  <meta property="fb:admins" content="100001196448561"/>
-  <meta property="og:description"
-        content="致力於研究網頁前端技術及使用者經驗，認為這世上有許多事情值得被發掘及分享，內心渴望與志同道合的夥伴讓生活更加美好。"/>
-
-  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
-  <link href="/favicon.ico" rel="icon" type="image/x-ico">
-  <meta name="generator" content="kpman | code">
+  <meta charset="utf-8">
+  
+  <title>Tag: nginx | kpman | code</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="致力於研究網頁前端技術及使用者經驗，認為這世上有許多事情值得被發掘及分享，內心渴望與志同道合的夥伴讓生活更加美好。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="kpman | code">
+<meta property="og:url" content="http://code.kpman.cc/tags/nginx/">
+<meta property="og:site_name" content="kpman | code">
+<meta property="og:description" content="致力於研究網頁前端技術及使用者經驗，認為這世上有許多事情值得被發掘及分享，內心渴望與志同道合的夥伴讓生活更加美好。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kpman | code">
+<meta name="twitter:description" content="致力於研究網頁前端技術及使用者經驗，認為這世上有許多事情值得被發掘及分享，內心渴望與志同道合的夥伴讓生活更加美好。">
 
   
+    <link rel="alternative" href="/atom.xml" title="kpman | code" type="application/atom+xml">
   
   
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
 
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-40497628-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
 </head>
-
-
-<body class="home-template">
-
-  
-<header class="site-head" >
-  <div class="vertical">
-    <div class="site-head-content inner">
-       <a class="blog-logo" href="/"><img src="//dl.dropboxusercontent.com/u/24235947/kpman.png" alt="Blog Logo"/></a> 
-      <h1 class="blog-title">kpman | code</h1>
-      <h2 class="blog-description">記錄開發過程大小事</h2>
-    </div>
-  </div>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">kpman | code</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://code.kpman.cc"></form>
+	</div>
 </header>
-
-<main class="content" role="main">
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-        <time datetime="2014-09-23T02:10:56.000Z" itemprop="datePublished">Sep 23 2014</time>
-         on <a href='/tags/nodejs/' style='margin:0 5px;'>nodejs</a><a href='/tags/nginx/' style='margin:0 5px;'>nginx</a><a href='/tags/static file/' style='margin:0 5px;'>static file</a><a href='/tags/server/' style='margin:0 5px;'>server</a>
-      </span>
-      <h2 class="post-title"><a href="/2014/09/23/nginx-移除-html-附檔名/">Nginx remove .html filename</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
+    <div id="main">
       
-        <p>Nginx是一套輕量化的web server，因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器，本篇將介紹靜態網頁在nginx上移除.html附檔名的作法。</p>
+  
+    <article id="post-nginx-移除-html-附檔名" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2014/09/23/nginx-移除-html-附檔名/" class="article-date">
+  <time datetime="2014-09-23T02:10:56.000Z" itemprop="datePublished">Sep 23 2014</time>
+</a>
+		</span>
+		<span class="meta-elements author">kpman | code</span>
+		<div class="commentscount">
+			
+				<a href="http://code.kpman.cc/2014/09/23/nginx-移除-html-附檔名/#disqus_thread" class="article-comment-link">Comments</a>
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2014/09/23/nginx-移除-html-附檔名/">Nginx remove .html filename</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+			<p>Nginx是一套輕量化的web server，因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器，本篇將介紹靜態網頁在nginx上移除.html附檔名的作法。</p>
 <p><img src="http://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="Nginx"></p>
 
+			
+				<p class="article-more-link">
+					<a href="/2014/09/23/nginx-移除-html-附檔名/#more">Read More</a>
+				</p>
       
-      </p>
-      
-      <p>
-          <a href="/2014/09/23/nginx-移除-html-附檔名/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/">server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static-file/">static file</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
   
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-        <time datetime="2014-04-10T16:16:33.000Z" itemprop="datePublished">Apr 11 2014</time>
-         on <a href='/tags/nodejs/' style='margin:0 5px;'>nodejs</a><a href='/tags/nginx/' style='margin:0 5px;'>nginx</a><a href='/tags/server/' style='margin:0 5px;'>server</a>
-      </span>
-      <h2 class="post-title"><a href="/2014/04/11/nginx-with-nodejs-in-different-port/">Nginx with Node.js in different port</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        <p>Nginx因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器。</p>
+    <article id="post-nginx-with-nodejs-in-different-port" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2014/04/11/nginx-with-nodejs-in-different-port/" class="article-date">
+  <time datetime="2014-04-10T16:16:33.000Z" itemprop="datePublished">Apr 11 2014</time>
+</a>
+		</span>
+		<span class="meta-elements author">kpman | code</span>
+		<div class="commentscount">
+			
+				<a href="http://code.kpman.cc/2014/04/11/nginx-with-nodejs-in-different-port/#disqus_thread" class="article-comment-link">Comments</a>
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2014/04/11/nginx-with-nodejs-in-different-port/">Nginx with Node.js in different port</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+			<p>Nginx因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器。</p>
 <p>由於近期想要把不同的node.js程式放在同一個server，因此開始研究nginx用法，記錄下來我的實作方式。</p>
 <p><img src="http://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="Nginx"></p>
 
+			
+				<p class="article-more-link">
+					<a href="/2014/04/11/nginx-with-nodejs-in-different-port/#more">Read More</a>
+				</p>
       
-      </p>
-      
-      <p>
-          <a href="/2014/04/11/nginx-with-nodejs-in-different-port/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <nav class="pagination" role="pagination">
     
-    <span class="page-number">Page 1 of 1</span>
-    
-  </nav>
-</main>
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/">server</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
 
 
+	<hr class="article-devider">
+
+
+
   
-<footer class="site-footer">
   
-  <div class="inner">
-     <section class="copyright">All content copyright <a href="/">kpman | code</a> &copy; 2014 &bull; All rights reserved.</section>
-     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
-  </div>
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:code.kpman.cc">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">kpman | code</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2015 kpman | code<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
 </footer>
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="/js/index.js"></script>
-
-
-<script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-40497628-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    
+<script>
+  var disqus_shortname = 'kpmancode';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
 
 
-<script type="text/javascript">
-    var disqus_shortname = 'kpmancode';
-
-    (function(){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
 </body>
 </html>

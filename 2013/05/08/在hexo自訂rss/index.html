@@ -1,167 +1,209 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>kpman | code</title>
-  <meta name="description" content="記錄開發過程大小事" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta property="og:title" content="kpman | code"/>
-  <meta property="og:type" content="blog"/>
-  <meta property="og:url" content="http://code.kpman.cc"/>
-  <meta property="og:image" content="https://dl.dropboxusercontent.com/u/24235947/kpman.png"/>
-  <meta property="og:site_name" content="kpman | code"/>
-  <meta property="fb:admins" content="100001196448561"/>
-  <meta property="og:description"
-        content="致力於研究網頁前端技術及使用者經驗，認為這世上有許多事情值得被發掘及分享，內心渴望與志同道合的夥伴讓生活更加美好。"/>
-
-  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
-  <link href="/favicon.ico" rel="icon" type="image/x-ico">
-  <meta name="generator" content="kpman | code">
+  <meta charset="utf-8">
+  
+  <title>在hexo自訂rss | kpman | code</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="趁著好朋友在旁邊的情況下，請教他學會了在hexo自訂rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在hexo自訂rss">
+<meta property="og:url" content="http://code.kpman.cc/2013/05/08/在hexo自訂rss/">
+<meta property="og:site_name" content="kpman | code">
+<meta property="og:description" content="趁著好朋友在旁邊的情況下，請教他學會了在hexo自訂rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。">
+<meta property="og:image" content="http://i.imgur.com/w39zkK6.png">
+<meta property="og:image" content="http://i.imgur.com/Hk12y1N.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在hexo自訂rss">
+<meta name="twitter:description" content="趁著好朋友在旁邊的情況下，請教他學會了在hexo自訂rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。">
 
   
+    <link rel="alternative" href="/atom.xml" title="kpman | code" type="application/atom+xml">
   
   
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
 
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-40497628-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
 </head>
-
-
-<body class="post-template">
-
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">kpman | code</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://code.kpman.cc"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-在hexo自訂rss" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2013/05/08/在hexo自訂rss/" class="article-date">
+  <time datetime="2013-05-08T07:50:06.000Z" itemprop="datePublished">May 8 2013</time>
+</a>
+		</span>
+		<span class="meta-elements author">kpman | code</span>
+		<div class="commentscount">
+			
+				<a href="http://code.kpman.cc/2013/05/08/在hexo自訂rss/#disqus_thread" class="article-comment-link">Comments</a>
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      在hexo自訂rss
+    </h1>
   
 
-<main class="content" role="main">
-  <article class="post">
-    <header class="post-header">
-      <a class="blog-logo" href="/">
-        
-        <img src="//dl.dropboxusercontent.com/u/24235947/kpman.png" alt="Blog Logo"/></a>
-        
-      </a>
-    </header>
-    <span class="post-meta">
-      <time datetime="2013-05-08T07:50:06.000Z" itemprop="datePublished">May 8 2013</time>
-       on <a href='/tags/rss/' style='margin:0 5px;'>rss</a><a href='/tags/hexo/' style='margin:0 5px;'>hexo</a>
-    </span>
-    <h1 class="post-title">在hexo自訂rss</h1>
-    <section class="post-content">
-      <p>趁著好朋友在旁邊的情況下，請教他學會了在hexo自訂rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。</p>
+	</header>
+	<div class="entry-content">
+		
+    	<p>趁著好朋友在旁邊的情況下，請教他學會了在hexo自訂rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。</p>
 <a id="more"></a>
-
 <h3 id="一、本機環境">一、本機環境</h3>
 <p>在終端機下輸入以下</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>npm install hexo<span class="attribute">-generator</span><span class="attribute">-feed</span> <span class="subst">--</span>save
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="operator"><span class="keyword">install</span> hexo-generator-feed <span class="comment">--save</span></span></div></pre></td></tr></table></figure>
 
 <p>權限沒有取得的記得前面加上<code>sudo</code>。</p>
 <h3 id="二、修改_config-yml">二、修改_config.yml</h3>
 <p>在主目錄底下的<code>_config.yml</code>檔加上</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>plugins:
-<span class="subst">-</span> hexo<span class="attribute">-generator</span><span class="attribute">-feed</span>
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plugin<span class="variable">s:</span></div><div class="line">- hexo-generator-feed</div></pre></td></tr></table></figure>
 
 <p><img src="http://i.imgur.com/w39zkK6.png" alt="modify _config.yml" title="modify _config.yml"></p>
 <p>如此一來便完成了環境設置。</p>
 <h3 id="三、要怎樣找到？">三、要怎樣找到？</h3>
-<p>在hexo generate之後，會發現public資料夾底下多了atom.xml<br>在<a href="http://www.feedly.com/" target="_blank">feedly</a>這類的閱讀收集器<br>只要輸入<code>domain/atom</code>就可以找到<br>例如要訂閱我的blog只要輸入<code>code.kpman.cc/atom</code>就可以搜尋到囉！</p>
+<p>在hexo generate之後，會發現public資料夾底下多了atom.xml<br>在<a href="http://www.feedly.com/" target="_blank" rel="external">feedly</a>這類的閱讀收集器<br>只要輸入<code>domain/atom</code>就可以找到<br>例如要訂閱我的blog只要輸入<code>code.kpman.cc/atom</code>就可以搜尋到囉！</p>
 <p><img src="http://i.imgur.com/Hk12y1N.png" alt="rss" title="feedly rss search"></p>
 <p>突然發現我的blog只有一個人訂閱，那個人就是我自己…  </p>
-<h3 id="<em>reference</em>"><em>reference</em></h3>
+<h3 id="reference"><em>reference</em></h3>
 <ol>
-<li><a href="https://github.com/tommy351/hexo/wiki/Plugins" target="_blank">hexo plugins</a></li>
-<li><a href="http://michaelhsu.tw/2013/05/05/rssatom-sitemap-for-seo/" target="_blank">RSS/Atom、Sitemap for SEO</a></li>
+<li><a href="https://github.com/tommy351/hexo/wiki/Plugins" target="_blank" rel="external">hexo plugins</a></li>
+<li><a href="http://michaelhsu.tw/2013/05/05/rssatom-sitemap-for-seo/" target="_blank" rel="external">RSS/Atom、Sitemap for SEO</a></li>
 </ol>
 <p>感謝強者阿志耐心面授機宜:)</p>
 
-    </section>
-      <section id="comment">
-          <h1 class="title">Comments</h1>
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rss/">rss</a></li></ul>
 
-          
-          <div id="disqus_thread">
-              <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-          </div>
-          
-      </section>
-    <footer class="post-footer">
-      <section class="author">
-        <h4>kpman | code</h4>
-        <p>致力於研究網頁前端技術及使用者經驗，認為這世上有許多事情值得被發掘及分享，內心渴望與志同道合的夥伴讓生活更加美好。</p>
-      </section>
-
-      <section class="share">
-        <h4>Share this post</h4>
-        <a class="icon-twitter" href="http://twitter.com/share?url=http://code.kpman.cc/2013/05/08/在hexo自訂rss/"
-          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-          <span class="hidden">Twitter</span>
-        </a>
-        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://code.kpman.cc/2013/05/08/在hexo自訂rss/"
-          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-          <span class="hidden">Facebook</span>
-        </a>
-        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://code.kpman.cc/2013/05/08/在hexo自訂rss/"
-           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-          <span class="hidden">Google+</span>
-        </a>
-      </section>
-    </footer>
-  </article>
-</main>
-
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/2013/05/18/建立自己的github-project-pages/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          建立自己的GitHub Project Pages
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/05/07/利用-pseudo-element-讓-html-更簡潔/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          利用pseudo element 讓html更簡潔
+        
+      </div>
+    </a>
+  
+</nav>
 
   
-<footer class="site-footer">
-  
-  <div class="inner">
-     <section class="copyright">All content copyright <a href="/">kpman | code</a> &copy; 2014 &bull; All rights reserved.</section>
-     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+</article>
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
+</section>
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:code.kpman.cc">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">kpman | code</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2015 kpman | code<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
 </footer>
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="/js/index.js"></script>
-
-
-<script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-40497628-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    
+<script>
+  var disqus_shortname = 'kpmancode';
+  
+  var disqus_url = 'http://code.kpman.cc/2013/05/08/在hexo自訂rss/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
 
 
-<script type="text/javascript">
-    var disqus_shortname = 'kpmancode';
-
-    (function(){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
 </body>
 </html>
