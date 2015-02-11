@@ -1156,3 +1156,12 @@ pre .deletion {
     margin-bottom: 1em;
   }
 }
+code {
+  padding: 0.2em 0.4em;
+  margin: 0 0.2em;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}

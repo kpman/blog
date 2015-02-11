@@ -4,13 +4,45 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2015-02-07T13:17:22.807Z</updated>
+  <updated>2015-02-11T04:58:21.743Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
     <email><![CDATA[s92f002@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[利用 crontab 來做 Linux 固定排程]]></title>
+    <link href="http://code.kpman.cc/2015/02/11/利用-crontab-來做-Linux-固定排程/"/>
+    <id>http://code.kpman.cc/2015/02/11/利用-crontab-來做-Linux-固定排程/</id>
+    <published>2015-02-11T03:57:45.000Z</published>
+    <updated>2015-02-11T04:57:32.000Z</updated>
+    <content type="html"><![CDATA[<p>近期有個需求，要在 Linux 上執行固定週期的時程，發現利用 crontab 這個內建的功能便可以完成，本篇記錄使用過程以及相關的參數。</p>
+<p><img src="http://i.imgur.com/82u0axj.png" alt=""></p>
+<a id="more"></a>
+<h2 id="crontab_介紹">crontab 介紹</h2>
+<p>crontab 是 Linux 內建的機制，可以根據設置的時間參數來執行例行性的工作排程。</p>
+<p><img src="http://i.imgur.com/OGytWih.gif" alt=""></p>
+<p>上述這張圖可以清楚的顯示出前五項參數應該要帶進去的數字。<br>依序是<code>分鐘</code>, <code>小時</code>, <code>日期</code>, <code>月份</code>, <code>星期</code>, <code>command</code><br>參數為<code>0-59</code>, <code>0-23</code>, <code>1-31</code>, <code>1-21</code>, <code>0-6</code>, <code>需要執行的command</code></p>
+<p>※ 月份參數為<code>0</code>代表星期日</p>
+<h2 id="參數特殊字符意義">參數特殊字符意義</h2>
+<p><code>【*】</code>：星號，代表任何時刻都接受的意思<br><code>【,】</code>：逗號，代表分隔時段。例如：<code>30 9,17 * * * command</code>，代表早上9點半和下午五點半都執行 command。<br><code>【-】</code>：減號，代表一段時間範圍。例如：<code>15 9-12 * * * command</code>，代表從9點到12點的每個15分都執行 command。<br><code>【/n】</code>：斜線，n代表數字，表示每個 n 單位間隔。例如：<code>*/5 * * * * command</code>，代表每隔 5 分鐘執行一次 command。</p>
+<p>還有一些人性化的參數，一次取代全部五個數字參數</p>
+<p><code>【@reboot】</code> ：僅在開機的時候執行一次。<br><code>【@yearly】</code> ：一年執行一次，和<code>0 0 1 1 * command</code>效果一樣。<br><code>【@annually】</code>：（和<code>@yearly</code>一樣）<br><code>【@monthly】</code>：一個月執行一次，和<code>0 0 1 * * command</code>效果一樣。<br><code>【@weekly】</code>：一個星期執行一次，和<code>0 0 * * 0 command</code>效果一樣。<br><code>【@daily】</code>：每天執行，和<code>0 0 * * * command</code>效果一樣。<br><code>【@midnight】</code>：（和<code>@daily</code>一樣）<br><code>【@hourly】</code> ：每小時執行，和<code>0 * * * * command</code>效果一樣。</p>
+<h2 id="crontab_操作">crontab 操作</h2>
+<p>crontab 是會根據不同的使用者去判定可以操作的範圍。</p>
+<p><code>$ crontab -l</code>: 列出該使用者擁有的 crontab 指令<br><code>$ crontab -e</code>: 編輯該使用者的 crontab 指令<br><code>$ crontab -r</code>: 將使用者的 crontab 全部清除！（ <strong>小心使用</strong> ）</p>
+<p>編輯完後就可以存檔離開，Linux 系統便會依照你設定的排程固定做事，非常方便。</p>
+<p>※ 下達指令請用 <strong>絕對路徑</strong> 避免錯誤</p>
+<h2 id="範例參考">範例參考</h2>
+<p><code>$ */5 * * * * /home/ubuntu/test.sh</code>：每五分鐘執行一次測試 shell script<br><code>$ 0 9 * * 1-6 node /home/ubuntu/workspace/report.js</code>：每天早上九點（除了星期日）執行 report.js 這隻檔案</p>
+<h3 id="reference">reference</h3>
+<p><a href="http://kvz.io/blog/2007/07/29/schedule-tasks-on-linux-using-crontab/" target="_blank" rel="external">Schedule Tasks on Linux Using Crontab</a><br><a href="http://linux.vbird.org/linux_basic/0430cron.php#whatiscron_linux" target="_blank" rel="external">鳥哥的 Linux 私房菜 例行性工作排程 (crontab)</a></p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/code/" term="code"/>
+    <category scheme="http://code.kpman.cc/tags/linux/" term="linux"/>
+    <category scheme="http://code.kpman.cc/tags/crontab/" term="crontab"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[Sublime 與 iTerm 的視窗配置]]></title>
     <link href="http://code.kpman.cc/2015/02/07/Sublime-與-iTerm-的視窗配置/"/>
