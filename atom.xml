@@ -4,13 +4,44 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2015-02-11T05:02:39.839Z</updated>
+  <updated>2015-05-10T03:58:06.802Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
     <email><![CDATA[s92f002@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[Linux 之 command line 上手]]></title>
+    <link href="http://code.kpman.cc/2015/05/10/Linux-之-command-line-上手/"/>
+    <id>http://code.kpman.cc/2015/05/10/Linux-之-command-line-上手/</id>
+    <published>2015-05-10T03:25:44.000Z</published>
+    <updated>2015-05-10T03:57:28.000Z</updated>
+    <content type="html"><![CDATA[<p>開發者對於 command line 一定不陌生，然而 Mac OS 會受到許多開發者的青睞，是因為其本身就是依照 unix 系統做開發，因此對於虛擬主機需要用到 command line 自然不陌生，整合性很好。</p>
+<p>這篇 blog 記錄網站開發超過兩年半經驗的我，最常用到的終端機指令 (command line)。</p>
+<p><img src="http://i.imgur.com/hGb22rh.png" alt=""></p>
+<a id="more"></a>
+<p>本篇針對的讀者是 mac 新手。</p>
+<h2 id="環境設定">環境設定</h2>
+<p>建議下載 iterm2 來使用，有興趣可參考<a href="/2015/02/07/Sublime-與-iTerm-的視窗配置/">設定</a></p>
+<h2 id="常用指令">常用指令</h2>
+<p>前面加上錢字號($)代表此行為 command line 開始，真正在打的時候不用加入<code>$</code></p>
+<p><code>$ cd</code>: 移動 root 位置<br><code>$ cd ..</code>: 移動到目前所在位置的上一層<br><code>$ cd ../..</code>: 移動到目前所在位置的上兩層</p>
+<p><code>$ pwd</code>: 列出目前完整路徑 —&gt; 可以知道自己現在在哪邊，再決定要如何利用 <code>cd</code> 移動</p>
+<p><code>$ ls</code>: 列出所在目錄的檔案<br><code>$ ls -a</code>: 列出的目錄檔案包含隱藏檔<br><code>$ ls -al</code>: 列出的目錄檔案包含隱藏檔 &amp; 檔案屬性和權限</p>
+<p><code>$ vi(m) **.xx</code>: 創建檔名為<code>**</code>，附檔名為<code>xx</code>的檔案 —&gt; 之後會進入vi(m) 文字編輯模式，推薦查閱<a href="http://linux.vbird.org/linux_basic/0310vi.php" target="_blank" rel="external">鳥哥vim教學</a></p>
+<p><code>$ mkdir ***</code>: 創建名稱為<code>***</code>的資料夾<br><code>$ rmdir ***</code>: 移除名稱為<code>***</code>的資料夾 —&gt; 需確定資料夾為空</p>
+<p><code>$ cp dest1 dest2</code>: 把 dest1 檔案複製到 dest2 的位置<br><code>$ mv dest1 dest2</code>: 把 dest1 檔案移動到 dest2 的位置，亦可作為變更檔名使用，例如 <code>$ mv test.txt no-test.txt</code>，就可以把檔名 test 的文字檔改變成為 no-test 檔名。</p>
+<p><code>$ sudo su</code>: 取得 root 權限</p>
+<p>以上列出我最常用的指令，許多指令都可以帶有特殊的參數，unix base底下的command line也不只這些，想要更進一步，可以再多去參考書籍或是教學。</p>
+<h2 id="reference">reference</h2>
+<p><a href="http://linux.vbird.org/linux_basic/0220filemanager.php#dir_path" target="_blank" rel="external">鳥哥 Linux 檔案與目錄管理</a></p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/linux/" term="linux"/>
+    <category scheme="http://code.kpman.cc/tags/command-line/" term="command line"/>
+    <category scheme="http://code.kpman.cc/tags/iterm2/" term="iterm2"/>
+    <category scheme="http://code.kpman.cc/tags/終端機/" term="終端機"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[利用 crontab 來做 Linux 固定排程]]></title>
     <link href="http://code.kpman.cc/2015/02/11/利用-crontab-來做-Linux-固定排程/"/>
@@ -889,7 +920,7 @@
     <link href="http://code.kpman.cc/2013/05/07/利用-pseudo-element-讓-html-更簡潔/"/>
     <id>http://code.kpman.cc/2013/05/07/利用-pseudo-element-讓-html-更簡潔/</id>
     <published>2013-05-07T03:28:16.000Z</published>
-    <updated>2013-05-07T05:46:25.000Z</updated>
+    <updated>2015-02-11T07:46:37.000Z</updated>
     <content type="html"><![CDATA[<p>趁著記憶猶新的狀況，記錄自己使用偽元素 (pseudo-element)讓原本的html架構更加簡潔的方法。</p>
 <a id="more"></a> 
 <h2 id="何謂pseudo-element?">何謂pseudo-element?</h2>
@@ -1014,66 +1045,5 @@
     <category scheme="http://code.kpman.cc/tags/hexo/" term="hexo"/>
     <category scheme="http://code.kpman.cc/tags/subdomain/" term="subdomain"/>
     <category scheme="http://code.kpman.cc/tags/url/" term="url"/>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[hexo架blog初體驗]]></title>
-    <link href="http://code.kpman.cc/2013/04/26/hexo架blog初體驗/"/>
-    <id>http://code.kpman.cc/2013/04/26/hexo架blog初體驗/</id>
-    <published>2013-04-26T14:21:55.000Z</published>
-    <updated>2013-05-20T03:41:25.000Z</updated>
-    <content type="html"><![CDATA[<p>是這樣的，一直想要找一個空間，可以清爽的放code，可以跟其他人交流<br>有鑑於系上好朋友們紛紛都建立起自己的部落格，因此我也加入了這個行列。</p>
-<p>報著取之於人，回饋之於人的心情，我想要把自己從無到有架設這一個blog的過程記錄下來<br>謝謝那些願意指導我的朋友們！</p>
-<a id="more"></a>
-<h2 id="一、本機環境設定">一、本機環境設定</h2>
-<ol>
-<li><p>首先你要有node.js，這是一套快速、簡單且功能強大的 Node.js 網誌框架。</p>
-</li>
-<li><p>接著你要用 <code>npm install -g hexo</code> 來安裝</p>
-</li>
-</ol>
-<p>理論上這樣就完成了，我個人在裝的時候npm不給裝，發現前面加上 <code>sudo</code> 就可以解決。</p>
-<h2 id="二、github帳號設定">二、github帳號設定</h2>
-<ol>
-<li><p>你要申請一個自己的github帳號</p>
-</li>
-<li><p>在主頁右上方創建一個新的repo</p>
-<p><img src="http://i.imgur.com/6mFqQlc.png" alt="create new repo" title="new repo"></p>
-</li>
-<li><p>Repository name填入 <code>github帳號.github.com</code> 用來創建github page</p>
-</li>
-</ol>
-<h2 id="三、開始使用hexo">三、開始使用hexo</h2>
-<p>建立hexo</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">init</span></div></pre></td></tr></table></figure>
-
-<p>建立一篇文章，將會是<a href="http://markdown.tw" target="_blank" rel="external">Markdown</a>形式，可以到source/_post/title.md去修改</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> <span class="string">"title"</span></div></pre></td></tr></table></figure>
-
-<p>生成public檔</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">generate</span></div></pre></td></tr></table></figure>
-
-<p>開啟server觀看（預設在localhost:4000）</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">server</span></div></pre></td></tr></table></figure>
-
-<h2 id="四、發佈到github上面">四、發佈到github上面</h2>
-<p>修改 <code>_config.yml</code> 檔案，最下面加上</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: github</div><div class="line">  repository: git@<span class="filename">github.com</span>:github帳號/github帳號.<span class="filename">github.com.git</span></div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-
-<p>我那時候用git的時候，沒有ssh認證，如果遇到相同問題可以看<a href="https://help.github.com/articles/generating-ssh-keys" target="_blank" rel="external">這篇</a>。<br>照著上面的指令走就可以完成，唯獨mac裡面似乎內建 <code>id_rsa</code> 這把key，這邊我不清楚XD</p>
-<p>接著只要輸入</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">hexo</span> deploy</div></pre></td></tr></table></figure>
-
-<p>等待10分鐘，你的網誌理論上就架好了！網址為 <code>http://github帳號.github.io</code></p>
-<h3 id="reference"><em>reference</em></h3>
-<ol>
-<li><p><a href="http://zespia.tw/hexo/zh-TW/" target="_blank" rel="external">官方文件</a>非常詳盡，重點是<em>中文</em>！  </p>
-</li>
-<li><p>強者小熊<a href="http://eva0919.github.io/2013/04/21/%E4%BD%BF%E7%94%A8hexo%E4%BB%A5%E5%8F%8Agithub-page%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E9%83%A8%E8%90%BD%E6%A0%BC/" target="_blank" rel="external">教學文</a></p>
-</li>
-</ol>
-]]></content>
-    <category scheme="http://code.kpman.cc/tags/code/" term="code"/>
-    <category scheme="http://code.kpman.cc/tags/hexo/" term="hexo"/>
-    <category scheme="http://code.kpman.cc/tags/github/" term="github"/>
   </entry>
 </feed>
