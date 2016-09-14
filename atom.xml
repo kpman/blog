@@ -4,7 +4,7 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2016-09-13T15:29:20.830Z</updated>
+  <updated>2016-09-14T04:08:00.684Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
@@ -16,9 +16,9 @@
     <link href="http://code.kpman.cc/2016/09/13/babel-相關名詞簡介/"/>
     <id>http://code.kpman.cc/2016/09/13/babel-相關名詞簡介/</id>
     <published>2016-09-13T15:27:11.000Z</published>
-    <updated>2016-09-13T15:28:24.000Z</updated>
+    <updated>2016-09-14T04:07:44.000Z</updated>
     <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/babel/logo/master/babel.png" alt=""></p>
-<p>babel 是現代前端工程師都不陌生的工具，它可以將 ES6(+) 的語法轉換為 ES5 甚至是更低的版本，利用 babel 可以讓開發者即刻享受到 ES6 語法所帶來的便利性。<br>然而許多 babel 相關的名詞卻常常困擾想要入門的新手們，因此利用這篇文章簡介那些與 babel 相關的名詞，以 babel 6 為主。</p>
+<p>babel 是現代前端工程師都不陌生的工具，它可以將 ES6 (+) 的語法轉換為 ES5 甚至是更低的版本，利用 babel 可以讓開發者即刻享受到 ES6 語法所帶來的便利性。<br>然而許多 babel 相關的名詞卻常常困擾想要入門的新手們，因此利用本文簡介那些與 babel 相關的名詞，以 babel 6 為主。</p>
 <p>本篇將會會介紹到：</p>
 <ul>
 <li>.babelrc</li>
@@ -31,51 +31,62 @@
 <li>babel-eslint</li>
 </ul>
 <a id="more"></a>
-<p>本篇文章並非完善的介紹整個 babel 生態系，而是作者整理自己常見且容易搞錯的 babel 相關名詞。</p>
+<p>本文用意並非完善的介紹整個 babel 生態系，而是作者整理自己常見且容易搞錯的 babel 相關名詞。</p>
 <h2 id="一、-babelrc">一、.babelrc</h2>
-<p>這是 babel 這個工具需要用到的 conf file，以下所介紹到的各項都需要做設定讓 babel 知道該如何做轉換。</p>
+<p>這是 <code>babel</code> 這個工具需要用到的設定檔，以下所介紹到的各項都需要該設定檔讓 babel 有轉換的依據。</p>
 <p>方法一：</p>
 <p>直接寫獨立的 <code>.babelrc</code> 檔，一個基本的格式如下：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">  "<span class="attribute">parser</span>": <span class="value"><span class="string">"babel-eslint"</span></span>,</div><div class="line">  "<span class="attribute">extends</span>": <span class="value"><span class="string">"airbnb"</span></span></div><div class="line">}</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">  "<span class="attribute">presets</span>": <span class="value">[<span class="string">"es2015"</span>]</span></div><div class="line">}</div></pre></td></tr></table></figure>
 
 <p>方法二：</p>
 <p>直接寫進 <code>package.json</code> 檔</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">  <span class="string">"name"</span>: <span class="string">"my-package"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"babel"</span>: {</div><div class="line">    <span class="comment">// your babel config here</span></div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
 
+<p>註：方法二雖然可以這樣寫，但不建議使用，因為在 react-native 會出現<a href="https://github.com/mjackson/http-client/pull/7" target="_blank" rel="external">已知的問題</a>。</p>
 <h2 id="二、babel-cli">二、babel-cli</h2>
-<p>利用 npm 安裝 babel-cli 將會同時註冊 <code>babel</code> 和 <code>babel-node</code> 兩個最常見的指令。</p>
-<p><code>npm install babel-cli --save-dev</code></p>
+<p>利用 npm 安裝 babel-cli 將會同時註冊 <code>babel</code> 和 <code>babel-node</code> 兩個最常使用的指令。</p>
+<p><code>$ npm install babel-cli --save-dev</code></p>
 <p>利用上述指令安裝在 project 的目錄底下。</p>
 <h3 id="babel">babel</h3>
-<p>可以直接在 command line 下 babel 做 ES6 的語法轉換，<br>常用的情景為將 src 資料夾 build 成 lib 資料夾，<br>因為身為 library 開發者，不要預設使用者有 ES6 的環境為佳，<br>上述簡單的指令如下：</p>
-<p><code>babel src -d lib</code></p>
+<p>可以直接在終端機利用 <code>babel</code> 指令做 ES6 的語法轉換，<br>常用的情景為將 <code>src</code> 資料夾 build 成 <code>lib</code> 資料夾，<br>身為 library 開發者，以不要預設使用者有 ES6 的環境為佳，<br>上述簡單的指令如下：</p>
+<p><code>$ babel src -d lib</code></p>
 <p>若需更多參數，請參考官方教學。</p>
 <h3 id="babel-node">babel-node</h3>
-<p>可以利用 <code>babel-node myEs6.js</code> 直接運行 ES6 的 code，<br>當然需要 .babelrc 檔還有相關的 presets 或是 plugins 檔做為 babel 轉換的依據。</p>
-<p>而 <code>babel-node</code> 運行的時候會預設載入 <code>babel-polyfill</code> 使用，<br>因此會佔大量的記憶體空間，官方不建議在 production 環境使用。</p>
+<p>可以利用 <code>babel-node myEs6.js</code> 直接運行 ES6 的 code，<br>當然需要 .babelrc 檔還有相關的 presets 或是 plugins 做為 babel 轉換的依據。</p>
+<p>而 <code>babel-node</code> 執行的時候會預設載入 <code>babel-polyfill</code> 使用，<br>因此會佔大量的記憶體空間，官方不建議在 production 環境使用。</p>
 <h2 id="三、babel-preset_vs-_babel-plugin">三、babel-preset vs. babel-plugin</h2>
-<p>這兩個 presets 和 plugins 在 <code>.babelrc</code> 檔內會很常看到，<br>其中的差異便是 preset 是 plugins 的集合，<br>一個 preset 當中可以包含其他 preset 和好幾個不同的 plugins，<br>例如 <code>babel-preset-es2015</code> 當中包含了<br><code>transform-es2015-arrow-functions</code><br><code>transform-es2015-block-scoped-functions</code><br>等 21 個不同的 plugins。</p>
+<p>presets 和 plugins 這兩個 key 在 <code>.babelrc</code> 檔內會很常看到，<br>其中的差異便是一個 preset 可以包含其他不同 presets 或是不同的 plugins。</p>
+<p>例如 <code>babel-preset-es2015</code> 當中包含了<br><code>transform-es2015-arrow-functions</code><br><code>transform-es2015-block-scoped-functions</code><br>等 21 個不同的 plugins。</p>
 <p><strong>順序問題</strong></p>
 <p>babel 在執行 transform 的過程，會 plugins 先載入，且按照由上往下（由左向右）的順序載入，<br>但是要注意的事情，presets 會在 plugins 之後，然後載入的順序是由下往上（由右向左）的反向順序。</p>
 <h3 id="stage">stage</h3>
-<p>babel 的 preset 有不同的 stage，最常見的 <code>Stage 0 preset</code> 就包含了</p>
+<p>babel 針對 stage 有實作幾個不同的 presets，包含了</p>
 <ul>
+<li>preset-stage-0</li>
 <li>preset-stage-1</li>
 <li>preset-stage-2</li>
 <li>preset-stage-3</li>
 </ul>
-<p>而 stage 數字越大的 preset 所包含的 plugins 代表越接近進入 release 核心，<br>許多開發者會直接採用 stage 0 的 preset 使用就是因為其包含了 stage 1, 2, 3 的 presets.</p>
+<p>stage 數字越大的 preset 所包含的 plugins 代表即將進入 <a href="https://github.com/tc39/proposals" target="_blank" rel="external">ECMA262 standard</a>, <a href="https://tc39.github.io/process-document/" target="_blank" rel="external">TC39 Process</a>，<br>官方預設的範例 stage 0 的 preset 使用就是因為其包含了 stage 1, 2, 3 的 presets，<br>而許多開發者直接用 stage 0，會把全部 stage 都載入，建議花時間了解各個 preset-stage 分別載入哪些 plugins 為佳。</p>
+<p>stage 是會隨著時間演進，在不同的階段所看到的 stage 內容可能都不一樣。</p>
 <h2 id="四、babel-register">四、babel-register</h2>
-<p>當載入 babel-register 後，其接下來的 es6 語法都可以被設定的 .babelrc 做轉換，<br>載入的方式通常需要一個 entry.js 檔，由於在這個進入點 node 並不知道 es6 語法，<br>因此於此需要利用 <code>require(&#39;babel-register&#39;)</code> 的方式載入</p>
-<p><code>entry.js</code> 進入點簡單範例：</p>
+<p>當載入 <code>babel-register</code> 後，其接下來的 es6 語法都可以被設定的 .babelrc 做轉換，</p>
+<p>載入的方式有兩種：</p>
+<p>方法一：</p>
+<p>額外建立一個進入點檔案，由於在這個進入點 node 並不知道 es6 語法，<br>因此於此需要利用 <code>require(&#39;babel-register&#39;)</code> 的方式載入</p>
+<p>進入點檔名以 <code>entry.js</code> 為例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'babel-register'</span>);</div><div class="line"><span class="built_in">require</span>(<span class="string">'./yourEs6Index'</span>);</div></pre></td></tr></table></figure>
 
 <p>因此未來執行 <code>node entry.js</code> 就可以利用 <code>babel-register</code> 動態載入的方式進行轉換語法。</p>
+<p>方法二：</p>
+<p>在終端機執行 <code>node</code> 的時候，直接利用 <code>-r</code> 參數帶入 <code>babel-register</code>，<code>-r</code> 等於 <code>--require</code> 代表 module to preload</p>
+<p><code>$ node -r babel-register yourEs6Index.js</code></p>
 <h2 id="五、babel-polyfill">五、babel-polyfill</h2>
 <p>什麼是 <code>polyfill</code>?</p>
 <p>wiki: In web development, a polyfill is code that implements a feature on web browsers that do not support the feature.</p>
-<p>因此 <code>babel-polyfill</code> 顧名思義就是 babel 幫我們做了一些現階段還沒有被支援的 feature，好讓我們在現階段就可以利用一些未來原生會支援的 feature，<br>例如：<code>Promise</code>, <code>Array.from</code>, <code>Object.assign</code>, <code>Array.includes</code> 等。</p>
-<p><strong>babel-node</strong><br>當利用 babel-node 去運行 js 檔的時候，會<strong>預設</strong>載入 <code>babel-polyfill</code>，<br>因此你即刻可利用 babel-node run 一個帶有 promise 的 js 檔，<br>而不需再另外 require <code>bluebird</code> 等套件。</p>
+<p>因此 <code>babel-polyfill</code> 顧名思義就是 babel 幫我們做了一些現階段還沒有被各家瀏覽器通用支援的 feature，好讓我們在現階段就可以利用一些未來原生的語法，例如：<code>Promise</code>, <code>Array.from</code>, <code>Object.assign</code>, <code>Array.includes</code> 等。<br>像是 Chrome 對於 es6 的支援度一直以來都蠻高的，但是並非每家瀏覽器廠商都能支援，因此需要有 polyfill。</p>
+<p><strong>babel-node</strong><br>當利用 babel-node 去運行 js 檔的時候，會<strong>預設</strong>載入 <code>babel-polyfill</code>，<br>因此你即可利用 babel-node run 一個帶有 promise 的 js 檔，<br>而不需再另外 require <code>bluebird</code> 等套件。</p>
+<p><strong>babel-polyfill</strong><br>主要 includes 了 <a href="https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime" target="_blank" rel="external">regenerator runtime</a> 和 <a href="https://github.com/zloirock/core-js" target="_blank" rel="external">core-js</a>。<br><code>regenerator runtime</code> 就是將 generator/async 轉換成 es5 語法，而 <code>core-js</code> 是 Modular standard library for JavaScript 集合，詳細請參閱連結。</p>
 <h2 id="六、babel-plugin-transform-runtime_＆_babel-runtime">六、babel-plugin-transform-runtime ＆ babel-runtime</h2>
 <p>在做轉換的時候，若利用 <code>babel-polyfill</code> 會做 global scope，所以當你今天是要做 lib/tool 模式，沒辦法控制你的運行環境，則不適合利用 babel-polyfill，需要用 <code>babel-plugin-transform-runtime</code> 為佳。</p>
 <ol>
@@ -86,19 +97,19 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-plugin-transform-runtime</div><div class="line">$ npm install --save babel-runtime</div></pre></td></tr></table></figure>
 
 <h2 id="七、babel-loader">七、babel-loader</h2>
-<p><code>loader</code> 是 <code>webpack</code> 用來載入各種不同文件的工具，而 <code>babel-loader</code> 就是 webpack 用來執行 babel 的方式。</p>
+<p><code>loader</code> 是 <code>webpack</code> 用來載入各種不同類型檔案的套件，而 <code>babel-loader</code> 讓 webpack 可以用來執行 babel 轉換的的一種套件。</p>
 <p>利用 <code>babel-loader</code> 可以利用 webpack 打包時候同時進行 babel 的轉換，以下是簡單範例檔：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: {</div><div class="line">  loaders: [</div><div class="line">    {</div><div class="line">      test: <span class="regexp">/\.js$/</span>,</div><div class="line">      loaders: [<span class="string">'babel'</span>],</div><div class="line">      exclude: <span class="regexp">/node_modules/</span>,</div><div class="line">    },</div><div class="line">  ],</div><div class="line">},</div></pre></td></tr></table></figure>
 
-<p>因為 <code>babel-loader</code> 的速度很慢，官方強烈建議把 <code>node_modules</code> exclude 掉。</p>
+<p>因為 <code>babel-loader</code> 的速度很慢，官方建議把 <code>node_modules</code> exclude 掉。</p>
 <h2 id="八、babel-eslint">八、babel-eslint</h2>
-<p><code>ESLint</code> 可以說是近代最偉大的 linter 工具發明了，它可以讓使用者高度客製化的 parser 語法，而目前原生的 ESLint 支援的語法有 <code>ES6/ES7</code>, <code>JSX</code>, and <code>object rest/spread</code>，如果你用到的更多 babel 語法則需要 babel-eslint 來幫忙。</p>
+<p><code>ESLint</code> 堪稱是近代偉大的 linter 發明之一，它可以讓使用者高度客製化的 parser 語法，而目前原生的 ESLint 支援的語法有 <code>ES6/ES7</code>, <code>JSX</code>, and <code>object rest/spread</code>，如果你用到的更多 babel 語法則需要 babel-eslint 來幫忙。</p>
 <p><code>$ npm install eslint@3.x babel-eslint@6 --save-dev</code></p>
 <p>.eslintrc 範例檔</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">  "<span class="attribute">parser</span>": <span class="value"><span class="string">"babel-eslint"</span></span>,</div><div class="line">  "<span class="attribute">rules</span>": <span class="value">{</span></div><div class="line">    "<span class="attribute">strict</span>": <span class="value"><span class="number">0</span></span></div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
 
 <h2 id="結論">結論</h2>
-<p>當然 babel 的套件不僅僅如此，還有 <code>babelify</code> 等相關工具尚未有時間介紹，本篇所做的介紹希望能對於部分開發者有幫助。<br>若有不清楚或者會誤導讀者的方向，還請不吝指教。</p>
+<p>當然 babel 的套件不僅僅如此，還有 <a href="https://github.com/babel/babelify" target="_blank" rel="external">babelify</a>, <a href="https://github.com/babel/babili" target="_blank" rel="external">babili</a> 等許多相關工具尚未有時間介紹，本篇所提及的介紹希望能對於部分開發者有幫助。<br>若有不清楚或者會誤導讀者的方向，還請不吝指教。</p>
 ]]></content>
     <category scheme="http://code.kpman.cc/tags/babel/" term="babel"/>
     <category scheme="http://code.kpman.cc/tags/es6/" term="es6"/>
