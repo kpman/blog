@@ -4,13 +4,58 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2016-09-17T08:39:37.267Z</updated>
+  <updated>2016-12-16T00:52:03.960Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
     <email><![CDATA[s92f002@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[將 JS Callback 轉成 Promise]]></title>
+    <link href="http://code.kpman.cc/2016/12/16/將-JS-Callback-變成-Promise/"/>
+    <id>http://code.kpman.cc/2016/12/16/將-JS-Callback-變成-Promise/</id>
+    <published>2016-12-15T23:57:57.000Z</published>
+    <updated>2016-12-16T00:51:39.000Z</updated>
+    <content type="html"><![CDATA[<p>隨著越來越多 JS 開發者的提倡，越來越多人擁抱 ES6(+) 的語法，其所帶來的好處讓許多開發者願意接受。</p>
+<p>然而一些新接觸的開發者，在流程控制上會聽聞 Promise 的好處進而開始使用，但較早期的套件會遵循著 node.js style 的 Callback；因此本篇文章將會介紹如何將這類 Callback 利用套件轉成 Promise。</p>
+<p><img src="http://i.imgur.com/Xhzct6v.png" alt=""></p>
+<a id="more"></a>
+<h2 id="Node-js_Style_Callback">Node.js Style Callback</h2>
+<p>在 JS 的流程處理上，有許多人一定會遇見 Callback function，而 node.js 有獨特的規範，遵循著這類規範會讓更多開發者受益，這類的 Callback 被稱為 <code>Error-First Callbacks</code>。</p>
+<ul>
+<li>非同步的 Callback function 第一個參數是錯誤物件，有錯誤就會回傳錯誤訊息，沒有錯誤則第一個值會是 null。剩下的參數為 Callback function 正常情況下會回傳的值。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fs.readFile<span class="function"><span class="params">(<span class="string">'/etc/passwd'</span>, (err, data) =&gt; {</span></span></div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err; <span class="regexp">//</span> 此處為 Node.js Style Callback</div><div class="line">  <span class="built_in">console</span>.log(data);</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<h2 id="thenify_套件使用">thenify 套件使用</h2>
+<h4 id="使用情境">使用情境</h4>
+<p>將會是把第三方套件 Node.js Style Callback 轉成 Promise，接著就可以 <code>.then()</code> 或者是利用 <code>async</code> <code>await</code> 去處理流程了。值得一提此套件利用的是 <code>any-promise</code>，理論上你可以隨時的設置你想要的 Promise 實作。</p>
+<h4 id="使用方法">使用方法</h4>
+<p>因為 README 上面寫的蠻不清楚，以下列出幾種狀況，也推薦看套件的測試檔案<a href="https://github.com/thenables/thenify/blob/master/test/test.js" target="_blank" rel="external">範例</a>：</p>
+<p>範例一：非同步 function 直接接收 cb</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">(cb)</span> </span>{</div><div class="line">  <span class="comment">// 處理複雜流程</span></div><div class="line">  cb(<span class="literal">null</span>, <span class="literal">true</span>)</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">const</span> p = thenify(fn); <span class="comment">// p is a promise now.</span></div><div class="line"></div><div class="line">p().then(val =&gt; <span class="built_in">console</span>.log(val)) <span class="comment">// true</span></div></pre></td></tr></table></figure>
+
+<p>範例二：非同步 function 直接接收 cb，該 cb 回傳多個參數</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">(cb)</span> </span>{</div><div class="line">  <span class="comment">// 處理複雜流程</span></div><div class="line">  cb(<span class="literal">null</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) <span class="comment">// 除了第一個 error msg 外，回傳多個值</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">const</span> p = thenify(fn); <span class="comment">// p is a promise now.</span></div><div class="line"></div><div class="line">p().then(val =&gt; <span class="built_in">console</span>.log(val)) <span class="comment">// [1, 2, 3]，會轉成 array</span></div></pre></td></tr></table></figure>
+
+<p>範例三：非同步 function 直接接收多個參數及 cb，該 cb 亦接受多個參數</p>
+<p><strong>此範例為最常被使用功能，關鍵點為 cb 位在 fn 的最後一個參數，且此 cb 遵循著上述提到的 Node.js Style Callback。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">(a, b, c, cb)</span> </span>{</div><div class="line">  <span class="comment">// 處理複雜流程</span></div><div class="line">  cb(<span class="literal">null</span>, a, b); <span class="comment">// 最後回傳 error msg(null) 和 a, b</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">const</span> p = thenify(fn); <span class="comment">// p is a promise now.</span></div><div class="line"></div><div class="line">p(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>).then(values =&gt; <span class="built_in">console</span>.log(values)); <span class="comment">// [1, 2]，callback 回傳的值，一樣會包成 array</span></div></pre></td></tr></table></figure>
+
+<h2 id="結論">結論</h2>
+<p>隨著 node 核心原生支援的語法越來越多，選擇利用 babel 搭配就可以在此時享受到 Promise 甚至是 async, await 語法帶來的好處，然而較早期的套件甚至不預設回傳 Promise，此時便需要一些工具的幫助。</p>
+<p>希望這篇文章能幫助到那些一接觸學習 JS 流程控制就享受到 Promise 好處，但實務上卻不太理解如何處理原生或第三方套件這類 Callback function 的開發者。</p>
+<h2 id="reference">reference</h2>
+<ul>
+<li><a href="https://www.npmjs.com/package/thenify" target="_blank" rel="external">thenify package</a></li>
+<li><a href="http://eddychang.me/blog/javascript/57-node-js-error-first-callback.html" target="_blank" rel="external">Node.js error-first callback</a></li>
+<li><a href="http://welefen.com/post/how-to-convert-callback-to-promise.html" target="_blank" rel="external">如何把 Callback 接口包装成 Promise 接口</a></li>
+</ul>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/promise/" term="promise"/>
+    <category scheme="http://code.kpman.cc/tags/js/" term="js"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[JavaScript 變數宣告]]></title>
     <link href="http://code.kpman.cc/2016/09/17/JavaScript-變數宣告/"/>
@@ -1039,70 +1084,5 @@
     <category scheme="http://code.kpman.cc/tags/tasksel/" term="tasksel"/>
     <category scheme="http://code.kpman.cc/tags/ubuntu/" term="ubuntu"/>
     <category scheme="http://code.kpman.cc/tags/AWS/" term="AWS"/>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[Sublime Text 2 實用技巧]]></title>
-    <link href="http://code.kpman.cc/2013/06/05/sublime-text-2-實用技巧/"/>
-    <id>http://code.kpman.cc/2013/06/05/sublime-text-2-實用技巧/</id>
-    <published>2013-06-05T04:53:10.000Z</published>
-    <updated>2013-06-05T16:41:38.000Z</updated>
-    <content type="html"><![CDATA[<p><img src="http://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png" alt="Sublime Text 2" title="Sublime Text 2"></p>
-<p>Sublime Text 2 是一套越來越火紅的編輯器，如果你是接觸網頁開發，想必對於這套軟體不陌生，以下分享幾個好用的技巧，都是我自己平常比較常使用的技巧，因為我本身是一個懶得看文件的人，所以就整理這篇與大家分享。</p>
-<a id="more"></a>
-<h2 id="編輯環境">編輯環境</h2>
-<ol>
-<li>Mac 10.7.5</li>
-<li>Sublime Text 2</li>
-</ol>
-<p>我是使用mac，所以快捷鍵就會是command的配置。</p>
-<h2 id="技巧介紹">技巧介紹</h2>
-<h3 id="一、Set_Syntax">一、Set Syntax</h3>
-<p>有發現你的Sublime Text 2右下角有你正在編輯的環境語言嗎？舉凡JAVA、CSS、HTML5等<br>比如說我現在要從HTML5切到CSS介面，除了由上方的View-&gt;Sytax切換外，可以利用快捷鍵   </p>
-<p>切換到CSS範例：   </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">shift+<span class="command"><span class="keyword">command</span>+<span class="title">p</span></span></div><div class="line">鍵入sscss</div></pre></td></tr></table></figure>
-
-
-
-<p><img src="http://i.imgur.com/51PUAhD.png" alt="Set Syntax" title="Set Syntax"></p>
-<p>每一個Color Scheme都會針對不同的語言去做優化，因此值得學習。</p>
-<h3 id="二、HTML5_snippet">二、HTML5 snippet</h3>
-<p>貼心的Sublime Text 2有內建HTML5的snippet，方法如下：   </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">! + <span class="keyword">tab</span></div></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">htm<span class="variable">l:5</span> + <span class="keyword">tab</span></div></pre></td></tr></table></figure>
-
-<p>都可以達成HTML5快速生成已經預定的snippet.   </p>
-<p><img src="http://i.imgur.com/grLplgD.png" alt=""></p>
-<h3 id="三、Multiple_Selection_同時多個游標">三、Multiple Selection 同時多個游標</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">按住<span class="command"><span class="keyword">command</span>+點選你要的位置</span></div></pre></td></tr></table></figure>
-
-
-<p>推薦用在處理Array等結構重複性高的資料型態。</p>
-<h3 id="四、Column_Selection_同時直行游標">四、Column Selection 同時直行游標</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">按住<span class="keyword">option</span>+按著滑鼠左鍵直行往下拖曳選取</div></pre></td></tr></table></figure>
-
-
-<p>推薦用在處理html等修改固定class或其他部分。</p>
-<p><img src="http://i.imgur.com/1kLSh2P.png" alt=""></p>
-<h3 id="五、選取引號內字串">五、選取引號內字串</h3>
-<p>通常你都怎樣選取雙引號內的字串呢？<code>&quot;string&quot;</code>利用滑鼠從第一個引號拉到後面那個。</p>
-<p>輸入：<code>command + d</code> 即可完成</p>
-<h3 id="六、分割畫面">六、分割畫面</h3>
-<p>有時候我時常左邊放HTML檔，右邊放SCSS檔，一邊看一邊編輯，這時候就要分割畫面。</p>
-<p>輸入：<code>command+option+數量</code></p>
-<p>就可以把視窗分割成你要的數量。</p>
-<h3 id="七、貼上符合縮排">七、貼上符合縮排</h3>
-<p>有時候從網站上複製一段code，常常貼上的部份本身就有縮排，貼完卻只有第一行有縮排，其他跑到前面。</p>
-<p>複製完後，輸入：<code>shift+command+v</code></p>
-<p>也就是在原本的貼上加上shift就可以解決！</p>
-<h3 id="reference"><em>reference</em></h3>
-<ol>
-<li><a href="http://www.youtube.com/watch?v=41nY3RLBy3w&amp;list=PL8dIIwCMF-SOaSb3_VYUlyULpPyk7iwlh&amp;index=1" target="_blank" rel="external">up chen in 2013 JSDC</a></li>
-<li><a href="https://gist.github.com/twosixcode/1988097" target="_blank" rel="external">Paste and Indent</a></li>
-</ol>
-]]></content>
-    <category scheme="http://code.kpman.cc/tags/sublime-text-2/" term="sublime text 2"/>
   </entry>
 </feed>
