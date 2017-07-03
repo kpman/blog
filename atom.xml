@@ -4,7 +4,7 @@
   <subtitle><![CDATA[記錄開發過程大小事]]></subtitle>
   <link href="http://code.kpman.cc/atom.xml" rel="self"/>
   <link href="http://code.kpman.cc"/>
-  <updated>2016-12-16T00:52:03.960Z</updated>
+  <updated>2017-07-03T15:58:38.846Z</updated>
   <id>http://code.kpman.cc/</id>
   <author>
     <name><![CDATA[kpman | code]]></name>
@@ -12,11 +12,58 @@
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
   <entry>
+    <title type="html"><![CDATA[利用 Hub 來自動發 GitHub PR]]></title>
+    <link href="http://code.kpman.cc/2017/07/03/利用-Hub-來自動發-GitHub-PR/"/>
+    <id>http://code.kpman.cc/2017/07/03/利用-Hub-來自動發-GitHub-PR/</id>
+    <published>2017-07-03T15:55:19.000Z</published>
+    <updated>2017-07-03T15:55:46.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="起源">起源</h2>
+<p>因為工作和平時習慣的 Git 協作平台是 GitHub，因此常常發 pull request (以下簡稱 PR) 到 GitHub 上面，而這個流程對我來說不太順手，因此便想要利用更自動化的方式來做掉。</p>
+<p><img src="http://i.imgur.com/jEBYSRO.png" alt=""></p>
+<a id="more"></a>
+<h2 id="舊有流程">舊有流程</h2>
+<p>一般來說發 GitHub 的 PR 流程如下：</p>
+<ol>
+<li>在 local commit</li>
+<li>推 local branch 到 remote 上面</li>
+<li>打開 GitHub 網站</li>
+<li>進到你的 repo 頁面</li>
+<li>點開 PR 按鈕</li>
+<li>編輯 PR title</li>
+<li>按下按鈕確認發 PR</li>
+</ol>
+<p>這樣的流程除了需要在瀏覽器 和 terminal 間切換外，最麻煩的是需要操作滑鼠多點好幾下，整個流程會將思緒打斷。</p>
+<h2 id="Hub">Hub</h2>
+<p>這是一套 GitHub 官方所維護的套件，用來加強原生 git 的功能，而這個套件剛好提供了<br><code>$ hub pull-request</code> 的功能，可以在該 local branch 發 PR。</p>
+<p>使用 Hub 套件發 PR 流程如下：</p>
+<ol>
+<li>在 local commit</li>
+<li>推 local branch 到 remote 上面</li>
+<li>$ hub pull-request</li>
+<li>進入 vim 模式</li>
+<li>編輯 vim</li>
+<li>編輯完後需要存檔離開 vim ，Hub 才會自動發 PR</li>
+</ol>
+<p>使用 Hub 後流程已改善，把在瀏覽器上的操作帶回到 terminal，但整體使用卻依舊不便，因此我便思考能不能一鍵發 PR 到 GitHub 上面，而最後找到了下面這個解決方案，雖非最完善，但方便不少。</p>
+<h2 id="一鍵自動化流程">一鍵自動化流程</h2>
+<h3 id="Setup">Setup</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ vim ~/.oh-my-zsh/lib/aliases.zsh (<span class="keyword">in</span> my <span class="keyword">case</span>)</div><div class="line">alias pr=<span class="string">'hub pull-request -m "$(git reflog -1 | sed '</span>\<span class="string">''</span>s/^.*: //<span class="string">'\'</span><span class="string">')" | xargs open'</span></div><div class="line">$ <span class="built_in">source</span> ~/.zshrc (<span class="keyword">in</span> my <span class="keyword">case</span>)</div></pre></td></tr></table></figure>
+
+<h3 id="usage">usage</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">1. local commit</span></span></div><div class="line">2. git push origin &lt;branch-name&gt; && pr</div></pre></td></tr></table></figure>
+
+<p>藉由 Hub 的 pull-request 加上自己所寫的 alias，<br>此 alias 會將 commit message 的第一行拿出來自動當做 PR title，<br>且會自動打開瀏覽器，可以再度進行檢視或做最後的修正。</p>
+<h2 id="結論">結論</h2>
+<p>能夠利用小技巧將繁瑣重複的事情給自動化，是每個人都很樂見的，在此分享，希望能幫助到可能也需要的你。</p>
+]]></content>
+    <category scheme="http://code.kpman.cc/tags/GitHub/" term="GitHub"/>
+  </entry>
+  <entry>
     <title type="html"><![CDATA[將 JS Callback 轉成 Promise]]></title>
     <link href="http://code.kpman.cc/2016/12/16/將-JS-Callback-變成-Promise/"/>
     <id>http://code.kpman.cc/2016/12/16/將-JS-Callback-變成-Promise/</id>
     <published>2016-12-15T23:57:57.000Z</published>
-    <updated>2016-12-16T00:51:39.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>隨著越來越多 JS 開發者的提倡，越來越多人擁抱 ES6(+) 的語法，其所帶來的好處讓許多開發者願意接受。</p>
 <p>然而一些新接觸的開發者，在流程控制上會聽聞 Promise 的好處進而開始使用，但較早期的套件會遵循著 node.js style 的 Callback；因此本篇文章將會介紹如何將這類 Callback 利用套件轉成 Promise。</p>
 <p><img src="http://i.imgur.com/Xhzct6v.png" alt=""></p>
@@ -61,7 +108,7 @@
     <link href="http://code.kpman.cc/2016/09/17/JavaScript-變數宣告/"/>
     <id>http://code.kpman.cc/2016/09/17/JavaScript-變數宣告/</id>
     <published>2016-09-17T07:41:31.000Z</published>
-    <updated>2016-09-17T08:39:10.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>JS 宣告變數的方式在 ES6 之後增加了 <code>let</code> 和 <code>const</code>，這篇文章將會談談 <code>var</code>、<code>let</code> 和 <code>const</code>之間的差異。</p>
 <p><img src="http://i.imgur.com/Jgd8jj5.jpg" alt=""></p>
 <a id="more"></a>
@@ -114,7 +161,7 @@
     <link href="http://code.kpman.cc/2016/09/13/babel-相關名詞簡介/"/>
     <id>http://code.kpman.cc/2016/09/13/babel-相關名詞簡介/</id>
     <published>2016-09-13T15:27:11.000Z</published>
-    <updated>2016-09-14T04:07:44.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/babel/logo/master/babel.png" alt=""></p>
 <p>babel 是現代前端工程師都不陌生的工具，它可以將 ES6 (+) 的語法轉換為 ES5 甚至是更低的版本，利用 babel 可以讓開發者即刻享受到 ES6 語法所帶來的便利性。<br>然而許多 babel 相關的名詞卻常常困擾想要入門的新手們，因此利用本文簡介那些與 babel 相關的名詞，以 babel 6 為主。</p>
 <p>本篇將會會介紹到：</p>
@@ -218,7 +265,7 @@
     <link href="http://code.kpman.cc/2016/05/17/node-js-爬-Facebook-留言版/"/>
     <id>http://code.kpman.cc/2016/05/17/node-js-爬-Facebook-留言版/</id>
     <published>2016-05-17T13:54:04.000Z</published>
-    <updated>2016-05-17T15:31:57.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>聽到網路爬蟲，有很多專案都是建立在 python 上面，在文字處理分析上， python 有很強大的套件可以使用，然而隨著 node.js 的發展越來越廣泛，也有許多因應的套件產生，今天將會介紹利用 FB 提供的 Graph API 來爬留言版。</p>
 <p><img src="http://i.imgur.com/2Qckxbc.jpg" alt="Facebook Comment Plugin"></p>
 <a id="more"></a>
@@ -267,7 +314,7 @@
     <link href="http://code.kpman.cc/2016/04/18/在-slack-建立-hubot/"/>
     <id>http://code.kpman.cc/2016/04/18/在-slack-建立-hubot/</id>
     <published>2016-04-18T14:42:02.000Z</published>
-    <updated>2016-04-18T16:15:36.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>slack 推出 bot 在 2016 這個時間點已經不算新鮮事，隨著 messenger 也推出自家的 bot 後，才真正開始接觸架設自己的 bot，網路上查到都是日文的資源較多，因此記錄這篇過程，希望能幫助到其他中文開發者。</p>
 <p><img src="http://i.imgur.com/qzHh7bb.png" alt="slakbot &amp; hubot"></p>
 <a id="more"></a>
@@ -332,7 +379,7 @@
     <link href="http://code.kpman.cc/2015/09/12/從deploy-node-js-專案所學/"/>
     <id>http://code.kpman.cc/2015/09/12/從deploy-node-js-專案所學/</id>
     <published>2015-09-12T15:18:17.000Z</published>
-    <updated>2015-09-12T16:22:41.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>學習 Node.js 已經兩年之餘，這段時間陸陸續續在開發上遇到一些問題（雷），然而隨著時間累積的叫做經驗，因此藉由此篇文章記錄從本機 development 環境到遠端 Linux 上的 production 所得到的經驗。</p>
 <p><img src="http://i.imgur.com/GtZ5ROB.jpg" alt="Deploy"></p>
 <a id="more"></a>
@@ -387,7 +434,7 @@
     <link href="http://code.kpman.cc/2015/07/23/從Pocket-儲存全文到Evernote/"/>
     <id>http://code.kpman.cc/2015/07/23/從Pocket-儲存全文到Evernote/</id>
     <published>2015-07-23T13:21:26.000Z</published>
-    <updated>2015-07-23T13:56:50.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>Pocket 是一款可以稍候待讀的 app，其漂亮的介面和離線閱讀的功能，使我對於它愛不釋手。<br>然而從英語語系出發的 Pocket 團隊，雖然在專業版提供全文檢索（full text search）的功能，但是在繁體中文上面還是略顯不足，常常找不到已經封存的文章內容，因此本篇記錄利用 Pocket 儲存到 Evernote 的過程。</p>
 <p><img src="http://i.imgur.com/g9vZzcB.png" alt="RSS to Evernote"></p>
 <a id="more"></a>
@@ -431,7 +478,7 @@
     <link href="http://code.kpman.cc/2015/05/10/Linux-之-command-line-上手/"/>
     <id>http://code.kpman.cc/2015/05/10/Linux-之-command-line-上手/</id>
     <published>2015-05-10T03:25:44.000Z</published>
-    <updated>2015-05-10T03:57:28.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>開發者對於 command line 一定不陌生，然而 Mac OS 會受到許多開發者的青睞，是因為其本身就是依照 unix 系統做開發，因此對於虛擬主機需要用到 command line 自然不陌生，整合性很好。</p>
 <p>這篇 blog 記錄網站開發超過兩年半經驗的我，最常用到的終端機指令 (command line)。</p>
 <p><img src="http://i.imgur.com/hGb22rh.png" alt=""></p>
@@ -442,10 +489,10 @@
 <h2 id="常用指令">常用指令</h2>
 <p>前面加上錢字號($)代表此行為 command line 開始，真正在打的時候不用加入<code>$</code></p>
 <p><code>$ cd</code>: 移動 root 位置<br><code>$ cd ..</code>: 移動到目前所在位置的上一層<br><code>$ cd ../..</code>: 移動到目前所在位置的上兩層</p>
-<p><code>$ pwd</code>: 列出目前完整路徑 —&gt; 可以知道自己現在在哪邊，再決定要如何利用 <code>cd</code> 移動</p>
+<p><code>$ pwd</code>: 列出目前完整路徑 –&gt; 可以知道自己現在在哪邊，再決定要如何利用 <code>cd</code> 移動</p>
 <p><code>$ ls</code>: 列出所在目錄的檔案<br><code>$ ls -a</code>: 列出的目錄檔案包含隱藏檔<br><code>$ ls -al</code>: 列出的目錄檔案包含隱藏檔 &amp; 檔案屬性和權限</p>
-<p><code>$ vi(m) **.xx</code>: 創建檔名為<code>**</code>，附檔名為<code>xx</code>的檔案 —&gt; 之後會進入vi(m) 文字編輯模式，推薦查閱<a href="http://linux.vbird.org/linux_basic/0310vi.php" target="_blank" rel="external">鳥哥vim教學</a></p>
-<p><code>$ mkdir ***</code>: 創建名稱為<code>***</code>的資料夾<br><code>$ rmdir ***</code>: 移除名稱為<code>***</code>的資料夾 —&gt; 需確定資料夾為空</p>
+<p><code>$ vi(m) **.xx</code>: 創建檔名為<code>**</code>，附檔名為<code>xx</code>的檔案 –&gt; 之後會進入vi(m) 文字編輯模式，推薦查閱<a href="http://linux.vbird.org/linux_basic/0310vi.php" target="_blank" rel="external">鳥哥vim教學</a></p>
+<p><code>$ mkdir ***</code>: 創建名稱為<code>***</code>的資料夾<br><code>$ rmdir ***</code>: 移除名稱為<code>***</code>的資料夾 –&gt; 需確定資料夾為空</p>
 <p><code>$ cp dest1 dest2</code>: 把 dest1 檔案複製到 dest2 的位置<br><code>$ mv dest1 dest2</code>: 把 dest1 檔案移動到 dest2 的位置，亦可作為變更檔名使用，例如 <code>$ mv test.txt no-test.txt</code>，就可以把檔名 test 的文字檔改變成為 no-test 檔名。</p>
 <p><code>$ sudo su</code>: 取得 root 權限</p>
 <p>以上列出我最常用的指令，許多指令都可以帶有特殊的參數，unix base底下的command line也不只這些，想要更進一步，可以再多去參考書籍或是教學。</p>
@@ -462,7 +509,7 @@
     <link href="http://code.kpman.cc/2015/02/11/利用-crontab-來做-Linux-固定排程/"/>
     <id>http://code.kpman.cc/2015/02/11/利用-crontab-來做-Linux-固定排程/</id>
     <published>2015-02-11T03:57:45.000Z</published>
-    <updated>2015-02-11T05:02:32.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>近期有個需求，要在 Linux 上執行固定週期的時程，發現利用 crontab 這個內建的功能便可以完成，本篇記錄使用過程以及相關的參數。</p>
 <p><img src="http://i.imgur.com/kcFpx34.png" alt=""></p>
 <a id="more"></a>
@@ -494,7 +541,7 @@
     <link href="http://code.kpman.cc/2015/02/07/Sublime-與-iTerm-的視窗配置/"/>
     <id>http://code.kpman.cc/2015/02/07/Sublime-與-iTerm-的視窗配置/</id>
     <published>2015-02-07T11:55:04.000Z</published>
-    <updated>2015-02-07T13:14:35.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>常用的編輯器是 Sublime Text 3，但是終端機是 iTerm2，兩者一直沒有 IDE 般的整合。<br>本篇記錄下如何更改 iTerm2 的視窗配置，讓兩者操作體驗上有更佳的配合。</p>
 <p><img src="http://i.imgur.com/wI92DCX.png" alt=""></p>
 <a id="more"></a>
@@ -504,7 +551,7 @@
 <p>讓我們更改 iTerm 的視窗配置，來改善這樣的情況！</p>
 <h3 id="iTerm_視窗設定">iTerm 視窗設定</h3>
 <p><img src="http://i.imgur.com/gfMTEKP.png" alt=""></p>
-<p>根據上圖，依序找到 Profiles —&gt; Window —&gt; Style: Bottom of screen<br>調整完後視窗的高度會根據設定的 Rows 高度來決定。</p>
+<p>根據上圖，依序找到 Profiles –&gt; Window –&gt; Style: Bottom of screen<br>調整完後視窗的高度會根據設定的 Rows 高度來決定。</p>
 <h3 id="快捷鍵設定">快捷鍵設定</h3>
 <p>根據個人習慣，在不與 Sublime 相關的快捷鍵衝突，我建議採用 <code>cmd+.</code> 來啟動 iTerm。</p>
 <p><img src="http://i.imgur.com/Iw6ywHt.png" alt=""></p>
@@ -525,7 +572,7 @@
     <link href="http://code.kpman.cc/2014/10/14/sublime-text-3-mac-指南/"/>
     <id>http://code.kpman.cc/2014/10/14/sublime-text-3-mac-指南/</id>
     <published>2014-10-14T07:16:59.000Z</published>
-    <updated>2014-10-14T09:50:29.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>本篇是我根據自己使用習慣所做的快捷鍵整理，使用sublime text這套編輯器已經有2年之餘，本身是個快捷鍵愛好者，對於發掘好用的快捷鍵樂此不疲，因此整理常用的快捷鍵在這篇，針對的是mac使用者所使用者快捷鍵，希望對各位有幫助。</p>
 <a id="more"></a>
 <h1 id="快捷鍵">快捷鍵</h1>
@@ -621,7 +668,7 @@
     <link href="http://code.kpman.cc/2014/09/23/nginx-移除-html-附檔名/"/>
     <id>http://code.kpman.cc/2014/09/23/nginx-移除-html-附檔名/</id>
     <published>2014-09-23T02:10:56.000Z</published>
-    <updated>2014-09-23T03:06:04.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>Nginx是一套輕量化的web server，因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器，本篇將介紹靜態網頁在nginx上移除.html附檔名的作法。</p>
 <p><img src="http://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="Nginx"></p>
 <a id="more"></a>
@@ -663,7 +710,7 @@
     <link href="http://code.kpman.cc/2014/04/15/為你的mac終端機加上alias/"/>
     <id>http://code.kpman.cc/2014/04/15/為你的mac終端機加上alias/</id>
     <published>2014-04-15T01:35:37.000Z</published>
-    <updated>2014-04-15T02:05:13.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>在使用iTerm（終端機）一段時間後，總覺得每次開啟新分頁，要進入到一個很深的資料夾略顯麻煩，因此上網查了簡易的方法，很快速便可以讓自己少打很多code，把時間花在其他更重要事情上。</p>
 <p><img src="http://i.imgur.com/Cc5u0nY.png" alt="iterm2"></p>
 <a id="more"></a>
@@ -693,7 +740,7 @@
     <link href="http://code.kpman.cc/2014/04/14/web好ui設計法則-2/"/>
     <id>http://code.kpman.cc/2014/04/14/web好ui設計法則-2/</id>
     <published>2014-04-14T05:26:18.000Z</published>
-    <updated>2014-04-14T13:14:10.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>本文譯自<a href="http://www.goodui.org" target="_blank" rel="external">goodui</a>，會寫這系列並非逐字翻譯，而是在研讀過後利用自己的方式表達並記錄分享之，全文圖片版權皆為goodui.org所有，此為系列第2篇。</p>
 <a id="more"></a>
 <h1 id="6、區分已被選取和可點選區塊">6、區分已被選取和可點選區塊</h1>
@@ -723,7 +770,7 @@
     <link href="http://code.kpman.cc/2014/04/11/nginx-with-nodejs-in-different-port/"/>
     <id>http://code.kpman.cc/2014/04/11/nginx-with-nodejs-in-different-port/</id>
     <published>2014-04-10T16:16:33.000Z</published>
-    <updated>2014-04-10T16:57:25.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>Nginx因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器。</p>
 <p>由於近期想要把不同的node.js程式放在同一個server，因此開始研究nginx用法，記錄下來我的實作方式。</p>
 <p><img src="http://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="Nginx"></p>
@@ -759,7 +806,7 @@
     <link href="http://code.kpman.cc/2014/04/06/ci初體驗for靜態頁面/"/>
     <id>http://code.kpman.cc/2014/04/06/ci初體驗for靜態頁面/</id>
     <published>2014-04-06T13:30:35.000Z</published>
-    <updated>2014-04-06T16:13:14.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>第一次因為專案需要，而跟PHP後端工程師配合，我們選定了<a href="http://www.codeigniter.org.tw/" target="_blank" rel="external">CI</a>這套framework來使用，對於CI算是第一次接觸，因此想把從無到有的架設過程給記錄下來。</p>
 <p><img src="http://php.quicoto.com/wp-content/uploads/2013/07/codeigniter-logo.png" alt="codeigniter"></p>
 <a id="more"></a>
@@ -825,7 +872,7 @@
     <link href="http://code.kpman.cc/2014/03/19/web好ui設計法則-1/"/>
     <id>http://code.kpman.cc/2014/03/19/web好ui設計法則-1/</id>
     <published>2014-03-19T09:11:15.000Z</published>
-    <updated>2014-03-19T10:11:46.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>本文譯自<a href="http://goodui.org" target="_blank" rel="external">goodui</a>，會寫這系列並非逐字翻譯，而是在研讀過後利用自己的方式表達並記錄分享之，全文圖片版權皆為goodui.org所有。</p>
 <p><img src="http://i.imgur.com/ve2iCpO.png" alt="goodui"></p>
 <a id="more"></a>
@@ -853,7 +900,7 @@
     <link href="http://code.kpman.cc/2013/11/30/sublime-text-2-實用套件/"/>
     <id>http://code.kpman.cc/2013/11/30/sublime-text-2-實用套件/</id>
     <published>2013-11-29T16:02:48.000Z</published>
-    <updated>2014-03-17T01:43:18.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p><img src="http://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png" alt="Sublime Text 2" title="Sublime Text 2"></p>
 <p>Sublime Text 2 是網頁開發者都不陌生的一套編輯器，除了單純的文字編輯外，它還有很多實用的套件，這篇來介紹我平常常用的Sublime Text 2 套件。</p>
 <a id="more"></a>
@@ -918,7 +965,7 @@
     <link href="http://code.kpman.cc/2013/08/22/wordpress解決permalink固定網址問題/"/>
     <id>http://code.kpman.cc/2013/08/22/wordpress解決permalink固定網址問題/</id>
     <published>2013-08-22T04:54:15.000Z</published>
-    <updated>2013-08-22T05:00:24.000Z</updated>
+    <updated>2017-06-07T15:13:55.000Z</updated>
     <content type="html"><![CDATA[<p>本case為希望主目錄可以直接連到wordpress，但是wordpress是另外放在一個資料夾。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">主目錄：/<span class="keyword">var</span>/www</div><div class="line">wordpress資料夾：/<span class="keyword">var</span>/www/blog</div></pre></td></tr></table></figure>
 
@@ -943,146 +990,5 @@
     <category scheme="http://code.kpman.cc/tags/wordpress/" term="wordpress"/>
     <category scheme="http://code.kpman.cc/tags/apache2/" term="apache2"/>
     <category scheme="http://code.kpman.cc/tags/htaccess/" term="htaccess"/>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[EC2利用tasksel架wordpress經驗分享]]></title>
-    <link href="http://code.kpman.cc/2013/08/21/ec2利用tasksel架wordpress經驗分享/"/>
-    <id>http://code.kpman.cc/2013/08/21/ec2利用tasksel架wordpress經驗分享/</id>
-    <published>2013-08-20T18:17:04.000Z</published>
-    <updated>2013-08-21T06:48:47.000Z</updated>
-    <content type="html"><![CDATA[<p>看了這麼久的雲端資源，總算開了算是自己真正學到東西的第一台Amazon EC2 server，目的是想要練習把wordpress架到EC2上，在此分享我的架設經驗。</p>
-<p><img src="http://blog.programmableweb.com/wp-content/amazon-web-services1.png" alt="Amazon web service"></p>
-<a id="more"></a>
-<h2 id="一、擁有AWS帳號">一、擁有AWS帳號</h2>
-<p>關於開啟AWS的過程，實際走過一遍之後，阿正老師的<a href="http://blog.soft.idv.tw/?p=823&amp;page=2" target="_blank" rel="external">這篇</a>，其內寫的不錯，推薦跟著走一遍，就會了解很多。</p>
-<h2 id="二、開啟自己的instance">二、開啟自己的instance</h2>
-<p>在實際走過後，會發現阿正老師<a href="http://blog.soft.idv.tw/?p=824" target="_blank" rel="external">這篇</a>真的超用心，因此接下來主要會利用這篇，再加上些我的補充。</p>
-<ul>
-<li>instance地理位置</li>
-</ul>
-<p>提到將主機開的位置，現在已經有tokyo的據點，離台灣更近，所以建議將instance位置設在tokyo</p>
-<blockquote>
-<p>建議將instance位置設在tokyo</p>
-</blockquote>
-<ul>
-<li>instance選擇方案</li>
-</ul>
-<p><img src="http://i.imgur.com/U4rs7wk.png" alt="EC2 ubuntu server for free"></p>
-<p>利用VISA卡，選擇免費方案（圖中有星星的都是免費方案），在這邊我選擇ubuntu來做為我的系統。</p>
-<ul>
-<li>key pair創建＆下載</li>
-</ul>
-<p>在阿正老師的文章內看到關於key pair介紹，很重要，一定要記住要把下載下來的pem給管理好，未來是需要利用它來做ssh登入主機。</p>
-<blockquote>
-<p>.pem檔需要存好，一台主機配對一個key pair，且不能做更改，</p>
-</blockquote>
-<h2 id="三、設定Security_Group">三、設定Security Group</h2>
-<p>在沒有設定security group的時候，新開的instance可能是鎖起來的，會有SSH連線上的問題。</p>
-<ol>
-<li>進入console.aws.amazon.com</li>
-<li>左方導覽列選擇security group</li>
-<li>選擇instance後，下方的tab選取<code>Inbound</code></li>
-<li>分別加入<code>SSH</code>&amp;<code>HTTP</code>，Source部分都維持0.0.0.0/0即可，加入後記得要按<code>Apply Rule Change</code>才生效</li>
-</ol>
-<blockquote>
-<p>記得開啟SSH(20)、HTTP(80)</p>
-</blockquote>
-<h2 id="四、申請Elastic_IP">四、申請Elastic IP</h2>
-<p>每一個instance都應該要綁定一個elastice ip，未來可以作為連線使用。</p>
-<ol>
-<li>同上，進入console.aws.amazon.com</li>
-<li>選擇Elastic IPs</li>
-<li>選擇Allocate New Address</li>
-<li>申請完之後記得要associate到你的instance </li>
-</ol>
-<blockquote>
-<p>申請完elastic ip後，原本的Public domain前半部分會改變為新的ip</p>
-</blockquote>
-<p><strong><em>* 其實我在實作時，是先做了SSH連線，後來在去申請elastic ip，結果associate完後，我又要ssh連線，發現沒有辦法登入，之後才瞭解是做了elastic ip後，連線的ip也需要一並跟著改變。</em></strong></p>
-<h2 id="五、SSH連線進入自己的instance">五、SSH連線進入自己的instance</h2>
-<ol>
-<li>打開終端機（推薦iterm）</li>
-<li><code>chmod 600 ~/.pem</code><br>要記得把.pem檔改權限，不然會登不進去</li>
-<li>ssh連線使用以下command line<br><code>ssh -i ~/.pem ubuntu@ip</code><ul>
-<li><code>~/.pem</code>是此instance的key pair .pem檔的路徑</li>
-<li><code>ubuntu</code>是因為我用ubuntu當做OS，如果當初選擇Amazon linux的話，則需要輸入<code>ec2-user</code>取代ubuntu</li>
-<li><code>ip</code>則為instance的ip，進到console，左側選instance，拉到底下看見<br><code>Public DNS: ec2-xx-xxx-xxx-xx.ap-northeast-1.compute.amazonaws.com</code><br>則xx-xxx-xxx-xx改成<code>xx.xxx.xxx.xx</code>即為你的連線ip</li>
-</ul>
-</li>
-<li>連線成功會看到<code>ubuntu@ip-xxx-xxx-xxx-xxx:~$</code>字眼！那就恭喜了！</li>
-</ol>
-<blockquote>
-<p>pem檔的權限要更改為600</p>
-</blockquote>
-<h2 id="六、環境設定">六、環境設定</h2>
-<p>剛進到instance，記得將環境設定一下</p>
-<ol>
-<li><code>sudo apt-get update</code> + <code>sudo apt-get upgrade</code></li>
-<li>如果覺得一直sudo很麻煩，可以利用<code>sudo su</code>取得root權限</li>
-</ol>
-<hr>
-<h3 id="#_安裝tasksel"># 安裝tasksel</h3>
-<ol>
-<li>是ubuntu底下的lamp懶人包</li>
-<li>推薦<a href="http://howtounix.info/howto/LAMP-on-Ubuntu-with-tasksel-tool" target="_blank" rel="external">教學文</a></li>
-<li>開始安裝taskel   <code>sudo apt-get install tasksel</code></li>
-<li>安裝lamp-server   <code>sudo tasksel install lamp-server</code></li>
-</ol>
-<h3 id="#_安裝phpmyadmin"># 安裝phpmyadmin</h3>
-<ol>
-<li><code>sudo apt-get install phpmyadmin</code></li>
-<li><a href="http://linadonis.pixnet.net/blog/post/27585552-ubuntu-server-%E5%AE%89%E8%A3%9D-phpmyadmin" target="_blank" rel="external">reference</a></li>
-</ol>
-<h3 id="#_安裝wordpress"># 安裝wordpress</h3>
-<p><img src="http://wow-wp.org/wp-content/uploads/2011/10/wordpress.png" alt="wordpress"></p>
-<ol>
-<li><a href="https://www.digitalocean.com/community/articles/how-to-install-wordpress-on-ubuntu-12-04" target="_blank" rel="external">超棒教學文</a> 我是跟著文章走，裡面紅色的字記得改成自己的</li>
-</ol>
-<ul>
-<li>cd /var/www</li>
-<li>下載wordpress包<br><code>wget http://wordpress.org/latest.tar.gz</code>   </li>
-<li>解壓縮<br><code>tar -xzvf latest.tar.gz</code></li>
-<li>進到mysql mode<br><code>mysql -u root -p</code></li>
-<li>剩下有紅字，推薦看連結XD</li>
-</ul>
-<h2 id="七、測試連線">七、測試連線</h2>
-<p>當你安裝完後，事實上可以利用public domain來連線看看<br>直接在console裡面找到instance的public domian，連線看看是否成功</p>
-<ol>
-<li><code>cd /var/www</code> </li>
-<li><code>sudo vi test.php</code> 創新php檔案，並進到vim模式</li>
-<li>按<code>i</code> 進入編輯模式，記得看下面是否出現<code>-- INSERT --</code></li>
-<li>打上這一行<code>&lt;?php phpinfo(); ?&gt;</code></li>
-<li>按下esc -&gt; 打入<code>:wq</code> -&gt; enter存檔(記得是看iterm下面)</li>
-<li>利用public domain/test.php連線測試，看到php的資訊就成功了！</li>
-<li>public domain/wordpress 也可以看見你的wordpress有沒有架成功！</li>
-</ol>
-<h2 id="IP連接instance">IP連接instance</h2>
-<p>如果你有自己的ip，想要指到EC2的話，按照下面作法。</p>
-<ol>
-<li>到godday的DNS manager</li>
-</ol>
-<ul>
-<li>設定你的IP的<code>A record</code></li>
-<li>指向instance的<code>Elastic IP</code>即可</li>
-</ul>
-<p><strong><em>reference</em></strong></p>
-<ul>
-<li><a href="http://blog.soft.idv.tw/?p=823&amp;page=2" target="_blank" rel="external">阿正老師上篇</a> 阿正老師這兩篇必讀</li>
-<li><a href="http://blog.soft.idv.tw/?p=824" target="_blank" rel="external">阿正老師下篇</a> 主機實戰篇</li>
-<li><a href="http://blog.rx836.tw/blog/first-amazon-web-services/" target="_blank" rel="external">免費玩Amazon Web Service(AWS) EC2</a> 開機器寫的很詳細，圖文並茂</li>
-<li><a href="http://coenraets.org/blog/2012/01/setting-up-wordpress-on-amazon-ec2-in-5-minutes/" target="_blank" rel="external">Setting Up WordPress on Amazon EC2 in 5 minutes</a> 根本神教學，我是受這篇感動才想要把自己的過程給記錄下來。</li>
-<li><a href="http://linadonis.pixnet.net/blog/post/27585552-ubuntu-server-%E5%AE%89%E8%A3%9D-phpmyadmin" target="_blank" rel="external">Ubuntu Server 安裝 Phpmyadmin</a> phpmyadmin圖文教學</li>
-<li><a href="http://codex.wordpress.org/Giving_WordPress_Its_Own_Directory" target="_blank" rel="external">Giving WordPress Its Own Directory</a> 更換wordpress的路徑位置指向</li>
-</ul>
-<blockquote>
-<p>如果有問題，或者我有寫錯的地方，歡迎留言讓我知道！</p>
-</blockquote>
-]]></content>
-    <category scheme="http://code.kpman.cc/tags/wordpress/" term="wordpress"/>
-    <category scheme="http://code.kpman.cc/tags/Amazon/" term="Amazon"/>
-    <category scheme="http://code.kpman.cc/tags/EC2/" term="EC2"/>
-    <category scheme="http://code.kpman.cc/tags/tasksel/" term="tasksel"/>
-    <category scheme="http://code.kpman.cc/tags/ubuntu/" term="ubuntu"/>
-    <category scheme="http://code.kpman.cc/tags/AWS/" term="AWS"/>
   </entry>
 </feed>

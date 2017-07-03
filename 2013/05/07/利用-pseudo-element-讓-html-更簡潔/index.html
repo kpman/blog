@@ -97,7 +97,7 @@
 <li>::selection：用來自定反白後的效果。</li>
 </ol>
 <blockquote>
-<p>為了區分偽元素和偽類，CSS3 的 guildline 將偽元素的寫法修正，以往只要加一個冒號「:」，現在則是加兩個冒號「::」，部分可支援的瀏覽器包含 webkit, firefox, opera。)<br>— by <a href="http://www.mukispace.com/pseudo-elements-10-examples/" target="_blank" rel="external">MUKI</a></p>
+<p>為了區分偽元素和偽類，CSS3 的 guildline 將偽元素的寫法修正，以往只要加一個冒號「:」，現在則是加兩個冒號「::」，部分可支援的瀏覽器包含 webkit, firefox, opera。)<br>– by <a href="http://www.mukispace.com/pseudo-elements-10-examples/" target="_blank" rel="external">MUKI</a></p>
 </blockquote>
 <h2 id="修改過程">修改過程</h2>
 <h3 id="原本的html_code">原本的html code</h3>
@@ -112,7 +112,7 @@
 
 <figure class="highlight"><figcaption><span>scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class">.icon</span>{</div><div class="line">	<span class="attribute">display</span><span class="value">: inline-block;</span></div><div class="line">	<span class="attribute">position</span><span class="value">: relative;</span></div><div class="line">	<span class="attribute">padding</span><span class="value">: <span class="number">1em</span>;</span></div><div class="line">	<span class="attribute">padding-top</span><span class="value">: <span class="number">5px</span>;</span></div><div class="line"></div><div class="line">	&amp;<span class="pseudo">:before</span>{</div><div class="line">		<span class="attribute">position</span><span class="value">: absolute;</span></div><div class="line">		<span class="attribute">bottom</span><span class="value">: -<span class="number">7px</span>;</span></div><div class="line">		<span class="attribute">left</span><span class="value">: <span class="number">12px</span>;</span></div><div class="line">		<span class="attribute">content</span><span class="value">: <span class="function">attr</span>(data-text);</span> &lt;!-- 關鍵作法 --&gt;</div><div class="line">	}</div><div class="line">}</div><div class="line"><span class="class">.concept_label</span>{</div><div class="line">	<span class="attribute">background-image</span><span class="value">: <span class="function">url</span>(../img/icon01_c.png);</span></div><div class="line">}</div></pre></td></tr></table></figure>
 
-<h3 id="觀念整理">觀念整理</h3>
+<p>###觀念整理</p>
 <ol>
 <li>將中文字放入自訂的<code>data-*</code>屬性</li>
 <li>CSS中利用<code>::before</code>取代原本的<code>span</code></li>
@@ -185,7 +185,7 @@
 		<a href="/">kpman | code</a>
 	</h1>
 	<span class="copyright">
-		&copy; 2016 kpman | code<br>
+		&copy; 2017 kpman | code<br>
 		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
 	</span>
