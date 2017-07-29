@@ -94,7 +94,7 @@
 <p>crontab 是 Linux 內建的機制，可以根據設置的時間參數來執行例行性的工作排程。</p>
 <p><img src="http://i.imgur.com/OGytWih.gif" alt=""></p>
 <p>上述這張圖可以清楚的顯示出前五項參數應該要帶進去的數字。<br>依序是<code>分鐘</code>, <code>小時</code>, <code>日期</code>, <code>月份</code>, <code>星期</code>, <code>command</code><br>參數為<code>0-59</code>, <code>0-23</code>, <code>1-31</code>, <code>1-21</code>, <code>0-6</code>, <code>需要執行的command</code></p>
-<p>※ 月份參數為<code>0</code>代表星期日</p>
+<p>※ 星期參數為<code>0</code>代表星期日</p>
 <h2 id="參數特殊字符意義">參數特殊字符意義</h2>
 <p><code>【*】</code>：星號，代表任何時刻都接受的意思<br><code>【,】</code>：逗號，代表分隔時段。例如：<code>30 9,17 * * * command</code>，代表早上9點半和下午五點半都執行 command。<br><code>【-】</code>：減號，代表一段時間範圍。例如：<code>15 9-12 * * * command</code>，代表從9點到12點的每個15分都執行 command。<br><code>【/n】</code>：斜線，n代表數字，表示每個 n 單位間隔。例如：<code>*/5 * * * * command</code>，代表每隔 5 分鐘執行一次 command。</p>
 <p>還有一些人性化的參數，一次取代全部五個數字參數</p>
