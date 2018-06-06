@@ -55,14 +55,14 @@ tags:
 使用情境：左邊.html 右邊.css，編輯起來快速又方便。
 建議：利用空白鍵右邊的兩個連續按鈕搭配數字。
 
-![](http://i.imgur.com/wWrUvSA.gif)
+![](https://i.imgur.com/wWrUvSA.gif)
 
 ### 2. cmd + k 再 cmd + b
 
 關閉左側資料夾目錄，讓畫面變得更寬敞。
 這是我非常使用的一個快捷鍵，可以讓編輯的區域變得更大。
 
-![](http://i.imgur.com/IiAhOPx.gif)
+![](https://i.imgur.com/IiAhOPx.gif)
 
 ### 3. cmd + shift + control + f
 
@@ -70,7 +70,7 @@ tags:
 使用情境：當不常需要切換檔案時，此模式可以專注在單一檔案上，打這篇 blog 時我便這樣使用。
 建議：快捷鍵不好記，可以點選`View --> Enter Distraction Free Mode`
 
-![zen](http://i.imgur.com/DdD24a5.png)
+![zen](https://i.imgur.com/DdD24a5.png)
 
 ## 選取
 
@@ -81,7 +81,7 @@ tags:
 快速選取一範圍內的字串，`連按d`的話會選取整份文件內相同的字串。
 當選取完後，可以直接打字，因此就可以將整份文件的字串全部改成新字串。
 
-![](http://i.imgur.com/tkjccVA.gif)
+![](https://i.imgur.com/tkjccVA.gif)
 
 ### 2. cmd + l (可連按)
 
@@ -90,38 +90,38 @@ tags:
 ### 3. cmd + shift + l
 
 此功能常與上述`cmd + l`配合，當選取多行後，按下`cmd + shift + l`，則會在多行的情況結尾出現游標，可以做多行編輯。
-![](http://i.imgur.com/t6Mvfof.gif)
+![](https://i.imgur.com/t6Mvfof.gif)
 
 ### 4. option + 滑鼠拖拉
 
 當按住`option`後，搭配`滑鼠拖拉`便可以一次選取多行，並且產生游標。
 _注意：拖曳的時候，滑鼠必須是由上到下垂直的選取狀態_
 
-![](http://i.imgur.com/4cyN5eD.gif)
+![](https://i.imgur.com/4cyN5eD.gif)
 
 ### 5. cmd + 滑鼠點選
 
 按住`cmd`後，利用滑鼠在文件內點選，便可以在任何位置新增游標，產生多選狀態做編輯。
 
-![](http://i.imgur.com/ltNQcxi.gif)
+![](https://i.imgur.com/ltNQcxi.gif)
 
 ### 6. cmd + 左 或 右
 
 讓你的游標可以快速的回到該行的最前面或是最後面。
 
-![](http://i.imgur.com/WXyhkDE.gif)
+![](https://i.imgur.com/WXyhkDE.gif)
 
 ### 7. shift + 左 或 右
 
 每按一次會選擇一個字元，可以更加精準的選取自己要的部份。
 
-![](http://i.imgur.com/yPeO2UF.gif)
+![](https://i.imgur.com/yPeO2UF.gif)
 
 ### 8. cmd + shift + 左 或 右
 
 從游標所在處，往前選取或者往後選取該行到底。
 
-![](http://i.imgur.com/RX0XyMh.gif)
+![](https://i.imgur.com/RX0XyMh.gif)
 
 ## 尋找
 
@@ -132,20 +132,20 @@ _注意：拖曳的時候，滑鼠必須是由上到下垂直的選取狀態_
 
 利用`cmd + p`，之後等視窗出現後，即可輸入你要找的檔名，按下 enter 即可開啟。
 
-![](http://i.imgur.com/eH0Lbiu.gif)
+![](https://i.imgur.com/eH0Lbiu.gif)
 
 ### 2. cmd + p + ":" + 行數
 
 此功能相同於`control + g`，可以快速的跳到你指定的行數。
 
-![](http://i.imgur.com/cIp5SYH.gif)
+![](https://i.imgur.com/cIp5SYH.gif)
 
 ### 3. cmd + p + "@" + function name
 
 此功能相同於`cmd + r`，可以快速跳到定義的 function
 建議：若是知道要找 function，建議使用這個而非使用`cmd + f`
 
-![](http://i.imgur.com/IGdokvK.gif)
+![](https://i.imgur.com/IGdokvK.gif)
 
 ### 4. cmd + p + "#" + keyword
 
@@ -157,7 +157,7 @@ _注意：拖曳的時候，滑鼠必須是由上到下垂直的選取狀態_
 全文搜尋，可以找出「整個 project」內的關鍵字。
 在 Find Result 內，點選兩下，便可以跳到該文件，這是我覺得最實用的部份。
 
-![](http://i.imgur.com/RYZ0GOQ.gif)
+![](https://i.imgur.com/RYZ0GOQ.gif)
 
 ## 快還要更快
 
@@ -166,14 +166,14 @@ _注意：拖曳的時候，滑鼠必須是由上到下垂直的選取狀態_
 將選取起來的行，整段往上或往下移動。
 使用情境：當幾行 code 需要移動不算太大範圍的時候，可以使用這個快捷鍵，而不用剪下再貼上。
 
-![](http://i.imgur.com/R3jxRrV.gif)
+![](https://i.imgur.com/R3jxRrV.gif)
 
 ### 2. cmd + /
 
 將該行註解。
 個人建議：搭配`cmd + l(連按)`可以選取多行，一次註解起來。
 
-![](http://i.imgur.com/B85owMN.gif)
+![](https://i.imgur.com/B85owMN.gif)
 
 ## reference
 

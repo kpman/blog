@@ -8,7 +8,7 @@ const ArticleMeta = ({ tags }) => (
         <span className="tags">
           <ul className="article-tag-list">
             {tags.map(tag => (
-              <li className="article-tag-list-item">
+              <li className="article-tag-list-item" key={tag}>
                 <Link className="article-tag-list-link" to={`/tags/${tag}/`}>
                   {tag}
                 </Link>

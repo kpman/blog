@@ -7,13 +7,13 @@ tags:
 
 JS 宣告變數的方式在 ES6 之後增加了 `let` 和 `const`，這篇文章將會談談 `var`、`let` 和 `const`之間的差異。
 
-![](http://i.imgur.com/Jgd8jj5.jpg)
+![](https://i.imgur.com/Jgd8jj5.jpg)
 
 <!-- more -->
 
 ## 變數宣告的過程
 
-![](http://i.imgur.com/ya351ON.png)
+![](https://i.imgur.com/ya351ON.png)
 
 如圖所見，JS 內變數的宣告總共會經歷三個階段
 

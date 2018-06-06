@@ -10,7 +10,7 @@ tags:
 
 Nginx 是一套輕量化的 web server，因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器，本篇將介紹靜態網頁在 nginx 上移除.html 附檔名的作法。
 
-![Nginx](http://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg)
+![Nginx](https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg)
 
 <!-- more -->
 

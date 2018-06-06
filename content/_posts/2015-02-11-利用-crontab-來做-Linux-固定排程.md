@@ -9,7 +9,7 @@ tags:
 
 近期有個需求，要在 Linux 上執行固定週期的時程，發現利用 crontab 這個內建的功能便可以完成，本篇記錄使用過程以及相關的參數。
 
-![](http://i.imgur.com/kcFpx34.png)
+![](https://i.imgur.com/kcFpx34.png)
 
 <!-- more -->
 
@@ -17,7 +17,7 @@ tags:
 
 crontab 是 Linux 內建的機制，可以根據設置的時間參數來執行例行性的工作排程。
 
-![](http://i.imgur.com/OGytWih.gif)
+![](https://i.imgur.com/OGytWih.gif)
 
 上述這張圖可以清楚的顯示出前五項參數應該要帶進去的數字。  
 依序是`分鐘`, `小時`, `日期`, `月份`, `星期`, `command`  

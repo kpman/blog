@@ -25,7 +25,7 @@ tags:
 ※ 後記：  
 若你在申請完 disqus 貼到自己的 blog 上面，發現出現很多不必要的連結，請到 disqus 的 dashboard 去修改。  
 右上方 `Setting` -> `Discovery` -> 將 Discovery level 拉到最右邊，如下圖  
-![Discovery level](http://i.imgur.com/eeEjwka.png)
+![Discovery level](https://i.imgur.com/eeEjwka.png)
 
 ### 二、增加右方側欄 widget
 
@@ -48,14 +48,14 @@ tags:
 
 - 找到`theme/light/_config.yml`裡面的第一行
 - 預設狀況應該只有 Home&Archives  
-   ![menu](http://i.imgur.com/reKRQw4.png)
+   ![menu](https://i.imgur.com/reKRQw4.png)
 - 自訂自己的 menu，項目後面即為**連結**，可以直接使用`http://google.com`之類的連結。
 
 ### 四、自訂 favicon
 
 - 首先你要有一個 favicon.ico 檔或是.png 檔(這邊預設檔名為`favicon.png`)
 - 將檔案放在 `主目錄/source` 底下  
-   ![favicon path](http://i.imgur.com/Aar4ap9.png)
+   ![favicon path](https://i.imgur.com/Aar4ap9.png)
 - 找到 `theme/light/layout/_partial/head.ejs`做修改
 - 在裡面加上 head.ejs 檔內確認有以下這行 code 即可擁有自己的 favicon
 

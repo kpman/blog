@@ -24,7 +24,7 @@ tags:
 1.  進到 DNS manager
 2.  新增一筆 CNAME
 
-    ![CNAME](http://i.imgur.com/esdG2wP.png)
+    ![CNAME](https://i.imgur.com/esdG2wP.png)
 
 3.  GoDaddy 部分完成
 
@@ -33,11 +33,11 @@ tags:
 這邊要在 `主目錄-source` 底下放一個檔名為 `CNAME` 的檔案  
 裡面為你要指向的路徑，這邊我是指向 `http://code.kpman.cc`
 
-![path](http://i.imgur.com/gyMS7U6.png)
+![path](https://i.imgur.com/gyMS7U6.png)
 
 至於如何設置 CNAME 檔案，我是利用在 github repo 上面的 create new file
 
-![create new file](http://i.imgur.com/AHcVLBW.png)
+![create new file](https://i.imgur.com/AHcVLBW.png)
 
 設置完之後 clone 下來，然後複製進去`主目錄-source` 底下 XD  
 （有人知道怎樣做比較好嗎？）

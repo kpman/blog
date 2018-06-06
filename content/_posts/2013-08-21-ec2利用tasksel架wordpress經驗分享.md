@@ -12,7 +12,7 @@ tags:
 
 看了這麼久的雲端資源，總算開了算是自己真正學到東西的第一台 Amazon EC2 server，目的是想要練習把 wordpress 架到 EC2 上，在此分享我的架設經驗。
 
-![Amazon web service](http://blog.programmableweb.com/wp-content/amazon-web-services1.png)
+![Amazon web service](https://www.programmableweb.com/wp-content/amazon-web-services1.png)
 
 <!-- more -->
 
@@ -32,7 +32,7 @@ tags:
 
 - instance 選擇方案
 
-![EC2 ubuntu server for free](http://i.imgur.com/U4rs7wk.png)
+![EC2 ubuntu server for free](https://i.imgur.com/U4rs7wk.png)
 
 利用 VISA 卡，選擇免費方案（圖中有星星的都是免費方案），在這邊我選擇 ubuntu 來做為我的系統。
 

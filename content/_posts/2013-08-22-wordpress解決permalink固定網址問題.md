@@ -31,7 +31,7 @@ chmod 777 .htaccess
 
 這邊我選擇文章名稱的格式
 
-![固定網址](http://i.imgur.com/XlEgUdT.png)
+![固定網址](https://i.imgur.com/XlEgUdT.png)
 
 因為剛剛上面有設定.htaccess 權限打開到最大，因此進後台設定完，記得把 chmod 改為 644，要注意安全性。
 

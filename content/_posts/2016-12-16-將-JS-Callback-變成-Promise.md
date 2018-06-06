@@ -10,7 +10,7 @@ tags:
 
 然而一些新接觸的開發者，在流程控制上會聽聞 Promise 的好處進而開始使用，但較早期的套件會遵循著 node.js style 的 Callback；因此本篇文章將會介紹如何將這類 Callback 利用套件轉成 Promise。
 
-![](http://i.imgur.com/Xhzct6v.png)
+![](https://i.imgur.com/Xhzct6v.png)
 
 <!-- more -->
 

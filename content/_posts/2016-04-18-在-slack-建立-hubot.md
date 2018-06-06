@@ -10,7 +10,7 @@ tags:
 
 slack 推出 bot 在 2016 這個時間點已經不算新鮮事，隨著 messenger 也推出自家的 bot 後，才真正開始接觸架設自己的 bot，網路上查到都是日文的資源較多，因此記錄這篇過程，希望能幫助到其他中文開發者。
 
-![slakbot & hubot](http://i.imgur.com/qzHh7bb.png)
+![slakbot & hubot](https://i.imgur.com/qzHh7bb.png)
 
 <!-- more -->
 
@@ -83,7 +83,7 @@ git commit -m "Initial commit"
 
 取一個 hubot 要在 slack 內的名字，下圖用 `hubot` 做示範
 
-![hubot](http://i.imgur.com/bpsLcz7.png)
+![hubot](https://i.imgur.com/bpsLcz7.png)
 
 接著下一步就可以取得 HUBOT_SLACK_TOKEN，記得把這個 TOKEN 記下來
 
@@ -96,7 +96,7 @@ HUBOT_SLACK_TOKEN=xoxb-********-******** ./bin/hubot --adapter slack
 本機端記得先安裝 redis，hubot 會用到，
 順利的話就可以在 slack 啟動 hubot 囉！
 
-![hubot in slack](http://i.imgur.com/EWkWV3Q.png)
+![hubot in slack](https://i.imgur.com/EWkWV3Q.png)
 可以打開 hubot 跟它對話，
 如果看到 `PONG` 則代表成功
 

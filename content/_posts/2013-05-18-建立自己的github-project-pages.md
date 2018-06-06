@@ -22,7 +22,7 @@ tags:
 
 1.  GitHub 頁面上建立一個新的 repo，這邊我取名為 first-repo。
 
-![create new repo](http://i.imgur.com/6mFqQlc.png 'new repo')
+![create new repo](https://i.imgur.com/6mFqQlc.png 'new repo')
 
 2.  從本機端 clone 下來，參照自己的路徑，我的 repo 則是在 command line 底下打
 

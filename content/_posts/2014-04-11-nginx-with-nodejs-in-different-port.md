@@ -11,7 +11,7 @@ Nginx 因為它的輕量、高效能而越來越多人喜歡使用它來做為�
 
 由於近期想要把不同的 node.js 程式放在同一個 server，因此開始研究 nginx 用法，記錄下來我的實作方式。
 
-![Nginx](http://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg)
+![Nginx](https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg)
 
 <!-- more -->
 

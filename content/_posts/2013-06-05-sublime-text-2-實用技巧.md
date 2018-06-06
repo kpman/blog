@@ -5,7 +5,7 @@ tags:
 - sublime text 2 
 ---
 
-![Sublime Text 2](http://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png 'Sublime Text 2')
+![Sublime Text 2](https://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png 'Sublime Text 2')
 
 Sublime Text 2 是一套越來越火紅的編輯器，如果你是接觸網頁開發，想必對於這套軟體不陌生，以下分享幾個好用的技巧，都是我自己平常比較常使用的技巧，因為我本身是一個懶得看文件的人，所以就整理這篇與大家分享。
 
@@ -32,7 +32,7 @@ shift+command+p
 鍵入sscss
 ```
 
-![Set Syntax](http://i.imgur.com/51PUAhD.png 'Set Syntax')
+![Set Syntax](https://i.imgur.com/51PUAhD.png 'Set Syntax')
 
 每一個 Color Scheme 都會針對不同的語言去做優化，因此值得學習。
 
@@ -50,7 +50,7 @@ html:5 + tab
 
 都可以達成 HTML5 快速生成已經預定的 snippet.
 
-![](http://i.imgur.com/grLplgD.png)
+![](https://i.imgur.com/grLplgD.png)
 
 ### 三、Multiple Selection 同時多個游標
 
@@ -68,7 +68,7 @@ html:5 + tab
 
 推薦用在處理 html 等修改固定 class 或其他部分。
 
-![](http://i.imgur.com/1kLSh2P.png)
+![](https://i.imgur.com/1kLSh2P.png)
 
 ### 五、選取引號內字串
 

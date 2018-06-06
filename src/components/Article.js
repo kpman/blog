@@ -5,15 +5,7 @@ import ArticleHeader from './ArticleHeader';
 import ArticleFooter from './ArticleFooter';
 import ArticleMeta from './ArticleMeta';
 
-const Article = ({
-  slug,
-  html,
-  date,
-  title,
-  tags,
-  disqusShortname,
-  readmore,
-}) => (
+const Article = ({ slug, html, date, title, tags, readmore }) => (
   <Fragment>
     <article id={title} className="post">
       <ArticleFooter slug={slug} date={date} />
@@ -28,7 +20,6 @@ const Article = ({
         {readmore ? (
           <p className="article-more-link">
             <Link to={`${slug}#more`}>Read More</Link>
-            <p>{disqusShortname}</p>
           </p>
         ) : null}
       </div>

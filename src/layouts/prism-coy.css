@@ -191,12 +191,13 @@ pre .line-highlight {
 /* Custom */
 
 .gatsby-highlight pre[class*='language-'] {
-  background-color: transparent;
   overflow: initial;
   float: left; /* 1 */
   min-width: 100%; /* 2 */
+  width: 100%;
   padding: 0;
   margin: 15px 0 25px;
+  background-color: transparent;
 }
 
 :not(pre) > code[class*='language-'],

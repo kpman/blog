@@ -9,7 +9,7 @@ tags:
 
 因為工作和平時習慣的 Git 協作平台是 GitHub，因此常常發 pull request (以下簡稱 PR) 到 GitHub 上面，而這個流程對我來說不太順手，因此便想要利用更自動化的方式來做掉。
 
-![](http://i.imgur.com/jEBYSRO.png)
+![](https://i.imgur.com/jEBYSRO.png)
 
 <!-- more -->
 

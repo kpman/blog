@@ -10,7 +10,7 @@ tags:
 
 聽到網路爬蟲，有很多專案都是建立在 python 上面，在文字處理分析上， python 有很強大的套件可以使用，然而隨著 node.js 的發展越來越廣泛，也有許多因應的套件產生，今天將會介紹利用 FB 提供的 Graph API 來爬留言版。
 
-![Facebook Comment Plugin](http://i.imgur.com/2Qckxbc.jpg)
+![Facebook Comment Plugin](https://i.imgur.com/2Qckxbc.jpg)
 
 <!-- more -->
 

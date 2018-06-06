@@ -19,7 +19,7 @@ const Header = ({ data }) => (
             <Link to="/archives">archives</Link>
           </li>
           <li>
-            <Link id="nav-search-btn" className="nav-icon" title="Search" />
+            <a id="nav-search-btn" className="nav-icon" title="Search" />
           </li>
           <li>
             <a

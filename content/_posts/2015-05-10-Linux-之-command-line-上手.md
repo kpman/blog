@@ -12,7 +12,7 @@ tags:
 
 這篇 blog 記錄網站開發超過兩年半經驗的我，最常用到的終端機指令 (command line)。
 
-![](http://i.imgur.com/hGb22rh.png)
+![](https://i.imgur.com/hGb22rh.png)
 
 <!-- more -->
 

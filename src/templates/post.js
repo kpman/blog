@@ -7,7 +7,7 @@ const PostTemplate = ({
   data: {
     markdownRemark,
     site: {
-      siteMetadata: { disqusShortname },
+      siteMetadata: { disqusShortname, siteUrl },
     },
   },
 }) => (
@@ -20,7 +20,12 @@ const PostTemplate = ({
       tags={markdownRemark.frontmatter.tags}
       readmore={false}
     />
-    <Comments shortname={disqusShortname} />
+    <Comments
+      shortname={disqusShortname}
+      siteUrl={siteUrl}
+      slug={markdownRemark.fields.slug}
+      title={markdownRemark.frontmatter.title}
+    />
   </Fragment>
 );
 
@@ -30,6 +35,7 @@ export const pageQuery = graphql`
   query PostBySlug($slug: String!) {
     site {
       siteMetadata {
+        siteUrl
         disqusShortname
       }
     }

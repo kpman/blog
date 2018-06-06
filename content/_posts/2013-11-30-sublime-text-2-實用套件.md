@@ -5,7 +5,7 @@ tags:
 - sublime text 2
 ---
 
-![Sublime Text 2](http://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png 'Sublime Text 2')
+![Sublime Text 2](https://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png 'Sublime Text 2')
 
 Sublime Text 2 是網頁開發者都不陌生的一套編輯器，除了單純的文字編輯外，它還有很多實用的套件，這篇來介紹我平常常用的 Sublime Text 2 套件。
 
@@ -34,7 +34,7 @@ import urllib2,os; pf='Package Control.sublime-package'; ipp = sublime.installed
 
 安裝完後，未來我們就可以使用`cmd+shift+p`，打入`install package`，即可啟用 Package Control，如下圖
 
-![install package](http://i.imgur.com/5n76S9Q.png)
+![install package](https://i.imgur.com/5n76S9Q.png)
 
 ### 安裝套件步驟
 
@@ -48,7 +48,7 @@ import urllib2,os; pf='Package Control.sublime-package'; ipp = sublime.installed
 
 #### 一、BracketHighlighter
 
-![](http://i.imgur.com/2ovEcG8.png)
+![](https://i.imgur.com/2ovEcG8.png)
 
 這是一套超過 196K 人裝的套件，如圖所示，寫 html 常常遇到不知道 close tag 在哪邊，裡用它可以清楚的將 close tag 標示出來。  
 另外它有一個很好的地方，就是會在每一行的前面列出來目前的 tag，不同的語言還有不同的 icon，因此可以更快的知道自己的位置。
@@ -61,7 +61,7 @@ import urllib2,os; pf='Package Control.sublime-package'; ipp = sublime.installed
 
 1.  `.container>.col-lg-4*3`
 2.  按下 tab 後便會出現
-3.  ![Emmet](http://i.imgur.com/PP9vdmr.png)
+3.  ![Emmet](https://i.imgur.com/PP9vdmr.png)
 
 若你發現按下 tab 後竟然沒有用，記得確定自己是不是在 html 文件內。
 
@@ -85,7 +85,7 @@ cmd+ctrl+j
 
 #### 四、flat theme
 
-![flatland](http://i.imgur.com/pvxRMlX.png)
+![flatland](https://i.imgur.com/pvxRMlX.png)
 
 其實這個套件全名是 flatland 才對，可以把 Sublime Text 2 的整體環境變得扁平化。
 

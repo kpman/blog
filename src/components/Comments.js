@@ -6,9 +6,16 @@ const Wrapper = styled.div`
   margin-top: 10px;
 `;
 
-const Comments = ({ shortname }) => (
+const Comments = ({ shortname, siteUrl, slug, title }) => (
   <Wrapper>
-    <DiscussionEmbed shortname={shortname} />
+    <DiscussionEmbed
+      shortname={shortname}
+      config={{
+        url: `${siteUrl}${slug}`,
+        identifier: slug,
+        title,
+      }}
+    />
   </Wrapper>
 );
 
