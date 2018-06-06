@@ -1,0 +1,31 @@
+menu:
+  Home: /
+  Archives: /archives
+  Facebook: https://www.facebook.com/chienhsun.tseng.9
+
+widgets: 
+- search
+- recent_posts
+- tagcloud
+- link
+- recent_comment
+
+excerpt_link: Read More
+
+twitter:
+  username:
+  show_replies: false
+  tweet_count: 5
+
+addthis:
+  enable: true
+  pubid:
+  facebook: true
+  twitter: true
+  google: true
+  pinterest: true
+
+fancybox: true
+
+google_analytics: UA-40497628-1
+rss:
