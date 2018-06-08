@@ -14,7 +14,7 @@ class ArchivePage extends Component {
     }
 
     return (
-      <div>
+      <Fragment>
         {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
           <article
             id={node.frontmatter.title}
@@ -32,7 +32,7 @@ class ArchivePage extends Component {
             <ArticleMeta tags={node.frontmatter.tags} />
           </article>
         ))}
-      </div>
+      </Fragment>
     );
   }
 }
@@ -47,7 +47,6 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          html
           frontmatter {
             title
             date(formatString: "MMM DD, YYYY")
