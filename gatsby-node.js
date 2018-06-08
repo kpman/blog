@@ -8,11 +8,9 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   if (node.internal.type === 'MarkdownRemark') {
     const { relativePath } = getNode(node.parent);
 
-    const match = BLOG_POST_FILENAME_REGEX.exec(relativePath);
-    const year = match[1];
-    const month = match[2];
-    const day = match[3];
-    const filename = match[4];
+    const [, year, month, day, filename] = BLOG_POST_FILENAME_REGEX.exec(
+      relativePath
+    );
 
     const slug = `/${year}/${month}/${day}/${filename}/`;
     const date = new Date(year, month - 1, day);

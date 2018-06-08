@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Link from 'gatsby-link';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 const Header = ({ data }) => (
   <Fragment>
@@ -19,10 +20,14 @@ const Header = ({ data }) => (
             <Link to="/archives">archives</Link>
           </li>
           <li>
-            <a id="nav-search-btn" className="nav-icon" title="Search" />
+            <OutboundLink
+              id="nav-search-btn"
+              className="nav-icon"
+              title="Search"
+            />
           </li>
           <li>
-            <a
+            <OutboundLink
               href="/rss.xml"
               id="nav-rss-link"
               className="nav-icon"
