@@ -61,3 +61,21 @@ export const getAllPosts = () => {
 
   return posts;
 };
+
+export const getPostsByTag = tag => {
+  const posts = getAllPosts();
+
+  return posts.filter(post => post.frontmatter.tags.includes(tag));
+};
+
+export const getAllTags = () => {
+  const posts = getAllPosts();
+
+  let tags = [];
+
+  posts.forEach(post => {
+    tags = [...tags, ...post.frontmatter.tags];
+  });
+
+  return Array.from(new Set(tags));
+};
