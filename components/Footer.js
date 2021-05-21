@@ -1,5 +1,5 @@
-import React from 'react';
 import Link from 'next/link';
+import React from 'react';
 
 import config from '../config';
 
@@ -21,7 +21,8 @@ const Footer = () => (
       >
         <a>Apollo</a>
       </Link>{' '}
-      theme.<br />
+      theme.
+      <br />
       Powered by{' '}
       <Link
         href="https://nextjs.org/"

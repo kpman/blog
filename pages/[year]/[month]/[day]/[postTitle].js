@@ -1,16 +1,16 @@
 import React from 'react';
 
-import {
-  getPostBySlug,
-  getAllPosts,
-  getDetailFromSlug,
-} from '../../../../utils/blog';
-import markdownToHtml from '../../../../utils/markdown';
 import Article from '../../../../components/Article';
 import Comments from '../../../../components/Comments';
 import Layout from '../../../../components/layout';
 import SEO from '../../../../components/seo';
 import config from '../../../../config';
+import markdownToHtml from '../../../../utils/markdown';
+import {
+  getAllPosts,
+  getDetailFromSlug,
+  getPostBySlug,
+} from '../../../../utils/blog';
 
 export async function getStaticProps({ params }) {
   const { year, month, day, postTitle } = params;
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
   const posts = getAllPosts();
 
   return {
-    paths: posts.map(post => ({
+    paths: posts.map((post) => ({
       params: {
         ...getDetailFromSlug(post.slug),
       },
@@ -40,7 +40,7 @@ export async function getStaticPaths() {
   };
 }
 
-const Blog = post => (
+const Blog = (post) => (
   <Layout>
     <SEO title={post.frontmatter.title} />
     <Article

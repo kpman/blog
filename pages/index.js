@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { getAllPosts } from '../utils/blog';
-import markdownToHtml from '../utils/markdown';
 import Article from '../components/Article';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import markdownToHtml from '../utils/markdown';
+import { getAllPosts } from '../utils/blog';
 
 export async function getStaticProps() {
   const posts = getAllPosts();
 
-  const postPromises = posts.map(async post => ({
+  const postPromises = posts.map(async (post) => ({
     ...post,
     html: await markdownToHtml(post.content || ''),
   }));
@@ -24,7 +24,7 @@ export async function getStaticProps() {
 const Index = ({ posts }) => (
   <Layout>
     <SEO />
-    {posts.map(post => (
+    {posts.map((post) => (
       <Article
         key={post.slug}
         html={post.html}

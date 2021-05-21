@@ -1,17 +1,19 @@
 import React from 'react';
 
-import ArticleFooter from '../components/ArticleFooter';
-import ArticleHeader from '../components/ArticleHeader';
-import ArticleMeta from '../components/ArticleMeta';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import { getAllPosts } from '../utils/blog';
 import markdownToHtml from '../utils/markdown';
+import {
+  ArticleFooter,
+  ArticleHeader,
+  ArticleMeta,
+} from '../components/Article';
+import { getAllPosts } from '../utils/blog';
 
 export async function getStaticProps() {
   const posts = getAllPosts();
 
-  const postPromises = posts.map(async post => ({
+  const postPromises = posts.map(async (post) => ({
     ...post,
     html: await markdownToHtml(post.content || ''),
   }));
@@ -26,7 +28,7 @@ export async function getStaticProps() {
 const Archives = ({ posts }) => (
   <Layout>
     <SEO />
-    {posts.map(post => (
+    {posts.map((post) => (
       <article
         id={post.frontmatter.title}
         className="post"

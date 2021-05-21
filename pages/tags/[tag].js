@@ -1,17 +1,17 @@
 import React from 'react';
 
-import { getPostsByTag, getAllTags } from '../../utils/blog';
-import markdownToHtml from '../../utils/markdown';
 import Article from '../../components/Article';
 import Layout from '../../components/layout';
 import SEO from '../../components/seo';
+import markdownToHtml from '../../utils/markdown';
+import { getAllTags, getPostsByTag } from '../../utils/blog';
 
 export async function getStaticProps({ params }) {
   const { tag } = params;
 
   const posts = getPostsByTag(tag);
 
-  const postPromises = posts.map(async post => ({
+  const postPromises = posts.map(async (post) => ({
     ...post,
     html: await markdownToHtml(post.content || ''),
   }));
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
   const allTags = getAllTags();
 
   return {
-    paths: allTags.map(tag => ({
+    paths: allTags.map((tag) => ({
       params: {
         tag,
       },
@@ -39,7 +39,7 @@ export async function getStaticPaths() {
 const Index = ({ posts }) => (
   <Layout>
     <SEO />
-    {posts.map(post => (
+    {posts.map((post) => (
       <Article
         key={post.slug}
         html={post.html}

@@ -1,8 +1,8 @@
-import React from 'react';
 import Link from 'next/link';
+import React from 'react';
 
-import ArticleHeader from './ArticleHeader';
 import ArticleFooter from './ArticleFooter';
+import ArticleHeader from './ArticleHeader';
 import ArticleMeta from './ArticleMeta';
 
 const Article = ({ slug, html, date, title, tags, readmore }) => (
