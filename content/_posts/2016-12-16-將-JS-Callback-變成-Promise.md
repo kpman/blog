@@ -20,7 +20,7 @@ tags:
 
 - 非同步的 Callback function 第一個參數是錯誤物件，有錯誤就會回傳錯誤訊息，沒有錯誤則第一個值會是 null。剩下的參數為 Callback function 正常情況下會回傳的值。
 
-```
+```javascript
 fs.readFile('/etc/passwd', (err, data) => {
   if (err) throw err; // 此處為 Node.js Style Callback
   console.log(data);

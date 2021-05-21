@@ -4,10 +4,6 @@ module.exports = {
   env: {
     node: true,
     jest: true,
-    jasmine: true,
-  },
-  globals: {
-    graphql: true,
   },
   plugins: ['import', 'prettier'],
   rules: {
