@@ -42,9 +42,14 @@ export const getPostBySlug = slug => {
   const fileContents = fs.readFileSync(fullPath, 'utf-8');
 
   const { data, content } = matter(fileContents);
-  const date = format(data.date, 'yyyy/MM/dd');
+  const date = format(data.date, 'MMM dd, yyyy');
 
-  return { slug, frontmatter: { ...data, date }, content };
+  return {
+    slug,
+    frontmatter: { ...data, date },
+    content,
+    date: data.date.toISOString(), // for getAllPosts sorting
+  };
 };
 
 export const getAllPosts = () => {
@@ -52,9 +57,7 @@ export const getAllPosts = () => {
 
   const posts = slugs
     .map(slug => getPostBySlug(slug))
-    .sort(
-      (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
-    );
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return posts;
 };
