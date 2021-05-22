@@ -11,7 +11,7 @@ const Footer = () => (
       </Link>
     </h1>
     <span className="copyright">
-      © {new Date().getFullYear()} {config.title}
+      © {new Date().getFullYear()} {config.title}. All rights reserved.
       <br />
       Modify from{' '}
       <Link
