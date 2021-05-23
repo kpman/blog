@@ -12,15 +12,14 @@ const getSlugFromPostFileName = (filenamePath) => {
   const [, year, month, day, postTitle] =
     POST_FILENAME_REGEX.exec(filenamePath);
 
-  return `${year}/${month}/${day}/${postTitle}`;
+  return `/${year}/${month}/${day}/${postTitle}/`;
 };
 
-// slug example: `2018/06/08/從-Hexo-到-Gatsby`
-const SLUG_REGEX = /([0-9]+)\/([0-9]+)\/([0-9]+)\/(.+)$/;
+// slug example: `/2018/06/08/從-Hexo-到-Gatsby/`
+const SLUG_REGEX = /([0-9]+)\/([0-9]+)\/([0-9]+)\/(.+)\/$/;
 
 const getFileNameFromSlug = (slug) => {
   const [, year, month, day, postTitle] = SLUG_REGEX.exec(slug);
-
   return `${year}-${month}-${day}-${postTitle}.md`;
 };
 

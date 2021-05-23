@@ -14,7 +14,7 @@ import {
 
 export async function getStaticProps({ params }) {
   const { year, month, day, postTitle } = params;
-  const slug = `${year}/${month}/${day}/${postTitle}`;
+  const slug = `/${year}/${month}/${day}/${postTitle}/`;
   const post = getPostBySlug(slug);
 
   const content = await markdownToHtml(post.content || '');
