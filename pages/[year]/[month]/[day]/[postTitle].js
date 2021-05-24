@@ -42,7 +42,12 @@ export async function getStaticPaths() {
 
 const Blog = (post) => (
   <Layout>
-    <SEO title={post.frontmatter.title} />
+    <SEO
+      title={post.frontmatter.title}
+      description={post.excerpt}
+      ogImageUrl={post.ogImageUrl}
+      slug={post.slug}
+    />
     <Article
       html={post.content}
       slug={post.slug}
