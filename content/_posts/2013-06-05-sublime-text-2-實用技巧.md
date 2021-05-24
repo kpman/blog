@@ -2,10 +2,10 @@
 title: Sublime Text 2 實用技巧
 date: 2013-06-05 12:53:10
 tags:
-- sublime text 2 
+  - sublime text 2
 ---
 
-![Sublime Text 2](https://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png 'Sublime Text 2')
+![Sublime Text 2](https://i.imgur.com/f5ZJthW.png 'Sublime Text 2')
 
 Sublime Text 2 是一套越來越火紅的編輯器，如果你是接觸網頁開發，想必對於這套軟體不陌生，以下分享幾個好用的技巧，都是我自己平常比較常使用的技巧，因為我本身是一個懶得看文件的人，所以就整理這篇與大家分享。
 

@@ -2,10 +2,10 @@
 title: Sublime Text 2 實用套件
 date: 2013-11-30 00:02:48
 tags:
-- sublime text 2
+  - sublime text 2
 ---
 
-![Sublime Text 2](https://upload.wikimedia.org/wikipedia/en/4/4c/Sublime_Text_Logo.png 'Sublime Text 2')
+![Sublime Text 2](https://i.imgur.com/f5ZJthW.png 'Sublime Text 2')
 
 Sublime Text 2 是網頁開發者都不陌生的一套編輯器，除了單純的文字編輯外，它還有很多實用的套件，這篇來介紹我平常常用的 Sublime Text 2 套件。
 
