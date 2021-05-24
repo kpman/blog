@@ -4,6 +4,7 @@ import Article from '../components/Article';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import markdownToHtml from '../utils/markdown';
+import { generateRSS } from '../utils/rss';
 import { getAllPosts } from '../utils/blog';
 
 export async function getStaticProps() {
@@ -13,6 +14,9 @@ export async function getStaticProps() {
     ...post,
     html: await markdownToHtml(post.content || ''),
   }));
+
+  // Generate RSS file here for static build
+  generateRSS();
 
   return {
     props: {

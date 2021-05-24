@@ -26,14 +26,11 @@ const Header = () => (
               <a>archives</a>
             </Link>
           </li>
-          {/* <li>
-            <Link
-              href="/rss.xml"
-              id="nav-rss-link"
-              className="nav-icon"
-              title="RSS Feed"
-            />
-          </li> */}
+          <li>
+            <Link href="/atom.xml">
+              <a>rss</a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
