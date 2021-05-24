@@ -42,9 +42,16 @@ export const getPostBySlug = (slug) => {
   const { data, content } = matter(fileContents);
   const date = format(data.date, 'MMM dd, yyyy');
 
+  const imageMarkdownRegExp = /(?:!\[(.*?)\]\((.*?)\))/g;
+
   return {
     slug,
     frontmatter: { ...data, date },
+    excerpt: content
+      .split('<!-- more -->')[0]
+      .replace(imageMarkdownRegExp, '')
+      .trim(), // get only text part for `excerpt`
+    ogImageUrl: imageMarkdownRegExp.exec(content)?.[2] || null,
     content,
     date: data.date.toISOString(), // for getAllPosts sorting
   };
