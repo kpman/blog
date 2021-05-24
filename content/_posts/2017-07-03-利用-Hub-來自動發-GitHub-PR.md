@@ -2,7 +2,7 @@
 title: 利用 Hub 來自動發 GitHub PR
 date: 2017-07-03 23:55:19
 tags:
-- github
+  - github
 ---
 
 ## 起源
@@ -47,17 +47,17 @@ tags:
 
 ### Setup
 
-```sh
+```shell
 $ vim ~/.oh-my-zsh/lib/aliases.zsh (in my case)
-alias pr='hub pull-request -m "$(git reflog -1 | sed '\''s/^.*: //'\'')" | xargs open'
+$ alias pr='hub pull-request -m "$(git reflog -1 | sed '\''s/^.*: //'\'')" | xargs open'
 $ source ~/.zshrc (in my case)
 ```
 
 ### usage
 
-```
-1. local commit
-2. git push origin <branch-name> && pr
+```shell
+# local commit
+$ git push origin <branch-name> && pr
 ```
 
 藉由 Hub 的 pull-request 加上自己所寫的 alias，

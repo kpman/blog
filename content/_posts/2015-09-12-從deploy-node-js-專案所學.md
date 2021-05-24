@@ -2,9 +2,9 @@
 title: 從 deploy node.js 專案所學
 date: 2015-09-12 23:18:17
 tags:
-- node.js
-- deploy
-- tips
+  - node.js
+  - deploy
+  - tips
 ---
 
 學習 Node.js 已經兩年之餘，這段時間陸陸續續在開發上遇到一些問題（雷），然而隨著時間累積的叫做經驗，因此藉由此篇文章記錄從本機 development 環境到遠端 Linux 上的 production 所得到的經驗。
@@ -40,9 +40,9 @@ $ node bin/www
 Q：那如何在 express.js 框架下的 app.js 拿到環境變數呢？
 A：只要利用 express 框架為我們做好的 API 如下：
 
-```
+```javascript
 // app.js
-app.get('env')
+app.get('env');
 ```
 
 即可得到 `NODE_ENV` 值。
@@ -51,7 +51,7 @@ app.get('env')
 
 關於 config 檔的設定，每個人有不同的習慣，我介紹我常用的 config 檔設定方式。
 
-```
+```javascript
 // config.js
 var config = {
   development: {
@@ -61,15 +61,15 @@ var config = {
   production: {
     port: 3001,
     // anything else
-  }
+  },
 };
 module.exports = config;
 ```
 
-```
+```javascript
 // app.js
 var config = require('./config.js')[app.get('env')];
-var port = config.port // production mode will return 3001
+var port = config.port; // production mode will return 3001
 ```
 
 這樣設定 config 檔後，未來就可以利用 NODE_ENV 的不同來判斷應該要連接的資料，例如在 dev DB 和 production DB 的分開等等情況。
@@ -95,7 +95,7 @@ ps. 或許這個問題有其他更好解法，非常歡迎協助補充。
 Q：在本機端匯出和匯入都好好的，不知道為什麼到遠端的環境就沒有辦法匯入？
 A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bashrc 檔
 
-```
+```sh
 export LC_ALL="en_US.UTF-8"
 ```
 
