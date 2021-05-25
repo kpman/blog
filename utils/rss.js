@@ -48,6 +48,18 @@ export const generateRSS = () => {
     });
   });
 
-  fs.writeFileSync('./public/rss.xml', feed.atom1());
-  fs.writeFileSync('./public/atom.xml', feed.atom1());
+  // ref: https://www.ryadel.com/en/javascript-remove-xml-invalid-chars-characters-string-utf8-unicode-regex/
+  // remove everything forbidden by XML 1.0 specifications, plus the unicode replacement character U+FFFD
+  const invalidCharInXMLSpecRegexp =
+    // eslint-disable-next-line no-control-regex
+    /((?:[\0-\x08\x0B\f\x0E-\x1F\uFFFD\uFFFE\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]))/g;
+
+  fs.writeFileSync(
+    './public/rss.xml',
+    feed.atom1().replace(invalidCharInXMLSpecRegexp, '')
+  );
+  fs.writeFileSync(
+    './public/atom.xml',
+    feed.atom1().replace(invalidCharInXMLSpecRegexp, '')
+  );
 };
