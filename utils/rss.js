@@ -4,13 +4,14 @@ import { Feed } from 'feed';
 
 import config from '../config';
 
+import markdownToHtml from './markdown';
 import { getAllPosts } from './blog';
 
-export const generateRSS = () => {
+export const generateRSS = async () => {
   const feed = new Feed({
     title: config.title,
     description: config.subtitle,
-    id: config.siteUrl,
+    id: `${config.siteUrl}/`, // add slash for fitting canonical form
     link: config.siteUrl,
     image: `${config.siteUrl}/android-chrome-192x192.png`, // FIXME
     favicon: `${config.siteUrl}/favicon.ico`,
@@ -29,24 +30,28 @@ export const generateRSS = () => {
 
   const posts = getAllPosts();
 
-  posts.forEach((post) => {
-    feed.addItem({
-      title: post.frontmatter.title,
-      id: post.slug,
-      link: `${config.siteUrl}${post.slug}`,
-      description: post.excerpt,
-      content: post.content,
-      author: [
-        {
-          name: 'Daniel Tseng',
-          email: 's92f002@gmail.com',
-          link: config.siteUrl,
-        },
-      ],
-      date: new Date(post.date),
-      image: post.ogImageUrl,
-    });
-  });
+  await Promise.all(
+    posts.map(async (post) => {
+      const validURI = `${config.siteUrl}${encodeURI(post.slug)}`;
+
+      feed.addItem({
+        id: validURI,
+        link: validURI,
+        title: post.frontmatter.title,
+        description: post.excerpt,
+        date: new Date(post.date),
+        image: post.ogImageUrl,
+        content: await markdownToHtml(post.content || ''),
+        author: [
+          {
+            name: 'Daniel Tseng',
+            email: 's92f002@gmail.com',
+            link: config.siteUrl,
+          },
+        ],
+      });
+    })
+  );
 
   // ref: https://www.ryadel.com/en/javascript-remove-xml-invalid-chars-characters-string-utf8-unicode-regex/
   // remove everything forbidden by XML 1.0 specifications, plus the unicode replacement character U+FFFD
