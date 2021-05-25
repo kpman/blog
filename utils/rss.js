@@ -22,7 +22,7 @@ export const generateRSS = () => {
     },
     author: {
       name: 'Daniel Tseng',
-      email: 's92f002@hotmail.com',
+      email: 's92f002@gmail.com',
       link: config.siteUrl,
     },
   });
@@ -39,7 +39,7 @@ export const generateRSS = () => {
       author: [
         {
           name: 'Daniel Tseng',
-          email: 's92f002@hotmail.com',
+          email: 's92f002@gmail.com',
           link: config.siteUrl,
         },
       ],
