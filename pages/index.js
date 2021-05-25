@@ -16,7 +16,7 @@ export async function getStaticProps() {
   }));
 
   // Generate RSS file here for static build
-  generateRSS();
+  await generateRSS();
 
   return {
     props: {
