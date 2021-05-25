@@ -6,7 +6,7 @@
   "author": "kpman <s92f002@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kpman/kpman.github.com"
+    "url": "https://github.com/kpman/blog"
   },
   "scripts": {
     "build": "next build",
