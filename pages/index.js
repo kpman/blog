@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Article from '../components/Article';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
