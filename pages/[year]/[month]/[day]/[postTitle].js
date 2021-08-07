@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Article from '../../../../components/Article';
 import Comments from '../../../../components/Comments';
 import Layout from '../../../../components/layout';
