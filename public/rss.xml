@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://code.kpman.cc/</id>
     <title>kpman | code</title>
-    <updated>2021-05-25T10:17:48.498Z</updated>
+    <updated>2021-08-07T15:25:14.459Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Daniel Tseng</name>
@@ -17,8 +17,8 @@
     <rights>© 2021 kpman | code. All rights reserved.</rights>
     <entry>
         <title type="html"><![CDATA[為 Next.js 靜態網站產生 RSS feed]]></title>
-        <id>https://code.kpman.cc/2021/05/25/%E7%82%BA-Next.js-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99%E7%94%A2%E7%94%9F-RSS-feed/</id>
-        <link href="https://code.kpman.cc/2021/05/25/%E7%82%BA-Next.js-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99%E7%94%A2%E7%94%9F-RSS-feed/"/>
+        <id>https://code.kpman.cc/2021/05/25/next-js-rss/</id>
+        <link href="https://code.kpman.cc/2021/05/25/next-js-rss/"/>
         <updated>2021-05-25T10:32:28.000Z</updated>
         <summary type="html"><![CDATA[Next.js 是 React 生態圈快速崛起的一套框架，本篇文章介紹在 Next.js 當中產生 RSS feed 的方法。]]></summary>
         <content type="html"><![CDATA[<p>Next.js 是 React 生態圈快速崛起的一套框架，本篇文章介紹在 Next.js 當中產生 RSS feed 的方法。</p>
@@ -61,7 +61,7 @@
 
 <span class="token keyword module">import</span> <span class="token imports">config</span> <span class="token keyword module">from</span> <span class="token string">'../config'</span><span class="token punctuation">;</span>
 
-<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function">generateRSS</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function">generateRSS</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> feed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Feed</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     title<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token property-access">title</span><span class="token punctuation">,</span>
     description<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token property-access">subtitle</span><span class="token punctuation">,</span>
@@ -91,31 +91,35 @@
 <span class="token keyword module">import</span> <span class="token imports">markdownToHtml</span> <span class="token keyword module">from</span> <span class="token string">'./markdown'</span><span class="token punctuation">;</span>
 <span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> getAllPosts <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'./blog'</span><span class="token punctuation">;</span>
 
-<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function">generateRSS</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function">generateRSS</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> feed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Feed</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment">// 略，請見上方</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token keyword">const</span> posts <span class="token operator">=</span> <span class="token function">getAllPosts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  posts<span class="token punctuation">.</span><span class="token method function property-access">forEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">post</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-    feed<span class="token punctuation">.</span><span class="token method function property-access">addItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      title<span class="token operator">:</span> post<span class="token punctuation">.</span><span class="token property-access">frontmatter</span><span class="token punctuation">.</span><span class="token property-access">title</span><span class="token punctuation">,</span>
-      id<span class="token operator">:</span> post<span class="token punctuation">.</span><span class="token property-access">slug</span><span class="token punctuation">,</span>
-      link<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>post<span class="token punctuation">.</span><span class="token property-access">slug</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-      description<span class="token operator">:</span> post<span class="token punctuation">.</span><span class="token property-access">excerpt</span><span class="token punctuation">,</span>
-      content<span class="token operator">:</span> <span class="token keyword control-flow">await</span> <span class="token function">markdownToHtml</span><span class="token punctuation">(</span>post<span class="token punctuation">.</span><span class="token property-access">content</span> <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      author<span class="token operator">:</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">{</span>
-          name<span class="token operator">:</span> <span class="token string">'Daniel Tseng'</span><span class="token punctuation">,</span>
-          email<span class="token operator">:</span> <span class="token string">'s92f002@gmail.com'</span><span class="token punctuation">,</span>
-          link<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">]</span><span class="token punctuation">,</span>
-      date<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>post<span class="token punctuation">.</span><span class="token property-access">date</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      image<span class="token operator">:</span> post<span class="token punctuation">.</span><span class="token property-access">ogImageUrl</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">await</span> <span class="token known-class-name class-name">Promise</span><span class="token punctuation">.</span><span class="token method function property-access">all</span><span class="token punctuation">(</span>
+    posts<span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">post</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> validURI <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">encodeURI</span><span class="token punctuation">(</span>post<span class="token punctuation">.</span><span class="token property-access">slug</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+      feed<span class="token punctuation">.</span><span class="token method function property-access">addItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        id<span class="token operator">:</span> validURI<span class="token punctuation">,</span>
+        link<span class="token operator">:</span> validURI<span class="token punctuation">,</span>
+        title<span class="token operator">:</span> post<span class="token punctuation">.</span><span class="token property-access">frontmatter</span><span class="token punctuation">.</span><span class="token property-access">title</span><span class="token punctuation">,</span>
+        description<span class="token operator">:</span> post<span class="token punctuation">.</span><span class="token property-access">excerpt</span><span class="token punctuation">,</span>
+        date<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>post<span class="token punctuation">.</span><span class="token property-access">date</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        image<span class="token operator">:</span> post<span class="token punctuation">.</span><span class="token property-access">ogImageUrl</span><span class="token punctuation">,</span>
+        content<span class="token operator">:</span> <span class="token keyword control-flow">await</span> <span class="token function">markdownToHtml</span><span class="token punctuation">(</span>post<span class="token punctuation">.</span><span class="token property-access">content</span> <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        author<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            name<span class="token operator">:</span> <span class="token string">'Daniel Tseng'</span><span class="token punctuation">,</span>
+            email<span class="token operator">:</span> <span class="token string">'s92f002@gmail.com'</span><span class="token punctuation">,</span>
+            link<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre></div>
 <h4>四、輸出至 public 資料夾</h4>
@@ -135,15 +139,25 @@
 
 <span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> getAllPosts <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'./blog'</span><span class="token punctuation">;</span>
 
-<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function">generateRSS</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function">generateRSS</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> feed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Feed</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment">// 略</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token comment">// 略</span>
 
-  fs<span class="token punctuation">.</span><span class="token method function property-access">writeFileSync</span><span class="token punctuation">(</span><span class="token string">'./public/rss.xml'</span><span class="token punctuation">,</span> feed<span class="token punctuation">.</span><span class="token method function property-access">atom1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  fs<span class="token punctuation">.</span><span class="token method function property-access">writeFileSync</span><span class="token punctuation">(</span><span class="token string">'./public/atom.xml'</span><span class="token punctuation">,</span> feed<span class="token punctuation">.</span><span class="token method function property-access">atom1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> invalidCharInXMLSpecRegexp <span class="token operator">=</span>
+    <span class="token comment">// eslint-disable-next-line no-control-regex</span>
+    <span class="token operator">/</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">:</span><span class="token punctuation">[</span>\<span class="token number">0</span><span class="token operator">-</span>\x08\x0B\f\x0E<span class="token operator">-</span>\x1F\uFFFD\uFFFE\uFFFF<span class="token punctuation">]</span><span class="token operator">|</span><span class="token punctuation">[</span>\uD800<span class="token operator">-</span>\uDBFF<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">!</span><span class="token punctuation">[</span>\uDC00<span class="token operator">-</span>\uDFFF<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token operator">^</span>\uD800<span class="token operator">-</span>\uDBFF<span class="token punctuation">]</span><span class="token operator">|</span><span class="token operator">^</span><span class="token punctuation">)</span><span class="token punctuation">[</span>\uDC00<span class="token operator">-</span>\uDFFF<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span>g<span class="token punctuation">;</span>
+
+  fs<span class="token punctuation">.</span><span class="token method function property-access">writeFileSync</span><span class="token punctuation">(</span>
+    <span class="token string">'./public/rss.xml'</span><span class="token punctuation">,</span>
+    feed<span class="token punctuation">.</span><span class="token method function property-access">atom1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span>invalidCharInXMLSpecRegexp<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  fs<span class="token punctuation">.</span><span class="token method function property-access">writeFileSync</span><span class="token punctuation">(</span>
+    <span class="token string">'./public/atom.xml'</span><span class="token punctuation">,</span>
+    feed<span class="token punctuation">.</span><span class="token method function property-access">atom1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span>invalidCharInXMLSpecRegexp<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre></div>
 <p>至於為什麼選擇 Atom 1.0 格式而不是 RSS 2.0 格式，
