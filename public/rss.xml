@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://code.kpman.cc/</id>
     <title>kpman | code</title>
-    <updated>2021-08-07T16:00:52.280Z</updated>
+    <updated>2021-08-23T12:43:36.814Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Daniel Tseng</name>
@@ -342,22 +342,22 @@ exports<span class="token punctuation">.</span><span class="token method-variabl
 <h3>index page</h3>
 <p>因為 Gatsby 底下會自動的把 <code>./src/pages/*.js</code> 自動 create page，所以我們在設計首頁的時候，就是去修改 <code>./src/pages/index.js</code> 此頁即可。</p>
 <p>該頁最主要就是把所有的文章時間、title 等資料拿出來，GraphQL 的 query 如下：</p>
-<div class="remark-highlight"><pre class="language-graphql"><code class="language-graphql">// src/pages/index.js
-export const pageQuery <span class="token operator">=</span> graphql`
-  <span class="token keyword">query</span> BlogIndexQuery <span class="token punctuation">{</span>
+<div class="remark-highlight"><pre class="language-graphql"><code class="language-graphql">// <span class="token property">src</span>/<span class="token property">pages</span>/<span class="token property">index</span>.<span class="token property">js</span>
+<span class="token property">export</span> <span class="token property">const</span> <span class="token property">pageQuery</span> <span class="token operator">=</span> <span class="token property">graphql</span>`
+  <span class="token keyword">query</span> <span class="token definition-query function">BlogIndexQuery</span> <span class="token punctuation">{</span>
     <span class="token comment"># query 依照 date 排序</span>
-    allMarkdownRemark<span class="token punctuation">(</span><span class="token attr-name">sort</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">fields</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>frontmatter___date<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token attr-name">order</span><span class="token punctuation">:</span> <span class="token constant">DESC</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      edges <span class="token punctuation">{</span>
-        node <span class="token punctuation">{</span>
-          fields <span class="token punctuation">{</span>
-            slug
+    <span class="token property-query">allMarkdownRemark</span><span class="token punctuation">(</span><span class="token attr-name">sort</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">fields</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token property">frontmatter___date</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token attr-name">order</span><span class="token punctuation">:</span> <span class="token constant">DESC</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token object">edges</span> <span class="token punctuation">{</span>
+        <span class="token object">node</span> <span class="token punctuation">{</span>
+          <span class="token object">fields</span> <span class="token punctuation">{</span>
+            <span class="token property">slug</span>
           <span class="token punctuation">}</span>
-          html <span class="token comment"># 需要把 html 拿回來 render</span>
-          frontmatter <span class="token punctuation">{</span>
-            title
+          <span class="token property">html</span> <span class="token comment"># 需要把 html 拿回來 render</span>
+          <span class="token object">frontmatter</span> <span class="token punctuation">{</span>
+            <span class="token property">title</span>
             <span class="token comment"># 可以在此處就把 date format 成我們要的格式</span>
-            date<span class="token punctuation">(</span><span class="token attr-name">formatString</span><span class="token punctuation">:</span> <span class="token string">"MMM DD, YYYY"</span><span class="token punctuation">)</span>
-            tags
+            <span class="token property-query">date</span><span class="token punctuation">(</span><span class="token attr-name">formatString</span><span class="token punctuation">:</span> <span class="token string">"MMM DD, YYYY"</span><span class="token punctuation">)</span>
+            <span class="token property">tags</span>
           <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span>
@@ -405,24 +405,24 @@ exports<span class="token punctuation">.</span><span class="token method-variabl
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre></div>
 <p>創造完每一頁 tag 的 page 之後，我們來看看 tags template 應該怎樣寫。</p>
-<div class="remark-highlight"><pre class="language-graphql"><code class="language-graphql">// ./src/templates/tags.js
-export const pageQuery <span class="token operator">=</span> graphql`
-  <span class="token keyword">query</span> PostByTag<span class="token punctuation">(</span><span class="token variable">$tag</span><span class="token punctuation">:</span> String<span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    allMarkdownRemark<span class="token punctuation">(</span>
+<div class="remark-highlight"><pre class="language-graphql"><code class="language-graphql">// ./<span class="token property">src</span>/<span class="token property">templates</span>/<span class="token property">tags</span>.<span class="token property">js</span>
+<span class="token property">export</span> <span class="token property">const</span> <span class="token property">pageQuery</span> <span class="token operator">=</span> <span class="token property">graphql</span>`
+  <span class="token keyword">query</span> <span class="token definition-query function">PostByTag</span><span class="token punctuation">(</span><span class="token variable">$tag</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property-query">allMarkdownRemark</span><span class="token punctuation">(</span>
       <span class="token attr-name">filter</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">frontmatter</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">tags</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">in</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token variable">$tag</span><span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
-      <span class="token attr-name">sort</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">fields</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>frontmatter___date<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token attr-name">order</span><span class="token punctuation">:</span> <span class="token constant">DESC</span> <span class="token punctuation">}</span>
+      <span class="token attr-name">sort</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">fields</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token property">frontmatter___date</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token attr-name">order</span><span class="token punctuation">:</span> <span class="token constant">DESC</span> <span class="token punctuation">}</span>
     <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      edges <span class="token punctuation">{</span>
-        node <span class="token punctuation">{</span>
-          id
-          html
-          fields <span class="token punctuation">{</span>
-            slug
+      <span class="token object">edges</span> <span class="token punctuation">{</span>
+        <span class="token object">node</span> <span class="token punctuation">{</span>
+          <span class="token property">id</span>
+          <span class="token property">html</span>
+          <span class="token object">fields</span> <span class="token punctuation">{</span>
+            <span class="token property">slug</span>
           <span class="token punctuation">}</span>
-          frontmatter <span class="token punctuation">{</span>
-            title
-            date<span class="token punctuation">(</span><span class="token attr-name">formatString</span><span class="token punctuation">:</span> <span class="token string">"MMM DD, YYYY"</span><span class="token punctuation">)</span>
-            tags
+          <span class="token object">frontmatter</span> <span class="token punctuation">{</span>
+            <span class="token property">title</span>
+            <span class="token property-query">date</span><span class="token punctuation">(</span><span class="token attr-name">formatString</span><span class="token punctuation">:</span> <span class="token string">"MMM DD, YYYY"</span><span class="token punctuation">)</span>
+            <span class="token property">tags</span>
           <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span>
@@ -512,7 +512,7 @@ export const pageQuery <span class="token operator">=</span> graphql`
 <h2>一鍵自動化流程</h2>
 <h3>Setup</h3>
 <div class="remark-highlight"><pre class="language-shell"><code class="language-shell">$ <span class="token function">vim</span> ~/.oh-my-zsh/lib/aliases.zsh <span class="token punctuation">(</span>in my <span class="token keyword">case</span><span class="token punctuation">)</span>
-$ <span class="token builtin class-name">alias</span> <span class="token assign-left variable">pr</span><span class="token operator">=</span><span class="token string">'hub pull-request -m "<span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> reflog -1 <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'\''</span>s/^.*: //<span class="token string">'\''</span><span class="token variable">)</span></span>" | xargs open'</span>
+$ <span class="token builtin class-name">alias</span> <span class="token assign-left variable">pr</span><span class="token operator">=</span><span class="token string">'hub pull-request -m "$(git reflog -1 | sed '</span><span class="token punctuation">\</span>'<span class="token string">'s/^.*: //'</span><span class="token punctuation">\</span>'<span class="token string">')" | xargs open'</span>
 $ <span class="token builtin class-name">source</span> ~/.zshrc <span class="token punctuation">(</span>in my <span class="token keyword">case</span><span class="token punctuation">)</span>
 </code></pre></div>
 <h3>usage</h3>
