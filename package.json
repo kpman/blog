@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "next build",
+    "postbuild": "next-sitemap",
     "dev": "next dev",
     "format": "prettier --write '**/*.js'",
     "lint": "eslint . --ext=js --fix",
@@ -42,6 +43,7 @@
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "husky": "^7.0.0",
     "lint-staged": "^11.1.2",
+    "next-sitemap": "^1.6.179",
     "prettier": "^2.3.2",
     "prettier-package-json": "^2.5.0"
   },
