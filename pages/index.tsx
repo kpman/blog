@@ -1,17 +1,11 @@
 import Article from '../components/Article';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import markdownToHtml from '../utils/markdown';
 import { generateRSS } from '../utils/rss';
 import { getAllPosts } from '../utils/blog';
 
 export async function getStaticProps() {
   const posts = getAllPosts();
-
-  const postPromises = posts.map(async (post) => ({
-    ...post,
-    html: await markdownToHtml(post.content || ''),
-  }));
 
   if (process.env.NODE_ENV === 'production') {
     // Generate RSS file here for static build
@@ -20,7 +14,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: await Promise.all(postPromises),
+      posts,
     },
   };
 }
@@ -31,7 +25,7 @@ const Index = ({ posts }) => (
     {posts.map((post) => (
       <Article
         key={post.slug}
-        html={post.html}
+        content={post.content}
         slug={post.slug}
         title={post.frontmatter.title}
         date={post.frontmatter.date}

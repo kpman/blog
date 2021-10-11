@@ -1,7 +1,6 @@
 import Article from '../../components/Article';
 import Layout from '../../components/layout';
 import SEO from '../../components/seo';
-import markdownToHtml from '../../utils/markdown';
 import { getAllTags, getPostsByTag } from '../../utils/blog';
 
 export async function getStaticProps({ params }) {
@@ -9,14 +8,9 @@ export async function getStaticProps({ params }) {
 
   const posts = getPostsByTag(tag);
 
-  const postPromises = posts.map(async (post) => ({
-    ...post,
-    html: await markdownToHtml(post.content || ''),
-  }));
-
   return {
     props: {
-      posts: await Promise.all(postPromises),
+      posts,
     },
   };
 }
@@ -40,7 +34,7 @@ const Index = ({ posts }) => (
     {posts.map((post) => (
       <Article
         key={post.slug}
-        html={post.html}
+        content={post.content}
         slug={post.slug}
         title={post.frontmatter.title}
         date={post.frontmatter.date}
