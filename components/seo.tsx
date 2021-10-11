@@ -7,7 +7,14 @@ const SEO = ({
   description = config.description,
   ogImageUrl,
   slug,
-}) => {
+}:
+  | {
+      title?: string;
+      description?: string;
+      ogImageUrl?: string;
+      slug?: string;
+    }
+  | undefined) => {
   const siteName = config.title;
   const title = titleFromProps ? `${titleFromProps} - ${siteName}` : siteName;
   const url = slug ? `${config.siteUrl}${slug}` : config.siteUrl;
