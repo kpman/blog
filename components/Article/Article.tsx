@@ -6,6 +6,8 @@ import ArticleFooter from './ArticleFooter';
 import ArticleHeader from './ArticleHeader';
 import ArticleMeta from './ArticleMeta';
 
+const readmoreComment = '<!-- more -->';
+
 const Article = ({ slug, content, date, title, tags, readmore }) => (
   <>
     <article id={title} className="post">
@@ -13,7 +15,9 @@ const Article = ({ slug, content, date, title, tags, readmore }) => (
       <ArticleHeader slug={slug} title={title} />
       <div className="entry-content">
         <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
-          {readmore ? content.split('<!-- more -->')[0] : content}
+          {readmore
+            ? content.split(readmoreComment)[0]
+            : content.replace(readmoreComment, '')}
         </ReactMarkdown>
         {readmore ? (
           <p className="article-more-link">
