@@ -8,7 +8,6 @@ import ArticleMeta from './ArticleMeta';
 
 const Article = ({ slug, content, date, title, tags, readmore }) => (
   <>
-    {console.log({ content })}
     <article id={title} className="post">
       <ArticleFooter slug={slug} date={date} />
       <ArticleHeader slug={slug} title={title} />

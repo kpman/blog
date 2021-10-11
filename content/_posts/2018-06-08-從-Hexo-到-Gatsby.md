@@ -2,8 +2,8 @@
 title: 從 Hexo 到 Gatsby
 date: 2018-06-08 20:55:19
 tags:
-- hexo
-- gatsby
+  - hexo
+  - gatsby
 ---
 
 本篇文章記錄了我將部落格從 Hexo 轉換到 Gatsby 的過程，以及這過程當中相關設定的經驗分享。
@@ -164,7 +164,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
 
 該頁最主要就是把所有的文章時間、title 等資料拿出來，GraphQL 的 query 如下：
 
-```graphql
+```js
 // src/pages/index.js
 export const pageQuery = graphql`
   query BlogIndexQuery {
@@ -222,7 +222,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   allMarkdown.data.allMarkdownRemark.edges.map(({ node }) => {
     const { tags } = node.frontmatter;
 
-    tags.map(tag => {
+    tags.map((tag) => {
       createPage({
         path: `/tags/${tag}`, // 此處創造 tag URL
         component: path.resolve('./src/templates/tags.js'), // 選擇用 tags template
@@ -238,7 +238,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
 
 創造完每一頁 tag 的 page 之後，我們來看看 tags template 應該怎樣寫。
 
-```graphql
+```js
 // ./src/templates/tags.js
 export const pageQuery = graphql`
   query PostByTag($tag: String!) {
