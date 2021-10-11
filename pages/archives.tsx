@@ -1,6 +1,5 @@
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import markdownToHtml from '../utils/markdown';
 import {
   ArticleFooter,
   ArticleHeader,
@@ -11,14 +10,9 @@ import { getAllPosts } from '../utils/blog';
 export async function getStaticProps() {
   const posts = getAllPosts();
 
-  const postPromises = posts.map(async (post) => ({
-    ...post,
-    html: await markdownToHtml(post.content || ''),
-  }));
-
   return {
     props: {
-      posts: await Promise.all(postPromises),
+      posts,
     },
   };
 }

@@ -4,7 +4,7 @@ import { Feed } from 'feed';
 
 import config from '../config';
 
-import markdownToHtml from './markdown';
+import markdownToHtml from './markdownToHtml';
 import { getAllPosts } from './blog';
 
 export const generateRSS = async () => {

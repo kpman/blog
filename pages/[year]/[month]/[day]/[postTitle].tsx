@@ -3,7 +3,6 @@ import Comments from '../../../../components/Comments';
 import Layout from '../../../../components/layout';
 import SEO from '../../../../components/seo';
 import config from '../../../../config';
-import markdownToHtml from '../../../../utils/markdown';
 import {
   getAllPosts,
   getDetailFromSlug,
@@ -15,13 +14,8 @@ export async function getStaticProps({ params }) {
   const slug = `/${year}/${month}/${day}/${postTitle}/`;
   const post = getPostBySlug(slug);
 
-  const content = await markdownToHtml(post.content || '');
-
   return {
-    props: {
-      ...post,
-      content,
-    },
+    props: post,
   };
 }
 
@@ -47,8 +41,8 @@ const Blog = (post) => (
       slug={post.slug}
     />
     <Article
-      html={post.content}
       slug={post.slug}
+      content={post.content}
       title={post.frontmatter.title}
       date={post.frontmatter.date}
       tags={post.frontmatter.tags}
