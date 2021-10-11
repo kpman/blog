@@ -13,8 +13,10 @@ export async function getStaticProps() {
     html: await markdownToHtml(post.content || ''),
   }));
 
-  // Generate RSS file here for static build
-  await generateRSS();
+  if (process.env.NODE_ENV === 'production') {
+    // Generate RSS file here for static build
+    await generateRSS();
+  }
 
   return {
     props: {
