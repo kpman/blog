@@ -10,10 +10,20 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    const handleRouteChange = (url) => {
-      window.gtag('config', GA_4_TRACKING_ID, {
-        page_path: url,
-      });
+    const handleRouteChange = (url: string) => {
+      if (process.env.NODE_ENV === 'production') {
+        (
+          window as typeof window & {
+            gtag: (
+              key: string,
+              id: string,
+              options: Record<string, string>
+            ) => void;
+          }
+        ).gtag('config', GA_4_TRACKING_ID, {
+          page_path: url,
+        });
+      }
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);

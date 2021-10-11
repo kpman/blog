@@ -46,14 +46,18 @@ export const getPostBySlug = (slug) => {
 
   return {
     slug,
-    frontmatter: { ...data, date },
+    frontmatter: { ...data, date } as {
+      title: string;
+      date: string;
+      tags: string[];
+    },
     excerpt: content
       .split('<!-- more -->')[0]
       .replace(imageMarkdownRegExp, '')
       .trim(), // get only text part for `excerpt`
     ogImageUrl: imageMarkdownRegExp.exec(content)?.[2] || null,
     content,
-    date: data.date.toISOString(), // for getAllPosts sorting
+    date: data.date.toISOString() as string, // for getAllPosts sorting
   };
 };
 
@@ -62,7 +66,7 @@ export const getAllPosts = () => {
 
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+    .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
 
   return posts;
 };

@@ -13,22 +13,18 @@ const Footer = () => (
       © {new Date().getFullYear()} {config.title}. All rights reserved.
       <br />
       Modify from{' '}
-      <Link
-        href="http://sanographix.github.io/tumblr/apollo/"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <a>Apollo</a>
+      <Link href="http://sanographix.github.io/tumblr/apollo/">
+        <a rel="noopener noreferrer" target="_blank">
+          Apollo
+        </a>
       </Link>{' '}
       theme.
       <br />
       Powered by{' '}
-      <Link
-        href="https://nextjs.org/"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <a>Next.js</a>
+      <Link href="https://nextjs.org/">
+        <a rel="noopener noreferrer" target="_blank">
+          Next.js
+        </a>
       </Link>
     </span>
   </footer>
