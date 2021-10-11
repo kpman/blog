@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   title: 'kpman | code',
   subtitle: '記錄開發過程大小事',
   description:
