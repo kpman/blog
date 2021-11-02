@@ -1,4 +1,6 @@
 module.exports = {
   trailingSlash: true,
-  experimental: { esmExternals: true },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
 };
