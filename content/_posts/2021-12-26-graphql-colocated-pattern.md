@@ -155,3 +155,4 @@ React Component 與 GraphQL 的搭配寫起來很舒服，在這個 TypeScript �
 - [GraphQL official doc - Fragments](https://graphql.org/learn/queries/#fragments)
 - [Apollo Docs - Fragments](https://www.apollographql.com/docs/react/data/fragments/#creating-colocated-fragments)
 - [GraphQL Code Generator](https://www.graphql-code-generator.com/)
+- [強者我朋友的 codegen 介紹文](https://jigsawye.com/2021/04/28/graphql-codegen)
