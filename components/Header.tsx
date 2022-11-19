@@ -10,24 +10,24 @@ const Header = () => (
     <header id="header">
       <h1 className="blog-title">
         <Link href="/">
-          <a>{config.title}</a>
+          {config.title}
         </Link>
       </h1>
       <nav className="nav">
         <ul>
           <li>
             <Link href="/">
-              <a>home</a>
+              home
             </Link>
           </li>
           <li>
             <Link href="/archives">
-              <a>archives</a>
+              archives
             </Link>
           </li>
           <li>
             <Link href="/atom.xml">
-              <a>rss</a>
+              rss
             </Link>
           </li>
         </ul>
