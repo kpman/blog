@@ -22,7 +22,7 @@ const Article = ({ slug, content, date, title, tags, readmore }) => (
         {readmore ? (
           <p className="article-more-link">
             <Link href={`${slug}#more`}>
-              <a>Read More</a>
+              Read More
             </Link>
           </p>
         ) : null}
