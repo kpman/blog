@@ -5,7 +5,7 @@ import { Feed } from 'feed';
 import config from '../config';
 
 import markdownToHtml from './markdownToHtml';
-import { getAllPosts } from './blog';
+import { getPosts } from './blog';
 
 export const generateRSS = async () => {
   const feed = new Feed({
@@ -28,7 +28,7 @@ export const generateRSS = async () => {
     },
   });
 
-  const posts = getAllPosts();
+  const posts = getPosts();
 
   await Promise.all(
     posts.map(async (post) => {

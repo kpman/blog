@@ -4,7 +4,7 @@ import Layout from '../../../../components/layout';
 import SEO from '../../../../components/seo';
 import config from '../../../../config';
 import {
-  getAllPosts,
+  getPosts,
   getDetailFromSlug,
   getPostBySlug,
 } from '../../../../utils/blog';
@@ -20,7 +20,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts();
+  const posts = getPosts({
+    fields: ['slug', 'frontmatter', 'excerpt', 'ogImageUrl', 'content'],
+  });
 
   return {
     paths: posts.map((post) => ({
@@ -46,7 +48,6 @@ const Blog = (post) => (
       title={post.frontmatter.title}
       date={post.frontmatter.date}
       tags={post.frontmatter.tags}
-      readmore={false}
     />
     <Comments
       shortname={config.disqusShortname}
