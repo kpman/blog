@@ -5,10 +5,10 @@ import {
   ArticleHeader,
   ArticleMeta,
 } from '../components/Article';
-import { getAllPosts } from '../utils/blog';
+import { getPosts } from '../utils/blog';
 
 export async function getStaticProps() {
-  const posts = getAllPosts();
+  const posts = getPosts({ fields: ['frontmatter', 'slug'] });
 
   return {
     props: {

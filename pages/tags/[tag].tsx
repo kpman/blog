@@ -1,12 +1,14 @@
 import Article from '../../components/Article';
 import Layout from '../../components/layout';
 import SEO from '../../components/seo';
-import { getAllTags, getPostsByTag } from '../../utils/blog';
+import { getTags, getPostsByTag } from '../../utils/blog';
 
 export async function getStaticProps({ params }) {
   const { tag } = params;
 
-  const posts = getPostsByTag(tag);
+  const posts = getPostsByTag(tag, {
+    fields: ['slug', 'excerpt', 'frontmatter', 'ogImageUrl'],
+  });
 
   return {
     props: {
@@ -16,7 +18,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const allTags = getAllTags();
+  const allTags = getTags();
 
   return {
     paths: allTags.map((tag) => ({
@@ -34,12 +36,12 @@ const Index = ({ posts }) => (
     {posts.map((post) => (
       <Article
         key={post.slug}
-        content={post.content}
         slug={post.slug}
         title={post.frontmatter.title}
         date={post.frontmatter.date}
         tags={post.frontmatter.tags}
-        readmore
+        excerpt={post.excerpt}
+        ogImageUrl={post.ogImageUrl}
       />
     ))}
   </Layout>

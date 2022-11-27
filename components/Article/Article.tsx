@@ -8,23 +8,42 @@ import ArticleMeta from './ArticleMeta';
 
 const readmoreComment = '<!-- more -->';
 
-const Article = ({ slug, content, date, title, tags, readmore }) => (
+const Article = ({
+  slug,
+  date,
+  title,
+  tags,
+  excerpt,
+  content,
+  ogImageUrl,
+}: {
+  slug: string;
+  date: string;
+  title: string;
+  tags: string;
+  excerpt?: string;
+  content?: string;
+  ogImageUrl?: string;
+}) => (
   <>
     <article id={title} className="post">
       <ArticleFooter slug={slug} date={date} />
       <ArticleHeader slug={slug} title={title} />
       <div className="entry-content">
         <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
-          {readmore
-            ? content.split(readmoreComment)[0]
-            : content.replace(readmoreComment, '')}
+          {excerpt ? excerpt : content.replace(readmoreComment, '')}
         </ReactMarkdown>
-        {readmore ? (
-          <p className="article-more-link">
-            <Link href={`${slug}#more`}>
-              Read More
-            </Link>
-          </p>
+        {excerpt ? (
+          <>
+            {ogImageUrl ? (
+              <p>
+                <img src={ogImageUrl} alt={`${title} image`} />
+              </p>
+            ) : null}
+            <p className="article-more-link">
+              <Link href={`${slug}#more`}>Read More</Link>
+            </p>
+          </>
         ) : null}
       </div>
       <ArticleMeta tags={tags} />
