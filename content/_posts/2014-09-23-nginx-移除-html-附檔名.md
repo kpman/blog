@@ -2,15 +2,15 @@
 title: Nginx remove .html filename
 date: 2014-09-23 10:10:56
 tags:
-- nodejs
-- nginx
-- static file
-- server
+  - nodejs
+  - nginx
+  - static file
+  - server
 ---
 
 Nginx 是一套輕量化的 web server，因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器，本篇將介紹靜態網頁在 nginx 上移除.html 附檔名的作法。
 
-![Nginx](https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg)
+![Nginx](https://i.imgur.com/fObgc2s.png)
 
 <!-- more -->
 
@@ -56,8 +56,7 @@ server {
 }
 ```
 
-此設定將會當抓到$uri 時，nginx 會自動帶入`$uri/`或是`$uri.html`
-因此我們送出`mydomain.com/user`，nginx 會試著搜尋`mydomain.com/user/`或`mydomain.com/user.html`。
+此設定將會當抓到$uri 時，nginx 會自動帶入`$uri/`或是`$uri.html` 因此我們送出`mydomain.com/user`，nginx 會試著搜尋`mydomain.com/user/`或`mydomain.com/user.html`。
 
 ### 四、Remove default conf
 

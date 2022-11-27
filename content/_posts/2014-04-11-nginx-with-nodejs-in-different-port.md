@@ -2,16 +2,16 @@
 title: Nginx with Node.js in different port
 date: 2014-04-11 00:16:33
 tags:
-- nodejs
-- nginx
-- server
+  - nodejs
+  - nginx
+  - server
 ---
 
 Nginx 因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器。
 
 由於近期想要把不同的 node.js 程式放在同一個 server，因此開始研究 nginx 用法，記錄下來我的實作方式。
 
-![Nginx](https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg)
+![Nginx](https://i.imgur.com/fObgc2s.png)
 
 <!-- more -->
 
