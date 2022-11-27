@@ -2,17 +2,17 @@
 title: EC2利用tasksel架wordpress經驗分享
 date: 2013-08-21 02:17:04
 tags:
-- wordpress
-- amazon
-- ec2
-- tasksel
-- ubuntu
-- aws
+  - wordpress
+  - amazon
+  - ec2
+  - tasksel
+  - ubuntu
+  - aws
 ---
 
 看了這麼久的雲端資源，總算開了算是自己真正學到東西的第一台 Amazon EC2 server，目的是想要練習把 wordpress 架到 EC2 上，在此分享我的架設經驗。
 
-![Amazon web service](https://www.programmableweb.com/wp-content/amazon-web-services1.png)
+![Amazon web service](https://i.imgur.com/4HM0eOa.png)
 
 <!-- more -->
 
