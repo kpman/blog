@@ -41,7 +41,7 @@ const Article = ({
               </p>
             ) : null}
             <p className="article-more-link">
-              <Link href={`${slug}#more`}>Read More</Link>
+              <Link href={`${slug}#more`}>Read More →</Link>
             </p>
           </>
         ) : null}
