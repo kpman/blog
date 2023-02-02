@@ -9,7 +9,7 @@ tags:
 
 學習 Node.js 已經兩年之餘，這段時間陸陸續續在開發上遇到一些問題（雷），然而隨著時間累積的叫做經驗，因此藉由此篇文章記錄從本機 development 環境到遠端 Linux 上的 production 所得到的經驗。
 
-![Deploy](https://i.imgur.com/GtZ5ROB.jpg)
+![Deploy](https://i.imgur.com/RbLFq84.jpg)
 
 <!-- more -->
 
