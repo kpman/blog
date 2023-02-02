@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { GA_4_TRACKING_ID } from '../lib/constants';
 
 import '../styles/index.css';
+import '../styles/globals.css';
 import 'highlight.js/styles/github.css';
 
 function MyApp({ Component, pageProps }) {
