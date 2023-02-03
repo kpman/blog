@@ -25,31 +25,29 @@ const Article = ({
   content?: string;
   ogImageUrl?: string;
 }) => (
-  <>
-    <article id={title} className="post">
-      <ArticleFooter slug={slug} date={date} />
-      <ArticleHeader slug={slug} title={title} />
-      <div className="entry-content">
-        <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
-          {excerpt ? excerpt : content.replace(readmoreComment, '')}
-        </ReactMarkdown>
-        {excerpt ? (
-          <>
-            {ogImageUrl ? (
-              <p>
-                <img src={ogImageUrl} alt={`${title} image`} />
-              </p>
-            ) : null}
-            <p className="article-more-link">
-              <Link href={`${slug}#more`}>Read More →</Link>
+  <article id={title} className="post">
+    <ArticleFooter slug={slug} date={date} />
+    <ArticleHeader slug={slug} title={title} />
+    <div className="entry-content">
+      <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+        {excerpt ? excerpt : content.replace(readmoreComment, '')}
+      </ReactMarkdown>
+      {excerpt ? (
+        <>
+          {ogImageUrl ? (
+            <p>
+              <img src={ogImageUrl} alt={`${title} image`} />
             </p>
-          </>
-        ) : null}
-      </div>
-      <ArticleMeta tags={tags} />
-      <hr className="article-divider" />
-    </article>
-  </>
+          ) : null}
+          <p className="article-more-link">
+            <Link href={`${slug}#more`}>Read More →</Link>
+          </p>
+        </>
+      ) : null}
+    </div>
+    <ArticleMeta tags={tags} />
+    <hr className="article-divider" />
+  </article>
 );
 
 export default Article;

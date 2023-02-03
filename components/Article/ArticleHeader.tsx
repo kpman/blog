@@ -1,12 +1,10 @@
 import Link from 'next/link';
 
 const ArticleHeader = ({ slug, title }) => (
-  <header className="entry-header">
-    <h1 itemProp="name" className="entry-title">
-      <Link href={slug} className="article-title" itemProp="url">
-
+  <header className="mb-8">
+    <h1 itemProp="name" className="m-0 text-4xl font-bold">
+      <Link href={slug} itemProp="url">
         {title}
-
       </Link>
     </h1>
   </header>
