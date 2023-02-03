@@ -9,8 +9,8 @@ const ArticleFooter = ({ slug, date }) => (
         </time>
       </Link>
     </div>
-    <div className="mt-2 inline lg:block">kpman | code</div>
-    <div className="mt-2 hidden lg:block">
+    <div className="mt-1 inline lg:block">kpman | code</div>
+    <div className="mt-1 hidden lg:block">
       <div className="[&>a]:text-gray [&>a]:hover:text-blue">
         <Link href={`${slug}#disqus_thread`}>Comments</Link>
       </div>
