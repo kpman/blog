@@ -211,6 +211,12 @@ code {
 .alignright {
   float: right;
 }
+.entry-content a {
+  color: #33a6b8;
+}
+.entry-content a:hover {
+  color: #2692a3;
+}
 .entry-content .gist {
   background: color-code;
   border: 1px solid #ddd;
