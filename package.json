@@ -52,6 +52,9 @@
     "blog",
     "nextjs"
   ],
+  "engines": {
+    "node": "20.x"
+  },
   "lint-staged": {
     "*.{json,md}": [
       "prettier --write"
