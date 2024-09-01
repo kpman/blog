@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 const ArticleFooter = ({ slug, date }) => (
-  <footer className="top-[0.5em] left-[-200px] mb-4 text-[90%] text-gray lg:absolute">
-    <div className="mr-2 inline text-[120%] font-bold lg:block [&>a]:text-dark-gray">
+  <footer className="relative mb-4 text-sm text-gray lg:absolute lg:top-[0.5em] lg:left-[-200px]">
+    <div className="mr-2 inline text-lg font-bold lg:block [&>a]:text-dark-gray">
       <Link href={slug}>
         <time dateTime={new Date(date).toISOString()} itemProp="datePublished">
           {date}
