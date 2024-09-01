@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://code.kpman.cc/</id>
     <title>kpman | code</title>
-    <updated>2021-08-07T16:00:52.284Z</updated>
+    <updated>2024-09-01T14:45:30.331Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Daniel Tseng</name>
@@ -14,7 +14,245 @@
     <subtitle>記錄開發過程大小事</subtitle>
     <logo>https://code.kpman.cc/android-chrome-192x192.png</logo>
     <icon>https://code.kpman.cc/favicon.ico</icon>
-    <rights>© 2021 kpman | code. All rights reserved.</rights>
+    <rights>© 2024 kpman | code. All rights reserved.</rights>
+    <entry>
+        <title type="html"><![CDATA[無密碼登入的未來 - Passkeys 通行密鑰]]></title>
+        <id>https://code.kpman.cc/2023/06/11/passkeys/</id>
+        <link href="https://code.kpman.cc/2023/06/11/passkeys/"/>
+        <updated>2023-06-11T12:27:18.000Z</updated>
+        <summary type="html"><![CDATA[Google 在 2023 年 5 月正式宣布支援 Passkeys 通行密鑰，這讓無密碼登入的未來已經到來。因此我開始研究相關的名詞，使用者場景以及這對我們來說需要抱持著什麼樣的態度來管理我們的登入資訊。]]></summary>
+        <content type="html"><![CDATA[<p>Google 在 2023 年 5 月正式宣布支援 Passkeys 通行密鑰，這讓無密碼登入的未來已經到來。因此我開始研究相關的名詞，使用者場景以及這對我們來說需要抱持著什麼樣的態度來管理我們的登入資訊。</p>
+<p><img src="https://i.imgur.com/pmHe3nt.png" alt="https://unsplash.com/photos/dk4en2rFOIE"></p>
+<p>&lt;!-- more --&gt;</p>
+<p>在研究的過程中，有些不懂的名詞或是疑問浮出，因此我自己整理了問答列於文章下方，有興趣的人可以跳到那邊先看看。以下我想聊聊對於 Passkeys 的應用場景。</p>
+<h3>場景一：長輩不用再記得 Google 密碼</h3>
+<p>這情境我想很常發生在你我之間，我們的長輩可能是 50~60 歲，甚至更高年紀，他們對於資安風險可能沒什麼概念，常用的帳號密碼的管理也可能做得很粗糙甚至是完全沒有管理，每次要輸入密碼的時候都要想半天。</p>
+<p>Passkeys 的到來會是怎麼樣的情境？在 Google 正式支援 Passkeys 的到來，我們可以利用長輩的手機為長輩的 Google 帳號建立 Passkeys，未來在他們需要登入 Google 的地方，只要手機在身邊，就可以利用 iOS 的 FaceID 或是 TouchID 或是其他 Android 生物解鎖的方式，讓他們登入 Google 帳號。對長輩來說這種生物辨識的解鎖行之有年，因此他們會覺得都一樣，只要刷臉或是指紋就可以登入，所以使用起來一樣方便。</p>
+<h3>場景二：未來更多服務不需要密碼就登入</h3>
+<p>這需要時間，因為在此時不是每一家公司都支援利用 Passkeys 去「創建」帳號，就連 Google 也不是，Google 只是多提供一個讓使用者更安全且更方便的「登入」方式。有支援 Passkeys 的服務可以到 1Password 整理的<a href="https://passkeys.directory/">Passkeys
+.directory</a>去看。</p>
+<p>以後我們要登入一些服務，只要確定你的裝置擁有 Passkeys 的私鑰（這邊不談太多細節，有興趣的人推薦參考<a href="https://blocktrend.substack.com/p/454">這篇</a>）或者是該私鑰在可取得的行動裝置或其他地方，就可以認證成功然後登入該服務，再也不用記得密碼。
+這個體驗其實跟目前有在使用密碼管理服務差不多，但是 Passkeys 的特性讓這樣的過程更安全。
+由於 Apple 和 Google 都有實作密碼管理的工具，因此回到上述的場景一，如果是用手機建立 Passkeys，則可以直接利用內建的密碼管理工具（例如： keychain）就可以跨裝置同步 Passkeys 私鑰，而能夠跨裝置同步這點也是 Passkeys 的一個重要特性，就可以在 iPhone 和 iPad 之間同步這些登入資訊了。</p>
+<h2>Passkeys = 無密碼？</h2>
+<p>這點我目前是保持疑問態度，原因是我認為帳號需要分成主要服務帳號以及非主要服務帳號。所謂的主要服務帳號就是指 Google、Apple 這些會直接跟手機有關連的帳號，或者說那些你會使用的 email 服務。</p>
+<p>今天如果你需要創建 Google 帳號，其實是不能使用 Passkeys 的方式來創建帳號的。要在手機上登入你的 Google 或是 Apple 帳號，目前也都還是需要密碼才能登入。而這些主要服務帳號都擁有不同種的「忘記密碼」的服務，因為你會將手機號碼給他們，或是給不同的 email 帳號，讓真正需要忘記密碼的時候，Google 和 Apple 能有一個方式聯絡你。</p>
+<p>這邊我還沒有想通的是，如果有一個服務支援了 Passkeys，你在建立帳號的時候根本沒有輸入過密碼，但你當時是利用手機申請的，然而已經換手機沒有備份，也就是 Passkeys 私鑰已經不在手上狀態，那不就永遠都沒辦法登入該服務了嗎？這件事類似加密貨幣錢包的 12 個字串不見，因為其實這就是私鑰的一種。</p>
+<p>目前看到的一個解法是，註冊的時候就是需要利用 email 當做 account，今天你要登入的時候是輸入 email，然後它會寄 passcode 到你的 email（就像是 OTP），也就是你還是需要登入該 email 才能登入該服務。</p>
+<h2>跨平台解決方案</h2>
+<p>我是 1Password 的愛好者，目前 1Password 也在官方部落格提到他們是大力擁抱 Passkeys，目前 extension 在 beta 階段已經可以使用 Passkeys，且預期 2023 年 7 月就可以將這些功能上線到 mobile。我會持續關注 1Password 提出的解決方案，因為他們跟 Google 和 Apple 的解決方案不一樣，是跨平台不會限制在單一的平台上。而未來也可以利用 Passkeys 來解鎖 1Password，這也是很令人期待的一個功能。</p>
+<h2>Q＆A</h2>
+<ul>
+<li>Q：什麼是 FIDO?
+<ul>
+<li>FIDO（Fast IDentity Online） 是指由同名的非營利組織 FIDO 聯盟所訂定的一套網路識別標準，意在確保登入流程中伺服器及終端裝置協定的安全性</li>
+<li>FIDO 最大的特色在於所有的協定都是建立於公開金鑰加密（Public Key Cryptography）之上，這樣的架構也能使「伺服器端將不再保管祕密」</li>
+<li>數位發展部於 2023 年 1 月加入國際身分識別標準組織 FIDO Alliance</li>
+</ul>
+</li>
+<li>Q：什麼是 FIDO Alliance?
+<ul>
+<li>FIDO Alliance 是一個聯盟、一個組織，如 Google、Microsoft、PayPal 等大公司都有參加。</li>
+<li>他們的目標是推廣並開發身份驗證的開放標準，以解決全球網路認證的問題。</li>
+</ul>
+</li>
+<li>Q：什麼是 FIDO2?
+<ul>
+<li>FIDO 在 2018 年 4 月推出的標準</li>
+<li>FIDO2 規範包含了 WebAuthn 與 Client-to-Authenticator Protocol (CTAP)</li>
+<li>其核心的 WebAuthn 規格被 W3C 聯盟接納成為正式的 Web 標準</li>
+</ul>
+</li>
+<li>Q：什麼是 WebAuthn？
+<ul>
+<li>WebAuthn 是 FIDO2 規範中的一部分，是由 W3C 和 FIDO2 聯盟共同制定的一個網路標準。</li>
+<li>在 2019 年 3 月 4 日正式成為 W3C 的官方網路標準。</li>
+<li>用來規範標準的 Web API 讓瀏覽器實作</li>
+</ul>
+</li>
+<li>Q：支援了 WebAuthn API，所以支援通行密鑰？他們兩個是什麼關係？
+<ul>
+<li>通行密鑰（Passkeys）可以通過 WebAuthn API 來實現，因為 WebAuthn API 提供了一個標準的方式來使用公鑰密碼學進行身份驗證。只要網站和瀏覽器都支援 WebAuthn API，就能使用通行密鑰進行身份驗證。</li>
+</ul>
+</li>
+</ul>
+<h2>結論</h2>
+<p>Passkeys 的普及絕對是好處大於壞處，由各家科技大廠紛紛加入所制訂出來的協定，讓更多人可以擁抱無密碼登入的體驗，再也不用去思考該網站要用什麼密碼，以及每次註冊都要在那邊思考要用什麼密碼甚至是網站還會限制密碼長度或是格式這種問題了。</p>
+<h2>Reference</h2>
+<ul>
+<li><a href="https://passage.id">https://passage.id</a>
+<ul>
+<li>1password 推出 passkey 串接 solution</li>
+</ul>
+</li>
+<li><a href="https://passkeys.directory/">https://passkeys.directory/</a>
+<ul>
+<li>1Password 收錄有關於支援 passkeys 的網站</li>
+</ul>
+</li>
+<li><a href="https://www.passkeys.io">https://www.passkeys.io</a>
+<ul>
+<li>hanko 做的，該公司本身有推出串接 passkey 的 <a href="https://cloud.hanko.io/login">solution</a></li>
+</ul>
+</li>
+<li><a href="https://passkeys.dev/">https://passkeys.dev/</a>
+<ul>
+<li>是 W3C WebAuthn Community Adoption Group and the FIDO Alliance. 整理各種開發資源的網站</li>
+</ul>
+</li>
+<li><a href="https://security.googleblog.com/2023/05/so-long-passwords-thanks-for-all-phish.html">https://security.googleblog.com/2023/05/so-long-passwords-thanks-for-all-phish.html</a>
+<ul>
+<li>大新聞，Google 2023/05/03 推出整合 passkey。</li>
+</ul>
+</li>
+<li><a href="https://www.theverge.com/2023/5/16/23725223/1password-passkey-date-password-manager">https://www.theverge.com/2023/5/16/23725223/1password-passkey-date-password-manager</a>
+<ul>
+<li>1Password 預計 2023/07 推出 passkey 儲存服務</li>
+</ul>
+</li>
+<li><a href="https://blog.techbridge.cc/2019/08/17/webauthn-intro">https://blog.techbridge.cc/2019/08/17/webauthn-intro</a>
+<ul>
+<li>蠻深入的實作了 Web Authentication API</li>
+</ul>
+</li>
+<li><a href="https://blocktrend.substack.com/p/454">https://blocktrend.substack.com/p/454</a>
+<ul>
+<li>區塊勢淺顯易懂的介紹 Passkeys</li>
+</ul>
+</li>
+</ul>
+]]></content>
+        <author>
+            <name>Daniel Tseng</name>
+            <email>s92f002@gmail.com</email>
+            <uri>https://code.kpman.cc</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[GraphQL colocated pattern]]></title>
+        <id>https://code.kpman.cc/2021/12/26/graphql-colocated-pattern/</id>
+        <link href="https://code.kpman.cc/2021/12/26/graphql-colocated-pattern/"/>
+        <updated>2021-12-26T00:20:15.000Z</updated>
+        <summary type="html"><![CDATA[本篇文章介紹 GraphQL fragment 與 React component 對應的 colocated 整理方法，也會提到如何利用 codegen 讓 fragment 自動產生出該 component 對應 TypeScript 的 type。]]></summary>
+        <content type="html"><![CDATA[<p>本篇文章介紹 GraphQL fragment 與 React component 對應的 colocated 整理方法，也會提到如何利用 codegen 讓 fragment 自動產生出該 component 對應 TypeScript 的 type。</p>
+<p><img src="https://i.imgur.com/4Cchl8a.jpg" alt="GraphQL + React"></p>
+<p>&lt;!-- more --&gt;</p>
+<h2>GraphQL Fragment</h2>
+<p>對於 GraphQL 熟悉的朋友，對於 fragment 應該不陌生。如果不太熟的朋友，讓我們一起研究下去。</p>
+<p>Fragment 最大的特點就是 reusable，只要在一個檔案定義好對應的 fields，其他會用到的地方就可以 import 該檔案拿去用。有了 fragment 的幫助，我們可以在 Query 和 Mutation 共用同樣的部分，不僅好管理，也不用重複的撰寫那些 fields。</p>
+<p>基於這樣的特性，fragment 本身就帶有點 component 的概念，因為 component 也是在一個檔案先寫好，其他需要用到的地方再 import 去用。</p>
+<p>這邊直接引用官方的 sample code 稍微感受一下：</p>
+<pre><code class="language-ts">{
+  leftComparison: hero(episode: EMPIRE) {
+    ...comparisonFields
+  }
+  rightComparison: hero(episode: JEDI) {
+    ...comparisonFields
+  }
+}
+
+fragment comparisonFields on Character {
+  name
+  appearsIn
+  friends {
+    name
+  }
+}
+</code></pre>
+<p>有興趣的人可以到<a href="https://graphql.org/learn/queries/#fragments">官方網站</a>了解更多。</p>
+<h2>React component and GraphQL</h2>
+<p>Component 化是現代前端框架、套件都不陌生的管理方式，一個個 component 不僅在 codebase 好管理，也可以針對單一檔案做測試，可以說是優點不少。</p>
+<p>當使用 React component 搭配 GraphQL 時候，在每一個 component 需要資料去 render 畫面時，就可以善用 GraphQL 的特性，將底下的子 component 需要用到的 fields 都收集組裝出一個大的 query，再由上層的 component 去取得後端資料後，往下利用 props 傳遞讓子 component 去做 render 的動作。</p>
+<ul>
+<li>Get Data</li>
+</ul>
+<p><img src="https://i.imgur.com/kXkfEqY.png" alt="collect-fragments-to-query"></p>
+<ul>
+<li>Passing Props</li>
+</ul>
+<p><img src="https://i.imgur.com/HmSRVMN.png" alt="passing-data-to-props"></p>
+<h2>GraphQL colocated fragments</h2>
+<p>根據 <a href="https://www.apollographql.com/docs/react/data/fragments/#creating-colocated-fragments">Apollo 文件</a>，colocated fragments 是指該 fragment 是針對某特定 component 而生的，因此最好的管理方式就是將該 fragment 直接擺在此 component 附近，這個動作就叫做 colocated。</p>
+<p>你可以選擇直接將 fragment 寫在該 component 的 tsx 檔裡面（Apollo 官方也是如此），而我個人習慣的管理方式是，創一個同名且帶有 <code>fragments.ts</code> 的後綴檔案跟 component 放在一起。如下面表示：</p>
+<pre><code>- components
+  - post.tsx
+  - post.fragments.ts
+</code></pre>
+<p>這樣的管理方式有幾個好處，</p>
+<ol>
+<li>fragment 檔案就在該 component 同層位置，管理上面非常方便</li>
+<li>如果 component 需要的資料有更動，只要修改該 fragment 檔案，就可以依賴上層 component 一次性的 query 就拿回需要的資料。</li>
+</ol>
+<p>然而這樣的方式會有一些不方便的地方，就是在 component 的 props 的 type 定義，每次如果有修正相關的 fragment fields，都需要再次手動去改動該 component 的 type，會有點惱人。</p>
+<p>基於都是利用型別推斷的方式，GraphQL Code Generator 就可以來協助我們自動化的做到這件事情。</p>
+<h2>GraphQL Code Generator</h2>
+<p>接下來會用官方範例的縮寫 <code>codegen</code> 來稱呼這套 CLI。</p>
+<p>上面段落提到，今天如果改了一個 colocated fragment 的 fields，而每次都要手動去修改 component props 的 type 會有點麻煩，而 codegen 就可以自動化做到這件事情。</p>
+<p>我們要用到的 plugin 就是這套 <a href="https://www.graphql-code-generator.com/plugins/near-operation-file-preset">near-operation-file-preset</a>。</p>
+<p>以下直接分享我習慣的設定，與官方範例略有不同，各位可以參考然後調整適合自己的版本。</p>
+<pre><code class="language-yml">overwrite: true
+schema: 'schema.graphql'
+generates:
+  types/graphql.ts:
+    plugins:
+      - typescript
+    config:
+      namingConvention: keep
+  ./:
+    plugins:
+      - typescript-operations
+      - typescript-react-apollo
+    preset: near-operation-file
+    presetConfig:
+      baseTypesPath: types/graphql.ts
+      extension: .generated.tsx
+    config:
+      namingConvention: keep
+    documents:
+      - '**/*.fragments.ts'
+      - '**/*.query.ts'
+      - '**/*.mutation.ts'
+      - '**/*.subscription.ts'
+</code></pre>
+<p>這邊簡單說明一下原理，codegen 第一件事需要拿我們 GraphQL 的 <code>schema.graphql</code> 檔去產生出對應的 type 檔，這邊我們指定 build 出來的檔案放在 <code>types/graphql.ts</code>。</p>
+<p>接著 codegen 會根據這個 baseTypesPath 搭配相關的 plugin，找到 documents 所列的檔案，自動的去產生相對應的 generated 檔。然而因為我們有用到 typescript-react-apollo 的 plugin，因此 apollo react 的 useQuery 和 useMutation 它都會自動的 build 出來，我們就可以直接拿來使用，而不用自己再重新寫一次，非常方便。</p>
+<p>今天假設我們有一個 <code>Comment.tsx</code> 的 component，且有定義好 <code>Comment.fragments.ts</code> 和 <code>Comment.mutation.ts</code> 檔案，當跑完 codegen 後的用法會類似以下：</p>
+<pre><code class="language-ts">import { CommentFragment } from './Comment.fragments.generated';
+import { useDeleteCommentMutation } from './Comment.mutation.generated';
+
+type Props = {
+  comment: CommentFragment;
+};
+
+const Comment = ({ comment }: Props) =&gt; {
+  const [deleteComment] = useDeleteCommentMutation({
+    onError,
+    onCompleted,
+  });
+
+  // you can use `comment` or call `deleteComment` to mutate the data
+};
+
+export default Comment;
+</code></pre>
+<p>上層有用到這個 <code>&lt;Comment /&gt;</code> 的地方，只要確定有將 Comment.fragments 正確的 import 到，然後跟後端拿到資料後，利用 <code>&lt;Comment comment={comment} /&gt;</code> 往下傳遞就可以善用到 GraphQL colocated 的特性。</p>
+<h2>結論</h2>
+<p>React Component 與 GraphQL 的搭配寫起來很舒服，在這個 TypeScript 盛行的年代，搭配 GraphQL SDL 的特性，利用 colocated pattern 來管理對應的 fragments，再加上 codegen 的自動化幫忙，讓開發體驗更上一層樓。</p>
+<p>內文若有錯誤，還請不吝讓我知道，我有看到的話會馬上更正。如果你也有相關的 GraphQL 管理經驗，也歡迎一同分享交流。</p>
+<h2>Reference</h2>
+<ul>
+<li><a href="https://graphql.org/learn/queries/#fragments">GraphQL official doc - Fragments</a></li>
+<li><a href="https://www.apollographql.com/docs/react/data/fragments/#creating-colocated-fragments">Apollo Docs - Fragments</a></li>
+<li><a href="https://www.graphql-code-generator.com/">GraphQL Code Generator</a></li>
+<li><a href="https://jigsawye.com/2021/04/28/graphql-codegen">強者我朋友的 codegen 介紹文</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>Daniel Tseng</name>
+            <email>s92f002@gmail.com</email>
+            <uri>https://code.kpman.cc</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[為 Next.js 靜態網站產生 RSS feed]]></title>
         <id>https://code.kpman.cc/2021/05/25/next-js-rss/</id>
@@ -23,7 +261,7 @@
         <summary type="html"><![CDATA[Next.js 是 React 生態圈快速崛起的一套框架，本篇文章介紹在 Next.js 當中產生 RSS feed 的方法。]]></summary>
         <content type="html"><![CDATA[<p>Next.js 是 React 生態圈快速崛起的一套框架，本篇文章介紹在 Next.js 當中產生 RSS feed 的方法。</p>
 <p><img src="https://i.imgur.com/cTahD2b.png" alt="Next.js with RSS"></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>名詞簡介</h2>
 <p>以下有些名詞我選擇直接用縮寫，因此在這邊先做介紹：</p>
 <ul>
@@ -46,7 +284,7 @@
 <p>SSG 就是將所有的檔案都在 build time 轉成 static file，所以自然沒有 server 端可以幫忙處理 response XML 的動作，因此就必須思考將 RSS feed 直接 build 成一個獨立的 public 檔案，讓想要訂閱 RSS feed 的人可以利用該連結直接訂閱。</p>
 <p>在程式端具體的實作流程有許多種，以下舉我認為比較可行的兩種：</p>
 <ol>
-<li>寫一個獨立的 npm script，例如: <code>"postbuild": "node lib/rss.js"</code>，基於 npm script 的定義，只要在 build script 跑完後，就去直接執行這個 npm script 在 <code>public</code>（Next.js 定義的公開資料夾路徑）資料夾產生對應的 RSS file。</li>
+<li>寫一個獨立的 npm script，例如: <code>&quot;postbuild&quot;: &quot;node lib/rss.js&quot;</code>，基於 npm script 的定義，只要在 build script 跑完後，就去直接執行這個 npm script 在 <code>public</code>（Next.js 定義的公開資料夾路徑）資料夾產生對應的 RSS file。</li>
 <li>寫一個獨立的 JS function，在 Next.js build 階段確定有執行這個 function 去產生 RSS file 到 <code>public</code> 資料夾即可。</li>
 </ol>
 <p>這兩種真正執行的 function 內容幾乎一樣，就是包裝起來執行的方式和時間點不一樣而已。</p>
@@ -54,74 +292,74 @@
 <h2>實作</h2>
 <p>這次我選擇 <a href="https://github.com/jpmonette/feed">feed</a> 這個套件來幫忙產生 RSS feed。</p>
 <h4>一、安裝 feed 套件</h4>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell"><span class="token function">yarn</span> <span class="token function">add</span> feed
-</code></pre></div>
+<pre><code class="language-shell">yarn add feed
+</code></pre>
 <h4>二、創建一個 JS 檔，產生一個 <code>Feed</code> instance。</h4>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Feed</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'feed'</span><span class="token punctuation">;</span>
+<pre><code class="language-javascript">import { Feed } from 'feed';
 
-<span class="token keyword module">import</span> <span class="token imports">config</span> <span class="token keyword module">from</span> <span class="token string">'../config'</span><span class="token punctuation">;</span>
+import config from '../config';
 
-<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function">generateRSS</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> feed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Feed</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    title<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token property-access">title</span><span class="token punctuation">,</span>
-    description<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token property-access">subtitle</span><span class="token punctuation">,</span>
-    id<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token punctuation">,</span>
-    link<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token punctuation">,</span>
-    image<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/image.png</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-    favicon<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/favicon.ico</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-    copyright<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">© </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">getFullYear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>
-      config<span class="token punctuation">.</span><span class="token property-access">title</span>
-    <span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">. All rights reserved.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-    feedLinks<span class="token operator">:</span> <span class="token punctuation">{</span>
-      atom<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/atom.xml</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    author<span class="token operator">:</span> <span class="token punctuation">{</span>
-      name<span class="token operator">:</span> <span class="token string">'Daniel Tseng'</span><span class="token punctuation">,</span>
-      email<span class="token operator">:</span> <span class="token string">'s92f002@gmail.com'</span><span class="token punctuation">,</span>
-      link<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div>
+export const generateRSS = async () =&gt; {
+  const feed = new Feed({
+    title: config.title,
+    description: config.subtitle,
+    id: config.siteUrl,
+    link: config.siteUrl,
+    image: `${config.siteUrl}/image.png`,
+    favicon: `${config.siteUrl}/favicon.ico`,
+    copyright: `© ${new Date().getFullYear()} ${
+      config.title
+    }. All rights reserved.`,
+    feedLinks: {
+      atom: `${config.siteUrl}/atom.xml`,
+    },
+    author: {
+      name: 'Daniel Tseng',
+      email: 's92f002@gmail.com',
+      link: config.siteUrl,
+    },
+  });
+</code></pre>
 <p>更多參數可以參考 <a href="https://github.com/jpmonette/feed#example">官方 Example</a></p>
 <h4>三、把所有文章放進去 Feed instance</h4>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Feed</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'feed'</span><span class="token punctuation">;</span>
+<pre><code class="language-javascript">import { Feed } from 'feed';
 
-<span class="token keyword module">import</span> <span class="token imports">config</span> <span class="token keyword module">from</span> <span class="token string">'../config'</span><span class="token punctuation">;</span>
+import config from '../config';
 
-<span class="token keyword module">import</span> <span class="token imports">markdownToHtml</span> <span class="token keyword module">from</span> <span class="token string">'./markdown'</span><span class="token punctuation">;</span>
-<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> getAllPosts <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'./blog'</span><span class="token punctuation">;</span>
+import markdownToHtml from './markdown';
+import { getAllPosts } from './blog';
 
-<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function">generateRSS</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> feed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Feed</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token comment">// 略，請見上方</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+export const generateRSS = async () =&gt; {
+  const feed = new Feed({
+    // 略，請見上方
+  });
 
-  <span class="token keyword">const</span> posts <span class="token operator">=</span> <span class="token function">getAllPosts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  const posts = getAllPosts();
 
-  <span class="token keyword control-flow">await</span> <span class="token known-class-name class-name">Promise</span><span class="token punctuation">.</span><span class="token method function property-access">all</span><span class="token punctuation">(</span>
-    posts<span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">post</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> validURI <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">encodeURI</span><span class="token punctuation">(</span>post<span class="token punctuation">.</span><span class="token property-access">slug</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  await Promise.all(
+    posts.map(async (post) =&gt; {
+      const validURI = `${config.siteUrl}${encodeURI(post.slug)}`;
 
-      feed<span class="token punctuation">.</span><span class="token method function property-access">addItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        id<span class="token operator">:</span> validURI<span class="token punctuation">,</span>
-        link<span class="token operator">:</span> validURI<span class="token punctuation">,</span>
-        title<span class="token operator">:</span> post<span class="token punctuation">.</span><span class="token property-access">frontmatter</span><span class="token punctuation">.</span><span class="token property-access">title</span><span class="token punctuation">,</span>
-        description<span class="token operator">:</span> post<span class="token punctuation">.</span><span class="token property-access">excerpt</span><span class="token punctuation">,</span>
-        date<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>post<span class="token punctuation">.</span><span class="token property-access">date</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        image<span class="token operator">:</span> post<span class="token punctuation">.</span><span class="token property-access">ogImageUrl</span><span class="token punctuation">,</span>
-        content<span class="token operator">:</span> <span class="token keyword control-flow">await</span> <span class="token function">markdownToHtml</span><span class="token punctuation">(</span>post<span class="token punctuation">.</span><span class="token property-access">content</span> <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        author<span class="token operator">:</span> <span class="token punctuation">[</span>
-          <span class="token punctuation">{</span>
-            name<span class="token operator">:</span> <span class="token string">'Daniel Tseng'</span><span class="token punctuation">,</span>
-            email<span class="token operator">:</span> <span class="token string">'s92f002@gmail.com'</span><span class="token punctuation">,</span>
-            link<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token property-access">siteUrl</span><span class="token punctuation">,</span>
-          <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div>
+      feed.addItem({
+        id: validURI,
+        link: validURI,
+        title: post.frontmatter.title,
+        description: post.excerpt,
+        date: new Date(post.date),
+        image: post.ogImageUrl,
+        content: await markdownToHtml(post.content || ''),
+        author: [
+          {
+            name: 'Daniel Tseng',
+            email: 's92f002@gmail.com',
+            link: config.siteUrl,
+          },
+        ],
+      });
+    })
+  );
+};
+</code></pre>
 <h4>四、輸出至 public 資料夾</h4>
 <p>在輸出的時候，需要注意的是，那些會訂閱 RSS 的 service 會 default 找哪些路徑？</p>
 <p>靜態檔案解決方案，根據參考大家常放的檔案路徑，做了以下歸納：</p>
@@ -131,35 +369,35 @@
 <li><code>/rss/atom.xml</code></li>
 </ul>
 <p>因此我選擇這樣做：</p>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token imports">fs</span> <span class="token keyword module">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
+<pre><code class="language-javascript">import fs from 'fs';
 
-<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Feed</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'feed'</span><span class="token punctuation">;</span>
+import { Feed } from 'feed';
 
-<span class="token keyword module">import</span> <span class="token imports">config</span> <span class="token keyword module">from</span> <span class="token string">'../config'</span><span class="token punctuation">;</span>
+import config from '../config';
 
-<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> getAllPosts <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'./blog'</span><span class="token punctuation">;</span>
+import { getAllPosts } from './blog';
 
-<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function">generateRSS</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> feed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Feed</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token comment">// 略</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+export const generateRSS = async () =&gt; {
+  const feed = new Feed({
+    // 略
+  });
 
-  <span class="token comment">// 略</span>
+  // 略
 
-  <span class="token keyword">const</span> invalidCharInXMLSpecRegexp <span class="token operator">=</span>
-    <span class="token comment">// eslint-disable-next-line no-control-regex</span>
-    <span class="token operator">/</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">:</span><span class="token punctuation">[</span>\<span class="token number">0</span><span class="token operator">-</span>\x08\x0B\f\x0E<span class="token operator">-</span>\x1F\uFFFD\uFFFE\uFFFF<span class="token punctuation">]</span><span class="token operator">|</span><span class="token punctuation">[</span>\uD800<span class="token operator">-</span>\uDBFF<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">!</span><span class="token punctuation">[</span>\uDC00<span class="token operator">-</span>\uDFFF<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token operator">^</span>\uD800<span class="token operator">-</span>\uDBFF<span class="token punctuation">]</span><span class="token operator">|</span><span class="token operator">^</span><span class="token punctuation">)</span><span class="token punctuation">[</span>\uDC00<span class="token operator">-</span>\uDFFF<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span>g<span class="token punctuation">;</span>
+  const invalidCharInXMLSpecRegexp =
+    // eslint-disable-next-line no-control-regex
+    /((?:[\0-\x08\x0B\f\x0E-\x1F\uFFFD\uFFFE\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]))/g;
 
-  fs<span class="token punctuation">.</span><span class="token method function property-access">writeFileSync</span><span class="token punctuation">(</span>
-    <span class="token string">'./public/rss.xml'</span><span class="token punctuation">,</span>
-    feed<span class="token punctuation">.</span><span class="token method function property-access">atom1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span>invalidCharInXMLSpecRegexp<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  fs<span class="token punctuation">.</span><span class="token method function property-access">writeFileSync</span><span class="token punctuation">(</span>
-    <span class="token string">'./public/atom.xml'</span><span class="token punctuation">,</span>
-    feed<span class="token punctuation">.</span><span class="token method function property-access">atom1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span>invalidCharInXMLSpecRegexp<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div>
+  fs.writeFileSync(
+    './public/rss.xml',
+    feed.atom1().replace(invalidCharInXMLSpecRegexp, '')
+  );
+  fs.writeFileSync(
+    './public/atom.xml',
+    feed.atom1().replace(invalidCharInXMLSpecRegexp, '')
+  );
+};
+</code></pre>
 <p>至於為什麼選擇 Atom 1.0 格式而不是 RSS 2.0 格式，
 主要是因為 RSS 2.0 有比較多的限制，相對之下，比較晚誕生的 Atom 1.0 格式是主流，（這點如果有講錯歡迎指教，我有看到我會馬上修正）。</p>
 <p>因此，這邊直接選擇只支援 Atom 1.0 格式。</p>
@@ -175,26 +413,26 @@
 <p><code>getStaticProps</code> (Static Generation): Fetch data at build time.</p>
 </blockquote>
 <p>也就是在 build time 的時候，Next.js 一定會執行這個 function。我們便可以把產生 RSS 的動作放進這個 function 裡面，如下：</p>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// pages/index.js</span>
-<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> generateRSS <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'../utils/rss'</span><span class="token punctuation">;</span>
+<pre><code class="language-javascript">// pages/index.js
+import { generateRSS } from '../utils/rss';
 
-<span class="token keyword module">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">getStaticProps</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> posts <span class="token operator">=</span> <span class="token function">getAllPosts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+export async function getStaticProps() {
+  const posts = getAllPosts();
 
-  <span class="token keyword">const</span> postPromises <span class="token operator">=</span> posts<span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">post</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token spread operator">...</span>post<span class="token punctuation">,</span>
-    html<span class="token operator">:</span> <span class="token keyword control-flow">await</span> <span class="token function">markdownToHtml</span><span class="token punctuation">(</span>post<span class="token punctuation">.</span><span class="token property-access">content</span> <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  const postPromises = posts.map(async (post) =&gt; ({
+    ...post,
+    html: await markdownToHtml(post.content || ''),
+  }));
 
-  <span class="token keyword control-flow">await</span> <span class="token function">generateRSS</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 主要是這一行</span>
+  await generateRSS(); // 主要是這一行
 
-  <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
-    props<span class="token operator">:</span> <span class="token punctuation">{</span>
-      posts<span class="token operator">:</span> <span class="token keyword control-flow">await</span> <span class="token known-class-name class-name">Promise</span><span class="token punctuation">.</span><span class="token method function property-access">all</span><span class="token punctuation">(</span>postPromises<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
+  return {
+    props: {
+      posts: await Promise.all(postPromises),
+    },
+  };
+}
+</code></pre>
 <p>如此一來就可以在開發階段看到 RSS feed 產生了。</p>
 <h2>結論</h2>
 <p>搬移到 Next.js 之後，寫起來的體驗，更接近原生開發 React 的感覺，想要什麼功能自己實作，彈性很大很自由，而不像是 Gatsby 整套就是為了 SSG 而生的解決方案。在 Gatsby 遇到很多問題都有現成的套件，裝上去馬上就可以用。</p>
@@ -220,7 +458,7 @@
         <summary type="html"><![CDATA[本篇文章記錄了我將部落格從 Hexo 轉換到 Gatsby 的過程，以及這過程當中相關設定的經驗分享。]]></summary>
         <content type="html"><![CDATA[<p>本篇文章記錄了我將部落格從 Hexo 轉換到 Gatsby 的過程，以及這過程當中相關設定的經驗分享。</p>
 <p><img src="https://i.imgur.com/yGnymMq.png" alt="From Hexo to Gatsby"></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <p>本篇文章並非詳細介紹 Gatsby，如想了解更多，請至<a href="https://www.gatsbyjs.org/">官方網站</a>。</p>
 <h2>緣由</h2>
 <p>Hexo 是一套歷史已久的 static site generator，此部落格原本就是利用 Hexo 架起來的。然而，後起之秀 Gatsby 採用著不同的資料流處理方式，加上優異的架構，最重要的是該團隊獲得資金並成立公司的<a href="https://twitter.com/gatsbyjs/status/999684072501792768">新聞</a>一出，我對於這個專案後續維護更加看好，就決定搬家到 Gatsby。</p>
@@ -231,30 +469,30 @@
 <li><a href="#url-%E4%B8%80%E8%87%B4%E6%80%A7">URL 一致性</a></li>
 <li><a href="#page-%E8%A8%AD%E8%A8%88">Page 設計</a></li>
 <li><a href="#favicon">Favicon</a></li>
-<li><a href="#gatsby-plugins--useful-packages">Gatsby plugin &#x26; useful packages</a></li>
+<li><a href="#gatsby-plugins--useful-packages">Gatsby plugin &amp; useful packages</a></li>
 </ul>
 <h2>Markdown 整理</h2>
 <p>Hexo 原生就提供產生文章的 CLI API，因此使用上蠻方便，只要一個指令就可以自動產生 Markdown 檔。而 Gatsby 就得要自行選擇文檔的類型，因為當初選用 Hexo 就是它可以利用 Markdown 寫部落格，所以轉換到 Gatsby 自然就沿用 Markdown 了。</p>
 <h3>gatsby-source-filesystem</h3>
 <p>在部落格架構設計上，我把所有原始檔放在 <code>./content/_posts</code> 底下。但想讓 Gatsby 知道文件位置，就得利用 <code>gatsby-source-filesystem</code> 這個 plugin，如下設定：</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token comment">// gatsby-config.js</span>
-plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
-  <span class="token punctuation">{</span>
-    resolve<span class="token operator">:</span> <span class="token string">'gatsby-source-filesystem'</span><span class="token punctuation">,</span>
-    options<span class="token operator">:</span> <span class="token punctuation">{</span>
-      name<span class="token operator">:</span> <span class="token string">'posts'</span><span class="token punctuation">,</span> <span class="token comment">// Name this source</span>
-      path<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token method function property-access">resolve</span><span class="token punctuation">(</span><span class="token string">'./content/_posts'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">]</span><span class="token punctuation">;</span>
-</code></pre></div>
+<pre><code class="language-js">// gatsby-config.js
+plugins: [
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'posts', // Name this source
+      path: path.resolve('./content/_posts'),
+    },
+  },
+];
+</code></pre>
 <p>ps. Gatsby 的範例都利用 <code>``(backtick)</code> 包住字串，但我還是習慣使用 single quote。</p>
 <h3>gatsby-transformer-remark</h3>
 <p>把原始 file 讀進來之後，Gatsby 也提供了專為 Markdown 檔處理的 plugin，名為 <code>gatsby-transformer-remark</code>。<br>
 經過這個 plugin 處理過的資料，會被轉成 Gatsby 架構下的 <code>node</code>，此 node 的 type 為 <code>MarkdownRemark</code>，該 node 會增加許多有用資訊，例如：<code>html</code>, <code>headings</code>, <code>excerpt</code> 等等，省下許多 parse Markdown 檔的功夫。</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token comment">// gatsby-config.js</span>
-plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'gatsby-transformer-remark'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-</code></pre></div>
+<pre><code class="language-js">// gatsby-config.js
+plugins: ['gatsby-transformer-remark'];
+</code></pre>
 <p>後續還會介紹更多這個 plugin 的設定方式，也可直接參考 <a href="https://github.com/kpman/kpman.github.com/blob/0f02b98eaa23e92f794adf4a14bfda4c1ec3be0d/gatsby-config.js#L24-L42">repo</a></p>
 <h2>URL 一致性</h2>
 <p>當初利用 Hexo 建立出來的 URL 為類似 <code>/2017/07/03/利用-Hub-來自動發-GitHub-PR/</code> 這樣的 pattern，
@@ -264,70 +502,70 @@ plugins<span class="token operator">:</span> <span class="token punctuation">[</
 <h3>onCreateNode</h3>
 <p>Gatsby 提供 <code>onCreateNode</code> 此 API 操作，原理上是在 Gatsby 要 createNode 時，在該 node 上面加上一些我們用的到的資訊。
 我在此處便是利用 RegExp 將檔名給 parse 出來，並在 node 上面新增一個 field 叫做 <code>slug</code>，也就是 URL 上面除了 domain 後面的 <a href="https://nodejs.org/api/url.html"><code>pathname</code></a> 部分。</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token comment">// gatsby-node.js</span>
-<span class="token keyword">const</span> <span class="token constant">BLOG_POST_FILENAME_REGEX</span> <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token group punctuation">(</span><span class="token charset"><span class="token charset-punctuation punctuation">[</span><span class="token range">0<span class="token range-punctuation operator">-</span>9</span><span class="token charset-punctuation punctuation">]</span></span><span class="token quantifier number">+</span><span class="token group punctuation">)</span>-<span class="token group punctuation">(</span><span class="token charset"><span class="token charset-punctuation punctuation">[</span><span class="token range">0<span class="token range-punctuation operator">-</span>9</span><span class="token charset-punctuation punctuation">]</span></span><span class="token quantifier number">+</span><span class="token group punctuation">)</span>-<span class="token group punctuation">(</span><span class="token charset"><span class="token charset-punctuation punctuation">[</span><span class="token range">0<span class="token range-punctuation operator">-</span>9</span><span class="token charset-punctuation punctuation">]</span></span><span class="token quantifier number">+</span><span class="token group punctuation">)</span>-<span class="token group punctuation">(</span><span class="token charclass class-name">.</span><span class="token quantifier number">+</span><span class="token group punctuation">)</span><span class="token special-escape escape">\.</span>md<span class="token anchor function">$</span></span><span class="token regex-delimiter">/</span></span><span class="token punctuation">;</span>
+<pre><code class="language-js">// gatsby-node.js
+const BLOG_POST_FILENAME_REGEX = /([0-9]+)-([0-9]+)-([0-9]+)-(.+)\.md$/;
 
-exports<span class="token punctuation">.</span><span class="token method-variable function-variable method function property-access">onCreateNode</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> node<span class="token punctuation">,</span> getNode<span class="token punctuation">,</span> boundActionCreators <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">{</span> createNodeField <span class="token punctuation">}</span> <span class="token operator">=</span> boundActionCreators<span class="token punctuation">;</span>
+exports.onCreateNode = ({ node, getNode, boundActionCreators }) =&gt; {
+  const { createNodeField } = boundActionCreators;
 
-  <span class="token comment">// 確定是 Markdown 檔再做操作</span>
-  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">internal</span><span class="token punctuation">.</span><span class="token property-access">type</span> <span class="token operator">===</span> <span class="token string">'MarkdownRemark'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span> relativePath <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getNode</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">parent</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  // 確定是 Markdown 檔再做操作
+  if (node.internal.type === 'MarkdownRemark') {
+    const { relativePath } = getNode(node.parent);
 
-    <span class="token keyword">const</span> match <span class="token operator">=</span> <span class="token constant">BLOG_POST_FILENAME_REGEX</span><span class="token punctuation">.</span><span class="token method function property-access">exec</span><span class="token punctuation">(</span>relativePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> year <span class="token operator">=</span> match<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> month <span class="token operator">=</span> match<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> day <span class="token operator">=</span> match<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> filename <span class="token operator">=</span> match<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    const match = BLOG_POST_FILENAME_REGEX.exec(relativePath);
+    const year = match[1];
+    const month = match[2];
+    const day = match[3];
+    const filename = match[4];
 
-    <span class="token comment">// 組出我們要的 slug pattern</span>
-    <span class="token keyword">const</span> slug <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>year<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>month<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>day<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>filename<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    // 組出我們要的 slug pattern
+    const slug = `/${year}/${month}/${day}/${filename}/`;
 
-    <span class="token comment">// 在該 node 上面多增加一個欄位，未來可以 Query</span>
-    <span class="token function">createNodeField</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      node<span class="token punctuation">,</span>
-      name<span class="token operator">:</span> <span class="token string">'slug'</span><span class="token punctuation">,</span>
-      value<span class="token operator">:</span> slug<span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div>
-<p>有了前述的 node 資料之後，我們在 Gatsby 創造這些 page，讓使用者在進入 <code>/YYYY/MM/DD/&#x3C;blog-title>/</code> 這樣的 URL 可以順利取得文章內容。</p>
+    // 在該 node 上面多增加一個欄位，未來可以 Query
+    createNodeField({
+      node,
+      name: 'slug',
+      value: slug,
+    });
+  }
+};
+</code></pre>
+<p>有了前述的 node 資料之後，我們在 Gatsby 創造這些 page，讓使用者在進入 <code>/YYYY/MM/DD/&lt;blog-title&gt;/</code> 這樣的 URL 可以順利取得文章內容。</p>
 <h3>createPages</h3>
 <p>Gatsby 提供的另一個 API 叫做 <code>createPages</code>，此 API 就是你所有的 page 都需要透過該 API 來創造，如此一來 Gatsby 才可以正確的回傳該頁面。</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token comment">// gatsby-node.js</span>
-exports<span class="token punctuation">.</span><span class="token method-variable function-variable method function property-access">createPages</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> graphql<span class="token punctuation">,</span> boundActionCreators <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">{</span> createPage <span class="token punctuation">}</span> <span class="token operator">=</span> boundActionCreators<span class="token punctuation">;</span>
-  <span class="token keyword">const</span> allMarkdown <span class="token operator">=</span> <span class="token keyword control-flow">await</span> <span class="token function">graphql</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"></span>
-<span class="token string">    {</span>
-<span class="token string">      allMarkdownRemark {</span>
-<span class="token string">        edges {</span>
-<span class="token string">          node {</span>
-<span class="token string">            fields {</span>
-<span class="token string">              slug # 此處的 slug 就是上述 onCreateNode 時候加上去的</span>
-<span class="token string">            }</span>
-<span class="token string">          }</span>
-<span class="token string">        }</span>
-<span class="token string">      }</span>
-<span class="token string">    }</span>
-<span class="token string">  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="language-js">// gatsby-node.js
+exports.createPages = async ({ graphql, boundActionCreators }) =&gt; {
+  const { createPage } = boundActionCreators;
+  const allMarkdown = await graphql(`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug # 此處的 slug 就是上述 onCreateNode 時候加上去的
+            }
+          }
+        }
+      }
+    }
+  `);
 
-  allMarkdown<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token punctuation">.</span><span class="token property-access">allMarkdownRemark</span><span class="token punctuation">.</span><span class="token property-access">edges</span><span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> node <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span> slug <span class="token punctuation">}</span> <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">fields</span><span class="token punctuation">;</span>
+  allMarkdown.data.allMarkdownRemark.edges.map(({ node }) =&gt; {
+    const { slug } = node.fields;
 
-    <span class="token function">createPage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      path<span class="token operator">:</span> slug<span class="token punctuation">,</span> <span class="token comment">// 告訴 Gatsby 這個 URL path</span>
-      <span class="token comment">// 這邊選用的 component，就可以在 pageQuery 使用 context 所傳進去的 slug</span>
-      component<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token method function property-access">resolve</span><span class="token punctuation">(</span><span class="token string">'./src/templates/post.js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      layout<span class="token operator">:</span> <span class="token string">'index'</span><span class="token punctuation">,</span>
-      context<span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token comment">// Data passed to context is available in page queries as GraphQL variables.</span>
-        slug<span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div>
+    createPage({
+      path: slug, // 告訴 Gatsby 這個 URL path
+      // 這邊選用的 component，就可以在 pageQuery 使用 context 所傳進去的 slug
+      component: path.resolve('./src/templates/post.js'),
+      layout: 'index',
+      context: {
+        // Data passed to context is available in page queries as GraphQL variables.
+        slug,
+      },
+    });
+  });
+};
+</code></pre>
 <ul>
 <li></li>
 </ul>
@@ -335,122 +573,122 @@ exports<span class="token punctuation">.</span><span class="token method-variabl
 <p>在 Gatsby 的架構內，每一個需要不同 URL 的頁面都需要自己創造一個 page，例如：首頁、每一篇文章、archive 頁面等等，底下列出此部落格需要的 URL：</p>
 <ul>
 <li><code>/</code>: index page</li>
-<li><code>/YYYY/MM/DD/&#x3C;blog-title>/</code>: article page</li>
+<li><code>/YYYY/MM/DD/&lt;blog-title&gt;/</code>: article page</li>
 <li><code>/archives</code>: archives page</li>
-<li><code>/tags/&#x3C;tag></code>: tags page</li>
+<li><code>/tags/&lt;tag&gt;</code>: tags page</li>
 </ul>
 <h3>index page</h3>
 <p>因為 Gatsby 底下會自動的把 <code>./src/pages/*.js</code> 自動 create page，所以我們在設計首頁的時候，就是去修改 <code>./src/pages/index.js</code> 此頁即可。</p>
 <p>該頁最主要就是把所有的文章時間、title 等資料拿出來，GraphQL 的 query 如下：</p>
-<div class="remark-highlight"><pre class="language-graphql"><code class="language-graphql">// src/pages/index.js
-export const pageQuery <span class="token operator">=</span> graphql`
-  <span class="token keyword">query</span> BlogIndexQuery <span class="token punctuation">{</span>
-    <span class="token comment"># query 依照 date 排序</span>
-    allMarkdownRemark<span class="token punctuation">(</span><span class="token attr-name">sort</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">fields</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>frontmatter___date<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token attr-name">order</span><span class="token punctuation">:</span> <span class="token constant">DESC</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      edges <span class="token punctuation">{</span>
-        node <span class="token punctuation">{</span>
-          fields <span class="token punctuation">{</span>
+<pre><code class="language-js">// src/pages/index.js
+export const pageQuery = graphql`
+  query BlogIndexQuery {
+    # query 依照 date 排序
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      edges {
+        node {
+          fields {
             slug
-          <span class="token punctuation">}</span>
-          html <span class="token comment"># 需要把 html 拿回來 render</span>
-          frontmatter <span class="token punctuation">{</span>
+          }
+          html # 需要把 html 拿回來 render
+          frontmatter {
             title
-            <span class="token comment"># 可以在此處就把 date format 成我們要的格式</span>
-            date<span class="token punctuation">(</span><span class="token attr-name">formatString</span><span class="token punctuation">:</span> <span class="token string">"MMM DD, YYYY"</span><span class="token punctuation">)</span>
+            # 可以在此處就把 date format 成我們要的格式
+            date(formatString: &quot;MMM DD, YYYY&quot;)
             tags
-          <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
+          }
+        }
+      }
+    }
+  }
 `;
-</code></pre></div>
+</code></pre>
 <p>上述的 <code>html</code> 也可以用 <code>excerpt</code> 去拿，但我選擇拿 html 再選擇我要的顯示在首頁部分內容。</p>
 <h3>archives page</h3>
 <p>該頁面與 index page 大同小異，該 page 位於 <code>./src/pages/archives.js</code>，唯一不同的是因為 archives page 有一種整理的效果，因此我們只要拿 title、date、tags 即可。</p>
 <h3>tags page</h3>
 <p>tags page 顧名思義就是每篇文章我會給一些 tag，寫在 Markdown 最上方，所以可以利用套件幫我們產生的 frontmatter 拿到每一篇的 tags 資料，但要怎樣擁有不同頁的 tag 呢？</p>
 <p>此時就必須在 createPage 的時候就將所有的 tag 拿出來，然後產生每一個 tag 的 page。</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token comment">//</span>
-exports<span class="token punctuation">.</span><span class="token method-variable function-variable method function property-access">createPages</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> graphql<span class="token punctuation">,</span> boundActionCreators <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">{</span> createPage <span class="token punctuation">}</span> <span class="token operator">=</span> boundActionCreators<span class="token punctuation">;</span>
-  <span class="token keyword">const</span> allMarkdown <span class="token operator">=</span> <span class="token keyword control-flow">await</span> <span class="token function">graphql</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"></span>
-<span class="token string">    {</span>
-<span class="token string">      allMarkdownRemark {</span>
-<span class="token string">        edges {</span>
-<span class="token string">          node {</span>
-<span class="token string">            frontmatter {</span>
-<span class="token string">              tags</span>
-<span class="token string">            }</span>
-<span class="token string">          }</span>
-<span class="token string">        }</span>
-<span class="token string">      }</span>
-<span class="token string">    }</span>
-<span class="token string">  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="language-js">//
+exports.createPages = async ({ graphql, boundActionCreators }) =&gt; {
+  const { createPage } = boundActionCreators;
+  const allMarkdown = await graphql(`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            frontmatter {
+              tags
+            }
+          }
+        }
+      }
+    }
+  `);
 
-  allMarkdown<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token punctuation">.</span><span class="token property-access">allMarkdownRemark</span><span class="token punctuation">.</span><span class="token property-access">edges</span><span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> node <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span> tags <span class="token punctuation">}</span> <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">frontmatter</span><span class="token punctuation">;</span>
+  allMarkdown.data.allMarkdownRemark.edges.map(({ node }) =&gt; {
+    const { tags } = node.frontmatter;
 
-    tags<span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span><span class="token parameter">tag</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-      <span class="token function">createPage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        path<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/tags/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tag<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token comment">// 此處創造 tag URL</span>
-        component<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token method function property-access">resolve</span><span class="token punctuation">(</span><span class="token string">'./src/templates/tags.js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 選擇用 tags template</span>
-        layout<span class="token operator">:</span> <span class="token string">'index'</span><span class="token punctuation">,</span>
-        context<span class="token operator">:</span> <span class="token punctuation">{</span>
-          tag<span class="token punctuation">,</span> <span class="token comment">// 傳進去讓 tags template 的 pageQuery 可以使用該 tag 去 query</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div>
+    tags.map((tag) =&gt; {
+      createPage({
+        path: `/tags/${tag}`, // 此處創造 tag URL
+        component: path.resolve('./src/templates/tags.js'), // 選擇用 tags template
+        layout: 'index',
+        context: {
+          tag, // 傳進去讓 tags template 的 pageQuery 可以使用該 tag 去 query
+        },
+      });
+    });
+  });
+};
+</code></pre>
 <p>創造完每一頁 tag 的 page 之後，我們來看看 tags template 應該怎樣寫。</p>
-<div class="remark-highlight"><pre class="language-graphql"><code class="language-graphql">// ./src/templates/tags.js
-export const pageQuery <span class="token operator">=</span> graphql`
-  <span class="token keyword">query</span> PostByTag<span class="token punctuation">(</span><span class="token variable">$tag</span><span class="token punctuation">:</span> String<span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    allMarkdownRemark<span class="token punctuation">(</span>
-      <span class="token attr-name">filter</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">frontmatter</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">tags</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">in</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token variable">$tag</span><span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
-      <span class="token attr-name">sort</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">fields</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>frontmatter___date<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token attr-name">order</span><span class="token punctuation">:</span> <span class="token constant">DESC</span> <span class="token punctuation">}</span>
-    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      edges <span class="token punctuation">{</span>
-        node <span class="token punctuation">{</span>
+<pre><code class="language-js">// ./src/templates/tags.js
+export const pageQuery = graphql`
+  query PostByTag($tag: String!) {
+    allMarkdownRemark(
+      filter: { frontmatter: { tags: { in: [$tag] } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
           id
           html
-          fields <span class="token punctuation">{</span>
+          fields {
             slug
-          <span class="token punctuation">}</span>
-          frontmatter <span class="token punctuation">{</span>
+          }
+          frontmatter {
             title
-            date<span class="token punctuation">(</span><span class="token attr-name">formatString</span><span class="token punctuation">:</span> <span class="token string">"MMM DD, YYYY"</span><span class="token punctuation">)</span>
+            date(formatString: &quot;MMM DD, YYYY&quot;)
             tags
-          <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
+          }
+        }
+      }
+    }
+  }
 `;
-</code></pre></div>
+</code></pre>
 <p>最關鍵的就是 Query 的參數了，利用 createPage 傳進來的 <code>$tag</code>，我們在 <code>allMarkdownRemark</code> 的參數就利用到了 <code>filter</code>、<code>sort</code> 等使用情境，拿回所有擁有這個 tag 的文章資料再去做 render。</p>
 <h2>Favicon</h2>
 <p>當初設定 Favicon 也遇到一些問題，本來以為放在 <code>/static/favicon.ico</code> 就可以讓瀏覽器抓到，可是怎麼嘗試都不成功。
 後來請教同事 <a href="https://github.com/jigsawye">@jigsawye</a> 才發現原來是要利用 loader，也就是直接將 favicon file 給 <code>import</code> 到環境內，再利用 <code>react-helmet</code> 做操作。</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token comment">// ./src/layouts/Head.js</span>
-<span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Helmet</span></span> <span class="token keyword module">from</span> <span class="token string">'react-helmet'</span><span class="token punctuation">;</span>
+<pre><code class="language-js">// ./src/layouts/Head.js
+import Helmet from 'react-helmet';
 
-<span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Favicon</span></span> <span class="token keyword module">from</span> <span class="token string">'../assets/favicon.png'</span><span class="token punctuation">;</span>
+import Favicon from '../assets/favicon.png';
 
-<span class="token keyword">const</span> <span class="token function-variable function"><span class="token maybe-class-name">Head</span></span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> data <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">(</span>
-  <span class="token operator">&#x3C;</span><span class="token maybe-class-name">Helmet</span><span class="token operator">></span>
-    <span class="token operator">&#x3C;</span>link rel<span class="token operator">=</span><span class="token string">"icon"</span> type<span class="token operator">=</span><span class="token string">"image/png"</span> sizes<span class="token operator">=</span><span class="token string">"30x30"</span> href<span class="token operator">=</span><span class="token punctuation">{</span><span class="token maybe-class-name">Favicon</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-  <span class="token operator">&#x3C;</span><span class="token operator">/</span><span class="token maybe-class-name">Helmet</span><span class="token operator">></span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+const Head = ({ data }) =&gt; (
+  &lt;Helmet&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;30x30&quot; href={Favicon} /&gt;
+  &lt;/Helmet&gt;
+);
 
-<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token maybe-class-name">Head</span><span class="token punctuation">;</span>
-</code></pre></div>
+export default Head;
+</code></pre>
 <ul>
 <li></li>
 </ul>
-<h2>Gatsby plugins &#x26; useful packages</h2>
+<h2>Gatsby plugins &amp; useful packages</h2>
 <p>推薦幾個在架設這個部落格用到的 Gatsby plugin</p>
 <ul>
 <li><code>gatsby-plugin-react-next</code>: v1 還是內建 react v15，所以需要裝這套</li>
@@ -483,7 +721,7 @@ export const pageQuery <span class="token operator">=</span> graphql`
         <content type="html"><![CDATA[<h2>起源</h2>
 <p>因為工作和平時習慣的 Git 協作平台是 GitHub，因此常常發 pull request (以下簡稱 PR) 到 GitHub 上面，而這個流程對我來說不太順手，因此便想要利用更自動化的方式來做掉。</p>
 <p><img src="https://i.imgur.com/jEBYSRO.png" alt=""></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>舊有流程</h2>
 <p>一般來說發 GitHub 的 PR 流程如下：</p>
 <ol>
@@ -511,14 +749,14 @@ export const pageQuery <span class="token operator">=</span> graphql`
 <p>使用 Hub 後流程已改善，把在瀏覽器上的操作帶回到 terminal，但整體使用卻依舊不便，因此我便思考能不能一鍵發 PR 到 GitHub 上面，而最後找到了下面這個解決方案，雖非最完善，但方便不少。</p>
 <h2>一鍵自動化流程</h2>
 <h3>Setup</h3>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell">$ <span class="token function">vim</span> ~/.oh-my-zsh/lib/aliases.zsh <span class="token punctuation">(</span>in my <span class="token keyword">case</span><span class="token punctuation">)</span>
-$ <span class="token builtin class-name">alias</span> <span class="token assign-left variable">pr</span><span class="token operator">=</span><span class="token string">'hub pull-request -m "<span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> reflog -1 <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'\''</span>s/^.*: //<span class="token string">'\''</span><span class="token variable">)</span></span>" | xargs open'</span>
-$ <span class="token builtin class-name">source</span> ~/.zshrc <span class="token punctuation">(</span>in my <span class="token keyword">case</span><span class="token punctuation">)</span>
-</code></pre></div>
+<pre><code class="language-shell">$ vim ~/.oh-my-zsh/lib/aliases.zsh (in my case)
+$ alias pr='hub pull-request -m &quot;$(git reflog -1 | sed '\''s/^.*: //'\'')&quot; | xargs open'
+$ source ~/.zshrc (in my case)
+</code></pre>
 <h3>usage</h3>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell"><span class="token comment"># local commit</span>
-$ <span class="token function">git</span> push origin <span class="token operator">&#x3C;</span>branch-name<span class="token operator">></span> <span class="token operator">&#x26;&#x26;</span> <span class="token function">pr</span>
-</code></pre></div>
+<pre><code class="language-shell"># local commit
+$ git push origin &lt;branch-name&gt; &amp;&amp; pr
+</code></pre>
 <p>藉由 Hub 的 pull-request 加上自己所寫的 alias，
 此 alias 會將 commit message 的第一行拿出來自動當做 PR title，
 且會自動打開瀏覽器，可以再度進行檢視或做最後的修正。</p>
@@ -542,53 +780,53 @@ $ <span class="token function">git</span> push origin <span class="token operato
         <content type="html"><![CDATA[<p>隨著越來越多 JS 開發者的提倡，越來越多人擁抱 ES6(+) 的語法，其所帶來的好處讓許多開發者願意接受。</p>
 <p>然而一些新接觸的開發者，在流程控制上會聽聞 Promise 的好處進而開始使用，但較早期的套件會遵循著 node.js style 的 Callback；因此本篇文章將會介紹如何將這類 Callback 利用套件轉成 Promise。</p>
 <p><img src="https://i.imgur.com/Xhzct6v.png" alt=""></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>Node.js Style Callback</h2>
 <p>在 JS 的流程處理上，有許多人一定會遇見 Callback function，而 node.js 有獨特的規範，遵循著這類規範會讓更多開發者受益，這類的 Callback 被稱為 <code>Error-First Callbacks</code>。</p>
 <ul>
 <li>非同步的 Callback function 第一個參數是錯誤物件，有錯誤就會回傳錯誤訊息，沒有錯誤則第一個值會是 null。剩下的參數為 Callback function 正常情況下會回傳的值。</li>
 </ul>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript">fs<span class="token punctuation">.</span><span class="token method function property-access">readFile</span><span class="token punctuation">(</span><span class="token string">'/etc/passwd'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword control-flow">throw</span> err<span class="token punctuation">;</span> <span class="token comment">// 此處為 Node.js Style Callback</span>
-  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div>
+<pre><code class="language-javascript">fs.readFile('/etc/passwd', (err, data) =&gt; {
+  if (err) throw err; // 此處為 Node.js Style Callback
+  console.log(data);
+});
+</code></pre>
 <h2>thenify 套件使用</h2>
 <h4>使用情境</h4>
 <p>將會是把第三方套件 Node.js Style Callback 轉成 Promise，接著就可以 <code>.then()</code> 或者是利用 <code>async</code> <code>await</code> 去處理流程了。值得一提此套件利用的是 <code>any-promise</code>，理論上你可以隨時的設置你想要的 Promise 實作。</p>
 <h4>使用方法</h4>
 <p>因為 README 上面寫的蠻不清楚，以下列出幾種狀況，也推薦看套件的測試檔案<a href="https://github.com/thenables/thenify/blob/master/test/test.js">範例</a>：</p>
 <p>範例一：非同步 function 直接接收 cb</p>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token parameter">cb</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// 處理複雜流程</span>
-  <span class="token function">cb</span><span class="token punctuation">(</span><span class="token keyword null nil">null</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<pre><code class="language-javascript">function fn(cb) {
+  // 處理複雜流程
+  cb(null, true);
+}
 
-<span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token function">thenify</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// p is a promise now.</span>
+const p = thenify(fn); // p is a promise now.
 
-<span class="token function">p</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token arrow operator">=></span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
-</code></pre></div>
+p().then(val =&gt; console.log(val)); // true
+</code></pre>
 <p>範例二：非同步 function 直接接收 cb，該 cb 回傳多個參數</p>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token parameter">cb</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// 處理複雜流程</span>
-  <span class="token function">cb</span><span class="token punctuation">(</span><span class="token keyword null nil">null</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 除了第一個 error msg 外，回傳多個值</span>
-<span class="token punctuation">}</span>
+<pre><code class="language-javascript">function fn(cb) {
+  // 處理複雜流程
+  cb(null, 1, 2, 3); // 除了第一個 error msg 外，回傳多個值
+}
 
-<span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token function">thenify</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// p is a promise now.</span>
+const p = thenify(fn); // p is a promise now.
 
-<span class="token function">p</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token arrow operator">=></span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 2, 3]，會轉成 array</span>
-</code></pre></div>
+p().then(val =&gt; console.log(val)); // [1, 2, 3]，會轉成 array
+</code></pre>
 <p>範例三：非同步 function 直接接收多個參數及 cb，該 cb 亦接受多個參數</p>
 <p><strong>此範例為最常被使用功能，關鍵點為 cb 位在 fn 的最後一個參數，且此 cb 遵循著上述提到的 Node.js Style Callback。</strong></p>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> cb</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// 處理複雜流程</span>
-  <span class="token function">cb</span><span class="token punctuation">(</span><span class="token keyword null nil">null</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 最後回傳 error msg(null) 和 a, b</span>
-<span class="token punctuation">}</span>
+<pre><code class="language-javascript">function fn(a, b, c, cb) {
+  // 處理複雜流程
+  cb(null, a, b); // 最後回傳 error msg(null) 和 a, b
+}
 
-<span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token function">thenify</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// p is a promise now.</span>
+const p = thenify(fn); // p is a promise now.
 
-<span class="token function">p</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">values</span> <span class="token arrow operator">=></span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 2]，callback 回傳的值，一樣會包成 array</span>
-</code></pre></div>
+p(1, 2, 3).then(values =&gt; console.log(values)); // [1, 2]，callback 回傳的值，一樣會包成 array
+</code></pre>
 <h2>結論</h2>
 <p>隨著 node 核心原生支援的語法越來越多，選擇利用 babel 搭配就可以在此時享受到 Promise 甚至是 async, await 語法帶來的好處，然而較早期的套件甚至不預設回傳 Promise，此時便需要一些工具的幫助。</p>
 <p>希望這篇文章能幫助到那些一接觸學習 JS 流程控制就享受到 Promise 好處，但實務上卻不太理解如何處理原生或第三方套件這類 Callback function 的開發者。</p>
@@ -613,7 +851,7 @@ $ <span class="token function">git</span> push origin <span class="token operato
         <summary type="html"><![CDATA[JS 宣告變數的方式在 ES6 之後增加了 `let` 和 `const`，這篇文章將會談談 `var`、`let` 和 `const`之間的差異。]]></summary>
         <content type="html"><![CDATA[<p>JS 宣告變數的方式在 ES6 之後增加了 <code>let</code> 和 <code>const</code>，這篇文章將會談談 <code>var</code>、<code>let</code> 和 <code>const</code>之間的差異。</p>
 <p><img src="https://i.imgur.com/Jgd8jj5.jpg" alt=""></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>變數宣告的過程</h2>
 <p><img src="https://i.imgur.com/ya351ON.png" alt=""></p>
 <p>如圖所見，JS 內變數的宣告總共會經歷三個階段</p>
@@ -623,69 +861,69 @@ $ <span class="token function">git</span> push origin <span class="token operato
 <li>Assignment: 賦予該變數的值</li>
 </ul>
 <h2>var</h2>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token keyword">var</span> x<span class="token punctuation">;</span> <span class="token comment">// Declaration, Initialization</span>
-x <span class="token operator">=</span> <span class="token string">'Hello World'</span><span class="token punctuation">;</span> <span class="token comment">// Assignment</span>
+<pre><code class="language-js">var x; // Declaration, Initialization
+x = 'Hello World'; // Assignment
 
-<span class="token comment">// all in one line</span>
-<span class="token keyword">var</span> y <span class="token operator">=</span> <span class="token string">'Hello World'</span><span class="token punctuation">;</span>
-</code></pre></div>
+// all in one line
+var y = 'Hello World';
+</code></pre>
 <p><code>var</code> 廣泛被使用，直到 ES6 推出後才有了其他的替代方式，而如果 var 被宣告在函數內，則沒有辦法在函數外部取得該變數。</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">someFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">var</span> innerVar <span class="token operator">=</span> <span class="token string">'hi'</span><span class="token punctuation">;</span>
-  <span class="token keyword control-flow">return</span> innerVar<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>innerVar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ReferenceError: innerVar is not defined</span>
-</code></pre></div>
+<pre><code class="language-js">function someFunc() {
+  var innerVar = 'hi';
+  return innerVar;
+}
+console.log(innerVar); // ReferenceError: innerVar is not defined
+</code></pre>
 <h2>let</h2>
 <p>在 ES6 後，出現了 <code>let</code> 的方式宣告變數，它和 <code>var</code> 有共同的作用，便是在函數中封閉，額外的效果是在 block statement 內也是封閉，作用域變得更小範圍，可以減少錯誤的發生。</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> x<span class="token punctuation">;</span> <span class="token comment">// Declaration, Initialization</span>
-x <span class="token operator">=</span> <span class="token string">'Hello World'</span><span class="token punctuation">;</span> <span class="token comment">// Assignment</span>
+<pre><code class="language-js">let x; // Declaration, Initialization
+x = 'Hello World'; // Assignment
 
-<span class="token comment">// all in one line</span>
-<span class="token keyword">let</span> y <span class="token operator">=</span> <span class="token string">'Hello World'</span><span class="token punctuation">;</span>
-</code></pre></div>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> innerLet <span class="token operator">=</span> <span class="token string">'hi'</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
-  <span class="token comment">// do nothing</span>
-<span class="token punctuation">}</span>
+// all in one line
+let y = 'Hello World';
+</code></pre>
+<pre><code class="language-js">if (true) {
+  let innerLet = 'hi';
+} else {
+  // do nothing
+}
 
-<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>innerLet<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ReferenceError: innerLet is not defined</span>
-</code></pre></div>
+console.log(innerLet); // ReferenceError: innerLet is not defined
+</code></pre>
 <p>上述例子代表 innerLet 只能在 block statement 內存活，跳出這個 block statement 就無法取得，我們將 let 換成 var 看看：</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">var</span> innerLet <span class="token operator">=</span> <span class="token string">'hi'</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
-  <span class="token comment">// do nothing</span>
-<span class="token punctuation">}</span>
+<pre><code class="language-js">if (true) {
+  var innerLet = 'hi';
+} else {
+  // do nothing
+}
 
-<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>innerLet<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// hi</span>
-</code></pre></div>
+console.log(innerLet); // hi
+</code></pre>
 <p>由上述可以清楚看到將 <code>let</code> 宣告的方式改成 <code>var</code> 則可以在 block statement 之外取得該變數，這就是 <code>let</code> 相對於 <code>var</code> 作用域更小的關係。</p>
 <h2>const</h2>
 <p><code>const</code> 顧名思義就是 constant 的縮寫，ES6 新的語法，代表說只要當宣告過後，該賦予的值就不能被更動，更嚴格來說，是該變數指向的記憶體位址不能被更動。因此，當利用 const 宣告了 <code>Array</code> 或是 <code>Object</code>，只要不重新賦予值，而是更動 array 或 object 內部狀況，是可以被接受的操作方式，參考以下例子：</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token constant">PI</span> <span class="token operator">=</span> <span class="token number">3.14159</span><span class="token punctuation">;</span>
-<span class="token constant">PI</span> <span class="token operator">=</span> <span class="token number">3.1415926</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: Assignment to constant variable.</span>
+<pre><code class="language-js">const PI = 3.14159;
+PI = 3.1415926; // TypeError: Assignment to constant variable.
 
-<span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-arr<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span><span class="token constant">PI</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [ 3.14159 ];</span>
+const arr = [];
+arr.push(PI); // [ 3.14159 ];
 
-<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-obj<span class="token punctuation">.</span><span class="token property-access">pi</span> <span class="token operator">=</span> <span class="token constant">PI</span><span class="token punctuation">;</span> <span class="token comment">// { pi: 3.14159 };</span>
+const obj = {};
+obj.pi = PI; // { pi: 3.14159 };
 
-arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: Assignment to constant variable.</span>
-obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: Assignment to constant variable.</span>
-</code></pre></div>
+arr = new Array(); // TypeError: Assignment to constant variable.
+obj = new Object(); // TypeError: Assignment to constant variable.
+</code></pre>
 <h2>Hoisting</h2>
 <p>在利用 <code>var</code>, <code>let</code>, <code>const</code> 宣告變數的時候，變數都會自動的做 <code>Hoisting</code>，也就是被抬升到該作用域的最高處，但是抬升過後，<code>var</code> 會對於變數賦予值 <code>undefined</code>，而 <code>let</code>, <code>const</code>一樣也會被抬升，但是沒有初始值，因此會有 ReferenceError 發生。</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>hello<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
-<span class="token keyword">var</span> hello<span class="token punctuation">;</span>
-hello <span class="token operator">=</span> <span class="token string">"I'm a variable"</span><span class="token punctuation">;</span>
+<pre><code class="language-js">console.log(hello); // undefined
+var hello;
+hello = &quot;I'm a variable&quot;;
 
-<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>world<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ReferenceError: world is not defined</span>
-<span class="token keyword">let</span> world<span class="token punctuation">;</span>
-world <span class="token operator">=</span> <span class="token string">"I'm a variable"</span><span class="token punctuation">;</span>
-</code></pre></div>
+console.log(world); // ReferenceError: world is not defined
+let world;
+world = &quot;I'm a variable&quot;;
+</code></pre>
 <h2>結論</h2>
 <p>在 ES6 推出後，應該盡可能的利用 <code>let</code> 和 <code>const</code> 去宣告變數，因為它們的限制更高，會減少出錯的機會。若有使用 ESLint，甚至有條件限制使用 <code>var</code>。若是情況一定需要使用 <code>var</code>，也應該在作用域的最一開始就宣告變數，以免發生 hoisting 導致無法預期的結果出現。</p>
 <h3>reference</h3>
@@ -718,7 +956,7 @@ world <span class="token operator">=</span> <span class="token string">"I'm a va
 - babel-plugin-transform-runtime ＆ babel-runtime
 - babel-loader
 - babel-eslint]]></summary>
-        <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/babel/logo/master/babel.png" alt=""></p>
+        <content type="html"><![CDATA[<p><img src="https://i.imgur.com/DL4m3t5.png" alt="Babel"></p>
 <p>babel 是現代前端工程師都不陌生的工具，它可以將 ES6 (+) 的語法轉換為 ES5 甚至是更低的版本，利用 babel 可以讓開發者即刻享受到 ES6 語法所帶來的便利性。
 然而許多 babel 相關的名詞卻常常困擾想要入門的新手們，因此利用本文簡介那些與 babel 相關的名詞，以 babel 6 為主。</p>
 <p>本篇將會會介紹到：</p>
@@ -732,25 +970,26 @@ world <span class="token operator">=</span> <span class="token string">"I'm a va
 <li>babel-loader</li>
 <li>babel-eslint</li>
 </ul>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <p>本文用意並非完善的介紹整個 babel 生態系，而是作者整理自己常見且容易搞錯的 babel 相關名詞。</p>
 <h2>一、.babelrc</h2>
 <p>這是 <code>babel</code> 這個工具需要用到的設定檔，以下所介紹到的各項都需要該設定檔讓 babel 有轉換的依據。</p>
 <p>方法一：</p>
 <p>直接寫獨立的 <code>.babelrc</code> 檔，一個基本的格式如下：</p>
-<div class="remark-highlight"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"presets"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"es2015"</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
+<pre><code class="language-json">{
+  &quot;presets&quot;: [&quot;es2015&quot;]
+}
+</code></pre>
 <p>方法二：</p>
 <p>直接寫進 <code>package.json</code> 檔</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">{
-  &#x26;quot;name&#x26;quot;: &#x26;quot;my-package&#x26;quot;,
-  &#x26;quot;version&#x26;quot;: &#x26;quot;1.0.0&#x26;quot;,
-  &#x26;quot;babel&#x26;quot;: {
+<pre><code>{
+  &quot;name&quot;: &quot;my-package&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;babel&quot;: {
     // your babel config here
   }
-}</code></pre></div>
+}
+</code></pre>
 <p>註：方法二雖然可以這樣寫，但不建議使用，因為在 react-native 會出現<a href="https://github.com/mjackson/http-client/pull/7">已知的問題</a>。</p>
 <h2>二、babel-cli</h2>
 <p>利用 npm 安裝 babel-cli 將會同時註冊 <code>babel</code> 和 <code>babel-node</code> 兩個最常使用的指令。</p>
@@ -797,9 +1036,9 @@ world <span class="token operator">=</span> <span class="token string">"I'm a va
 <p>額外建立一個進入點檔案，由於在這個進入點 node 並不知道 es6 語法，
 因此於此需要利用 <code>require('babel-register')</code> 的方式載入</p>
 <p>進入點檔名以 <code>entry.js</code> 為例：</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js"><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'babel-register'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./yourEs6Index'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div>
+<pre><code class="language-js">require('babel-register');
+require('./yourEs6Index');
+</code></pre>
 <p>因此未來執行 <code>node entry.js</code> 就可以利用 <code>babel-register</code> 動態載入的方式進行轉換語法。</p>
 <p>方法二：</p>
 <p>在終端機執行 <code>node</code> 的時候，直接利用 <code>-r</code> 參數帶入 <code>babel-register</code>，<code>-r</code> 等於 <code>--require</code> 代表 module to preload</p>
@@ -823,34 +1062,34 @@ world <span class="token operator">=</span> <span class="token string">"I'm a va
 <li><code>babel-plugin-transform-runtime</code> 的轉換機制也是 alias 到 <code>core-js</code>，就和 <code>babel-polyfill</code> 一樣，所以不用再 require <code>babel-polyfill</code></li>
 <li>官方建議安裝方法如下： transform 安裝進 devDependencies</li>
 </ol>
-<div class="remark-highlight"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> --save-dev babel-plugin-transform-runtime
-$ <span class="token function">npm</span> <span class="token function">install</span> --save babel-runtime
-</code></pre></div>
+<pre><code class="language-bash">$ npm install --save-dev babel-plugin-transform-runtime
+$ npm install --save babel-runtime
+</code></pre>
 <h2>七、babel-loader</h2>
 <p><code>loader</code> 是 <code>webpack</code> 用來載入各種不同類型檔案的套件，而 <code>babel-loader</code> 讓 webpack 可以用來執行 babel 轉換的的一種套件。</p>
 <p>利用 <code>babel-loader</code> 可以利用 webpack 打包時候同時進行 babel 的轉換，以下是簡單範例檔：</p>
-<div class="remark-highlight"><pre class="language-js"><code class="language-js">module<span class="token operator">:</span> <span class="token punctuation">{</span>
-  loaders<span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">{</span>
-      test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token special-escape escape">\.</span>js<span class="token anchor function">$</span></span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-      loaders<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'babel'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      exclude<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
-</code></pre></div>
+<pre><code class="language-js">module: {
+  loaders: [
+    {
+      test: /\.js$/,
+      loaders: ['babel'],
+      exclude: /node_modules/,
+    },
+  ],
+},
+</code></pre>
 <p>因為 <code>babel-loader</code> 的速度很慢，官方建議把 <code>node_modules</code> exclude 掉。</p>
 <h2>八、babel-eslint</h2>
 <p><code>ESLint</code> 堪稱是近代偉大的 linter 發明之一，它可以讓使用者高度客製化的 parser 語法，而目前原生的 ESLint 支援的語法有 <code>ES6/ES7</code>, <code>JSX</code>, and <code>object rest/spread</code>，如果你用到的更多 babel 語法則需要 babel-eslint 來幫忙。</p>
 <p><code>$ npm install eslint@3.x babel-eslint@6 --save-dev</code></p>
 <p>.eslintrc 範例檔</p>
-<div class="remark-highlight"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"parser"</span><span class="token operator">:</span> <span class="token string">"babel-eslint"</span><span class="token punctuation">,</span>
-  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"strict"</span><span class="token operator">:</span> <span class="token number">0</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
+<pre><code class="language-json">{
+  &quot;parser&quot;: &quot;babel-eslint&quot;,
+  &quot;rules&quot;: {
+    &quot;strict&quot;: 0
+  }
+}
+</code></pre>
 <h2>結論</h2>
 <p>當然 babel 的套件不僅僅如此，還有 <a href="https://github.com/babel/babelify">babelify</a>, <a href="https://github.com/babel/babili">babili</a> 等許多相關工具尚未有時間介紹，本篇所提及的介紹希望能對於部分開發者有幫助。
 若有不清楚或者會誤導讀者的方向，還請不吝指教。</p>
@@ -869,59 +1108,60 @@ $ <span class="token function">npm</span> <span class="token function">install</
         <summary type="html"><![CDATA[聽到網路爬蟲，有很多專案都是建立在 python 上面，在文字處理分析上， python 有很強大的套件可以使用，然而隨著 node.js 的發展越來越廣泛，也有許多因應的套件產生，今天將會介紹利用 FB 提供的 Graph API 來爬留言版。]]></summary>
         <content type="html"><![CDATA[<p>聽到網路爬蟲，有很多專案都是建立在 python 上面，在文字處理分析上， python 有很強大的套件可以使用，然而隨著 node.js 的發展越來越廣泛，也有許多因應的套件產生，今天將會介紹利用 FB 提供的 Graph API 來爬留言版。</p>
 <p><img src="https://i.imgur.com/2Qckxbc.jpg" alt="Facebook Comment Plugin"></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <p>本文並非會有教學範例檔，僅會針對 FB 提供的 Graph API 做簡單的範例。
 此處的範例會利用 ES6 的 <code>template strings</code> 語法。</p>
 <h2>1. 了解 FB 留言版架構</h2>
 <p>最近 FB 推出了可以回覆他人的功能，因此留言有可能會有巢狀情形，但可以觀察到的是，目前 FB 的機制就是至多一層的回覆。因此簡單的架構如下：</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">comment 1
+<pre><code>comment 1
   - reply_comment 1
   - reply_comment 2
 comment 2
   - reply_comment 1
   _ reply_comment 2
 ...
-...</code></pre></div>
+...
+</code></pre>
 <h2>2. 確定該網址的留言數</h2>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">http://graph.facebook.com/?id=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">URL</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
-</code></pre></div>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token constant">GET</span> <span class="token string">'http://graph.facebook.com/?id=http://www.google.com'</span>
-<span class="token punctuation">{</span>
-  id<span class="token operator">:</span> <span class="token string">"http://www.google.com"</span><span class="token punctuation">,</span>
-  shares<span class="token operator">:</span> <span class="token number">31205003</span><span class="token punctuation">,</span>
-  comments<span class="token operator">:</span> <span class="token number">1323</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
+<pre><code class="language-javascript">`http://graph.facebook.com/?id=${URL}`;
+</code></pre>
+<pre><code class="language-javascript">GET 'http://graph.facebook.com/?id=http://www.google.com'
+{
+  id: &quot;http://www.google.com&quot;,
+  shares: 31205003,
+  comments: 1323
+}
+</code></pre>
 <p>因此可以知道 www.google.com 在 FB Graph API 有 1323 筆留言數。</p>
 <h2>3. 利用 Graph API 拿第一層留言</h2>
 <p>Graph API 在留言版其實是公開，只要給定 URL 就可以拿到該網址的留言，
 這邊要注意的是需要確定該 URL 是 OG:URL 的參數給 FB 才拿的到。</p>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">http://graph.facebook.com/comments?id=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">URL</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&#x26;limit=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>comments<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&#x26;filter=stream</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
-</code></pre></div>
+<pre><code class="language-javascript">`http://graph.facebook.com/comments?id=${URL}&amp;limit=${comments}&amp;filter=stream`;
+</code></pre>
 <p>底下是 return sample json</p>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
-  created_time<span class="token operator">:</span> <span class="token string">"2012-04-16T12:45:03+0000"</span><span class="token punctuation">,</span>
-  <span class="token keyword module">from</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    name<span class="token operator">:</span> <span class="token string">"Sunil Maheshwari"</span><span class="token punctuation">,</span>
-    id<span class="token operator">:</span> <span class="token string">"100000525493028"</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  message<span class="token operator">:</span> <span class="token string">"hello"</span><span class="token punctuation">,</span>
-  can_remove<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-  like_count<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-  user_likes<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-  id<span class="token operator">:</span> <span class="token string">"381702034999_21746175"</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
-<p>若此處沒有加上 <code>&#x26;limit</code> 的話，會拿到比較少的數量。
-加上 <code>&#x26;filter=stream</code> 參數，則會一併將回覆狀態的留言拿回來。
-因為在此記錄部落格使用，在實作上並不會加上 <code>&#x26;filter=stream</code> 這個參數，以免拿第二層的時候重複還需要做額外處理。</p>
+<pre><code class="language-javascript">{
+  created_time: &quot;2012-04-16T12:45:03+0000&quot;,
+  from: {
+    name: &quot;Sunil Maheshwari&quot;,
+    id: &quot;100000525493028&quot;
+  },
+  message: &quot;hello&quot;,
+  can_remove: false,
+  like_count: 0,
+  user_likes: false,
+  id: &quot;381702034999_21746175&quot;
+}
+</code></pre>
+<p>若此處沒有加上 <code>&amp;limit</code> 的話，會拿到比較少的數量。
+加上 <code>&amp;filter=stream</code> 參數，則會一併將回覆狀態的留言拿回來。
+因為在此記錄部落格使用，在實作上並不會加上 <code>&amp;filter=stream</code> 這個參數，以免拿第二層的時候重複還需要做額外處理。</p>
 <h2>4. 拿 Graph API 第二層留言</h2>
 <p>在拿第一層的時候，因為是 public API 狀態，因此不需要 token，且網址利用 http 就可以。
 但在拿第二層留言，就需要 https + access_token 狀態。</p>
 <p>最簡單取得 access_token 方式是到 <a href="https://developers.facebook.com/tools/explorer/">FB graph explorer</a> 申請 access_token 來實作。</p>
 <p>接著需要串接的 API 格式為：</p>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">https://graph.facebook.com/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/comments?access_token=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>token<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
-</code></pre></div>
+<pre><code class="language-javascript">`https://graph.facebook.com/${id}/comments?access_token=${token}`;
+</code></pre>
 <p>上述 id 就是第一層拿回來的 json 格式內的 id，
 token 則是 access_token。</p>
 <p>在實作上因為無法透過第一層的 API 得到是否有無第二層留言，因此若要完整的拿取全部的留言，則需要將全部的 id 跑過一次才可以得到完整的結果。</p>
@@ -944,42 +1184,48 @@ token 則是 access_token。</p>
         <updated>2016-04-18T22:42:02.000Z</updated>
         <summary type="html"><![CDATA[slack 推出 bot 在 2016 這個時間點已經不算新鮮事，隨著 messenger 也推出自家的 bot 後，才真正開始接觸架設自己的 bot，網路上查到都是日文的資源較多，因此記錄這篇過程，希望能幫助到其他中文開發者。]]></summary>
         <content type="html"><![CDATA[<p>slack 推出 bot 在 2016 這個時間點已經不算新鮮事，隨著 messenger 也推出自家的 bot 後，才真正開始接觸架設自己的 bot，網路上查到都是日文的資源較多，因此記錄這篇過程，希望能幫助到其他中文開發者。</p>
-<p><img src="https://i.imgur.com/qzHh7bb.png" alt="slakbot &#x26; hubot"></p>
-<!-- more -->
+<p><img src="https://i.imgur.com/qzHh7bb.png" alt="slakbot &amp; hubot"></p>
+<p>&lt;!-- more --&gt;</p>
 <h2>零、懶人包指令</h2>
 <p>先把會用到的全部指令列在這邊，下面會分項目做解釋</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">npm install -g hubot coffee-script yo generator-hubot
+<pre><code>npm install -g hubot coffee-script yo generator-hubot
 mkdir hubot
 cd hubot
 yo hubot
 npm install hubot-slack --save
 git init
 git add .
-git commit -m &#x26;quot;Initial commit&#x26;quot;
+git commit -m &quot;Initial commit&quot;
 GET HUBOT_SLACK_TOKEN // https://my.slack.com/services/new/hubot
 Install the Heroku Toolbelt // https://toolbelt.heroku.com/
-heroku create &#x26;quot;project-name&#x26;quot;
-heroku config:add HEROKU_URL=https://&#x26;quot;project-name&#x26;quot;.herokuapp.com
-heroku config:add HUBOT_SLACK_TOKEN=&#x26;quot;xoxb-********-********&#x26;quot;
-git push heroku master</code></pre></div>
+heroku create &quot;project-name&quot;
+heroku config:add HEROKU_URL=https://&quot;project-name&quot;.herokuapp.com
+heroku config:add HUBOT_SLACK_TOKEN=&quot;xoxb-********-********&quot;
+git push heroku master
+</code></pre>
 <h2>一、安裝本地環境</h2>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">npm install -g hubot coffee-script yo generator-hubot</code></pre></div>
+<pre><code>npm install -g hubot coffee-script yo generator-hubot
+</code></pre>
 <p>hubot 會用到 coffee-script 和 yo 去產生整個專案，所以需要安裝在全域 <code>-g</code></p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">mkdir hubot
-cd hubot</code></pre></div>
+<pre><code>mkdir hubot
+cd hubot
+</code></pre>
 <p>此處創建資料夾可建立自己的名字</p>
 <h2>二、產生 hubot 專案</h2>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">yo hubot</code></pre></div>
+<pre><code>yo hubot
+</code></pre>
 <p>這邊會問你一些問題，記得在 <code>adapter</code> 打 <code>slack</code>
 此舉會讓官方產生預設 heroku 的 <code>Procfile</code> 裡面多了這一行</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">web: bin/hubot -a slack</code></pre></div>
+<pre><code>web: bin/hubot -a slack
+</code></pre>
 <p>這是為了讓 heroku 啟動時候知道怎樣運作的指令</p>
 <h2>三、安裝 hubot-slack 套件</h2>
 <p>這是 slack 官方維護的套件，穩定度應該頗高，安裝後一併做一個專案 git 初始化並 commit</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">npm install hubot-slack --save
+<pre><code>npm install hubot-slack --save
 git init
 git add .
-git commit -m &#x26;quot;Initial commit&#x26;quot;</code></pre></div>
+git commit -m &quot;Initial commit&quot;
+</code></pre>
 <h2>四、取得 HUBOT_SLACK_TOKEN</h2>
 <p>到<a href="https://my.slack.com/services/new/hubot">此處</a>建立新的 hubot service
 若有多個 team 帳號，請記得確定你登入的帳號是在哪一個 team 底下</p>
@@ -987,7 +1233,8 @@ git commit -m &#x26;quot;Initial commit&#x26;quot;</code></pre></div>
 <p><img src="https://i.imgur.com/bpsLcz7.png" alt="hubot"></p>
 <p>接著下一步就可以取得 HUBOT_SLACK_TOKEN，記得把這個 TOKEN 記下來</p>
 <h2>五、本機端測試</h2>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">HUBOT_SLACK_TOKEN=xoxb-********-******** ./bin/hubot --adapter slack</code></pre></div>
+<pre><code>HUBOT_SLACK_TOKEN=xoxb-********-******** ./bin/hubot --adapter slack
+</code></pre>
 <p>本機端記得先安裝 redis，hubot 會用到，
 順利的話就可以在 slack 啟動 hubot 囉！</p>
 <p><img src="https://i.imgur.com/EWkWV3Q.png" alt="hubot in slack">
@@ -998,10 +1245,11 @@ git commit -m &#x26;quot;Initial commit&#x26;quot;</code></pre></div>
 要記得的原理就是其實上述已經在本機端可以運行了，
 這個步驟就是將 server 放到 heroku 上面去跑而已。</p>
 <p>首先安裝 Heroku Toolbelt，這部份請看 <a href="https://toolbelt.heroku.com/">heroku 官方教學</a></p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">heroku create &#x26;quot;project-name&#x26;quot;
-heroku config:add HEROKU_URL=https://&#x26;quot;project-name&#x26;quot;.herokuapp.com
-heroku config:add HUBOT_SLACK_TOKEN=&#x26;quot;xoxb-********-********&#x26;quot;
-git push heroku master</code></pre></div>
+<pre><code>heroku create &quot;project-name&quot;
+heroku config:add HEROKU_URL=https://&quot;project-name&quot;.herokuapp.com
+heroku config:add HUBOT_SLACK_TOKEN=&quot;xoxb-********-********&quot;
+git push heroku master
+</code></pre>
 <p>這個 project-name 其實就是未來你的 herokuapp 的 URL，
 不能和其他人重複，因此名字可以想自己容易記得即可。</p>
 <p><code>heroku config:add</code> 是將一些變數丟給遠端的 heroku 知道，
@@ -1037,43 +1285,45 @@ git push heroku master</code></pre></div>
         <summary type="html"><![CDATA[學習 Node.js 已經兩年之餘，這段時間陸陸續續在開發上遇到一些問題（雷），然而隨著時間累積的叫做經驗，因此藉由此篇文章記錄從本機 development 環境到遠端 Linux 上的 production 所得到的經驗。]]></summary>
         <content type="html"><![CDATA[<p>學習 Node.js 已經兩年之餘，這段時間陸陸續續在開發上遇到一些問題（雷），然而隨著時間累積的叫做經驗，因此藉由此篇文章記錄從本機 development 環境到遠端 Linux 上的 production 所得到的經驗。</p>
 <p><img src="https://i.imgur.com/GtZ5ROB.jpg" alt="Deploy"></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <p>以下的 localhost 環境皆為 Mac 10.10，express.js，
 而 deploy 的環境皆為 Linux 14.04 環境。</p>
 <h2>1. 環境變數</h2>
 <p>NODE_ENV 是運行 Node.js 重要的變數，在本機開發的時候預設為 <code>NODE_ENV=development</code>。</p>
 <p>在執行 <code>app.js</code> (aka <code>bin/www</code>) 時，選擇需要的變數 (development || production)，若要運行為 production 環境指令為</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">$ NODE_ENV=production node bin/www</code></pre></div>
+<pre><code>$ NODE_ENV=production node bin/www
+</code></pre>
 <p>當然這個 <code>NODE_ENV</code> 值可以直接 export 在你所運行的環境當中，</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">$ export NODE_ENV=production
-$ node bin/www</code></pre></div>
+<pre><code>$ export NODE_ENV=production
+$ node bin/www
+</code></pre>
 <p>而若不想每次開啟 shell 都要重新 export 一次，可以將 export 指令寫進 <code>~/.bashrc</code> 內，之後開啟 shell 就會設定 NODE_ENV=production 了！</p>
 <hr>
 <p>Q：那如何在 express.js 框架下的 app.js 拿到環境變數呢？
 A：只要利用 express 框架為我們做好的 API 如下：</p>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// app.js</span>
-app<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'env'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div>
+<pre><code class="language-javascript">// app.js
+app.get('env');
+</code></pre>
 <p>即可得到 <code>NODE_ENV</code> 值。</p>
 <h2>2. config 檔設定</h2>
 <p>關於 config 檔的設定，每個人有不同的習慣，我介紹我常用的 config 檔設定方式。</p>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// config.js</span>
-<span class="token keyword">var</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
-  development<span class="token operator">:</span> <span class="token punctuation">{</span>
-    port<span class="token operator">:</span> <span class="token number">3000</span><span class="token punctuation">,</span>
-    <span class="token comment">// anything else</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  production<span class="token operator">:</span> <span class="token punctuation">{</span>
-    port<span class="token operator">:</span> <span class="token number">3001</span><span class="token punctuation">,</span>
-    <span class="token comment">// anything else</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> config<span class="token punctuation">;</span>
-</code></pre></div>
-<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// app.js</span>
-<span class="token keyword">var</span> config <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./config.js'</span><span class="token punctuation">)</span><span class="token punctuation">[</span>app<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'env'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> port <span class="token operator">=</span> config<span class="token punctuation">.</span><span class="token property-access">port</span><span class="token punctuation">;</span> <span class="token comment">// production mode will return 3001</span>
-</code></pre></div>
+<pre><code class="language-javascript">// config.js
+var config = {
+  development: {
+    port: 3000,
+    // anything else
+  },
+  production: {
+    port: 3001,
+    // anything else
+  },
+};
+module.exports = config;
+</code></pre>
+<pre><code class="language-javascript">// app.js
+var config = require('./config.js')[app.get('env')];
+var port = config.port; // production mode will return 3001
+</code></pre>
 <p>這樣設定 config 檔後，未來就可以利用 NODE_ENV 的不同來判斷應該要連接的資料，例如在 dev DB 和 production DB 的分開等等情況。</p>
 <h2>3. ejs 樣板引擎快取問題</h2>
 <p>在樣板引擎方面我習慣 ejs，而 ejs 會在 <code>production</code> 的狀態下把 view template 快取起來，加速 render 的時間，因此需要做 restart node server 的情況才可以解決快取問題。</p>
@@ -1089,8 +1339,8 @@ module<span class="token punctuation">.</span><span class="token property-access
 <h2>5. MongoDB 的匯出和匯入</h2>
 <p>Q：在本機端匯出和匯入都好好的，不知道為什麼到遠端的環境就沒有辦法匯入？
 A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bashrc 檔</p>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">LC_ALL</span></span><span class="token operator">=</span><span class="token string">"en_US.UTF-8"</span>
-</code></pre></div>
+<pre><code class="language-shell">export LC_ALL=&quot;en_US.UTF-8&quot;
+</code></pre>
 <h2>後記</h2>
 <p>花時間經歷過的才會印象深刻，上述這幾點都是我利用時間所換來的，將此記錄在這邊，也希望能或多或少幫助到一些人：）</p>
 ]]></content>
@@ -1110,7 +1360,7 @@ A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bas
         <content type="html"><![CDATA[<p>Pocket 是一款可以稍候待讀的 app，其漂亮的介面和離線閱讀的功能，使我對於它愛不釋手。
 然而從英語語系出發的 Pocket 團隊，雖然在專業版提供全文檢索（full text search）的功能，但是在繁體中文上面還是略顯不足，常常找不到已經封存的文章內容，因此本篇記錄利用 Pocket 儲存到 Evernote 的過程。</p>
 <p><img src="https://i.imgur.com/g9vZzcB.png" alt="RSS to Evernote"></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <p>Pocket 的閱讀介面是它的一大優勢，而 Evernote 的搜尋功能是有目共睹的準確，我們將利用 IFTTT 這個自動化工具來實作「當我從 Pocket 封存項目後，自動儲存全文到 Evernote」。</p>
 <h2>0. IFTTT 內建 Pocket 問題所在</h2>
 <p>有使用 <a href="https://ifttt.com">IFTTT</a> 的朋友應該知道說其實它有內建 Pocket 的選項，但是由於它提供的 Pocket 儲存只有所謂的 Excerpt 的功能，也就是只有部分的內容，並沒有辦法全文儲存到 Evernote 的 note 當中。</p>
@@ -1124,8 +1374,8 @@ A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bas
 <p>未來就可以利用 Evernote 強大的搜尋功能來做到找到曾經閱讀封存的文章。</p>
 <h2>1. 建立 Pocket 的 Full Text RSS 來源</h2>
 <ul>
-<li>首先到 <a href="https://getpocket.com/privacy_controls"><code>Pocket > Options > Privacy</code></a> 把 RSS feed 設為 public</li>
-<li>點選 <code>Archive feed</code> 取得 Pocket 帳戶底下封存項目的 RSS feed link，連結應該為 <code>http://getpocket.com/users/&#x3C;你的帳號>/feed/read</code></li>
+<li>首先到 <a href="https://getpocket.com/privacy_controls"><code>Pocket &gt; Options &gt; Privacy</code></a> 把 RSS feed 設為 public</li>
+<li>點選 <code>Archive feed</code> 取得 Pocket 帳戶底下封存項目的 RSS feed link，連結應該為 <code>http://getpocket.com/users/&lt;你的帳號&gt;/feed/read</code></li>
 <li>到 <a href="http://fivefilters.org/content-only/"><code>fivefilters</code></a> 建立 full text RSS，貼上你的 feed url 後，按下 Create feed</li>
 <li>把視窗連結記錄下來，這連結即為你的 full text RSS 來源</li>
 </ul>
@@ -1159,7 +1409,7 @@ A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bas
         <content type="html"><![CDATA[<p>開發者對於 command line 一定不陌生，然而 Mac OS 會受到許多開發者的青睞，是因為其本身就是依照 unix 系統做開發，因此對於虛擬主機需要用到 command line 自然不陌生，整合性很好。</p>
 <p>這篇 blog 記錄網站開發超過兩年半經驗的我，最常用到的終端機指令 (command line)。</p>
 <p><img src="https://i.imgur.com/hGb22rh.png" alt=""></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <p>本篇針對的讀者是 mac 新手。</p>
 <h2>環境設定</h2>
 <p>建議下載 iterm2 來使用，有興趣可參考<a href="/2015/02/07/Sublime-%E8%88%87-iTerm-%E7%9A%84%E8%A6%96%E7%AA%97%E9%85%8D%E7%BD%AE/">設定</a></p>
@@ -1168,13 +1418,13 @@ A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bas
 <p><code>$ cd</code>: 移動 root 位置
 <code>$ cd ..</code>: 移動到目前所在位置的上一層
 <code>$ cd ../..</code>: 移動到目前所在位置的上兩層</p>
-<p><code>$ pwd</code>: 列出目前完整路徑 --> 可以知道自己現在在哪邊，再決定要如何利用 <code>cd</code> 移動</p>
+<p><code>$ pwd</code>: 列出目前完整路徑 --&gt; 可以知道自己現在在哪邊，再決定要如何利用 <code>cd</code> 移動</p>
 <p><code>$ ls</code>: 列出所在目錄的檔案
 <code>$ ls -a</code>: 列出的目錄檔案包含隱藏檔
-<code>$ ls -al</code>: 列出的目錄檔案包含隱藏檔 &#x26; 檔案屬性和權限</p>
-<p><code>$ vi(m) **.xx</code>: 創建檔名為<code>**</code>，附檔名為<code>xx</code>的檔案 --> 之後會進入 vi(m) 文字編輯模式，推薦查閱<a href="http://linux.vbird.org/linux_basic/0310vi.php">鳥哥 vim 教學</a></p>
+<code>$ ls -al</code>: 列出的目錄檔案包含隱藏檔 &amp; 檔案屬性和權限</p>
+<p><code>$ vi(m) **.xx</code>: 創建檔名為<code>**</code>，附檔名為<code>xx</code>的檔案 --&gt; 之後會進入 vi(m) 文字編輯模式，推薦查閱<a href="http://linux.vbird.org/linux_basic/0310vi.php">鳥哥 vim 教學</a></p>
 <p><code>$ mkdir ***</code>: 創建名稱為<code>***</code>的資料夾
-<code>$ rmdir ***</code>: 移除名稱為<code>***</code>的資料夾 --> 需確定資料夾為空</p>
+<code>$ rmdir ***</code>: 移除名稱為<code>***</code>的資料夾 --&gt; 需確定資料夾為空</p>
 <p><code>$ cp dest1 dest2</code>: 把 dest1 檔案複製到 dest2 的位置
 <code>$ mv dest1 dest2</code>: 把 dest1 檔案移動到 dest2 的位置，亦可作為變更檔名使用，例如 <code>$ mv test.txt no-test.txt</code>，就可以把檔名 test 的文字檔改變成為 no-test 檔名。</p>
 <p><code>$ sudo su</code>: 取得 root 權限</p>
@@ -1196,7 +1446,7 @@ A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bas
         <summary type="html"><![CDATA[近期有個需求，要在 Linux 上執行固定週期的時程，發現利用 crontab 這個內建的功能便可以完成，本篇記錄使用過程以及相關的參數。]]></summary>
         <content type="html"><![CDATA[<p>近期有個需求，要在 Linux 上執行固定週期的時程，發現利用 crontab 這個內建的功能便可以完成，本篇記錄使用過程以及相關的參數。</p>
 <p><img src="https://i.imgur.com/kcFpx34.png" alt=""></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>crontab 介紹</h2>
 <p>crontab 是 Linux 內建的機制，可以根據設置的時間參數來執行例行性的工作排程。</p>
 <p><img src="https://i.imgur.com/OGytWih.gif" alt=""></p>
@@ -1248,14 +1498,14 @@ A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bas
         <content type="html"><![CDATA[<p>常用的編輯器是 Sublime Text 3，但是終端機是 iTerm2，兩者一直沒有 IDE 般的整合。
 本篇記錄下如何更改 iTerm2 的視窗配置，讓兩者操作體驗上有更佳的配合。</p>
 <p><img src="https://i.imgur.com/wI92DCX.png" alt=""></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h3>一般情境</h3>
 <p>一般在 Sublime 和 iTerm 之間切換，我都是利用 <code>cmd+tab</code> 來做切換，但是這樣的使用情境，如果在筆電上開發，則會在執行 iTerm 的時候遮到 Sublime 的內容。如下圖所示：</p>
 <p><img src="https://i.imgur.com/7lg3dx4.png" alt=""></p>
 <p>讓我們更改 iTerm 的視窗配置，來改善這樣的情況！</p>
 <h3>iTerm 視窗設定</h3>
 <p><img src="https://i.imgur.com/gfMTEKP.png" alt=""></p>
-<p>根據上圖，依序找到 Profiles --> Window --> Style: Bottom of screen
+<p>根據上圖，依序找到 Profiles --&gt; Window --&gt; Style: Bottom of screen
 調整完後視窗的高度會根據設定的 Rows 高度來決定。</p>
 <h3>快捷鍵設定</h3>
 <p>根據個人習慣，在不與 Sublime 相關的快捷鍵衝突，我建議採用 <code>cmd+.</code> 來啟動 iTerm。</p>
@@ -1281,7 +1531,7 @@ A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bas
         <updated>2014-10-14T15:16:59.000Z</updated>
         <summary type="html"><![CDATA[本篇是我根據自己使用習慣所做的快捷鍵整理，使用 sublime text 這套編輯器已經有 2 年之餘，本身是個快捷鍵愛好者，對於發掘好用的快捷鍵樂此不疲，因此整理常用的快捷鍵在這篇，針對的是 mac 使用者所使用者快捷鍵，希望對各位有幫助。]]></summary>
         <content type="html"><![CDATA[<p>本篇是我根據自己使用習慣所做的快捷鍵整理，使用 sublime text 這套編輯器已經有 2 年之餘，本身是個快捷鍵愛好者，對於發掘好用的快捷鍵樂此不疲，因此整理常用的快捷鍵在這篇，針對的是 mac 使用者所使用者快捷鍵，希望對各位有幫助。</p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h1>快捷鍵</h1>
 <p>左邊為本篇所採用的縮寫，右邊則為鍵盤上面的標示</p>
 <ul>
@@ -1318,7 +1568,7 @@ A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bas
 <h3>3. cmd + shift + control + f</h3>
 <p>進入 zen 狀態，單份文件變成全螢幕，且左邊會自動縮排。
 使用情境：當不常需要切換檔案時，此模式可以專注在單一檔案上，打這篇 blog 時我便這樣使用。
-建議：快捷鍵不好記，可以點選<code>View --> Enter Distraction Free Mode</code></p>
+建議：快捷鍵不好記，可以點選<code>View --&gt; Enter Distraction Free Mode</code></p>
 <p><img src="https://i.imgur.com/DdD24a5.png" alt="zen"></p>
 <h2>選取</h2>
 <p>底下介紹的部份，回到 sublime text 編輯器本身，因為重點在編輯部分，因此在此將「選取」特別整理成一區。</p>
@@ -1353,14 +1603,14 @@ A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bas
 <h3>1. cmd + p + 輸入檔名</h3>
 <p>利用<code>cmd + p</code>，之後等視窗出現後，即可輸入你要找的檔名，按下 enter 即可開啟。</p>
 <p><img src="https://i.imgur.com/eH0Lbiu.gif" alt=""></p>
-<h3>2. cmd + p + ":" + 行數</h3>
+<h3>2. cmd + p + &quot;:&quot; + 行數</h3>
 <p>此功能相同於<code>control + g</code>，可以快速的跳到你指定的行數。</p>
 <p><img src="https://i.imgur.com/cIp5SYH.gif" alt=""></p>
-<h3>3. cmd + p + "@" + function name</h3>
+<h3>3. cmd + p + &quot;@&quot; + function name</h3>
 <p>此功能相同於<code>cmd + r</code>，可以快速跳到定義的 function
 建議：若是知道要找 function，建議使用這個而非使用<code>cmd + f</code></p>
 <p><img src="https://i.imgur.com/IGdokvK.gif" alt=""></p>
-<h3>4. cmd + p + "#" + keyword</h3>
+<h3>4. cmd + p + &quot;#&quot; + keyword</h3>
 <p>此功能可以快速找到文件內的關鍵字。
 個人比較少用這個功能，利用<code>cmd + f</code>時，可以持續按 enter 找到目標。</p>
 <h3>5. cmd + shift + f</h3>
@@ -1395,8 +1645,8 @@ A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bas
         <updated>2014-09-23T10:10:56.000Z</updated>
         <summary type="html"><![CDATA[Nginx 是一套輕量化的 web server，因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器，本篇將介紹靜態網頁在 nginx 上移除.html 附檔名的作法。]]></summary>
         <content type="html"><![CDATA[<p>Nginx 是一套輕量化的 web server，因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器，本篇將介紹靜態網頁在 nginx 上移除.html 附檔名的作法。</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="Nginx"></p>
-<!-- more -->
+<p><img src="https://i.imgur.com/fObgc2s.png" alt="Nginx"></p>
+<p>&lt;!-- more --&gt;</p>
 <h3>一、Start</h3>
 <p>本篇要做 nginx 這套 web server 的設定檔更改，來達到雖然存取靜態頁面，卻可以利用 mydomain.com/user 的 URL 來拿到所要的靜態頁面。</p>
 <blockquote>
@@ -1405,16 +1655,18 @@ A：原因是語系問題，記得在 DB 匯入前先執行 export 或寫入 bas
 <p><em>本篇環境為 ubuntu14.04 下執行。</em></p>
 <h3>二、Static file permission</h3>
 <p>在 nginx 下，你要將靜態檔案放在 server 哪邊都可以，在此我根據之前 apache 習慣的設定，放在/var/www</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">cd /var
+<pre><code>cd /var
 sudo mkdir www
 sudo chown -R www-data:www-data /var/www/mydomain.com
-sudo chmod 755 /var/www</code></pre></div>
+sudo chmod 755 /var/www
+</code></pre>
 <p>如此一來你便可以將整個靜態網站檔案放在/var/www/mydomain.com 目錄底下。</p>
 <h3>三、Nginx conf setting</h3>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">cd /etc/nginx/sites-enabled
-sudo vim mydomain.com</code></pre></div>
+<pre><code>cd /etc/nginx/sites-enabled
+sudo vim mydomain.com
+</code></pre>
 <p>修改底下內容為你要的設定</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">server {
+<pre><code>server {
   listen        80;
   root          /var/www/mydomain;
   index         index.html index.htm;
@@ -1422,11 +1674,12 @@ sudo vim mydomain.com</code></pre></div>
   location / {
     try_files $uri $uri/ $uri.html;
   }
-}</code></pre></div>
-<p>此設定將會當抓到$uri 時，nginx 會自動帶入<code>$uri/</code>或是<code>$uri.html</code>
-因此我們送出<code>mydomain.com/user</code>，nginx 會試著搜尋<code>mydomain.com/user/</code>或<code>mydomain.com/user.html</code>。</p>
+}
+</code></pre>
+<p>此設定將會當抓到$uri 時，nginx 會自動帶入<code>$uri/</code>或是<code>$uri.html</code> 因此我們送出<code>mydomain.com/user</code>，nginx 會試著搜尋<code>mydomain.com/user/</code>或<code>mydomain.com/user.html</code>。</p>
 <h3>四、Remove default conf</h3>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">sudo rm /etc/nginx/sites-enabled/default</code></pre></div>
+<pre><code>sudo rm /etc/nginx/sites-enabled/default
+</code></pre>
 <p>在我設定的時候，需把 default 刪除後，才可以正常的讀取到新設定的 mydomain.com 檔，歡迎各位先進補充這點。</p>
 <h3>五、Restart Nginx</h3>
 <p><code>/etc/init.d/nginx restart</code> || <code>sudo service nginx restart</code></p>
@@ -1448,24 +1701,24 @@ sudo vim mydomain.com</code></pre></div>
         <summary type="html"><![CDATA[在使用 iTerm（終端機）一段時間後，總覺得每次開啟新分頁，要進入到一個很深的資料夾略顯麻煩，因此上網查了簡易的方法，很快速便可以讓自己少打很多 code，把時間花在其他更重要事情上。]]></summary>
         <content type="html"><![CDATA[<p>在使用 iTerm（終端機）一段時間後，總覺得每次開啟新分頁，要進入到一個很深的資料夾略顯麻煩，因此上網查了簡易的方法，很快速便可以讓自己少打很多 code，把時間花在其他更重要事情上。</p>
 <p><img src="https://i.imgur.com/Cc5u0nY.png" alt="iterm2"></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>alias</h2>
 <p>顧名思義就是別名，其語法如下，舉 mac 的 apache server 所在為 example:</p>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell"><span class="token builtin class-name">alias</span> <span class="token assign-left variable">goproject</span><span class="token operator">=</span><span class="token string">'cd /Library/WebServer/Documents/yourproject'</span>
-</code></pre></div>
+<pre><code class="language-shell">alias goproject='cd /Library/WebServer/Documents/yourproject'
+</code></pre>
 <p>因此在 iTerm 打上這串後，未來便可以使用<code>goproject</code> 直接執行後面那串，快速又方便。</p>
 <h2>永久執行 alias</h2>
 <p>在設定完 alias，原本以為就這樣，結果發現如果重開 iTerm 後，之前設定的 alias 都不見了，原因是因為沒有真正寫入 bash 檔，因此在開啟 iTerm 的時候，並沒有被載入，所以我們要將</p>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">vim</span> /etc/bashrc
+<pre><code class="language-shell">sudo vim /etc/bashrc
 // 在bashrc檔裡面加上新的一行
-<span class="token builtin class-name">alias</span> <span class="token assign-left variable">goproject</span><span class="token operator">=</span><span class="token string">'cd /Library/WebServer/Documents/yourproject'</span>
-</code></pre></div>
+alias goproject='cd /Library/WebServer/Documents/yourproject'
+</code></pre>
 <p><em>ps. 因為是 root 權限，存檔的時候記得要用<code>:wq!</code>強制寫入。</em></p>
 <p>重新開啟 iTerm 後，便可以使用 goproject 來快速進到你要的路徑，當然你也可以自行設定你要的指令。</p>
 <h2>alias 相關指令</h2>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell"><span class="token builtin class-name">alias</span> // 列出所有的alias檔
-<span class="token builtin class-name">unalias</span> goproject // 把goproject這個alias刪掉
-</code></pre></div>
+<pre><code class="language-shell">alias // 列出所有的alias檔
+unalias goproject // 把goproject這個alias刪掉
+</code></pre>
 <p><strong><em>reference</em></strong></p>
 <p><a href="http://www.linfo.org/alias.html">How to use the alias command</a></p>
 ]]></content>
@@ -1482,25 +1735,25 @@ sudo vim mydomain.com</code></pre></div>
         <updated>2014-04-14T13:26:18.000Z</updated>
         <summary type="html"><![CDATA[本文譯自[goodui](http://www.goodui.org)，會寫這系列並非逐字翻譯，而是在研讀過後利用自己的方式表達並記錄分享之，全文圖片版權皆為 goodui.org 所有，此為系列第 2 篇。]]></summary>
         <content type="html"><![CDATA[<p>本文譯自<a href="http://www.goodui.org">goodui</a>，會寫這系列並非逐字翻譯，而是在研讀過後利用自己的方式表達並記錄分享之，全文圖片版權皆為 goodui.org 所有，此為系列第 2 篇。</p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h1>6、區分已被選取和可點選區塊</h1>
 <p>利用顏色、深度、對比來讓使用者確切的知道他們現在處於網站的哪一個地方，了解什麼地方可以點選，以便讓他們往下繼續逛他們趕興趣的頁面或內容。頁面上可見的文字區塊大致分成三種情況，分別是可以點(clickable)連結或按鈕、被選取(chosen)項目以及其他文字(plain text)。</p>
 <p>底下這張圖示指出，藍色的字代表可以點擊(clickable)，而黑色的字代表你現在正在這個項目(chosen)內，簡單清楚的表達出區分的效果。</p>
-<p><img src="http://goodui.org/images/idea006.png" alt="idea006"></p>
+<p><img src="https://goodui.org/images/idea006.png" alt="idea006"></p>
 <h1>7、試著推薦而非列出都一樣的選項</h1>
 <p>當你有多重選項的時候，有一個強調的選項或許對於使用者來說是一個不錯的刺激。</p>
-<p>在這篇<a href="http://www.nytimes.com/2010/02/27/your-money/27shortcuts.html?_r=1&#x26;">心理學研究</a>指出，越少的選項可以讓使用者決定得更快，因此，試著強調某個特定的訴求吧！</p>
-<p><img src="http://goodui.org/images/idea007.png" alt="idea007"></p>
+<p>在這篇<a href="http://www.nytimes.com/2010/02/27/your-money/27shortcuts.html?_r=1&amp;">心理學研究</a>指出，越少的選項可以讓使用者決定得更快，因此，試著強調某個特定的訴求吧！</p>
+<p><img src="https://goodui.org/images/idea007.png" alt="idea007"></p>
 <h1>8、試著用 undo 選項，而非確認</h1>
 <p>在你要刪除一個動作的時候，如果視窗一直跳出「您確定要刪除嗎？」的訊息，還要你多按一個按鍵才能確定刪除，是不是有點惱人？</p>
 <p>原作者提到他相信大多情況我們都不會誤按功能按鈕，有的話也是少數，因此利用重作(undo)的功能而非要使用者一直確認，如此一來能讓使用者更加有掌握感，當他們要進行大量的刪除動作，便可以提高效率，不小心誤刪的情況發生，還有重作的選項可以復原。</p>
-<p><img src="http://goodui.org/images/idea008.png" alt="idea008"></p>
+<p><img src="https://goodui.org/images/idea008.png" alt="idea008"></p>
 <h1>9、你的 TA 是特定族群，而非全部人</h1>
 <p>這是一個決策，純看你要針對某特定的族群或是針對全部人，有利有弊是一定的。當你針對某特定族群打廣告，勢必會壓縮到其他的群眾，進而產生排他性。這種策略的風險是你可能會削減自己短期和限制潛在的客戶。</p>
-<p><img src="http://goodui.org/images/idea009.png" alt="idea009"></p>
+<p><img src="https://goodui.org/images/idea009.png" alt="idea009"></p>
 <h1>10、給明確的指示</h1>
 <p>給使用者明確的指示，讓他們知道點下這一個按鍵或已經滑動到這個頁面的最底端，接下來他該何去何從？千萬不要用那種「或許」、「應該」的字眼造成不確定感。要讓你的使用者知道下一步該怎麼走，至於要不要走，就交給使用者自己去決定了。</p>
-<p><img src="http://goodui.org/images/idea010.png" alt="idea010"></p>
+<p><img src="https://goodui.org/images/idea010.png" alt="idea010"></p>
 ]]></content>
         <author>
             <name>Daniel Tseng</name>
@@ -1518,30 +1771,33 @@ sudo vim mydomain.com</code></pre></div>
 由於近期想要把不同的 node.js 程式放在同一個 server，因此開始研究 nginx 用法，記錄下來我的實作方式。]]></summary>
         <content type="html"><![CDATA[<p>Nginx 因為它的輕量、高效能而越來越多人喜歡使用它來做為網頁伺服器或是反向代理伺服器。</p>
 <p>由於近期想要把不同的 node.js 程式放在同一個 server，因此開始研究 nginx 用法，記錄下來我的實作方式。</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="Nginx"></p>
-<!-- more -->
+<p><img src="https://i.imgur.com/fObgc2s.png" alt="Nginx"></p>
+<p>&lt;!-- more --&gt;</p>
 <h3>一、Domain 指向主機</h3>
 <p>將不同的 domain 都指向你的主機 ip，此時都會指向 HTTP 預設的 80 port，後面再用 nginx 設定由不同的 port 去處理不同的 node.js 程式。</p>
 <h3>二、安裝 Nginx in Ubuntu</h3>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">sudo apt-get update
+<pre><code>sudo apt-get update
 sudo apt-get upgrade // 確定抓到套件
 sudo apt-get install nginx
-sudo service nginx start</code></pre></div>
+sudo service nginx start
+</code></pre>
 <p>在安裝的時候，記得你如果有其他 server 在 run 必須要停掉，不然佔住 80 port 是沒有辦法裝成功 nginx 的。</p>
 <h3>三、將 Node.js 設定不同 port</h3>
 <p>會寫 node.js 應該會將 port listen 在不同的 port，注意不要用常用的那些 port 即可。例如：80(HTTP)、22(SSH)。</p>
 <h3>四、設定 Nginx 資料夾檔案</h3>
 <p>進到<code>/etc/nginx/sites-enabled</code>，然後創建跟你 domain 一樣的檔案，記得權限要用<code>sudo</code>去創</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">sudo vim domain1.com</code></pre></div>
+<pre><code>sudo vim domain1.com
+</code></pre>
 <p>檔案內容</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">server {
+<pre><code>server {
     listen 80;
     server_name domain1.com;
     access_log /var/log/nginx/domain1.access.log;
     location / {
         proxy_pass    http://127.0.0.1:4000/;
     }
-}</code></pre></div>
+}
+</code></pre>
 <p>同理創建 domain2.com，記得 4000 port 要改成你設定的 port。</p>
 <h3>五、重啟 Nginx</h3>
 <p><code>/etc/init.d/nginx restart</code></p>
@@ -1564,20 +1820,21 @@ sudo service nginx start</code></pre></div>
         <updated>2014-04-06T21:30:35.000Z</updated>
         <summary type="html"><![CDATA[第一次因為專案需要，而跟 PHP 後端工程師配合，我們選定了[CI](http://www.codeigniter.org.tw/)這套 framework 來使用，對於 CI 算是第一次接觸，因此想把從無到有的架設過程給記錄下來。]]></summary>
         <content type="html"><![CDATA[<p>第一次因為專案需要，而跟 PHP 後端工程師配合，我們選定了<a href="http://www.codeigniter.org.tw/">CI</a>這套 framework 來使用，對於 CI 算是第一次接觸，因此想把從無到有的架設過程給記錄下來。</p>
-<p><img src="https://php.quicoto.com/wp-content/uploads/2013/07/codeigniter-logo.png" alt="codeigniter"></p>
-<!-- more -->
+<p><img src="https://i.imgur.com/aGOOOLy.png" alt="codeigniter"></p>
+<p>&lt;!-- more --&gt;</p>
 <h2>1、擁有 php 環境</h2>
 <p>Mac 內建 Apache，只要打開即可。</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">sudo apachectl start</code></pre></div>
+<pre><code>sudo apachectl start
+</code></pre>
 <h2>2、安裝 CI</h2>
 <ul>
 <li>到<a href="http://www.codeigniter.org.tw/user_guide/installation/downloads.html">官網</a>下載整份文件檔</li>
-<li>放進 server 的路徑下 <code>/Libary/WebServer/Documents/</code></li>
+<li>放進 server 的路徑下 <code>/Library/WebServer/Documents/</code></li>
 <li>安裝完畢！</li>
 </ul>
 <h2>3、讀取靜態頁面</h2>
 <h3>新增頁面</h3>
-<p>此處新增名為 page.php 的檔案 <code>application -> view -> cep(optional dir) -> page.php</code></p>
+<p>此處新增名為 page.php 的檔案 <code>application -&gt; view -&gt; cep(optional dir) -&gt; page.php</code></p>
 <ul>
 <li><img src="https://i.imgur.com/gC7kgs2.png" alt="page.php"></li>
 </ul>
@@ -1585,54 +1842,59 @@ sudo service nginx start</code></pre></div>
 <p>如 CSS、JS 檔，習慣性會創建 assets 資料夾將他們放進去，並且放在跟 application 同階層的 dir 內，如圖。
 <img src="https://i.imgur.com/BLh0okD.png" alt="assets"></p>
 <h3>新增 route</h3>
-<p><code>application -> config -> routes.php</code> 新增如下：</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">$route[&#x26;#39;(:any)&#x26;#39;] = &#x26;#39;cep/$1&#x26;#39;;
-$route[&#x26;#39;default_controller&#x26;#39;] = &#x26;quot;cep&#x26;quot;;
-$route[&#x26;#39;404_override&#x26;#39;] = &#x26;#39;&#x26;#39;;</code></pre></div>
+<p><code>application -&gt; config -&gt; routes.php</code> 新增如下：</p>
+<pre><code>$route['(:any)'] = 'cep/$1';
+$route['default_controller'] = &quot;cep&quot;;
+$route['404_override'] = '';
+</code></pre>
 <h3>新增 controller</h3>
 <p>在 controllers 資料夾內，新增 php 檔，內定新的 public function，參照 welcome.php 修改即可。</p>
 <p>新增一個 class extends CI_Controller，裡面加上 page()這個 public function。</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">class Cep extends CI_Controller {
+<pre><code>class Cep extends CI_Controller {
 
     public function index()
     {
-        $this-&#x26;gt;load-&#x26;gt;view(&#x26;#39;cep/index&#x26;#39;);
+        $this-&gt;load-&gt;view('cep/index');
     }
 
     public function page()
     {
-        $this-&#x26;gt;load-&#x26;gt;view(&#x26;#39;cep/page&#x26;#39;);
+        $this-&gt;load-&gt;view('cep/page');
     }
 
-}</code></pre></div>
+}
+</code></pre>
 <h3>路徑修改</h3>
 <ul>
-<li>application -> config -> config.php 改一行 <code>$config['base_url'] = '/專案資料夾名字/';</code></li>
-<li>application -> config -> autoload.php 改一行 <code>$autoload['helper'] = array('url');</code> 原本是沒有 url，加上 url。</li>
+<li>application -&gt; config -&gt; config.php 改一行 <code>$config['base_url'] = '/專案資料夾名字/';</code></li>
+<li>application -&gt; config -&gt; autoload.php 改一行 <code>$autoload['helper'] = array('url');</code> 原本是沒有 url，加上 url。</li>
 <li>page.php 這頁的 CSS 和 JS 檔，修改成</li>
 </ul>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">&#x26;lt;link rel=&#x26;quot;stylesheet&#x26;quot; href=&#x26;quot;&#x26;lt;?php echo base_url(); ?&#x26;gt;assets/css/bootstrap.min.css&#x26;quot;&#x26;gt;
-&#x26;lt;link rel=&#x26;quot;stylesheet&#x26;quot; href=&#x26;quot;&#x26;lt;?php echo base_url(); ?&#x26;gt;assets/css/main.css&#x26;quot;&#x26;gt;
-&#x26;lt;script src=&#x26;quot;&#x26;lt;?php echo base_url(); ?&#x26;gt;assets/js/vendor/modernizr-2.6.2.min.js&#x26;quot;&#x26;gt;&#x26;lt;/script&#x26;gt;</code></pre></div>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;?php echo base_url(); ?&gt;assets/css/bootstrap.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;?php echo base_url(); ?&gt;assets/css/main.css&quot;&gt;
+&lt;script src=&quot;&lt;?php echo base_url(); ?&gt;assets/js/vendor/modernizr-2.6.2.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <p>如此一來便可以在<code>http://localhost/專案資料夾/index.php/page</code> 看到靜態頁面了。</p>
 <h2>4、移除 CI URL 上的 index.php</h2>
 <p>因為每次網址上面都需要有 index.php，覺得不好看，因此兩個步驟把它改掉。</p>
 <ol>
 <li>在 root 加上<code>.htaccess</code>檔，內容如下</li>
 </ol>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">RewriteEngine on
+<pre><code>RewriteEngine on
 RewriteCond $1 !^(index\.php)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L,QSA]</code></pre></div>
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+</code></pre>
 <ol start="2">
 <li>修改 apache 設定，將 httpd.conf 改掉。
 原本 AllowOverride none 改成 All 即可。</li>
 </ol>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">&#x26;lt;Directory /Library/WebServer/Documents&#x26;gt;
+<pre><code>&lt;Directory /Library/WebServer/Documents&gt;
     Options FollowSymLinks
     AllowOverride All
-&#x26;lt;/Directory&#x26;gt;</code></pre></div>
+&lt;/Directory&gt;
+</code></pre>
 <ol start="3">
 <li>重新啟動 apache <code>sudo apachectl restart</code></li>
 </ol>
@@ -1650,25 +1912,25 @@ RewriteRule ^(.*)$ index.php/$1 [L,QSA]</code></pre></div>
         <id>https://code.kpman.cc/2014/03/19/web%E5%A5%BDui%E8%A8%AD%E8%A8%88%E6%B3%95%E5%89%87-1/</id>
         <link href="https://code.kpman.cc/2014/03/19/web%E5%A5%BDui%E8%A8%AD%E8%A8%88%E6%B3%95%E5%89%87-1/"/>
         <updated>2014-03-19T17:11:15.000Z</updated>
-        <summary type="html"><![CDATA[本文譯自[goodui](http://goodui.org)，會寫這系列並非逐字翻譯，而是在研讀過後利用自己的方式表達並記錄分享之，全文圖片版權皆為 goodui.org 所有。]]></summary>
-        <content type="html"><![CDATA[<p>本文譯自<a href="http://goodui.org">goodui</a>，會寫這系列並非逐字翻譯，而是在研讀過後利用自己的方式表達並記錄分享之，全文圖片版權皆為 goodui.org 所有。</p>
+        <summary type="html"><![CDATA[本文譯自[goodui](https://goodui.org)，會寫這系列並非逐字翻譯，而是在研讀過後利用自己的方式表達並記錄分享之，全文圖片版權皆為 goodui.org 所有。]]></summary>
+        <content type="html"><![CDATA[<p>本文譯自<a href="https://goodui.org">goodui</a>，會寫這系列並非逐字翻譯，而是在研讀過後利用自己的方式表達並記錄分享之，全文圖片版權皆為 goodui.org 所有。</p>
 <p><img src="https://i.imgur.com/ve2iCpO.png" alt="goodui"></p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>1、頁面單欄式而非多欄式</h2>
 <p>採用單欄式的好處是可以讓讀者自然而然的了解閱讀方向為由上而下，採用多欄式的頁面設計，會有額外增加的 risk，會讓讀者容易分心。在文章（頁面）的最後採用 call to action，引導讀者點進你想要的導向頁面。</p>
-<p><img src="http://goodui.org/images/idea001.png" alt="idea001"></p>
+<p><img src="https://goodui.org/images/idea001.png" alt="idea001"></p>
 <h2>2、試著給些小禮物</h2>
 <p>好朋友間互相送禮，是很正常不過的對吧？在面對你的使用者也是一樣的，根據互惠原則，給禮物是一個激勵使用者的手法，讓使用者會更願意回來你的網站。</p>
-<p><img src="http://goodui.org/images/idea002.png" alt="idea002"></p>
+<p><img src="https://goodui.org/images/idea002.png" alt="idea002"></p>
 <h2>3、把相似功能的介面合併在一起</h2>
 <p>在過去，我們很容易將功能差不多的介面，在頁面上分成好多部分。當你的 UI 越分散，那麼該網站的使用者其學習曲線便越高，試著重新設計你的 UI 吧，把那些功能相近的按鈕、區塊放在一起。</p>
-<p><img src="http://goodui.org/images/idea003.png" alt="idea003"></p>
+<p><img src="https://goodui.org/images/idea003.png" alt="idea003"></p>
 <h2>4、讓別人來說，而非自己說</h2>
 <p>列出那些曾經在 social media 討論本身產品的人，利用他們的見證會比自己在網站上面寫還來的有用。「Our customers say」會比「We are awesome」還更具有說服力。</p>
-<p><img src="http://goodui.org/images/idea004.png" alt="idea004"></p>
+<p><img src="https://goodui.org/images/idea004.png" alt="idea004"></p>
 <h2>5、重複你的主要訴求</h2>
 <p>你的 call to action 是網頁中重要的項目，尤其在很長的頁面時，不要吝嗇讓它出現超過一次。當使用者滑到頁面底端時，是該他們做決定的時候了，離開或是完成你的主要訴求。</p>
-<p><img src="http://goodui.org/images/idea005.png" alt="idea005"></p>
+<p><img src="https://goodui.org/images/idea005.png" alt="idea005"></p>
 ]]></content>
         <author>
             <name>Daniel Tseng</name>
@@ -1684,7 +1946,7 @@ RewriteRule ^(.*)$ index.php/$1 [L,QSA]</code></pre></div>
         <summary type="html"><![CDATA[Sublime Text 2 是網頁開發者都不陌生的一套編輯器，除了單純的文字編輯外，它還有很多實用的套件，這篇來介紹我平常常用的 Sublime Text 2 套件。]]></summary>
         <content type="html"><![CDATA[<p><img src="https://i.imgur.com/f5ZJthW.png" alt="Sublime Text 2" title="Sublime Text 2"></p>
 <p>Sublime Text 2 是網頁開發者都不陌生的一套編輯器，除了單純的文字編輯外，它還有很多實用的套件，這篇來介紹我平常常用的 Sublime Text 2 套件。</p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>編輯環境</h2>
 <ol>
 <li>Mac 10.9</li>
@@ -1693,11 +1955,12 @@ RewriteRule ^(.*)$ index.php/$1 [L,QSA]</code></pre></div>
 <p>Mac 環境，所以快捷鍵會介紹 command 的配置，若 windows 版本請自行查閱。</p>
 <h3>安裝 Package Control</h3>
 <p>所謂 Package Control 就是 Sublime Text 2 用來裝套件的，因此在裝其他的套件之前，我們必須先來安裝 Package Control。</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">開啟Sublime Text 2
+<pre><code>開啟Sublime Text 2
 開啟console，快捷鍵ctrl+`
 貼上以下程式碼
 
-import urllib2,os; pf=&#x26;#39;Package Control.sublime-package&#x26;#39;; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), &#x26;#39;wb&#x26;#39; ).write( urllib2.urlopen( &#x26;#39;http://sublime.wbond.net/&#x26;#39; +pf.replace( &#x26;#39; &#x26;#39;,&#x26;#39;%20&#x26;#39; )).read()); print( &#x26;#39;Please restart Sublime Text to finish installation&#x26;#39;)</code></pre></div>
+import urllib2,os; pf='Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), 'wb' ).write( urllib2.urlopen( 'http://sublime.wbond.net/' +pf.replace( ' ','%20' )).read()); print( 'Please restart Sublime Text to finish installation')
+</code></pre>
 <p>程式碼可以參照<a href="https://sublime.wbond.net/installation#st2">官網</a></p>
 <p>安裝完後，未來我們就可以使用<code>cmd+shift+p</code>，打入<code>install package</code>，即可啟用 Package Control，如下圖</p>
 <p><img src="https://i.imgur.com/5n76S9Q.png" alt="install package"></p>
@@ -1718,17 +1981,19 @@ import urllib2,os; pf=&#x26;#39;Package Control.sublime-package&#x26;#39;; ipp =
 <p>以前它叫做 Zen coding，現在則改為 Emmet。</p>
 <p>可以將需要重複的 html 用很簡短的方式寫出來，例如：</p>
 <ol>
-<li><code>.container>.col-lg-4*3</code></li>
+<li><code>.container&gt;.col-lg-4*3</code></li>
 <li>按下 tab 後便會出現</li>
 <li><img src="https://i.imgur.com/PP9vdmr.png" alt="Emmet"></li>
 </ol>
 <p>若你發現按下 tab 後竟然沒有用，記得確定自己是不是在 html 文件內。</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">view --&#x26;gt; syntax --&#x26;gt; HTML(5)</code></pre></div>
+<pre><code>view --&gt; syntax --&gt; HTML(5)
+</code></pre>
 <p>在 HTML5 的文件下，<code>!+tab</code> 會有出現 HTML5 的 snippet 出現，非常好用！</p>
 <h4>三、Pretty Json</h4>
 <p>有利用到 JSON 的人，想必一定會為了格式上面的問題而煩惱，只要裝上這個，JSON 立刻變得很好看。</p>
 <p>裝完之後，把你要修改的 JSON 選取起來，按下快捷鍵</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">cmd+ctrl+j</code></pre></div>
+<pre><code>cmd+ctrl+j
+</code></pre>
 <p>立刻就可以把 JSON 變得很漂亮，也可以自行進去定義縮排大小。</p>
 <h4>四、flat theme</h4>
 <p><img src="https://i.imgur.com/pvxRMlX.png" alt="flatland"></p>
@@ -1759,22 +2024,25 @@ import urllib2,os; pf=&#x26;#39;Package Control.sublime-package&#x26;#39;; ipp =
 wordpress資料夾：/var/www/blog
 ```]]></summary>
         <content type="html"><![CDATA[<p>本 case 為希望主目錄可以直接連到 wordpress，但是 wordpress 是另外放在一個資料夾。</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">主目錄：/var/www
-wordpress資料夾：/var/www/blog</code></pre></div>
-<!-- more -->
+<pre><code>主目錄：/var/www
+wordpress資料夾：/var/www/blog
+</code></pre>
+<p>&lt;!-- more --&gt;</p>
 <h2>一、.htaccess</h2>
 <p>wordpress 會利用.htaccess 去更改固定連結，是位在根目錄，也就是<code>/var/www</code>底下，wordpress 會根據你的<code>網站位置URL</code>去設定.htaccess</p>
 <p>利用終端機產生.htaccess</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">vi .htaccess
-chmod 777 .htaccess</code></pre></div>
+<pre><code>vi .htaccess
+chmod 777 .htaccess
+</code></pre>
 <h2>二、進入後台設定固定網址 permalink</h2>
 <p>這邊我選擇文章名稱的格式</p>
 <p><img src="https://i.imgur.com/XlEgUdT.png" alt="固定網址"></p>
 <p>因為剛剛上面有設定.htaccess 權限打開到最大，因此進後台設定完，記得把 chmod 改為 644，要注意安全性。</p>
 <h2>三、設定 mod_write</h2>
 <p>我的 wordpress 是架在 Amazon EC2 上的 ubuntu，server 是 apache2，因此上網搜尋相關資料，解決辦法如下：</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">sudo a2enmod rewrite
-sudo /etc/init.d/apache2 restart</code></pre></div>
+<pre><code>sudo a2enmod rewrite
+sudo /etc/init.d/apache2 restart
+</code></pre>
 <p>只要兩行就可以解決!</p>
 <h3><strong><em>後記</em></strong></h3>
 <p>在解決這個問題的時候，找了很多資料，一來是不明白.htacces 真正的目錄，二來是不知道 ubuntu 的 rewrite 要打開，因此在這邊記錄下來，讓有相同困擾的人可以了解。</p>
@@ -1792,10 +2060,10 @@ sudo /etc/init.d/apache2 restart</code></pre></div>
         <updated>2013-08-21T02:17:04.000Z</updated>
         <summary type="html"><![CDATA[看了這麼久的雲端資源，總算開了算是自己真正學到東西的第一台 Amazon EC2 server，目的是想要練習把 wordpress 架到 EC2 上，在此分享我的架設經驗。]]></summary>
         <content type="html"><![CDATA[<p>看了這麼久的雲端資源，總算開了算是自己真正學到東西的第一台 Amazon EC2 server，目的是想要練習把 wordpress 架到 EC2 上，在此分享我的架設經驗。</p>
-<p><img src="https://www.programmableweb.com/wp-content/amazon-web-services1.png" alt="Amazon web service"></p>
-<!-- more -->
+<p><img src="https://i.imgur.com/4HM0eOa.png" alt="Amazon web service"></p>
+<p>&lt;!-- more --&gt;</p>
 <h2>一、擁有 AWS 帳號</h2>
-<p>關於開啟 AWS 的過程，實際走過一遍之後，阿正老師的<a href="http://blog.soft.idv.tw/?p=823&#x26;page=2">這篇</a>，其內寫的不錯，推薦跟著走一遍，就會了解很多。</p>
+<p>關於開啟 AWS 的過程，實際走過一遍之後，阿正老師的<a href="http://blog.soft.idv.tw/?p=823&amp;page=2">這篇</a>，其內寫的不錯，推薦跟著走一遍，就會了解很多。</p>
 <h2>二、開啟自己的 instance</h2>
 <p>在實際走過後，會發現阿正老師<a href="http://blog.soft.idv.tw/?p=824">這篇</a>真的超用心，因此接下來主要會利用這篇，再加上些我的補充。</p>
 <ul>
@@ -1823,7 +2091,7 @@ sudo /etc/init.d/apache2 restart</code></pre></div>
 <li>進入 console.aws.amazon.com</li>
 <li>左方導覽列選擇 security group</li>
 <li>選擇 instance 後，下方的 tab 選取<code>Inbound</code></li>
-<li>分別加入<code>SSH</code>&#x26;<code>HTTP</code>，Source 部分都維持 0.0.0.0/0 即可，加入後記得要按<code>Apply Rule Change</code>才生效</li>
+<li>分別加入<code>SSH</code>&amp;<code>HTTP</code>，Source 部分都維持 0.0.0.0/0 即可，加入後記得要按<code>Apply Rule Change</code>才生效</li>
 </ol>
 <blockquote>
 <p>記得開啟 SSH(20)、HTTP(80)</p>
@@ -1897,8 +2165,8 @@ _ <code>ubuntu</code>是因為我用 ubuntu 當做 OS，如果當初選擇 Amazo
 <li><code>cd /var/www</code></li>
 <li><code>sudo vi test.php</code> 創新 php 檔案，並進到 vim 模式</li>
 <li>按<code>i</code> 進入編輯模式，記得看下面是否出現<code>-- INSERT --</code></li>
-<li>打上這一行<code>&#x3C;?php phpinfo(); ?></code></li>
-<li>按下 esc -> 打入<code>:wq</code> -> enter 存檔(記得是看 iterm 下面)</li>
+<li>打上這一行<code>&lt;?php phpinfo(); ?&gt;</code></li>
+<li>按下 esc -&gt; 打入<code>:wq</code> -&gt; enter 存檔(記得是看 iterm 下面)</li>
 <li>利用 public domain/test.php 連線測試，看到 php 的資訊就成功了！</li>
 <li>public domain/wordpress 也可以看見你的 wordpress 有沒有架成功！</li>
 </ol>
@@ -1913,7 +2181,7 @@ _ <code>ubuntu</code>是因為我用 ubuntu 當做 OS，如果當初選擇 Amazo
 </ul>
 <p><strong><em>reference</em></strong></p>
 <ul>
-<li><a href="http://blog.soft.idv.tw/?p=823&#x26;page=2">阿正老師上篇</a> 阿正老師這兩篇必讀</li>
+<li><a href="http://blog.soft.idv.tw/?p=823&amp;page=2">阿正老師上篇</a> 阿正老師這兩篇必讀</li>
 <li><a href="http://blog.soft.idv.tw/?p=824">阿正老師下篇</a> 主機實戰篇</li>
 <li><a href="http://blog.rx836.tw/blog/first-amazon-web-services/">免費玩 Amazon Web Service(AWS) EC2</a> 開機器寫的很詳細，圖文並茂</li>
 <li><a href="http://coenraets.org/blog/2012/01/setting-up-wordpress-on-amazon-ec2-in-5-minutes/">Setting Up WordPress on Amazon EC2 in 5 minutes</a> 根本神教學，我是受這篇感動才想要把自己的過程給記錄下來。</li>
@@ -1938,7 +2206,7 @@ _ <code>ubuntu</code>是因為我用 ubuntu 當做 OS，如果當初選擇 Amazo
         <summary type="html"><![CDATA[Sublime Text 2 是一套越來越火紅的編輯器，如果你是接觸網頁開發，想必對於這套軟體不陌生，以下分享幾個好用的技巧，都是我自己平常比較常使用的技巧，因為我本身是一個懶得看文件的人，所以就整理這篇與大家分享。]]></summary>
         <content type="html"><![CDATA[<p><img src="https://i.imgur.com/f5ZJthW.png" alt="Sublime Text 2" title="Sublime Text 2"></p>
 <p>Sublime Text 2 是一套越來越火紅的編輯器，如果你是接觸網頁開發，想必對於這套軟體不陌生，以下分享幾個好用的技巧，都是我自己平常比較常使用的技巧，因為我本身是一個懶得看文件的人，所以就整理這篇與大家分享。</p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>編輯環境</h2>
 <ol>
 <li>Mac 10.7.5</li>
@@ -1948,27 +2216,32 @@ _ <code>ubuntu</code>是因為我用 ubuntu 當做 OS，如果當初選擇 Amazo
 <h2>技巧介紹</h2>
 <h3>一、Set Syntax</h3>
 <p>有發現你的 Sublime Text 2 右下角有你正在編輯的環境語言嗎？舉凡 JAVA、CSS、HTML5 等<br>
-比如說我現在要從 HTML5 切到 CSS 介面，除了由上方的 View->Sytax 切換外，可以利用快捷鍵</p>
+比如說我現在要從 HTML5 切到 CSS 介面，除了由上方的 View-&gt;Sytax 切換外，可以利用快捷鍵</p>
 <p>切換到 CSS 範例：</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">shift+command+p
-鍵入sscss</code></pre></div>
+<pre><code>shift+command+p
+鍵入sscss
+</code></pre>
 <p><img src="https://i.imgur.com/51PUAhD.png" alt="Set Syntax" title="Set Syntax"></p>
 <p>每一個 Color Scheme 都會針對不同的語言去做優化，因此值得學習。</p>
 <h3>二、HTML5 snippet</h3>
 <p>貼心的 Sublime Text 2 有內建 HTML5 的 snippet，方法如下：</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">! + tab</code></pre></div>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">html:5 + tab</code></pre></div>
+<pre><code>! + tab
+</code></pre>
+<pre><code>html:5 + tab
+</code></pre>
 <p>都可以達成 HTML5 快速生成已經預定的 snippet.</p>
 <p><img src="https://i.imgur.com/grLplgD.png" alt=""></p>
 <h3>三、Multiple Selection 同時多個游標</h3>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">按住command+點選你要的位置</code></pre></div>
+<pre><code>按住command+點選你要的位置
+</code></pre>
 <p>推薦用在處理 Array 等結構重複性高的資料型態。</p>
 <h3>四、Column Selection 同時直行游標</h3>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">按住option+按著滑鼠左鍵直行往下拖曳選取</code></pre></div>
+<pre><code>按住option+按著滑鼠左鍵直行往下拖曳選取
+</code></pre>
 <p>推薦用在處理 html 等修改固定 class 或其他部分。</p>
 <p><img src="https://i.imgur.com/1kLSh2P.png" alt=""></p>
 <h3>五、選取引號內字串</h3>
-<p>通常你都怎樣選取雙引號內的字串呢？<code>"string"</code>利用滑鼠從第一個引號拉到後面那個。</p>
+<p>通常你都怎樣選取雙引號內的字串呢？<code>&quot;string&quot;</code>利用滑鼠從第一個引號拉到後面那個。</p>
 <p>輸入：<code>command + d</code> 即可完成</p>
 <h3>六、分割畫面</h3>
 <p>有時候我時常左邊放 HTML 檔，右邊放 SCSS 檔，一邊看一邊編輯，這時候就要分割畫面。</p>
@@ -1980,7 +2253,7 @@ _ <code>ubuntu</code>是因為我用 ubuntu 當做 OS，如果當初選擇 Amazo
 <p>也就是在原本的貼上加上 shift 就可以解決！</p>
 <h3><em>reference</em></h3>
 <ol>
-<li><a href="http://www.youtube.com/watch?v=41nY3RLBy3w&#x26;list=PL8dIIwCMF-SOaSb3_VYUlyULpPyk7iwlh&#x26;index=1">up chen in 2013 JSDC</a></li>
+<li><a href="http://www.youtube.com/watch?v=41nY3RLBy3w&amp;list=PL8dIIwCMF-SOaSb3_VYUlyULpPyk7iwlh&amp;index=1">up chen in 2013 JSDC</a></li>
 <li><a href="https://gist.github.com/twosixcode/1988097">Paste and Indent</a></li>
 </ol>
 ]]></content>
@@ -1998,7 +2271,7 @@ _ <code>ubuntu</code>是因為我用 ubuntu 當做 OS，如果當初選擇 Amazo
         <summary type="html"><![CDATA[這是第二屆的 JSDC，由 TonyQ 及三大社群舉辦的聚會，非常幸運的我能順利的利用社群票的機制搶到票，在眾多非常有經驗的強者面前，聽完他們的分享，越感覺自己對於網頁開發充滿了熱情！]]></summary>
         <content type="html"><![CDATA[<p><img src="https://i.imgur.com/02RzVQA.png" alt="JSDC"></p>
 <p>這是第二屆的 JSDC，由 TonyQ 及三大社群舉辦的聚會，非常幸運的我能順利的利用社群票的機制搶到票，在眾多非常有經驗的強者面前，聽完他們的分享，越感覺自己對於網頁開發充滿了熱情！</p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <blockquote>
 <p>『我們不叫前端工程師，以後請叫我們<em>前端設計師</em>！』</p>
 </blockquote>
@@ -2107,7 +2380,7 @@ _ <code>ubuntu</code>是因為我用 ubuntu 當做 OS，如果當初選擇 Amazo
         <updated>2013-05-18T00:04:03.000Z</updated>
         <summary type="html"><![CDATA[在 GitHub 使用上，我算是初新者，有疑問才有進步。每當看到有人把好玩的東西放到 GitHub 上面變成靜態頁面，都會很想知道他是怎樣辦到的。結果不難，就是利用 GitHub Pages 來做到。]]></summary>
         <content type="html"><![CDATA[<p>在 GitHub 使用上，我算是初新者，有疑問才有進步。每當看到有人把好玩的東西放到 GitHub 上面變成靜態頁面，都會很想知道他是怎樣辦到的。結果不難，就是利用 GitHub Pages 來做到。</p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>GitHub Pages 介紹</h2>
 <p>當你要有一個自己的 GitHub Pages，其實分成兩項。</p>
 <ol>
@@ -2123,24 +2396,29 @@ _ <code>ubuntu</code>是因為我用 ubuntu 當做 OS，如果當初選擇 Amazo
 <ol start="2">
 <li>從本機端 clone 下來，參照自己的路徑，我的 repo 則是在 command line 底下打</li>
 </ol>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">git clone git@github.com:kpman/first-repo.git</code></pre></div>
+<pre><code>git clone git@github.com:kpman/first-repo.git
+</code></pre>
 <ol start="3">
 <li>移到該資料夾</li>
 </ol>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">cd first-repo</code></pre></div>
+<pre><code>cd first-repo
+</code></pre>
 <ol start="4">
 <li>將 branch 移到<code>gh-pages</code>，這步驟很重要，Github Pages 就是看這一個 branch 去決定頁面的。</li>
 </ol>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">git branch gh-pages
-git checkout gh-pages</code></pre></div>
+<pre><code>git branch gh-pages
+git checkout gh-pages
+</code></pre>
 <p>或者</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">git checkout --orphan gh-pages //建立一個沒有parent的branch，並移到該branch上</code></pre></div>
+<pre><code>git checkout --orphan gh-pages //建立一個沒有parent的branch，並移到該branch上
+</code></pre>
 <ol start="5">
 <li>將編輯好的檔案 push 上去。</li>
 </ol>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">git add .
+<pre><code>git add .
 git commit
-git push origin gh-pages</code></pre></div>
+git push origin gh-pages
+</code></pre>
 <ol start="6">
 <li>完成！</li>
 </ol>
@@ -2170,17 +2448,17 @@ git push origin gh-pages</code></pre></div>
         <updated>2013-05-08T15:50:06.000Z</updated>
         <summary type="html"><![CDATA[趁著好朋友在旁邊的情況下，請教他學會了在 hexo 自訂 rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。]]></summary>
         <content type="html"><![CDATA[<p>趁著好朋友在旁邊的情況下，請教他學會了在 hexo 自訂 rss，再次感受到技術這種東西，真的是當面交流才會發揮他的效益。</p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h3>一、本機環境</h3>
 <p>在終端機下輸入以下</p>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> hexo-generator-feed --save
-</code></pre></div>
+<pre><code class="language-shell">npm install hexo-generator-feed --save
+</code></pre>
 <p>權限沒有取得的記得前面加上<code>sudo</code>。</p>
 <h3>二、修改_config.yml</h3>
 <p>在主目錄底下的<code>_config.yml</code>檔加上</p>
-<div class="remark-highlight"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">plugins</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> hexo<span class="token punctuation">-</span>generator<span class="token punctuation">-</span>feed
-</code></pre></div>
+<pre><code class="language-yaml">plugins:
+  - hexo-generator-feed
+</code></pre>
 <p><img src="https://i.imgur.com/w39zkK6.png" alt="modify _config.yml" title="modify _config.yml"></p>
 <p>如此一來便完成了環境設置。</p>
 <h3>三、要怎樣找到？</h3>
@@ -2210,7 +2488,7 @@ git push origin gh-pages</code></pre></div>
         <updated>2013-05-07T11:28:16.000Z</updated>
         <summary type="html"><![CDATA[趁著記憶猶新的狀況，記錄自己使用偽元素 (pseudo-element)讓原本的 html 架構更加簡潔的方法。]]></summary>
         <content type="html"><![CDATA[<p>趁著記憶猶新的狀況，記錄自己使用偽元素 (pseudo-element)讓原本的 html 架構更加簡潔的方法。</p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>何謂 pseudo-element?</h2>
 <p>不會出現在 html 的文件裡面，而是利用 css 讓瀏覽器去實作。以下列出的都是可以使用的 pseudo-element。</p>
 <ol>
@@ -2226,46 +2504,46 @@ git push origin gh-pages</code></pre></div>
 </blockquote>
 <h2>修改過程</h2>
 <h3>原本的 html code</h3>
-<div class="remark-highlight"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>icon<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img/icon01.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>正確觀念<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span><span class="token punctuation">></span></span>正確觀念<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
-</code></pre></div>
-<div class="remark-highlight"><pre class="language-scss"><code class="language-scss"><span class="token selector">.icon </span><span class="token punctuation">{</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
-  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
-  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token unit">em</span><span class="token punctuation">;</span>
-  <span class="token property">padding-top</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token unit">px</span><span class="token punctuation">;</span>
-  <span class="token selector">span </span><span class="token punctuation">{</span>
-    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-    <span class="token property">bottom</span><span class="token punctuation">:</span> <span class="token number">-7</span><span class="token unit">px</span><span class="token punctuation">;</span>
-    <span class="token property">left</span><span class="token punctuation">:</span> <span class="token number">12</span><span class="token unit">px</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
-<p>原本利用 div > span 的效果去把中文字顯現出來，所以在 html 的架構下，需要多一個<code>span</code>的 tag。<br>
+<pre><code class="language-html">&lt;div class=&quot;icon&quot;&gt;
+  &lt;img src=&quot;img/icon01.png&quot; alt=&quot;正確觀念&quot; /&gt;
+  &lt;span&gt;正確觀念&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-scss">.icon {
+  display: inline-block;
+  position: relative;
+  padding: 1em;
+  padding-top: 5px;
+  span {
+    position: absolute;
+    bottom: -7px;
+    left: 12px;
+  }
+}
+</code></pre>
+<p>原本利用 div &gt; span 的效果去把中文字顯現出來，所以在 html 的架構下，需要多一個<code>span</code>的 tag。<br>
 且利用<code>img</code>去把圖片給 show 出來。</p>
 <h3>更改過後的 html code</h3>
-<div class="remark-highlight"><pre class="language-html"><code class="language-html"><span class="token comment">&#x3C;!-- html只剩一行！--></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">data-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>正確觀念<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>concept_label icon<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
-</code></pre></div>
-<div class="remark-highlight"><pre class="language-scss"><code class="language-scss"><span class="token selector">.icon </span><span class="token punctuation">{</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
-  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
-  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token unit">em</span><span class="token punctuation">;</span>
-  <span class="token property">padding-top</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token unit">px</span><span class="token punctuation">;</span>
+<pre><code class="language-html">&lt;!-- html只剩一行！--&gt;
+&lt;div data-text=&quot;正確觀念&quot; class=&quot;concept_label icon&quot;&gt;&lt;/div&gt;
+</code></pre>
+<pre><code class="language-scss">.icon {
+  display: inline-block;
+  position: relative;
+  padding: 1em;
+  padding-top: 5px;
 
-  <span class="token selector"><span class="token parent important">&#x26;</span>:before </span><span class="token punctuation">{</span>
-    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-    <span class="token property">bottom</span><span class="token punctuation">:</span> <span class="token number">-7</span><span class="token unit">px</span><span class="token punctuation">;</span>
-    <span class="token property">left</span><span class="token punctuation">:</span> <span class="token number">12</span><span class="token unit">px</span><span class="token punctuation">;</span>
-    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">attr</span><span class="token punctuation">(</span>data-text<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 關鍵作法</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.concept_label </span><span class="token punctuation">{</span>
-  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url">url</span><span class="token punctuation">(</span>../img/icon01_c.png<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
+  &amp;:before {
+    position: absolute;
+    bottom: -7px;
+    left: 12px;
+    content: attr(data-text); // 關鍵作法
+  }
+}
+.concept_label {
+  background-image: url(../img/icon01_c.png);
+}
+</code></pre>
 <p>###觀念整理</p>
 <ol>
 <li>將中文字放入自訂的<code>data-*</code>屬性</li>
@@ -2293,7 +2571,7 @@ git push origin gh-pages</code></pre></div>
         <content type="html"><![CDATA[<p>分享一些目前知道的客製化 theme 技巧。<br>
 其實非常簡單，但是這些技巧如果沒有問過或是自己看過文件，<br>
 一時間也無法摸透，所以覺得應該值得把它記錄下來。</p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h3>一、增加 Disqus 留言板</h3>
 <ul>
 <li>到<a href="http://disqus.com/">Disqus</a>申請帳號</li>
@@ -2305,7 +2583,7 @@ _ 在 <code>disqus_shortname</code> 貼上自己的 shortname</li>
 <p>完成～</p>
 <p>※ 後記：<br>
 若你在申請完 disqus 貼到自己的 blog 上面，發現出現很多不必要的連結，請到 disqus 的 dashboard 去修改。<br>
-右上方 <code>Setting</code> -> <code>Discovery</code> -> 將 Discovery level 拉到最右邊，如下圖<br>
+右上方 <code>Setting</code> -&gt; <code>Discovery</code> -&gt; 將 Discovery level 拉到最右邊，如下圖<br>
 <img src="https://i.imgur.com/eeEjwka.png" alt="Discovery level"></p>
 <h3>二、增加右方側欄 widget</h3>
 <p>在標題就已經破梗囉 XD<br>
@@ -2323,7 +2601,7 @@ _ 在 <code>disqus_shortname</code> 貼上自己的 shortname</li>
 <p>方法一樣很簡單如下：</p>
 <ul>
 <li>找到<code>theme/light/_config.yml</code>裡面的第一行</li>
-<li>預設狀況應該只有 Home&#x26;Archives<br>
+<li>預設狀況應該只有 Home&amp;Archives<br>
 <img src="https://i.imgur.com/reKRQw4.png" alt="menu"></li>
 <li>自訂自己的 menu，項目後面即為<strong>連結</strong>，可以直接使用<code>http://google.com</code>之類的連結。</li>
 </ul>
@@ -2335,7 +2613,8 @@ _ 在 <code>disqus_shortname</code> 貼上自己的 shortname</li>
 <li>找到 <code>theme/light/layout/_partial/head.ejs</code>做修改</li>
 <li>在裡面加上 head.ejs 檔內確認有以下這行 code 即可擁有自己的 favicon</li>
 </ul>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">&#x26;lt;link href=&#x26;quot;&#x26;lt;%- config.root %&#x26;gt;favicon.png&#x26;quot; rel=&#x26;quot;icon&#x26;quot;&#x26;gt;</code></pre></div>
+<pre><code>&lt;link href=&quot;&lt;%- config.root %&gt;favicon.png&quot; rel=&quot;icon&quot;&gt;
+</code></pre>
 <p>以上介紹一些目前知道的自訂方法，<br>
 希望還有人可以跟我多介紹一些技巧，一起分享吧！</p>
 ]]></content>
@@ -2354,7 +2633,7 @@ _ 在 <code>disqus_shortname</code> 貼上自己的 shortname</li>
 以下的介紹是我的個案，我利用 subdomain 而非 TLD 去做。]]></summary>
         <content type="html"><![CDATA[<p>有鑑於 <code>kpman.github.io</code> 這一個網址實在太難記了，所以就決定將自己有的 domain 利用 subdomain 的方式指過來。<br>
 以下的介紹是我的個案，我利用 subdomain 而非 TLD 去做。</p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>一、擁有自己的 domain</h2>
 <p>雖然像是廢話 XD
 但這邊推薦去<a href="www.godaddy.com/">GoDaddy</a>買 domain.<br>
@@ -2405,7 +2684,7 @@ _ 在 <code>disqus_shortname</code> 貼上自己的 shortname</li>
 有鑑於系上好朋友們紛紛都建立起自己的部落格，因此我也加入了這個行列。</p>
 <p>報著取之於人，回饋之於人的心情，我想要把自己從無到有架設這一個 blog 的過程記錄下來<br>
 謝謝那些願意指導我的朋友們！</p>
-<!-- more -->
+<p>&lt;!-- more --&gt;</p>
 <h2>一、本機環境設定</h2>
 <ol>
 <li>
@@ -2431,28 +2710,29 @@ _ 在 <code>disqus_shortname</code> 貼上自己的 shortname</li>
 </ol>
 <h2>三、開始使用 hexo</h2>
 <p>建立 hexo</p>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell">hexo init
-</code></pre></div>
+<pre><code class="language-shell">hexo init
+</code></pre>
 <p>建立一篇文章，將會是<a href="http://markdown.tw">Markdown</a>形式，可以到 source/_post/title.md 去修改</p>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell">hexo new <span class="token string">"title"</span>
-</code></pre></div>
+<pre><code class="language-shell">hexo new &quot;title&quot;
+</code></pre>
 <p>生成 public 檔</p>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell">hexo generate
-</code></pre></div>
+<pre><code class="language-shell">hexo generate
+</code></pre>
 <p>開啟 server 觀看（預設在 localhost:4000）</p>
-<div class="remark-highlight"><pre class="language-shell"><code class="language-shell">hexo server
-</code></pre></div>
+<pre><code class="language-shell">hexo server
+</code></pre>
 <h2>四、發佈到 github 上面</h2>
 <p>修改 <code>_config.yml</code> 檔案，最下面加上</p>
-<div class="remark-highlight"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> github
-  <span class="token key atrule">repository</span><span class="token punctuation">:</span> git@github.com<span class="token punctuation">:</span>github 帳號/github 帳號.github.com.git
-  <span class="token key atrule">branch</span><span class="token punctuation">:</span> master
-</code></pre></div>
+<pre><code class="language-yaml">deploy:
+  type: github
+  repository: git@github.com:github 帳號/github 帳號.github.com.git
+  branch: master
+</code></pre>
 <p>我那時候用 git 的時候，沒有 ssh 認證，如果遇到相同問題可以看<a href="https://help.github.com/articles/generating-ssh-keys">這篇</a>。<br>
 照著上面的指令走就可以完成，唯獨 mac 裡面似乎內建 <code>id_rsa</code> 這把 key，這邊我不清楚 XD</p>
 <p>接著只要輸入</p>
-<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">hexo deploy</code></pre></div>
+<pre><code>hexo deploy
+</code></pre>
 <p>等待 10 分鐘，你的網誌理論上就架好了！網址為 <code>http://github帳號.github.io</code></p>
 <h3><em>reference</em></h3>
 <ol>

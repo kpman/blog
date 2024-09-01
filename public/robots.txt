@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://code.kpman.cc
+
+# Sitemaps
+Sitemap: https://code.kpman.cc/sitemap.xml
