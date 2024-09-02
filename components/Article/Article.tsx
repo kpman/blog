@@ -46,7 +46,7 @@ const Article = ({
       ) : null}
     </div>
     <ArticleMeta tags={tags} />
-    <hr className="article-divider" />
+    <hr className="my-20 mx-auto w-[8%] border-0 border-t-4 border-gray-300"></hr>
   </article>
 );
 
