@@ -1,10 +1,8 @@
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import {
-  ArticleFooter,
-  ArticleHeader,
-  ArticleMeta,
-} from '../components/Article';
+import ArticleHeader from '../components/Article/ArticleHeader';
+import ArticleMeta from '../components/Article/ArticleMeta';
+import ArticleFooter from '../components/Article/ArticleFooter';
 import { getPosts } from '../utils/blog';
 
 export async function getStaticProps() {
