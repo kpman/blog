@@ -1,7 +1,7 @@
 import { DiscussionEmbed } from 'disqus-react';
 
 const Comments = ({ shortname, siteUrl, slug, title }) => (
-  <div style={{ marginTop: '10px' }}>
+  <div className="mt-10">
     <DiscussionEmbed
       shortname={shortname}
       config={{
