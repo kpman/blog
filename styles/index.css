@@ -663,47 +663,6 @@ pre .deletion {
   border: 0;
   border-top: 3px solid #d5d5d5;
 }
-.entry-meta-footer {
-  font-size: 85%;
-  color: #777;
-  line-height: 1.5;
-  margin-bottom: 1.5em;
-}
-.entry-meta-footer a {
-  color: #777;
-}
-.entry-meta-footer a:hover {
-  color: #33a6b8;
-}
-.entry-meta-footer li {
-  list-style-type: none;
-}
-.entry-meta-footer span {
-  line-height: 2em;
-}
-.entry-meta-footer .category a {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-.entry-meta-footer .category a:first-child {
-  margin-left: 0;
-}
-.entry-meta-footer .category a:last-child {
-  margin-right: 0;
-}
-.entry-meta-footer .meta {
-  margin-bottom: 0.7em;
-}
-.article-tag-list {
-  padding: 0;
-}
-.article-tag-list-item {
-  float: left;
-  margin-right: 10px;
-}
-.article-tag-list-item:before {
-  content: '#';
-}
 .article-gallery {
   background: #000;
   position: relative;
