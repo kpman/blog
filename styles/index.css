@@ -373,20 +373,6 @@ pre .clojure .title {
 pre .deletion {
   color: #dc322f;
 }
-#header {
-  display: block;
-  margin: 4em 0;
-  position: relative;
-  *zoom: 1;
-}
-#header:after {
-  display: block;
-  visibility: hidden;
-  font-size: 0;
-  height: 0;
-  clear: both;
-  content: '.';
-}
 .blog-title {
   float: left;
   display: inline-block;

@@ -4,7 +4,7 @@ import config from '../config';
 
 const Footer = () => (
   <footer className="mx-0 my-6 flex flex-col items-start gap-4 text-xs text-gray-900 lg:flex-row lg:items-center">
-    <h1 className="-mt-1 inline-block border-b-[3px] border-solid border-gray-900 px-0 py-1 tracking-[0.2em] ">
+    <h1 className="-mt-1 inline-block border-b-4 border-solid border-gray-900 px-0 py-1 tracking-[0.2em] ">
       <Link href="/">{config.title}</Link>
     </h1>
     <div className="flex flex-col gap-1">
